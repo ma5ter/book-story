@@ -32,6 +32,14 @@ android {
         schemaDirectory("$projectDir/schemas")
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("release.keystore")
+            keyAlias = "mykey"
+            storePassword = System.getenv("PASSWORD")
+            keyPassword = System.getenv("PASSWORD")
+        }
+    }
     buildTypes {
         getByName("debug") {
             applicationIdSuffix = ".debug"
@@ -42,6 +50,8 @@ android {
             isShrinkResources = false
 
             proguardFiles("proguard-rules.pro")
+
+            signingConfig = signingConfigs.getByName("release")
         }
 
         create("release-debug") {
