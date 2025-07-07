@@ -3,9 +3,8 @@ name: Build Android Release
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
 
 jobs:
@@ -47,7 +46,6 @@ jobs:
     - name: Release
       id: step_release
       uses: softprops/action-gh-release@v2
-      if: github.ref_type == 'tag'
       with:
         files: app/build/outputs/apk/release/app-release.apk
         make_latest: true
