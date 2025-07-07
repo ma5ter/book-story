@@ -33,3 +33,13 @@ jobs:
       env:
         PASSWORD: ${{ secrets.PASSWORD }}
       run: ./gradlew assembleRelease
+
+    - name: Upload APK as artifact
+      id: step_upload_artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release.apk
+        path: app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: error
+        compression-level: 0
+        overwrite: true
