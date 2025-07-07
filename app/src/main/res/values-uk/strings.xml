@@ -355,10 +355,8 @@
     <string name="help_translate_option">Допомогти перекласти</string>
     <string name="support_development_option">Підтримати розробку</string>
     <string name="contributors_option">Контриб\'ютори</string>
-    <string name="slava_ukraini">Слава Україні!</string>
 
     <!-- Badges -->
-    <string name="tryzub_badge">Тризуб</string>
 
     <!-- Credits -->
     <string name="credits_design">Дизайн</string>

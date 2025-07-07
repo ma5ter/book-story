@@ -169,7 +169,6 @@
     <string name="app_version_option">Versão do aplicativo</string>
     <string name="more_content_desc">Mais</string>
     <string name="file_path">Caminho</string>
-    <string name="tryzub_badge">Tryzub</string>
     <string name="start_theme_preferences">Prefêrencia de temas</string>
     <string name="sort_order_content_desc">Ordem de classificação</string>
     <string name="continue_reading_content_desc">Continuar a ler</string>
@@ -179,7 +178,6 @@
     <string name="start_done">Está tudo feito!</string>
     <string name="cover_image_content_desc">Imagem da capa</string>
     <string name="open_reader_settings_content_desc">Configurações do leitor</string>
-    <string name="slava_ukraini">Glória à Ucrânia!</string>
     <string name="exit_search_content_desc">Fechar pesquisa</string>
     <string name="app_icon_content_desc">Ícone do App</string>
     <string name="add_book">Adicione um livro</string>

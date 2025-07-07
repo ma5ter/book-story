@@ -197,7 +197,6 @@
     <string name="file_path">路径</string>
     <string name="credits_icon">图标</string>
     <string name="help_desc_how_to_add_books_2">浏览</string>
-    <string name="slava_ukraini">荣耀属于乌克兰！</string>
     <string name="file_last_opened">上次打开</string>
     <string name="unknown">未知</string>
     <string name="help_translate_option">帮助翻译</string>
@@ -299,7 +298,6 @@
     <string name="red_gray_theme">木卫一</string>
     <string name="pink2_theme">木卫三</string>
     <string name="yellow2_theme">鸟神星</string>
-    <string name="tryzub_badge">三叉戟</string>
     <string name="checkpoint_forward_content_desc">取消检查点撤回</string>
     <string name="highlighted_reading_level">程度</string>
     <string name="chapter_title_alignment_option">章节标题对齐</string>

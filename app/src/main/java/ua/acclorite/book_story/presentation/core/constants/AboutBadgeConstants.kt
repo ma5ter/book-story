@@ -25,13 +25,6 @@ fun provideAboutBadges() = listOf(
         url = "https://www.reddit.com/user/Acclorite/"
     ),
     Badge(
-        id = "tryzub",
-        drawable = R.drawable.tryzub,
-        imageVector = null,
-        contentDescription = R.string.tryzub_badge,
-        url = null
-    ),
-    Badge(
         id = "gitlab",
         drawable = R.drawable.gitlab,
         imageVector = null,

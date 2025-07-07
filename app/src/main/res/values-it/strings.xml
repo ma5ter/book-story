@@ -183,7 +183,6 @@
     <string name="already_read_tab">Già letto</string>
     <string name="checkbox_content_desc">Casella di controllo</string>
     <string name="help_title_how_to_create_color_presets">Come posso creare e modificare le preimpostazioni di colore?</string>
-    <string name="slava_ukraini">Slava Ukraini!</string>
     <string name="help_title_how_to_customize_reader">Come personalizzo il Lettore?</string>
     <string name="help_desc_how_to_customize_app_1">Vai alle</string>
     <string name="file_path">Percorso</string>
@@ -314,7 +313,6 @@
     <string name="color_effects_background">Colore di sfondo</string>
     <string name="color_effects_off">Spento</string>
     <string name="absolute_dark_option">Nero assoluto</string>
-    <string name="tryzub_badge">Tryzub</string>
     <string name="color_preset_placeholder">Assegna un nome a un predefinito…</string>
     <string name="horizontal_gesture_off">Spento</string>
     <string name="screen_orientation_locked_landscape">Blocco orrizzontale</string>

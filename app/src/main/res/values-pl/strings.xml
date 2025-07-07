@@ -305,7 +305,6 @@
     <string name="vertical_padding_option">Marginesy pionowe</string>
     <string name="bottom_bar_padding_option">Margines dolnego paska</string>
     <string name="help_desc_how_to_use_perception_expander_1">Ekspander percepcji może pomóc w szybszym czytaniu. Najpierw włącz go w ustawieniach Readera (patrz: Jak dostosować Readera?). Po włączeniu, po obu stronach Readera pojawią się dwie pionowe linie. Aby jeszcze bardziej zoptymalizować prędkość czytania, dostosuj margines, aby utworzyć mniej miejsca wokół środka. Aby z niego skorzystać, należy skupić się na środku ekranu, jednocześnie pozwalając peryferyjnemu widzeniu na wychwycenie tekstu po bokach. Podczas czytania należy skupić się na środku, nie patrząc bezpośrednio na boki po każdej linii.</string>
-    <string name="slava_ukraini">Sława Ukrainie!</string>
     <string name="search_field_empty">Szukaj…</string>
     <string name="cutout_padding_option_desc">Zastosuj margines do obszaru wycięcia</string>
     <string name="images_corners_roundness_option">Zaokrąglenie narożników</string>

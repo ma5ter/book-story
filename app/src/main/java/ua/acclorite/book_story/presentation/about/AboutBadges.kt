@@ -42,22 +42,13 @@ fun AboutBadges(
                 key = { it.id }
             ) { badge ->
                 AboutBadgeItem(badge = badge) {
-                    when (badge.id) {
-                        "tryzub" -> {
-                            context.getString(R.string.slava_ukraini)
-                                .showToast(context = context, longToast = false)
-                        }
-
-                        else -> {
-                            badge.url?.let {
-                                navigateToBrowserPage(
-                                    AboutEvent.OnNavigateToBrowserPage(
-                                        page = it,
-                                        context = context
-                                    )
-                                )
-                            }
-                        }
+                    badge.url?.let {
+                        navigateToBrowserPage(
+                            AboutEvent.OnNavigateToBrowserPage(
+                                page = it,
+                                context = context
+                            )
+                        )
                     }
                 }
             }

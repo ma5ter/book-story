@@ -226,7 +226,6 @@
     <string name="file_details">ファイルの詳細</string>
     <string name="file_path">パス</string>
     <string name="contributors_option">貢献者</string>
-    <string name="tryzub_badge">トルィーズブ</string>
     <string name="credits_design">デザイン</string>
     <string name="credits_icon">アイコン</string>
     <string name="help_desc_how_to_add_books_4">ライブラリ</string>
@@ -240,7 +239,6 @@
     <string name="author_changed">著者が正常に変更されました.</string>
     <string name="report_bug_option">バグを報告</string>
     <string name="support_development_option">開発を手伝う</string>
-    <string name="slava_ukraini">ウクライナに栄光あれ!</string>
     <string name="help_desc_how_to_use_tooltip_1">ほとんどのアイコンボタンにはツールチップが付いており、アイコンが何であるかわからない場合に役立ちます。ツールチップはアイコンボタンを長押しすることで表示できます。</string>
     <string name="credits_translation">翻訳</string>
     <string name="credits_contribution">貢献</string>

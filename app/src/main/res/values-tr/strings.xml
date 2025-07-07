@@ -325,7 +325,6 @@
     <string name="credits_option">Katkıda bulunanlar</string>
     <string name="help_translate_option">Çeviriye yardım et</string>
     <string name="contributors_option">Katkıda bulunanlar</string>
-    <string name="slava_ukraini">Slava Ukraini!</string>
     <!-- Credits -->
     <string name="credits_design">Tasarım</string>
     <string name="credits_icon">Simgeler</string>
@@ -511,7 +510,6 @@
     <string name="delete_color_preset_content_desc">Renk ön ayarını sil</string>
     <string name="create_color_preset_content_desc">Yeni renk ön ayarı oluştur</string>
     <string name="shuffle_color_preset_content_desc">Renkleri karıştır</string>
-    <string name="tryzub_badge">Tryzub</string>
     <string name="drag_content_desc">Sürükle</string>
     <string name="filter_content_desc">Filtrele</string>
     <string name="checkpoint_back_content_desc">Önceki kontrol noktası</string>
