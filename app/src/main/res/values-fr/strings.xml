@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2025 Acclorite
@@ -12,14 +11,11 @@
     <string name="about_screen">À propos de l\'application</string>
     <string name="help_screen">Aide</string>
     <string name="delete_books">Supprimer des livres ?</string>
-    <string name="move_books">Déplacer des livres ?</string>
     <string name="delete_book">Supprimer le livre ?</string>
-    <string name="move_book">Déplacer le livre ?</string>
     <string name="delete_history">Effacer l\'historique de lecture ?</string>
     <string name="add_books_description">Vous pouvez choisir les livres que vous souhaitez ajouter. Vous pouvez modifier le titre et l\'image de couverture du livre par la suite. Le chargement peut prendre plusieurs minutes.</string>
     <string name="delete_books_description">Cela supprimera tous les livres sélectionnés (%1$s) de la base de données. Ceci ne supprimera pas les livres sélectionnés de votre appareil.</string>
     <string name="delete_book_description">Cela supprimera ce livre de la base de données. Ceci ne le supprimera pas de votre appareil.</string>
-    <string name="move_book_description">Choisissez la catégorie dans laquelle vous souhaitez déplacer ce livre. Ce dernier sera déplacé vers la catégorie choisie.</string>
     <string name="error_no_translator">Aucune application de traduction n\'a été trouvée.</string>
     <string name="error_no_dictionary">Aucune application de dictionnaire n\'a été trouvée.</string>
     <string name="error_no_share_app">Aucune application pour partager n\'a été trouvée.</string>
@@ -51,10 +47,6 @@
     <string name="delete_cover">Supprimez l\'image de couverture</string>
     <string name="delete_cover_desc">Supprimer l\'image actuelle de la couverture du livre</string>
     <string name="author">Auteur</string>
-    <string name="reading_tab">Lecture en cours</string>
-    <string name="already_read_tab">Déjà lu</string>
-    <string name="planning_tab">À lire</string>
-    <string name="dropped_tab">Abandonné</string>
     <string name="general_tab">Général</string>
     <string name="filter_tab">Filtres</string>
     <string name="sort_tab">Trier</string>
@@ -62,9 +54,9 @@
     <string name="appearance_settings">Apparence</string>
     <string name="appearance_settings_desc">Thème, couleurs</string>
     <string name="reader_settings">Lecteur</string>
-    <string name="reader_settings_desc">Police, texte, traducteur</string>
+    <string name="reader_settings_desc">Police, texte</string>
     <string name="browse_settings">Navigation</string>
-    <string name="browse_settings_desc">Général, filtres, trier</string>
+    <string name="browse_settings_desc">Numérisation, affichage</string>
     <string name="font_reader_settings">Police</string>
     <string name="text_reader_settings">Texte</string>
     <string name="translator_reader_settings">Traducteur</string>
@@ -83,7 +75,7 @@
     <string name="text_alignment_option">Alignement du texte</string>
     <string name="letter_spacing_option">Espacement des lettres</string>
     <string name="layout_option">Mode d\'affichage</string>
-    <string name="browse_grid_size_option">Taille de la grille</string>
+    <string name="grid_size_option">Taille de la grille</string>
     <string name="red_color">Rouge</string>
     <string name="green_color">Vert</string>
     <string name="blue_color">Bleu</string>
@@ -99,10 +91,10 @@
     <string name="font_style_normal">Normal</string>
     <string name="layout_list">Liste</string>
     <string name="layout_grid">Grille</string>
-    <string name="browse_grid_size_auto">Automatique</string>
-    <string name="browse_grid_size_per_row">par ligne</string>
-    <string name="browse_sort_order_last_modified">Dernière modification</string>
-    <string name="browse_sort_order_file_size">Taille de fichier</string>
+    <string name="grid_size_auto">Automatique</string>
+    <string name="grid_size_per_row">par ligne</string>
+    <string name="sort_order_last_modified">Dernière modification</string>
+    <string name="sort_order_file_size">Taille de fichier</string>
     <string name="alignment_start">Début</string>
     <string name="alignment_justify">Justifier</string>
     <string name="alignment_center">Centrer</string>
@@ -169,11 +161,11 @@
     <string name="help_title_how_to_create_color_presets">Comment créer et modifier des préréglages de couleurs?</string>
     <string name="help_title_how_to_use_color_presets">Comment utiliser les préréglages de couleur?</string>
     <string name="help_desc_how_to_use_color_presets_1">Allez dans les paramètres d\'apparence(voir: Comment personnaliser le Reader?). Vous pouvez choisir le préréglage de couleur à utiliser dans le paramètre «Préréglage de couleur». Cliquez sur le préréglage de couleur souhaité pour le sélectionner, ce qui modifiera également vos couleurs dans le lecteur. Si vous souhaitez réorganiser le préréglage des couleurs, sélectionnez-le et maintenez le bouton «Poignée» enfoncé, puis déplacez-le à la position souhaitée. Vous pouvez changer rapidement les préréglages de couleurs en activant le paramètre correspondant dans la sous-catégorie «Couleurs» des paramètres d\'apparence, puis en balayant la barre supérieure vers la gauche ou la droite dans Reader, pour changer rapidement les préréglages de couleurs.</string>
-    <string name="start_welcome">Bienvenue sur Book\'s Story!</string>
+    <string name="start_welcome">Bienvenue sur %1$s!</string>
     <string name="start_welcome_desc">Pour un monde où les mots charment, enseignent et mènent à des aventures incroyables! Mettons les choses au point!</string>
     <string name="start_language_preferences">Préférences de langue</string>
     <string name="start_theme_preferences">Préférences de thèmes</string>
-    <string name="start_done">Tout est prêt!</string>
+    <string name="start_done">Tout est prêt !</string>
     <string name="yesterday">Hier</string>
     <string name="continue_reading_content_desc">Poursuivre la lecture</string>
     <string name="go_back_content_desc">Retourner</string>
@@ -202,7 +194,6 @@
     <string name="delete_color_preset_content_desc">Supprimer le préréglage de couleur</string>
     <string name="shuffle_color_preset_content_desc">Mélanger les couleurs</string>
     <string name="drag_content_desc">Glisser</string>
-    <string name="move_books_description">Choisissez la catégorie dans laquelle vous souhaitez déplacer tous les livres sélectionnés (%1$s). Tous les livres sélectionnés seront déplacés vers la catégorie choisie.</string>
     <string name="add_books">Ajouter des livres ?</string>
     <string name="error_no_description">Pas de description.</string>
     <string name="error_something_went_wrong">Quelque chose s\'est mal passé.</string>
@@ -214,7 +205,7 @@
     <string name="add_book">Ajouter un livre</string>
     <string name="color_tab">Couleurs</string>
     <string name="general_settings">Paramètres généraux</string>
-    <string name="sort_browse_settings">Trier</string>
+    <string name="sort_settings">Trier</string>
     <string name="language_option">Langue de l\'application</string>
     <string name="dark_theme_option">Thème sombre</string>
     <string name="pure_dark_option">Noir pur</string>
@@ -229,8 +220,8 @@
     <string name="line_height_option">Hauteur de la ligne</string>
     <string name="dark_theme_on">Activé</string>
     <string name="pure_dark_off">Désactivé</string>
-    <string name="browse_sort_order_file_format">Format de fichier</string>
-    <string name="browse_sort_order_name">Alphabétiquement</string>
+    <string name="sort_order_file_format">Format de fichier</string>
+    <string name="sort_order_name">Alphabétiquement</string>
     <string name="app_version_option">Version de l\'application</string>
     <string name="credits_design">Design</string>
     <string name="credits_translation">Traduction</string>
@@ -245,7 +236,7 @@
     <string name="help_desc_how_to_use_double_click_translation_1">Tout d\'abord, allez dans les paramètres du lecteur(voir: Comment personnaliser le lecteur?), puis activez les réglages correspondants. Ensuite, commencez à lire le livre(voir: Comment lire un livre?). Maintenant, si vous double-cliquez sur le paragraphe souhaité, le traducteur externe s\'ouvrira avec le texte du paragraphe.</string>
     <string name="help_desc_how_to_create_color_presets_1">Allez dans les paramètres d\'apparence(voir: Comment personnaliser le lecteur?). Vous pouvez modifier les paramètres de tous les préréglages de couleur dans la boîte située sous «Préréglage de couleur» dans la sous-catégorie «Couleurs». Pour créer un nouveau préréglage de couleur, cliquez sur l\'icône-bouton «Ajouter». Il y a plusieurs façons de modifier un préréglage de couleur: en cliquant sur le champ de texte, vous pouvez changer le nom du préréglage de couleur, en déplaçant les curseurs, vous pouvez changer les couleurs du préréglage de couleur, en cliquant sur l\'icône «Mélanger», vous pouvez mélanger toutes les couleurs. Si vous souhaitez supprimer un préréglage de couleur, cliquez sur l\'icône «Supprimer».</string>
     <string name="open_reader_settings_content_desc">Paramètres du lecteur</string>
-    <string name="start_done_desc">Vous avez réussi à effectuer les réglages de base de l\'application. Souhaitez-vous apprendre à utiliser l\'application en lisant l\'écran d\'aide?</string>
+    <string name="start_done_desc">Vous avez réussi à effectuer les réglages de base de l\'application. Souhaitez-vous lire l\'écran d\'aide ?</string>
     <string name="sort_order_content_desc">Ordre de tri</string>
     <string name="history_content_desc">Historique de lecture</string>
     <string name="today">Aujourd\'hui</string>
@@ -280,7 +271,7 @@
     <string name="screen_orientation_landscape">Paysage</string>
     <string name="screen_orientation_portrait">Portrait</string>
     <string name="screen_orientation_locked_landscape">Paysage verrouillé</string>
-    <string name="help_desc_how_to_use_perception_expander_1">L\'expandeur de perception peut vous aider à lire plus vite. Tout d\'abord, activez-le dans les paramètres du Reader (voir: Comment personnaliser le Reader?). Une fois activé, deux lignes verticales apparaissent de part et d\'autre du Reader. Pour optimiser davantage votre vitesse de lecture, ajustez le rembourrage afin de créer moins d\'espace autour du centre. Pour l\'utiliser, concentrez-vous sur le centre de l\'écran tout en laissant votre vision périphérique capter le texte sur les côtés. Pendant que vous lisez, maintenez votre attention sur le centre sans regarder directement les côtés après chaque ligne.</string>
+    <string name="help_desc_how_to_use_perception_expander_1">L\'expandeur de perception peut vous aider à lire plus vite. Tout d\'abord, activez-le dans les paramètres du Reader (voir : Comment personnaliser le Reader ?). Une fois activé, deux lignes verticales apparaissent de part et d\'autre du Reader. Pour optimiser davantage votre vitesse de lecture, ajustez le rembourrage afin de créer moins d\'espace autour du centre. Pour l\'utiliser, concentrez-vous sur le centre de l\'écran tout en laissant votre vision périphérique capter le texte sur les côtés. Pendant que vous lisez, maintenez votre attention sur le centre sans regarder directement les côtés après chaque ligne.</string>
     <string name="perception_expander_padding_option">Marges latérales de ligne</string>
     <string name="no_chapters">Pas de chapitres</string>
     <string name="chapters">Chapitres</string>
@@ -308,7 +299,7 @@
     <string name="progress_bar_option_desc">Affiche la barre de progression en bas</string>
     <string name="progress_bar_font_size_option">Taille de police</string>
     <string name="color_effects_grayscale">Niveaux de gris</string>
-    <string name="edit_content_desc">Éditer le champ</string>
+    <string name="edit_content_desc">Éditer</string>
     <string name="horizontal_gesture_on">Activé</string>
     <string name="custom_screen_brightness_option">Luminosité personalisée</string>
     <string name="display_tab">Affichage</string>
@@ -335,7 +326,7 @@
     <string name="error_no_file">Le fichier n\'existe pas ou est inaccessible</string>
     <string name="horizontal_gesture_alpha_anim_option">Animation de visibilité</string>
     <string name="images_option">Images</string>
-    <string name="images_option_desc">Affiche les images avec leur légende</string>
+    <string name="images_option_desc">Affiche les images</string>
     <string name="progress_bar_padding_option">Marges</string>
     <string name="progress_bar_alignment_option">Alignement</string>
     <string name="path_changed">Le chemin de fichier a été changé avec succès.</string>
@@ -359,4 +350,44 @@
     <string name="author_changed">L\'auteur a été changé avec succès.</string>
     <string name="description_changed">La description a été changée avec succès.</string>
     <string name="pink2_theme">Ganymede</string>
+    <string name="remove_category">Supprimer catégorie ?</string>
+    <string name="remove_category_description">Cela supprimera cette catégorie de la bibliothèque, mais ne supprimera aucun livre.</string>
+    <string name="error_no_file_manager_app">Aucune application trouvée pour choisir le dossier.</string>
+    <string name="error_field_empty">Ce champ ne doit pas être vide.</string>
+    <string name="categories_empty">Aucune catégories.</string>
+    <string name="report">Rapport</string>
+    <string name="create_category">Créer catégorie</string>
+    <string name="default_tab">Défaut</string>
+    <string name="library_settings">Librairie</string>
+    <string name="library_settings_desc">Catégories, affichage, onglets</string>
+    <string name="tabs_settings">Onglets</string>
+    <string name="categories_settings">Catégories</string>
+    <string name="library_categories_option_note">Initialement, les livres sont ajoutés à la catégorie par défaut, mais ils peuvent appartenir à plusieurs catégories personnalisées créées ici. La suppression d\'une catégorie ici ne supprimera pas les livres de la bibliothèque. Maintenez l\'icône de la catégorie et déplacez-la pour réorganiser les catégories.</string>
+    <string name="horizontal_gesture_pull_anim_option">Animation de traction</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">Activer l\'animation de traction lors de l\'utilisation d\'un geste horizontal</string>
+    <string name="images_captions_option">Légendes</string>
+    <string name="images_captions_option_desc">Afficher les légendes sous les images</string>
+    <string name="read_button_option">Montrer le bouton «Lire»</string>
+    <string name="show_progress_option">Montrer la progression</string>
+    <string name="title_position_option">Position du titre</string>
+    <string name="show_book_count_option">Montrer le nombre de livres</string>
+    <string name="show_category_tabs_option">Montrer les onglets des catégories</string>
+    <string name="always_show_default_tab_option">Toujours montrer l\'onglet par défaut</string>
+    <string name="per_category_sort_option">Tri par catégorie</string>
+    <string name="library_title_position_off">Caché</string>
+    <string name="library_title_position_below">En-dessous</string>
+    <string name="library_title_position_inside">À l\'intérieur</string>
+    <string name="library_categories_create_category_placeholder">Titre</string>
+    <string name="sort_order_last_read">Dernière lecture</string>
+    <string name="sort_order_progress">Progression</string>
+    <string name="sort_order_author">Auteur</string>
+    <string name="font_thickness_extra_light">Extra fine</string>
+    <string name="font_thickness_light">Fine</string>
+    <string name="font_thickness_normal">Normale</string>
+    <string name="font_thickness_medium">Moyenne</string>
+    <string name="gray_theme">Iapetus</string>
+    <string name="crash_title">Oups ! L\'application a planté.</string>
+    <string name="crash_description">Veuillez signaler ce message de crash de la manière la plus pratique pour vous.</string>
+    <string name="library_per_category_sort_option_note">Le tri peut être changé dans la Bibliothèque.</string>
+    <string name="select_all_books_content_desc">Sélectionner tous les livres</string>
 </resources>

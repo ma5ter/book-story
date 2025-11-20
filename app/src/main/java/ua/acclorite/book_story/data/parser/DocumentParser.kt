@@ -11,11 +11,13 @@ import android.graphics.BitmapFactory
 import androidx.compose.ui.graphics.asImageBitmap
 import kotlinx.coroutines.yield
 import org.jsoup.nodes.Document
-import ua.acclorite.book_story.domain.reader.ReaderText
-import ua.acclorite.book_story.presentation.core.util.clearAllMarkdown
-import ua.acclorite.book_story.presentation.core.util.clearMarkdown
-import ua.acclorite.book_story.presentation.core.util.containsVisibleText
+import ua.acclorite.book_story.core.helpers.clearAllMarkdown
+import ua.acclorite.book_story.core.helpers.clearMarkdown
+import ua.acclorite.book_story.core.helpers.containsVisibleText
+import ua.acclorite.book_story.domain.model.reader.ReaderText
 import java.io.File
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 import javax.inject.Inject
@@ -71,7 +73,7 @@ class DocumentParser @Inject constructor(
                     if (!link.startsWith("http") || element.wholeText().isBlank()) return@forEach
 
                     if (link.startsWith("http://")) {
-                        link = link.replace("http://", "https://")
+                        link = link.replaceFirst("http://", "https://")
                     }
 
                     element.prepend("[")
@@ -84,6 +86,7 @@ class DocumentParser @Inject constructor(
                         .trim()
                         .substringAfterLast(File.separator)
                         .lowercase()
+                        .let { src -> URLDecoder.decode(src, StandardCharsets.UTF_8.name()) }
                         .takeIf {
                             it.containsVisibleText() && imageEntries?.any { image ->
                                 it == image.name.substringAfterLast(File.separator).lowercase()
@@ -92,7 +95,7 @@ class DocumentParser @Inject constructor(
 
                     val alt = element.attr("alt").trim().takeIf {
                         it.clearMarkdown().containsVisibleText()
-                    } ?: src.substringBeforeLast(".")
+                    } ?: "Image"
 
                     element.append("\n[[$src|$alt]]\n")
                 }
@@ -103,13 +106,14 @@ class DocumentParser @Inject constructor(
                         .trim()
                         .substringAfterLast(File.separator)
                         .lowercase()
+                        .let { src -> URLDecoder.decode(src, StandardCharsets.UTF_8.name()) }
                         .takeIf {
                             it.containsVisibleText() && imageEntries?.any { image ->
                                 it == image.name.substringAfterLast(File.separator).lowercase()
                             } == true
                         } ?: return@forEach
 
-                    val alt = src.substringBeforeLast(".")
+                    val alt = "Image"
 
                     element.append("\n[[$src|$alt]]\n")
                 }

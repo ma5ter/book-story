@@ -14,8 +14,12 @@ import ua.acclorite.book_story.data.local.data_store.DataStore
 import ua.acclorite.book_story.data.local.data_store.DataStoreImpl
 import ua.acclorite.book_story.data.mapper.book.BookMapper
 import ua.acclorite.book_story.data.mapper.book.BookMapperImpl
+import ua.acclorite.book_story.data.mapper.category.CategoryMapper
+import ua.acclorite.book_story.data.mapper.category.CategoryMapperImpl
 import ua.acclorite.book_story.data.mapper.color_preset.ColorPresetMapper
 import ua.acclorite.book_story.data.mapper.color_preset.ColorPresetMapperImpl
+import ua.acclorite.book_story.data.mapper.file.FileMapper
+import ua.acclorite.book_story.data.mapper.file.FileMapperImpl
 import ua.acclorite.book_story.data.mapper.history.HistoryMapper
 import ua.acclorite.book_story.data.mapper.history.HistoryMapperImpl
 import ua.acclorite.book_story.data.parser.FileParser
@@ -23,14 +27,14 @@ import ua.acclorite.book_story.data.parser.FileParserImpl
 import ua.acclorite.book_story.data.parser.TextParser
 import ua.acclorite.book_story.data.parser.TextParserImpl
 import ua.acclorite.book_story.data.repository.BookRepositoryImpl
+import ua.acclorite.book_story.data.repository.CategoryRepositoryImpl
 import ua.acclorite.book_story.data.repository.ColorPresetRepositoryImpl
-import ua.acclorite.book_story.data.repository.DataStoreRepositoryImpl
 import ua.acclorite.book_story.data.repository.FileSystemRepositoryImpl
 import ua.acclorite.book_story.data.repository.HistoryRepositoryImpl
 import ua.acclorite.book_story.data.repository.PermissionRepositoryImpl
 import ua.acclorite.book_story.domain.repository.BookRepository
+import ua.acclorite.book_story.domain.repository.CategoryRepository
 import ua.acclorite.book_story.domain.repository.ColorPresetRepository
-import ua.acclorite.book_story.domain.repository.DataStoreRepository
 import ua.acclorite.book_story.domain.repository.FileSystemRepository
 import ua.acclorite.book_story.domain.repository.HistoryRepository
 import ua.acclorite.book_story.domain.repository.PermissionRepository
@@ -65,12 +69,6 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindDataStoreRepository(
-        dataStoreRepositoryImpl: DataStoreRepositoryImpl
-    ): DataStoreRepository
-
-    @Binds
-    @Singleton
     abstract fun bindFileSystemRepository(
         fileSystemRepositoryImpl: FileSystemRepositoryImpl
     ): FileSystemRepository
@@ -80,6 +78,12 @@ abstract class RepositoryModule {
     abstract fun bindPermissionRepository(
         permissionRepositoryImpl: PermissionRepositoryImpl
     ): PermissionRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCategoryRepository(
+        categoryRepositoryImpl: CategoryRepositoryImpl
+    ): CategoryRepository
 
     @Binds
     @Singleton
@@ -98,6 +102,18 @@ abstract class RepositoryModule {
     abstract fun bindColorPresetMapper(
         colorPresetMapperImpl: ColorPresetMapperImpl
     ): ColorPresetMapper
+
+    @Binds
+    @Singleton
+    abstract fun bindCategoryMapper(
+        categoryMapperImpl: CategoryMapperImpl
+    ): CategoryMapper
+
+    @Binds
+    @Singleton
+    abstract fun bindFileMapper(
+        fileMapperImpl: FileMapperImpl
+    ): FileMapper
 
     @Binds
     @Singleton

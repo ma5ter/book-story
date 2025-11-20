@@ -11,14 +11,16 @@ import android.graphics.BitmapFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
+import org.jsoup.parser.Parser
 import ua.acclorite.book_story.R
+import ua.acclorite.book_story.core.ui.UIText
+import ua.acclorite.book_story.data.model.common.BookWithCover
+import ua.acclorite.book_story.data.model.file.CachedFile
 import ua.acclorite.book_story.data.parser.FileParser
-import ua.acclorite.book_story.domain.file.CachedFile
-import ua.acclorite.book_story.domain.library.book.Book
-import ua.acclorite.book_story.domain.library.book.BookWithCover
-import ua.acclorite.book_story.domain.library.category.Category
-import ua.acclorite.book_story.domain.ui.UIText
+import ua.acclorite.book_story.domain.model.library.Book
 import java.io.File
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 import java.util.zip.ZipFile
 import javax.inject.Inject
 
@@ -41,7 +43,7 @@ class EpubFileParser @Inject constructor() : FileParser {
                         .getInputStream(opfEntry)
                         .bufferedReader()
                         .use { it.readText() }
-                    val document = Jsoup.parse(opfContent)
+                    val document = Jsoup.parse(opfContent, Parser.xmlParser())
 
                     val title = document.select("metadata > dc|title").text().trim().run {
                         ifBlank {
@@ -68,18 +70,24 @@ class EpubFileParser @Inject constructor() : FileParser {
                     val coverImage = document
                         .select("metadata > meta[name=cover]")
                         .attr("content")
-                        .run {
-                            if (isNotBlank()) {
+                        .let { coverId ->
+                            if (coverId.isNotBlank()) {
                                 document
-                                    .select("manifest > item[id=$this]")
+                                    .select("manifest > item[id=$coverId]")
                                     .attr("href")
-                                    .apply { if (isNotBlank()) return@run this }
+                                    .also { src ->
+                                        if (src.isBlank()) return@also
+                                        return@let src
+                                    }
                             }
 
                             document
                                 .select("manifest > item[media-type*=image]")
-                                .firstOrNull()?.attr("href")
+                                .firstOrNull()
+                                ?.attr("href")
+                                ?.also { src -> if (src.isBlank()) return@let null }
                         }
+                        ?.let { src -> URLDecoder.decode(src, StandardCharsets.UTF_8.name()) }
 
                     book = BookWithCover(
                         book = Book(
@@ -91,7 +99,7 @@ class EpubFileParser @Inject constructor() : FileParser {
                             progress = 0f,
                             filePath = cachedFile.path,
                             lastOpened = null,
-                            category = Category.entries[0],
+                            categories = emptyList(),
                             coverImage = null
                         ),
                         coverImage = extractCoverImageBitmap(rawFile, coverImage)

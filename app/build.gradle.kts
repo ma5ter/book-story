@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -13,23 +11,19 @@ plugins {
 
 android {
     namespace = "ua.acclorite.book_story"
-    compileSdk = 35
+    compileSdk = 36
 
+    // Default configuration
     defaultConfig {
         applicationId = "ua.acclorite.book_story"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 13
-        versionName = "1.7.1"
+        targetSdk = 36
+        versionCode = 14
+        versionName = "1.8.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-
-    room {
-        schemaDirectory("$projectDir/schemas")
     }
 
     signingConfigs {
@@ -40,6 +34,8 @@ android {
             keyPassword = System.getenv("PASSWORD")
         }
     }
+
+    // Build types configuration
     buildTypes {
         getByName("debug") {
             applicationIdSuffix = ".debug"
@@ -60,6 +56,8 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    // Kotlin configuration
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -67,7 +65,17 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    // Room configuration
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     dependenciesInfo {
@@ -82,6 +90,7 @@ android {
     }
 }
 
+// About Libraries configuration
 aboutLibraries {
     registerAndroidTasks = false
     prettyPrint = true
@@ -92,66 +101,62 @@ aboutLibraries {
 }
 
 dependencies {
-
     // Core
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.activity:activity-compose:1.10.1")
+    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
+    implementation("androidx.activity:activity-compose:1.11.0")
 
     // Compose BOM libraries
     // Compose BOM was eliminated - it is recognized as Closed Source in AboutLibraries..
     // although it is not.
-    implementation("androidx.compose.foundation:foundation:1.8.0-beta03")
-    implementation("androidx.compose.animation:animation:1.7.8")
-    implementation("androidx.compose.animation:animation-android:1.8.0-beta03")
-    implementation("androidx.compose.foundation:foundation-layout:1.7.8")
-    implementation("androidx.compose.ui:ui:1.7.8")
-    implementation("androidx.compose.ui:ui-graphics:1.7.8")
-    implementation("androidx.compose.ui:ui-android:1.8.0-beta03")
-    implementation("androidx.compose.material3:material3:1.4.0-alpha08")
-    implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
+    implementation("androidx.compose.foundation:foundation:1.9.3")
+    implementation("androidx.compose.animation:animation:1.9.3")
+    implementation("androidx.compose.animation:animation-android:1.9.3")
+    implementation("androidx.compose.foundation:foundation-layout:1.9.3")
+    implementation("androidx.compose.ui:ui:1.9.3")
+    implementation("androidx.compose.ui:ui-graphics:1.9.3")
+    implementation("androidx.compose.ui:ui-android:1.9.3")
+    implementation("androidx.compose.material3:material3:1.5.0-alpha06")
+    implementation("androidx.compose.material3:material3-window-size-class:1.4.0")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
-    implementation("androidx.compose.material:material:1.7.8")
+    implementation("androidx.compose.material:material:1.9.3")
 
     // All dependencies
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.36.0")
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.55")
-    ksp("com.google.dagger:hilt-android-compiler:2.55")
-    implementation("com.google.dagger:hilt-compiler:2.55")
+    implementation("com.google.dagger:hilt-android:2.57.2")
+    ksp("com.google.dagger:hilt-android-compiler:2.57.2")
+    implementation("com.google.dagger:hilt-compiler:2.57.2")
     ksp("androidx.hilt:hilt-compiler:1.2.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Room
-    implementation("androidx.room:room-runtime:2.7.1")
-    ksp("androidx.room:room-compiler:2.7.1")
+    implementation("androidx.room:room-runtime:2.7.2")
+    ksp("androidx.room:room-compiler:2.7.2")
 
     // Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:2.7.1")
+    implementation("androidx.room:room-ktx:2.7.2")
 
     // Datastore (Settings)
-    implementation("androidx.datastore:datastore-preferences:1.1.3")
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
 
     // Splash Screen API
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     // SAF
-    implementation("com.anggrayudi:storage:2.0.0")
+    implementation("com.anggrayudi:storage:2.2.0")
 
     // PDF parser
     implementation("com.tom-roush:pdfbox-android:2.0.27.0")
 
     // EPUB parser
-    implementation("org.jsoup:jsoup:1.18.3")
-
-    // FB2 parser
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.8.1")
+    implementation("org.jsoup:jsoup:1.21.2")
 
     // Language Switcher
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.appcompat:appcompat-resources:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("androidx.appcompat:appcompat-resources:1.7.1")
 
     // Coil for loading images
     implementation("io.coil-kt:coil-compose:2.7.0")
@@ -166,9 +171,9 @@ dependencies {
     // Scrollbar
     implementation("com.github.nanihadesuka:LazyColumnScrollbar:2.2.0")
 
-    // Gson
-    implementation("com.google.code.gson:gson:2.11.0")
-
     // Markdown
-    implementation("org.commonmark:commonmark:0.24.0")
+    implementation("org.commonmark:commonmark:0.26.0")
+
+    // Json
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 }

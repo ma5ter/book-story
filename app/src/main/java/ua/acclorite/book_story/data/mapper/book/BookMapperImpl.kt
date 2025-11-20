@@ -8,13 +8,13 @@ package ua.acclorite.book_story.data.mapper.book
 
 import androidx.core.net.toUri
 import ua.acclorite.book_story.R
+import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.data.local.dto.BookEntity
-import ua.acclorite.book_story.domain.library.book.Book
-import ua.acclorite.book_story.domain.ui.UIText
+import ua.acclorite.book_story.domain.model.library.Book
 import javax.inject.Inject
 
 class BookMapperImpl @Inject constructor() : BookMapper {
-    override suspend fun toBookEntity(book: Book): BookEntity {
+    override fun toBookEntity(book: Book): BookEntity {
         return BookEntity(
             id = book.id,
             title = book.title,
@@ -22,28 +22,29 @@ class BookMapperImpl @Inject constructor() : BookMapper {
             scrollIndex = book.scrollIndex,
             scrollOffset = book.scrollOffset,
             progress = book.progress,
-            author = book.author.getAsString(),
+            author = book.author.getAsString() ?: "",
             description = book.description,
             image = book.coverImage?.toString(),
-            category = book.category
+            categories = book.categories
         )
     }
 
-    override suspend fun toBook(bookEntity: BookEntity): Book {
+    override fun toBook(bookEntity: BookEntity): Book {
         return Book(
             id = bookEntity.id,
             title = bookEntity.title,
-            author = bookEntity.author?.let { UIText.StringValue(it) } ?: UIText.StringResource(
-                R.string.unknown_author
-            ),
+            author = bookEntity.author.let { author ->
+                if (author.isNotBlank()) UIText.StringValue(author)
+                else UIText.StringResource(R.string.unknown_author)
+            },
             description = bookEntity.description,
             scrollIndex = bookEntity.scrollIndex,
             scrollOffset = bookEntity.scrollOffset,
             progress = bookEntity.progress,
             filePath = bookEntity.filePath,
             lastOpened = null,
-            category = bookEntity.category,
-            coverImage = bookEntity.image?.toUri()
+            coverImage = bookEntity.image?.toUri(),
+            categories = bookEntity.categories
         )
     }
 }

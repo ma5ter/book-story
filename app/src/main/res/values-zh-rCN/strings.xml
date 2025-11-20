@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2025 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
   --><resources>
-    <string name="move_books">移动书籍？</string>
     <string name="delete_history">删除阅读历史？</string>
     <string name="delete_book">删除书籍？</string>
     <string name="no">否</string>
@@ -24,11 +22,9 @@
     <string name="library_screen">书库</string>
     <string name="history_screen">历史</string>
     <string name="browse_screen">浏览</string>
-    <string name="about_screen">关于 app</string>
-    <string name="move_book">移动书籍？</string>
+    <string name="about_screen">关于 Book\'s Story</string>
     <string name="delete_books_description">所有已选择的书（%1$s）将会从数据库中删除，但不会从您的设备上删除。</string>
     <string name="delete_book_description">这本书将会从数据库中删除，但不会从您的设备上删除。</string>
-    <string name="move_book_description">选择你想将这本书移动到的分类。这本书将会被移动到指定的分类。</string>
     <string name="delete_history_description">所有的历史将从数据库中被删除。删除所有的历史后，书的顺序将会被重置。</string>
     <string name="error_no_description">无简介。</string>
     <string name="error_something_went_wrong">出现了一些错误。</string>
@@ -46,8 +42,6 @@
     <string name="unknown_author">未知</string>
     <string name="change_cover">修改封面图片</string>
     <string name="delete_cover_desc">删除这本书当前的封面图片</string>
-    <string name="reading_tab">正在阅读</string>
-    <string name="already_read_tab">已阅读</string>
     <string name="add_books">添加书籍？</string>
     <string name="error_no_browser">未发现浏览器应用。</string>
     <string name="add_book">添加一本书</string>
@@ -62,14 +56,13 @@
     <string name="selected_items_count_query">已选择 %1$s</string>
     <string name="delete_books">删除书籍？</string>
     <string name="add_books_description">您可以挑选您想添加哪些书。您可以在之后编辑书的标题与封面图片。加载过程可能会花费数分钟。</string>
-    <string name="move_books_description">选择你想将所选的书（%1$s）移动到的分类。所有被选择的书将会被移动到指定的分类。</string>
     <string name="reading_speed_reader_settings">阅读速度</string>
     <string name="dark_theme_option">暗黑主题</string>
     <string name="absolute_dark_option">绝对黑暗</string>
     <string name="absolute_dark_option_desc">改变背景颜色使完全黑暗</string>
     <string name="cutout_padding_option">刘海边距</string>
     <string name="cutout_padding_option_desc">将边距应用于刘海区域</string>
-    <string name="browse_grid_size_option">网格大小</string>
+    <string name="grid_size_option">网格大小</string>
     <string name="dark_theme_follow_system">系统</string>
     <string name="font_style_normal">正常</string>
     <string name="pure_dark_off">已禁用</string>
@@ -97,10 +90,9 @@
     <string name="app_theme_option">应用主题</string>
     <string name="colors_appearance_settings">颜色</string>
     <string name="translator_reader_settings">翻译器</string>
-    <string name="sort_browse_settings">排序</string>
+    <string name="sort_settings">排序</string>
     <string name="blue_color">蓝色</string>
     <string name="paragraph_height_option">段落间距</string>
-    <string name="dropped_tab">已放弃</string>
     <string name="color_tab">颜色</string>
     <string name="filter_tab">过滤</string>
     <string name="general_settings_desc">应用语言</string>
@@ -111,7 +103,7 @@
     <string name="misc_reader_settings">杂项</string>
     <string name="fullscreen_option">全屏</string>
     <string name="hide_bars_on_fast_scroll_option">快速滚动时隐藏条栏</string>
-    <string name="reader_settings_desc">字体，文本，翻译器</string>
+    <string name="reader_settings_desc">字体、文本</string>
     <string name="browse_settings">浏览</string>
     <string name="font_size_option">字体大小</string>
     <string name="color_preset_option">颜色预设</string>
@@ -123,7 +115,6 @@
     <string name="font_color_option">字体颜色</string>
     <string name="filter_browse_settings">过滤</string>
     <string name="reader_settings">阅读器</string>
-    <string name="planning_tab">计划中</string>
     <string name="font_style_italic">斜体</string>
     <string name="red_color">红色</string>
     <string name="sort_tab">排序</string>
@@ -140,8 +131,8 @@
     <string name="default_string">默认</string>
     <string name="screen_orientation_option">屏幕方向</string>
     <string name="layout_list">列表</string>
-    <string name="browse_grid_size_per_row">每行</string>
-    <string name="browse_sort_order_file_format">文件格式</string>
+    <string name="grid_size_per_row">每行</string>
+    <string name="sort_order_file_format">文件格式</string>
     <string name="alignment_start">开头</string>
     <string name="alignment_end">末尾</string>
     <string name="screen_orientation_free">自由</string>
@@ -156,20 +147,20 @@
     <string name="aqua_theme">天王星</string>
     <string name="press_again_toast">再次点击返回退出</string>
     <string name="system_reader_settings">系统</string>
-    <string name="browse_sort_order_name">字母顺序</string>
+    <string name="sort_order_name">字母顺序</string>
     <string name="screen_orientation_portrait">竖屏</string>
     <string name="pink_theme">土星</string>
     <string name="alignment_center">居中</string>
     <string name="dynamic_theme">水星</string>
     <string name="lavender_theme">阋神星</string>
-    <string name="browse_sort_order_file_size">文件大小</string>
-    <string name="browse_sort_order_last_modified">最后修改</string>
+    <string name="sort_order_file_size">文件大小</string>
+    <string name="sort_order_last_modified">最后修改</string>
     <string name="general_tab">常规</string>
     <string name="reader_tab">阅读器</string>
     <string name="general_settings">常规</string>
-    <string name="browse_settings_desc">常规，过滤，排序</string>
+    <string name="browse_settings_desc">扫描、显示</string>
     <string name="layout_grid">网格</string>
-    <string name="browse_grid_size_auto">自动</string>
+    <string name="grid_size_auto">自动</string>
     <string name="books_added">成功添加所有已选择的书。</string>
     <string name="books_deleted">成功删除所有已选择的书。</string>
     <string name="cover_image_deleted">成功删除了封面图片。</string>
@@ -184,7 +175,7 @@
     <string name="no_chapters">无章节</string>
     <string name="chapters">章节</string>
     <string name="app_version_option">应用版本</string>
-    <string name="report_bug_option">报告一个漏洞</string>
+    <string name="report_bug_option">报告错误</string>
     <string name="credits_option">鸣谢</string>
     <string name="credits_design">设计</string>
     <string name="credits_fonts">字体</string>
@@ -243,7 +234,7 @@
     <string name="help_title_how_to_create_color_presets">如何创建和修改颜色预设？</string>
     <string name="help_desc_how_to_read_book_3">1. 要开始阅读图书，请单击要阅读图书右下角的按钮。\n2. 点击书籍的封面可查看书籍的详细信息，然后点击右下角的按钮开始阅读。\n3. 阅读进度会自动保存和恢复。\n4. 点击屏幕上任意位置，即可调出顶栏和底栏。\n5. 点击书名，就会跳转到该书的详细信息。 点击齿轮图标，即可看到阅读器设置。 你可以使用底栏的滑块来改变进度。</string>
     <string name="help_desc_how_to_create_color_presets_1">进入外观设置（参见：如何自定义阅读器？） 你可以在 \"颜色 \"子类中 \"颜色预设 \"下的框中修改所有颜色预设的设置。 要创建新的颜色预设，请点击 \"添加 \"按钮。 修改颜色预设有多种方法：点击文本框可以更改颜色预设的名称，移动滑块可以更改颜色预设的颜色，点击 \"Shuffle（洗牌）\"按钮可以洗牌所有颜色。 如果要删除颜色预设，请点击 \"删除 \"按钮。</string>
-    <string name="start_welcome">欢迎来到“Book\'s Story”！</string>
+    <string name="start_welcome">欢迎来到“%1$s”！</string>
     <string name="help_desc_how_to_use_perception_expander_1">Perception Expander可以帮助你加快阅读速度。 首先，在阅读器设置中启用它（请参阅：如何自定义阅读器？） 启用后，阅读器两侧会出现两条竖线。 要进一步优化阅读速度，可以调整边距以减少屏幕四周的空间。 要使用它，请将注意力集中在屏幕中央，同时让你的余光捕捉到两侧的文字。 阅读时，请将注意力集中在中心位置，不要在每一行之后直接看两侧。</string>
     <string name="reading_mode_reader_settings">阅读模式</string>
     <string name="today">今天</string>
@@ -308,7 +299,7 @@
     <string name="images_reader_settings">图片</string>
     <string name="progress_reader_settings">进度</string>
     <string name="images_option">图片</string>
-    <string name="images_option_desc">显示图片及其字幕</string>
+    <string name="images_option_desc">显示设置</string>
     <string name="images_corners_roundness_option">边角圆度</string>
     <string name="images_alignment_option">对齐</string>
     <string name="images_width_option">尺寸</string>
@@ -330,7 +321,7 @@
     <string name="continue_reading_query">继续从%1$s开始</string>
     <string name="file_details">文件信息</string>
     <string name="show_less_content_desc">显示简要信息</string>
-    <string name="edit_content_desc">编辑字段</string>
+    <string name="edit_content_desc">编辑</string>
     <string name="author_changed">已成功更改作者。</string>
     <string name="title_changed">标题更改成功。</string>
     <string name="show_more_content_desc">显示更多信息</string>
@@ -368,4 +359,35 @@
     <string name="crash_description">请用对你而言最便捷的方式报告此崩溃消息。</string>
     <string name="report">报告</string>
     <string name="error_no_file_manager_app">没找到选择文件夹的应用。</string>
+    <string name="remove_category">删除分类？</string>
+    <string name="remove_category_description">这会从书库中删除这个分类但不会删除任何书籍。</string>
+    <string name="error_field_empty">这个字段不应为空。</string>
+    <string name="categories_empty">无分类。</string>
+    <string name="create_category">创建分类</string>
+    <string name="default_tab">默认</string>
+    <string name="library_settings">书库</string>
+    <string name="library_settings_desc">分类、显示、标签页</string>
+    <string name="tabs_settings">标签页</string>
+    <string name="categories_settings">分类</string>
+    <string name="library_categories_option_note">书籍一开始被添加到默认分类但可以属于在此创建的几个自定义分类。删除此处的分类不会从书库删除书籍。按住并移动分类图标重新安排分类。</string>
+    <string name="images_captions_option">说明文字</string>
+    <string name="images_captions_option_desc">在图片下方显示说明文字</string>
+    <string name="read_button_option">显示“阅读”按钮</string>
+    <string name="show_progress_option">显示进度</string>
+    <string name="title_position_option">标题位置</string>
+    <string name="show_book_count_option">显示书籍数</string>
+    <string name="show_category_tabs_option">显示分类标签页</string>
+    <string name="always_show_default_tab_option">始终显示默认标签页</string>
+    <string name="per_category_sort_option">每个分类不同排序依据</string>
+    <string name="library_title_position_off">隐藏</string>
+    <string name="library_title_position_below">下方</string>
+    <string name="library_title_position_inside">内部</string>
+    <string name="library_categories_create_category_placeholder">标题</string>
+    <string name="sort_order_last_read">上次阅读</string>
+    <string name="sort_order_progress">进度</string>
+    <string name="sort_order_author">作者</string>
+    <string name="gray_theme">Iapetus</string>
+    <string name="green2_theme">Io</string>
+    <string name="select_all_books_content_desc">选中所有书籍</string>
+    <string name="library_per_category_sort_option_note">可以在书库中更改排序。</string>
 </resources>
