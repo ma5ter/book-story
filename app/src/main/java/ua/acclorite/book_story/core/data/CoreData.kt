@@ -14,6 +14,7 @@ object CoreData {
     val languages = listOf(
         Language.fromLanguageTag(languageTag = "en"), // English
         Language.fromLanguageTag(languageTag = "uk"), // Ukrainian
+        Language.fromLanguageTag(languageTag = "ru"), // Russian
         Language.fromLanguageTag(languageTag = "de"), // German
         Language.fromLanguageTag(languageTag = "ar"), // Arabic
         Language.fromLanguageTag(languageTag = "es"), // Spanish

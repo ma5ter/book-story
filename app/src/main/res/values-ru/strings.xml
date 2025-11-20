@@ -7,17 +7,13 @@
 <string name="about_screen">О приложении</string>
 <string name="help_screen">Справка</string>
 <string name="add_books">Добавить книги?</string>
-<string name="move_books">Переместить книги?</string>
 <string name="delete_books">Удалить книги?</string>
 <string name="delete_book">Удалить книгу?</string>
-<string name="move_book">Переместить книгу?</string>
 <string name="delete_history">Удалить историю чтения?</string>
 <string name="edit">Редактировать</string>
 <string name="add_books_description">Вы можете выбрать книги, которые хотите добавить. Вы сможете отредактировать Название и Обложку книги позже. Процесс загрузки может занять несколько минут.</string>
-<string name="move_books_description">Выберите категорию, в которую вы хотите переместить все выбранные книги(%1$s). Все выбранные книги будут перемещены в выбранную категорию.</string>
 <string name="delete_books_description">Это удалит все выбранные книги(%1$s) из базы данных. Это не удалит выбранные книги с вашего устройства.</string>
 <string name="delete_book_description">Это удалит эту книгу из базы данных. Это не удалит эту книгу с вашего устройства.</string>
-<string name="move_book_description">Выберите категорию, в которую вы хотите переместить эту книгу. Эта книга будет перемещена в выбранную категорию.</string>
 <string name="delete_history_description">Это удалит всю историю из базы данных. После удаления всей истории порядок книг будет сброшен.</string>
 <string name="error_no_description">Нет описания.</string>
 <string name="error_something_went_wrong">Какой ужас! Что-то пошло не так.</string>
@@ -65,10 +61,6 @@
 <string name="delete_cover">Удалить обложку</string>
 <string name="delete_cover_desc">Удалите нынешнюю обложку книги</string>
 <string name="author">Автор</string>
-<string name="reading_tab">Читаю</string>
-<string name="already_read_tab">Прочитано</string>
-<string name="planning_tab">Планирую</string>
-<string name="dropped_tab">Брошено</string>
 <string name="general_tab">Главные</string>
 <string name="display_tab">Вид</string>
 <string name="color_tab">Цвета</string>
@@ -99,7 +91,6 @@
 <string name="scan_browse_settings">Сканирование</string>
 <string name="display_settings">Вид</string>
 <string name="filter_browse_settings">Фильтр</string>
-<string name="sort_browse_settings">Сортировка</string>
 <string name="browse_scan_option_note">Эти папки используются для сканирования и получения файлов в Обзоре. Удаление папки здесь не удалит фактические файлы или книги из Библиотеки. Чтобы отозвать доступ, нажмите соответствующую кнопку.</string>
 <string name="language_option">Язык приложения</string>
 <string name="dark_theme_option">Тёмная тема</string>
@@ -165,7 +156,6 @@
 <string name="progress_bar_alignment_option">Размер шрифта</string>
 <string name="progress_bar_font_size_option">Расположение</string>
 <string name="progress_count_option">Подсчёт прогресса</string>
-<string name="browse_grid_size_option">Количество ячеек</string>
 <string name="red_color">Красный</string>
 <string name="green_color">Синий</string>
 <string name="blue_color">Зелёный</string>
@@ -181,12 +171,6 @@
 <string name="theme_contrast_high">Высокая</string>
 <string name="font_style_italic">Курсив</string>
 <string name="font_style_normal">Нормальный</string>
-<string name="browse_grid_size_auto">каждая строка</string>
-<string name="browse_grid_size_per_row">Авто</string>
-<string name="browse_sort_order_name">По алфавиту</string>
-<string name="browse_sort_order_file_format">Формат файла</string>
-<string name="browse_sort_order_last_modified">Размер файла</string>
-<string name="browse_sort_order_file_size">Последнее изменение</string>
 <string name="layout_option">Режим отображения</string>
 <string name="layout_list">Список</string>
 <string name="layout_grid">Сетка</string>
