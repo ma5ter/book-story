@@ -8,6 +8,7 @@ package ua.acclorite.book_story.presentation.reader
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,16 +32,25 @@ import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.core.helpers.coerceAndPreventNaN
 import ua.acclorite.book_story.core.ui.UIText
+import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
+import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
+import ua.acclorite.book_story.domain.use_case.attachment.CreateImageAttachmentUseCase
+import ua.acclorite.book_story.domain.use_case.attachment.DeleteImageAttachmentUseCase
+import ua.acclorite.book_story.domain.use_case.attachment.GenerateImageForAttachmentUseCase
+import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentImageUseCase
+import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentsUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetBookUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetChapterProgressUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetTextUseCase
 import ua.acclorite.book_story.domain.use_case.book.UpdateBookUseCase
+import ua.acclorite.book_story.domain.use_case.book.UpdateCoverImageUseCase
 import ua.acclorite.book_story.domain.use_case.history.GetHistoryForBookUseCase
 import ua.acclorite.book_story.presentation.history.HistoryScreen
 import ua.acclorite.book_story.presentation.library.LibraryScreen
 import ua.acclorite.book_story.presentation.reader.model.Checkpoint
 import javax.inject.Inject
+import java.io.File
 import kotlin.coroutines.coroutineContext
 import kotlin.math.roundToInt
 
@@ -50,7 +60,13 @@ class ReaderModel @Inject constructor(
     private val getTextUseCase: GetTextUseCase,
     private val getBookUseCase: GetBookUseCase,
     private val getHistoryForBookUseCase: GetHistoryForBookUseCase,
-    private val getChapterProgressUseCase: GetChapterProgressUseCase
+    private val getChapterProgressUseCase: GetChapterProgressUseCase,
+    private val createImageAttachmentUseCase: CreateImageAttachmentUseCase,
+    private val generateImageForAttachmentUseCase: GenerateImageForAttachmentUseCase,
+    private val getImageAttachmentsUseCase: GetImageAttachmentsUseCase,
+    private val deleteImageAttachmentUseCase: DeleteImageAttachmentUseCase,
+    private val getImageAttachmentImageUseCase: GetImageAttachmentImageUseCase,
+    private val updateCoverImageUseCase: UpdateCoverImageUseCase
 ) : ViewModel() {
 
     private val mutex = Mutex()
@@ -88,13 +104,15 @@ class ReaderModel @Inject constructor(
                         _effects.emit(ReaderEffect.OnSystemBarsVisibility(show = null))
 
                         val lastOpened = getHistoryForBookUseCase(_state.value.book.id)?.time
+                        val imageAttachments = getImageAttachmentsUseCase(_state.value.book.id)
                         _state.update {
                             it.copy(
                                 showMenu = false,
                                 book = it.book.copy(
                                     lastOpened = lastOpened
                                 ),
-                                text = text
+                                text = text,
+                                imageAttachments = imageAttachments
                             )
                         }
                         ensureActive()
@@ -333,6 +351,159 @@ class ReaderModel @Inject constructor(
                     )
                 }
 
+                is ReaderEvent.OnGenerateImage -> {
+                    withContext(Dispatchers.Default) {
+                        val bookId = _state.value.book.id
+                        if (bookId == -1) return@withContext
+
+                        val selectedParagraphIndex = findSelectedParagraphIndex(
+                            selectedText = event.textToIllustrate,
+                            text = _state.value.text,
+                            visibleItemIndex = event.paragraphIndex
+                        )
+                        val paragraphIndex = toBaseParagraphIndex(
+                            displayedIndex = selectedParagraphIndex,
+                            attachments = _state.value.imageAttachments
+                        )
+
+                        createImageAttachmentUseCase(
+                            bookId = bookId,
+                            paragraphIndex = paragraphIndex
+                        ).fold(
+                            onSuccess = { attachment ->
+                                _state.update { state ->
+                                    state.copy(
+                                        text = state.text.toMutableList().apply {
+                                            add(
+                                                (selectedParagraphIndex + 1)
+                                                    .coerceIn(0, state.text.size),
+                                                ReaderText.PendingImage(attachment.id)
+                                            )
+                                        },
+                                        imageAttachments = state.imageAttachments + attachment
+                                    )
+                                }
+
+                                generateImageForAttachmentUseCase(
+                                    attachmentId = attachment.id,
+                                    selectedText = event.textToIllustrate
+                                ).fold(
+                                    onSuccess = { (completedAttachment, bitmap) ->
+                                        _state.update { state ->
+                                            state.copy(
+                                                text = state.text.map { entry ->
+                                                    if (
+                                                        entry is ReaderText.PendingImage &&
+                                                        entry.attachmentId == completedAttachment.id
+                                                    ) {
+                                                        ReaderText.Image(
+                                                            imageBitmap = bitmap.asImageBitmap(),
+                                                            generated = true,
+                                                            attachmentId = completedAttachment.id
+                                                        )
+                                                    } else {
+                                                        entry
+                                                    }
+                                                },
+                                                imageAttachments = state.imageAttachments.map {
+                                                    if (it.id == completedAttachment.id) {
+                                                        completedAttachment
+                                                    } else {
+                                                        it
+                                                    }
+                                                }
+                                            )
+                                        }
+                                    },
+                                    onFailure = {
+                                        onImageGenerationFailed(
+                                            attachmentId = attachment.id,
+                                            message = it.message ?: "Image generation failed."
+                                        )
+                                    }
+                                )
+                            },
+                            onFailure = {
+                                _effects.emit(
+                                    ReaderEffect.OnShowToast(
+                                        message = it.message
+                                            ?: "Could not create image attachment."
+                                    )
+                                )
+                            }
+                        )
+                    }
+                }
+
+                is ReaderEvent.OnShareImage -> {
+                    val file = _state.value.imageAttachments
+                        .find { it.id == event.attachmentId }
+                        ?.filePath?.takeIf { it.isNotBlank() }
+                        ?.let(::File)
+                        ?.takeIf { it.exists() }
+
+                    if (file != null) {
+                        _effects.emit(ReaderEffect.OnShareImage(file))
+                    }
+                }
+
+                is ReaderEvent.OnDeleteImage -> {
+                    deleteImageAttachmentUseCase(event.attachmentId).fold(
+                        onSuccess = {
+                            _state.update { state ->
+                                state.copy(
+                                    text = state.text.filterNot { entry ->
+                                        entry is ReaderText.Image &&
+                                                entry.attachmentId == event.attachmentId
+                                    },
+                                    imageAttachments = state.imageAttachments.filterNot {
+                                        it.id == event.attachmentId
+                                    }
+                                )
+                            }
+                        },
+                        onFailure = {
+                            _effects.emit(
+                                ReaderEffect.OnShowToast(
+                                    message = it.message ?: "Could not delete image."
+                                )
+                            )
+                        }
+                    )
+                }
+
+                is ReaderEvent.OnSetCoverImage -> {
+                    withContext(Dispatchers.Default) {
+                        val cover = getImageAttachmentImageUseCase(event.attachmentId)
+                        if (cover == null) {
+                            _effects.emit(
+                                ReaderEffect.OnShowToast(
+                                    message = "Couldn't set image as book cover."
+                                )
+                            )
+                            return@withContext
+                        }
+
+                        updateCoverImageUseCase(_state.value.book.id, cover)
+                            .fold(
+                                onSuccess = {
+                                    LibraryScreen.refreshListChannel.trySend(0)
+                                    HistoryScreen.refreshListChannel.trySend(0)
+
+                                    _effects.emit(ReaderEffect.OnCoverImageSet)
+                                },
+                                onFailure = {
+                                    _effects.emit(
+                                        ReaderEffect.OnShowToast(
+                                            message = it.message
+                                                ?: "Couldn't set image as book cover."
+                                        )
+                                    )
+                                }
+                            )
+                    }
+                }
+
                 is ReaderEvent.OnShowSettingsBottomSheet -> {
                     _state.update {
                         it.copy(
@@ -387,7 +558,7 @@ class ReaderModel @Inject constructor(
                 return@launch
             }
 
-            clear()
+            clearState()
 
             _state.update {
                 ReaderState(
@@ -408,7 +579,7 @@ class ReaderModel @Inject constructor(
         }
     }
 
-    suspend fun clear() {
+    suspend fun clearState() {
         eventStack.forEach { job ->
             job.cancel()
             job.join()
@@ -468,6 +639,41 @@ class ReaderModel @Inject constructor(
             val chapterLength = endIndex - (startIndex + 1)
             currentIndexInChapter to chapterLength
         } ?: (-1 to -1)
+    }
+
+    /**
+     * Converts an index of the displayed reader text (with injected images)
+     * into an index of the underlying parsed text (without injected images).
+     */
+    private fun toBaseParagraphIndex(
+        displayedIndex: Int,
+        attachments: List<ImageAttachment>
+    ): Int {
+        if (attachments.isEmpty()) return displayedIndex
+
+        var baseIndex = displayedIndex
+        attachments.sortedBy { it.paragraphIndex }.forEachIndexed { order, attachment ->
+            val attachmentDisplayIndex = attachment.paragraphIndex + 1 + order
+            if (attachmentDisplayIndex > displayedIndex) return baseIndex.coerceAtLeast(0)
+            baseIndex--
+        }
+        return baseIndex.coerceAtLeast(0)
+    }
+
+    /**
+     * Removes a failed image attachment placeholder from the reader text
+     * and reports the failure to the user.
+     */
+    private suspend fun onImageGenerationFailed(attachmentId: Int, message: String) {
+        _state.update { state ->
+            state.copy(
+                text = state.text.filterNot { entry ->
+                    entry is ReaderText.PendingImage && entry.attachmentId == attachmentId
+                },
+                imageAttachments = state.imageAttachments.filterNot { it.id == attachmentId }
+            )
+        }
+        _effects.emit(ReaderEffect.OnShowToast(message))
     }
 
     private fun calculateProgress(firstVisibleItemIndex: Int? = null): Float {

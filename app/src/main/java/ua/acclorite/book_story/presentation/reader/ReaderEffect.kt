@@ -7,6 +7,7 @@
 package ua.acclorite.book_story.presentation.reader
 
 import androidx.compose.runtime.Immutable
+import java.io.File
 
 @Immutable
 sealed class ReaderEffect {
@@ -31,6 +32,16 @@ sealed class ReaderEffect {
 
     data class OnOpenDictionary(
         val textToDefine: String
+    ) : ReaderEffect()
+
+    data class OnShowToast(
+        val message: String
+    ) : ReaderEffect()
+
+    data object OnCoverImageSet : ReaderEffect()
+
+    data class OnShareImage(
+        val file: File
     ) : ReaderEffect()
 
     data object OnNavigateBack : ReaderEffect()

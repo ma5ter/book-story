@@ -6,9 +6,12 @@
 
 package ua.acclorite.book_story.data.repository
 
+import android.graphics.BitmapFactory
+import androidx.compose.ui.graphics.asImageBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.core.CoverImage
+import ua.acclorite.book_story.domain.model.attachment.ImageAttachmentStatus
 import ua.acclorite.book_story.data.local.room.BookDatabase
 import ua.acclorite.book_story.data.mapper.book.BookMapper
 import ua.acclorite.book_story.data.mapper.file.FileMapper
@@ -52,7 +55,44 @@ class BookRepositoryImpl @Inject constructor(
             getBook(bookId)
                 .mapCatching { fileProvider.getFileFromBook(it).getOrThrow() }
                 .mapCatching { textParser.parse(it) }
+                .mapCatching { text -> injectImageAttachments(bookId, text) }
         }
+    }
+
+    /**
+     * Injects images generated for this book right after the paragraphs they are
+     * attached to, without modifying the underlying book file.
+     */
+    private suspend fun injectImageAttachments(
+        bookId: Int,
+        text: List<ReaderText>
+    ): List<ReaderText> {
+        val attachments = database.bookAttachmentDao
+            .getAttachmentsForBook(bookId)
+            .filter {
+                it.status == ImageAttachmentStatus.COMPLETED.name && it.filePath.isNotBlank()
+            }
+        if (attachments.isEmpty()) return text
+
+        val textWithImages = text.toMutableList()
+        attachments.sortedByDescending { it.paragraphIndex }.forEach { attachment ->
+            val bitmap = BitmapFactory.decodeFile(attachment.filePath)
+            if (bitmap == null) {
+                // Missing or unreadable file: drop the row so it is not retried on every load.
+                java.io.File(attachment.filePath).delete()
+                database.bookAttachmentDao.deleteAttachmentById(attachment.id)
+                return@forEach
+            }
+            textWithImages.add(
+                (attachment.paragraphIndex + 1).coerceIn(0, textWithImages.size),
+                ReaderText.Image(
+                    bitmap.asImageBitmap(),
+                    generated = true,
+                    attachmentId = attachment.id
+                )
+            )
+        }
+        return textWithImages
     }
 
     override suspend fun getFileFromBook(bookId: Int): Result<File> {
@@ -79,6 +119,14 @@ class BookRepositoryImpl @Inject constructor(
 
     override suspend fun deleteBook(book: Book): Result<Unit> = runCatching {
         withContext(Dispatchers.IO) {
+            // Generated image files live outside the database and are not
+            // removed by the BookAttachmentEntity foreign key cascade.
+            database.bookAttachmentDao.getAttachmentsForBook(book.id).forEach { attachment ->
+                if (attachment.filePath.isNotBlank()) {
+                    java.io.File(attachment.filePath).delete()
+                }
+            }
+
             database.bookDao.deleteBook(bookMapper.toBookEntity(book)).also {
                 if (it == 0) throw Exception("Could not delete book in database.")
             }

@@ -19,9 +19,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Label
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
+import androidx.compose.material3.rememberSliderState
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -54,6 +56,17 @@ fun SliderWithTitle(
             else valuePlaceholder
         }
     }
+    val sliderState = rememberSliderState(
+        value = value.first.toFloat(),
+        steps = toValue - fromValue - 1,
+        trackRange = fromValue.toFloat()..toValue.toFloat()
+    )
+
+    SideEffect {
+        if (sliderState.value != value.first.toFloat()) {
+            sliderState.value = value.first.toFloat()
+        }
+    }
 
     Row(
         modifier
@@ -73,8 +86,7 @@ fun SliderWithTitle(
         }
         Spacer(modifier = Modifier.width(8.dp))
         Slider(
-            valueRange = fromValue.toFloat()..toValue.toFloat(),
-            value = value.first.toFloat(),
+            state = sliderState,
             onValueChange = {
                 onValueChange(it.roundToInt())
             },
@@ -101,7 +113,6 @@ fun SliderWithTitle(
                     )
                 }
             },
-            steps = toValue - fromValue - 1,
             colors = SliderDefaults.colors(
                 activeTrackColor = MaterialTheme.colorScheme.secondary,
                 thumbColor = MaterialTheme.colorScheme.secondary,
@@ -133,6 +144,16 @@ fun SliderWithTitle(
             else valuePlaceholder
         }
     }
+    val sliderState = rememberSliderState(
+        value = value.first,
+        trackRange = 0f..1f
+    )
+
+    SideEffect {
+        if (sliderState.value != value.first) {
+            sliderState.value = value.first
+        }
+    }
 
     Row(
         modifier
@@ -152,8 +173,7 @@ fun SliderWithTitle(
         }
         Spacer(modifier = Modifier.width(8.dp))
         Slider(
-            valueRange = 0f..1f,
-            value = value.first,
+            state = sliderState,
             onValueChange = {
                 onValueChange(it)
             },

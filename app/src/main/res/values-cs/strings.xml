@@ -326,7 +326,6 @@
     <string name="continue_reading_query">Pokračovat od %1$s</string>
     <string name="file_details">Podrobnosti souboru</string>
     <string name="support_development_option">Podpora vývoje</string>
-    <string name="tryzub_badge">Tryzub</string>
     <string name="start_scan_preferences">Předvolby skenování</string>
     <string name="crash_title">Jejda! Aplikace spadla.</string>
     <string name="crash_description">Tuto zprávu o selhání nahlaste způsobem, který je pro vás nejvhodnější.</string>

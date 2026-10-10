@@ -15,6 +15,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.AutoMigrationSpec
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
 import ua.acclorite.book_story.data.local.dto.BookEntity
 import ua.acclorite.book_story.data.local.dto.CategoryEntity
 import ua.acclorite.book_story.data.local.dto.ColorPresetEntity
@@ -26,9 +27,10 @@ import java.io.File
         BookEntity::class,
         HistoryEntity::class,
         ColorPresetEntity::class,
-        CategoryEntity::class
+        CategoryEntity::class,
+        BookAttachmentEntity::class
     ],
-    version = 16,
+    version = 17,
     autoMigrations = [
         AutoMigration(1, 2),
         AutoMigration(2, 3),
@@ -53,6 +55,7 @@ abstract class BookDatabase : RoomDatabase() {
     abstract val historyDao: HistoryDao
     abstract val colorPresetDao: ColorPresetDao
     abstract val categoryDao: CategoryDao
+    abstract val bookAttachmentDao: BookAttachmentDao
 }
 
 @Suppress("ClassName")
@@ -240,6 +243,31 @@ object DatabaseHelper {
             database.execSQL("DROP TABLE CategoryEntity")
             database.execSQL("DROP TABLE CategorySortEntity")
             database.execSQL("ALTER TABLE CategoryEntity_new RENAME TO CategoryEntity")
+        }
+    }
+
+    val MANUAL_MIGRATION_16_17 = object : Migration(16, 17) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                """
+                    CREATE TABLE IF NOT EXISTS `BookAttachmentEntity` (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        bookId INTEGER NOT NULL,
+                        paragraphIndex INTEGER NOT NULL,
+                        filePath TEXT NOT NULL,
+                        status TEXT NOT NULL,
+                        createdAt INTEGER NOT NULL,
+                        FOREIGN KEY(bookId) REFERENCES BookEntity(id) 
+                            ON UPDATE NO ACTION ON DELETE CASCADE 
+                    )
+                """
+            )
+            db.execSQL(
+                """
+                    CREATE INDEX IF NOT EXISTS `index_BookAttachmentEntity_bookId` 
+                    ON `BookAttachmentEntity` (bookId)
+                """
+            )
         }
     }
 }

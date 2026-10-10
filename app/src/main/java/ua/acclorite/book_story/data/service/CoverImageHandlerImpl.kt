@@ -28,6 +28,7 @@ class CoverImageHandlerImpl @Inject constructor(
 
     private val filesDir: File = application.filesDir
     private val coversDir = File(filesDir, "covers")
+    private val imageAttachmentsDir = File(filesDir, "image_attachments")
 
     override suspend fun saveCover(coverImage: CoverImage): Result<File> = runCatching {
         if (!coversDir.exists()) {
@@ -50,6 +51,28 @@ class CoverImageHandlerImpl @Inject constructor(
         }
 
         cover
+    }
+
+    override suspend fun saveImageAttachment(coverImage: CoverImage): Result<File> = runCatching {
+        if (!imageAttachmentsDir.exists()) {
+            imageAttachmentsDir.mkdirs()
+        }
+
+        val attachmentUri = "${UUID.randomUUID()}.webp"
+        val attachment = File(imageAttachmentsDir, attachmentUri)
+
+        withContext(Dispatchers.IO) {
+            BufferedOutputStream(FileOutputStream(attachment)).use { output ->
+                coverImage
+                    .compress(Bitmap.CompressFormat.WEBP, 90, output)
+                    .let { success ->
+                        if (success) return@let
+                        throw Exception("Couldn't save generated image.")
+                    }
+            }
+        }
+
+        attachment
     }
 
     override suspend fun deleteCover(coverImage: Uri): Result<Unit> = runCatching {

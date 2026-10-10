@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Network access for AI image generation (OpenRouter API) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Removing DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION, which is not used -->
     <uses-permission
         android:name="ua.acclorite.book_story.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -65,5 +68,16 @@
                 android:name="autoStoreLocales"
                 android:value="true" />
         </service>
+
+        <!-- Share generated images via a content URI -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.file_provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>

@@ -33,12 +33,14 @@ import ua.acclorite.book_story.data.repository.CategoryRepositoryImpl
 import ua.acclorite.book_story.data.repository.ColorPresetRepositoryImpl
 import ua.acclorite.book_story.data.repository.FileSystemRepositoryImpl
 import ua.acclorite.book_story.data.repository.HistoryRepositoryImpl
+import ua.acclorite.book_story.data.repository.ImageAttachmentRepositoryImpl
 import ua.acclorite.book_story.data.repository.PermissionRepositoryImpl
 import ua.acclorite.book_story.domain.repository.BookRepository
 import ua.acclorite.book_story.domain.repository.CategoryRepository
 import ua.acclorite.book_story.domain.repository.ColorPresetRepository
 import ua.acclorite.book_story.domain.repository.FileSystemRepository
 import ua.acclorite.book_story.domain.repository.HistoryRepository
+import ua.acclorite.book_story.domain.repository.ImageAttachmentRepository
 import ua.acclorite.book_story.domain.repository.PermissionRepository
 import javax.inject.Singleton
 
@@ -86,6 +88,12 @@ abstract class RepositoryModule {
     abstract fun bindCategoryRepository(
         categoryRepositoryImpl: CategoryRepositoryImpl
     ): CategoryRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindImageAttachmentRepository(
+        imageAttachmentRepositoryImpl: ImageAttachmentRepositoryImpl
+    ): ImageAttachmentRepository
 
     @Binds
     @Singleton

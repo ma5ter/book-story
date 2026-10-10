@@ -93,6 +93,8 @@
     <string name="report">Report</string>
     <string name="translate">Translate</string>
     <string name="dictionary">Dictionary</string>
+    <string name="generate_image">Generate image</string>
+    <string name="set_cover_image">Set as book cover</string>
     <string name="next">Next</string>
     <string name="done">Done</string>
     <string name="web_search">Web search</string>
@@ -155,6 +157,7 @@
     <string name="categories_settings">Categories</string>
     <string name="filter_browse_settings">Filter</string>
     <string name="sort_settings">Sort</string>
+    <string name="ai_image_reader_settings">AI illustrations</string>
 
     <!-- Settings notes -->
     <string name="browse_scan_option_note">
@@ -261,6 +264,21 @@
     <string name="progress_bar_alignment_option">Alignment</string>
     <string name="progress_bar_font_size_option">Font size</string>
     <string name="progress_count_option">Progress count</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API key</string>
+    <string name="api_key_option_label">OpenRouter API key</string>
+    <string name="image_model_option">Image model</string>
+    <string name="image_model_option_label">OpenRouter model slug</string>
+    <string name="image_prompt_option">Prompt template</string>
+    <string name="image_prompt_option_label">System prompt sent with the selected text</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP or SOCKS5 proxy</string>
+    <string name="proxy_protocol_option">Proxy protocol</string>
+    <string name="proxy_host_option">Proxy host</string>
+    <string name="proxy_host_option_label">e.g. 127.0.0.1</string>
+    <string name="proxy_port_option">Proxy port</string>
+    <string name="proxy_port_option_label">e.g. 1080</string>
 
     <!-- Library -->
     <string name="read_button_option">Show «Read» button</string>
@@ -396,6 +414,7 @@
     <string name="author_changed">Author was successfully changed.</string>
     <string name="description_changed">Description was successfully changed.</string>
     <string name="path_changed">File path was successfully changed.</string>
+    <string name="cover_image_set">Book cover was successfully set.</string>
 
     <!-- Snackbar messages -->
     <string name="history_element_deleted">History element was successfully deleted.</string>

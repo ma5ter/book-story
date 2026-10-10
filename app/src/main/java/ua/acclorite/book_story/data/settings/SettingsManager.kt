@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ua.acclorite.book_story.core.data.CoreData
+import su.mya.openrouter.ImageProxyProtocol
 import ua.acclorite.book_story.core.language.Language
 import ua.acclorite.book_story.core.language.LanguageUtils
 import ua.acclorite.book_story.core.log.logI
@@ -352,9 +353,38 @@ class SettingsManager @Inject constructor(
         key = stringSetPreferencesKey("browse_pinned_paths"), default = emptyList(),
         serialize = { it.toSet() }, deserialize = { it.toList() }
     )
+
+    /* ------ AI illustrations ------------------- */
+    val imageGenerationApiKey = setting<String, String>(
+        key = stringPreferencesKey("image_generation_api_key"), default = ""
+    )
+    val imageGenerationModel = setting<String, String>(
+        key = stringPreferencesKey("image_generation_model"),
+        default = "meta/muse-image"
+    )
+    val imageGenerationPrompt = setting<String, String>(
+        key = stringPreferencesKey("image_generation_prompt"),
+        default = "You are a book illustrator. Generate a single detailed, atmospheric " +
+                "illustration that visually depicts the scene, characters, or events " +
+                "described in the user's text. Match the tone and style of the book. " +
+                "Compose the image for a portrait screen, using an aspect ratio between 2:3 and 9:16. " +
+                "Return only the image without any captions or additional text."
+    )
+        val imageGenerationProxyEnabled = setting<Boolean, Boolean>(
+            key = booleanPreferencesKey("image_generation_proxy_enabled"), default = false
+        )
+        val imageGenerationProxyProtocol = setting<ImageProxyProtocol, String>(
+            key = stringPreferencesKey("image_generation_proxy_protocol"),
+            default = ImageProxyProtocol.HTTP,
+            serialize = { it.name }, deserialize = { ImageProxyProtocol.valueOf(it) }
+        )
+        val imageGenerationProxyHost = setting<String, String>(
+            key = stringPreferencesKey("image_generation_proxy_host"), default = ""
+        )
+        val imageGenerationProxyPort = setting<String, String>(
+            key = stringPreferencesKey("image_generation_proxy_port"), default = ""
+        )
     /* - - - - - - - - - - - - - - - - - - - - - - */
-
-
     private fun <T, P> setting(
         key: Preferences.Key<P>,
         default: T,

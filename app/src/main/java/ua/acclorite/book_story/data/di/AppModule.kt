@@ -12,6 +12,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import org.commonmark.node.BlockQuote
 import org.commonmark.node.FencedCodeBlock
 import org.commonmark.node.Heading
@@ -21,6 +22,7 @@ import org.commonmark.node.ThematicBreak
 import org.commonmark.parser.Parser
 import ua.acclorite.book_story.data.local.room.BookDatabase
 import ua.acclorite.book_story.data.local.room.DatabaseHelper
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -48,6 +50,16 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(180, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .build()
+    }
+
+    @Provides
+    @Singleton
     fun provideBookDatabase(app: Application): BookDatabase {
         return Room.databaseBuilder(
             app,
@@ -60,6 +72,7 @@ object AppModule {
             DatabaseHelper.MANUAL_MIGRATION_13_14, // remove nullability from ColorPresetEntity
             DatabaseHelper.MANUAL_MIGRATION_14_15, // remove author nullability from BookEntity
             DatabaseHelper.MANUAL_MIGRATION_15_16, // merge CategoryEntity and CategorySortEntity
+            DatabaseHelper.MANUAL_MIGRATION_16_17, // creates BookAttachmentEntity table
         ).allowMainThreadQueries().build().also { database ->
             // Additional Migrations
             DatabaseHelper.AUTO_MIGRATION_7_8.removeBooksDir(app)

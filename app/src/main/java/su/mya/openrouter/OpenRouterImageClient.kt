@@ -1,0 +1,328 @@
+package su.mya.openrouter
+
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.util.Base64
+import com.caverock.androidsvg.SVG
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
+import ua.acclorite.book_story.core.CoverImage
+import ua.acclorite.book_story.core.log.logI
+import ua.acclorite.book_story.data.settings.SettingsManager
+import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Proxy
+import javax.inject.Inject
+import javax.inject.Singleton
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.math.roundToInt
+
+/**
+ * OkHttp-based client for the OpenRouter dedicated image generation API.
+ */
+@Singleton
+class OpenRouterImageClient @Inject constructor(
+    private val okHttpClient: OkHttpClient,
+    private val settingsManager: SettingsManager
+) {
+
+    /**
+     * Sends the selected text together with the configured system prompt
+     * to the configured image generation model via the /images endpoint
+     * and returns the decoded image.
+     */
+    suspend fun generateImage(selectedText: String): Result<CoverImage> {
+        logI(TAG, "generateImage: started, selected text length: ${selectedText.length}.")
+        val apiKey = settingsManager.imageGenerationApiKey.lastValue.trim()
+        if (apiKey.isBlank()) {
+            logI(TAG, "generateImage: failed validation, API key is not configured.")
+            return Result.failure(
+                IllegalStateException(
+                    "API key is not configured. Please set it under Settings -> Reader -> AI illustrations."
+                )
+            )
+        }
+
+        val model = settingsManager.imageGenerationModel.lastValue.trim()
+        if (model.isBlank()) {
+            logI(TAG, "generateImage: failed validation, image model is not configured.")
+            return Result.failure(
+                IllegalStateException(
+                    "Image model is not configured. Please set it under Settings -> Reader -> AI illustrations."
+                )
+            )
+        }
+
+        val systemPrompt = settingsManager.imageGenerationPrompt.lastValue.trim()
+        val prompt = if (systemPrompt.isBlank()) {
+            selectedText
+        } else {
+            "$systemPrompt\n\n$selectedText"
+        }
+
+        val requestClient = resolveClient()
+        if (requestClient == null) {
+            logI(TAG, "generateImage: failed validation, proxy is misconfigured.")
+            return Result.failure(
+                IllegalStateException(
+                    "Proxy is misconfigured. Provide a valid host and port (1-65535) " +
+                            "under Settings -> Reader -> AI illustrations."
+                )
+            )
+        }
+
+        val requestBody = json.encodeToString(
+            ImageGenerationRequest.serializer(),
+            ImageGenerationRequest(
+                model = model,
+                prompt = prompt
+            )
+        )
+        val request = Request.Builder()
+            .url("$OPENROUTER_BASE_URL/images")
+            .header("Authorization", "Bearer $apiKey")
+            .header("Accept", "application/json")
+            .post(requestBody.toRequestBody("application/json".toMediaType()))
+            .build()
+        logI(
+            TAG,
+            "generateImage: sending request, model: [$model], prompt length: ${prompt.length}."
+        )
+
+        return runCatching {
+            withContext(Dispatchers.IO) {
+                val response = requestClient.newCall(request).await()
+                response.use {
+                    val responseBody = it.body?.string().orEmpty()
+                    if (!it.isSuccessful) {
+                        logI(TAG, "generateImage: HTTP failure, code: ${it.code}.")
+                        throw buildHttpException(it.code, responseBody)
+                    }
+                    logI(
+                        TAG,
+                        "generateImage: HTTP success, code: ${it.code}, response length: ${responseBody.length}."
+                    )
+                    parseGeneratedImage(responseBody)
+                }
+            }
+        }.onFailure { throwable ->
+            if (throwable is CancellationException) throw throwable
+            logI(
+                TAG,
+                "generateImage: failed with ${throwable::class.java.simpleName}: ${throwable.message}."
+            )
+        }.onSuccess { image ->
+            logI(TAG, "generateImage: succeeded, image size: ${image.width}x${image.height}.")
+        }
+    }
+
+    /**
+     * Returns the OkHttp client for this request: the injected base client when
+     * the proxy is disabled, otherwise a client derived from it (sharing the
+     * base client's connection pool and dispatcher) configured with the
+     * selected proxy. Returns null when the proxy is enabled but misconfigured.
+     */
+    private fun resolveClient(): OkHttpClient? {
+        if (!settingsManager.imageGenerationProxyEnabled.lastValue) return okHttpClient
+
+        val protocol = when (settingsManager.imageGenerationProxyProtocol.lastValue) {
+            ImageProxyProtocol.HTTP -> Proxy.Type.HTTP
+            ImageProxyProtocol.SOCKS5 -> Proxy.Type.SOCKS
+        }
+        val host = settingsManager.imageGenerationProxyHost.lastValue.trim()
+        val port = settingsManager.imageGenerationProxyPort.lastValue.trim().toIntOrNull()
+        if (host.isBlank() || port == null || port !in 1..65535) return null
+
+        return okHttpClient.newBuilder()
+            .proxy(Proxy(protocol, InetSocketAddress(host, port)))
+            .build()
+    }
+
+    /**
+     * Suspends until the OkHttp call completes and cancels it on coroutine cancellation.
+     */
+    private suspend fun Call.await(): Response {
+        return suspendCancellableCoroutine { continuation ->
+            enqueue(
+                object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        continuation.resumeWithException(e)
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        continuation.resume(response)
+                    }
+                }
+            )
+            continuation.invokeOnCancellation { runCatching { cancel() } }
+        }
+    }
+
+    private fun parseGeneratedImage(responseBody: String): CoverImage {
+        val response = json.decodeFromString(
+            ImageGenerationResponse.serializer(),
+            responseBody
+        )
+
+        response.error?.message?.let { message ->
+            logI(TAG, "parseGeneratedImage: API error: $message.")
+            throw IOException("OpenRouter error: $message")
+        }
+
+        val image = response.data?.firstOrNull()
+        if (image == null) {
+            logI(TAG, "parseGeneratedImage: incomplete response, no image was returned by the model.")
+            throw IOException("Incomplete response: no image was returned by the model.")
+        }
+
+        return decodeImage(image.b64Json, image.mediaType)
+    }
+
+    /**
+     * Decodes the returned image bytes. Vector output declared as
+     * image/svg+xml is rasterized locally, raster output is decoded by
+     * BitmapFactory with dimension validation.
+     */
+    private fun decodeImage(base64Data: String, mediaType: String?): CoverImage {
+        if (base64Data.isBlank()) {
+            logI(TAG, "decodeImage: image returned by the model is empty.")
+            throw IOException("Image returned by the model is empty.")
+        }
+
+        val imageBytes = Base64.decode(base64Data, Base64.DEFAULT)
+        return if (mediaType?.trim().equals(SVG_MEDIA_TYPE, ignoreCase = true)) {
+            decodeSvgImage(imageBytes)
+        } else {
+            decodeRasterImage(imageBytes)
+        }
+    }
+
+    /**
+     * Rasterizes SVG bytes into a bitmap, so that the larger side fits
+     * [SVG_TARGET_SIZE] pixels. SVGs without intrinsic dimensions are sized
+     * from their aspect ratio (viewBox), or rendered square as a fallback.
+     */
+    private fun decodeSvgImage(imageBytes: ByteArray): CoverImage {
+        val svg = try {
+            SVG.getFromString(String(imageBytes, Charsets.UTF_8))
+        } catch (e: Exception) {
+            logI(TAG, "decodeSvgImage: couldn't parse SVG, ${e.message}.")
+            throw IOException("Couldn't parse SVG image returned by the model.")
+        }
+
+        val aspect = svg.documentAspectRatio?.takeIf { it > 0f }
+        val width = when {
+            svg.documentWidth > 0f -> svg.documentWidth
+            svg.documentHeight > 0f -> svg.documentHeight * (aspect ?: 1f)
+            aspect != null -> SVG_TARGET_SIZE * aspect
+            else -> SVG_TARGET_SIZE
+        }
+        val height = when {
+            svg.documentHeight > 0f -> svg.documentHeight
+            svg.documentWidth > 0f -> svg.documentWidth / (aspect ?: 1f)
+            aspect != null -> SVG_TARGET_SIZE
+            else -> SVG_TARGET_SIZE
+        }
+
+        val scale = minOf(SVG_TARGET_SIZE / width, SVG_TARGET_SIZE / height)
+        val bitmap = Bitmap.createBitmap(
+            (width * scale).roundToInt().coerceAtLeast(1),
+            (height * scale).roundToInt().coerceAtLeast(1),
+            Bitmap.Config.ARGB_8888
+        )
+        Canvas(bitmap).apply {
+            scale(scale, scale)
+            svg.renderToCanvas(this)
+        }
+
+        logI(TAG, "decodeSvgImage: rendered ${bitmap.width}x${bitmap.height}.")
+        return bitmap
+    }
+
+    /**
+     * Decodes raster image bytes. Dimensions are first read without
+     * allocating; oversized bitmaps are downsampled instead of being
+     * allocated at full size.
+     */
+    private fun decodeRasterImage(imageBytes: ByteArray): CoverImage {
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size, bounds)
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
+            logI(TAG, "decodeRasterImage: couldn't decode image, bytes: ${imageBytes.size}.")
+            throw IOException("Couldn't decode image returned by the model.")
+        }
+
+        var sampleSize = 1
+        while (
+            bounds.outWidth / sampleSize > MAX_RASTER_SIZE ||
+            bounds.outHeight / sampleSize > MAX_RASTER_SIZE
+        ) {
+            sampleSize *= 2
+        }
+
+        val options = BitmapFactory.Options().apply { inSampleSize = sampleSize }
+        val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size, options)
+        if (bitmap == null) {
+            logI(TAG, "decodeRasterImage: couldn't decode image, bytes: ${imageBytes.size}.")
+            throw IOException("Couldn't decode image returned by the model.")
+        }
+        return bitmap
+    }
+
+    private fun buildHttpException(statusCode: Int, responseBody: String): IOException {
+        val apiError = runCatching {
+            json.decodeFromString(OpenRouterErrorEnvelope.serializer(), responseBody).error
+        }.getOrNull()
+
+        val message = apiError?.message?.takeIf { it.isNotBlank() }
+            ?: when (statusCode) {
+                400 -> "Invalid request parameters. Check the configured model and prompt."
+                401 -> "Invalid credentials: API key is invalid or revoked."
+                402 -> "Payment required: your account or API key has insufficient credits."
+                403 -> "Forbidden: this API key doesn't have permission to use the requested model."
+                404 -> "Not found: the configured image model doesn't exist. Check it under Settings -> Reader -> AI illustrations."
+                413 -> "Request payload too large. Try a shorter prompt."
+                429 -> "Rate limit exceeded. Please wait a moment before retrying."
+                500 -> "Internal server error. Please try again later."
+                502 -> "The image provider returned an error. Please try again or choose another model."
+                524 -> "The request timed out. Please try again later."
+                529 -> "The image provider is temporarily overloaded. Please try again later."
+                else -> "Request failed with status code $statusCode."
+            }
+
+        return IOException("OpenRouter (HTTP $statusCode): $message")
+    }
+
+    companion object {
+        private const val TAG = "OpenRouterImageClient"
+
+        private const val OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
+        private const val SVG_MEDIA_TYPE = "image/svg+xml"
+
+        /** Maximum rasterization target resolution for SVG output (larger side). */
+        private const val SVG_TARGET_SIZE = 1600f
+
+        /** Maximum dimension for raster images before downsampling. */
+        private const val MAX_RASTER_SIZE = 4096
+
+        private val json = Json {
+            ignoreUnknownKeys = true
+            encodeDefaults = false
+            explicitNulls = false
+            isLenient = true
+        }
+    }
+}

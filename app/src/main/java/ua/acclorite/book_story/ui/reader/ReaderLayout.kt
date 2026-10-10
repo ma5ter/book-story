@@ -94,7 +94,11 @@ fun ReaderLayout(
     openShareApp: (ReaderEvent.OnOpenShareApp) -> Unit,
     openWebBrowser: (ReaderEvent.OnOpenWebBrowser) -> Unit,
     openTranslator: (ReaderEvent.OnOpenTranslator) -> Unit,
-    openDictionary: (ReaderEvent.OnOpenDictionary) -> Unit
+    openDictionary: (ReaderEvent.OnOpenDictionary) -> Unit,
+    generateImage: (ReaderEvent.OnGenerateImage) -> Unit,
+    shareImage: (ReaderEvent.OnShareImage) -> Unit,
+    setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
+    deleteImage: (ReaderEvent.OnDeleteImage) -> Unit
 ) {
     val activity = LocalActivity.current
     SelectionContainer(
@@ -130,6 +134,14 @@ fun ReaderLayout(
             openDictionary(
                 ReaderEvent.OnOpenDictionary(
                     textToDefine = textToDefine
+                )
+            )
+        },
+        onImageRequested = { textToIllustrate ->
+            generateImage(
+                ReaderEvent.OnGenerateImage(
+                    textToIllustrate = textToIllustrate,
+                    paragraphIndex = listState.firstVisibleItemIndex
                 )
             )
         }
@@ -186,8 +198,9 @@ fun ReaderLayout(
                     val previousEntry = text.getOrNull(index - 1)
 
                     when {
-                        !images && (entry is ReaderText.Image || previousEntry is ReaderText.Image) -> return@itemsIndexed
-                        !imagesCaptions && previousEntry is ReaderText.Image -> return@itemsIndexed
+                        !images && entry is ReaderText.Image && !entry.generated -> return@itemsIndexed
+                        previousEntry is ReaderText.Image && !previousEntry.generated &&
+                                (!images || !imagesCaptions) -> return@itemsIndexed
                         else -> {
                             SpacedItem(
                                 index = index,
@@ -217,6 +230,9 @@ fun ReaderLayout(
                                     highlightedReadingThickness = highlightedReadingThickness,
                                     toolbarHidden = toolbarHidden,
                                     openTranslator = openTranslator,
+                                    shareImage = shareImage,
+                                    setCoverImage = setCoverImage,
+                                    deleteImage = deleteImage,
                                     menuVisibility = menuVisibility
                                 )
                             }

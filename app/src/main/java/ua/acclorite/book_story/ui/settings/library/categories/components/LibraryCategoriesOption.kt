@@ -45,7 +45,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import sh.calvin.reorderable.ReorderableColumn
-import sh.calvin.reorderable.ReorderableScope
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.domain.model.library.Category
 import ua.acclorite.book_story.presentation.library.LibraryScreen
@@ -148,12 +147,11 @@ fun LibraryCategoriesOption() {
                 edit = {
                     selectedCategory.value = category
                     dialog.value = EDIT_DIALOG
-                },
-                remove = {
-                    selectedCategory.value = category
-                    dialog.value = REMOVE_DIALOG
                 }
-            )
+            ) {
+                selectedCategory.value = category
+                dialog.value = REMOVE_DIALOG
+            }
         }
     }
 
@@ -313,7 +311,7 @@ private fun LibraryCategoriesAction(
 }
 
 @Composable
-private fun ReorderableScope.LibraryCategoryItem(
+private fun LibraryCategoryItem(
     category: Category,
     edit: () -> Unit,
     remove: () -> Unit
@@ -332,7 +330,6 @@ private fun ReorderableScope.LibraryCategoryItem(
             contentDescription = stringResource(id = R.string.drag_content_desc),
             modifier = Modifier
                 .clip(CircleShape)
-                .draggableHandle()
                 .background(MaterialTheme.colorScheme.dynamicListItemColor(category.order))
                 .padding(11.dp)
                 .size(22.dp),

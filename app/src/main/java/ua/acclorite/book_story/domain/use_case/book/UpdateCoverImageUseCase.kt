@@ -22,11 +22,11 @@ class UpdateCoverImageUseCase @Inject constructor(
     private val coverImageHandler: CoverImageHandler
 ) {
 
-    suspend operator fun invoke(bookId: Int, coverImage: CoverImage?) {
+    suspend operator fun invoke(bookId: Int, coverImage: CoverImage?): Result<Unit> {
         logI(TAG, "Updating cover image of [$bookId].")
 
-        bookRepository.getBook(bookId).mapCatching { book ->
-            if (book.coverImage == coverImage) return
+        return bookRepository.getBook(bookId).mapCatching { book ->
+            if (book.coverImage == coverImage) return Result.success(Unit)
 
             // Deleting old cover
             book.coverImage?.let { coverImageHandler.deleteCover(it) }?.onFailure {
@@ -44,9 +44,11 @@ class UpdateCoverImageUseCase @Inject constructor(
         }.fold(
             onSuccess = {
                 logI(TAG, "Successfully updated cover image of [$bookId].")
+                Result.success(Unit)
             },
             onFailure = {
                 logE(TAG, "Could not update cover image of [$bookId] with error: ${it.message}")
+                Result.failure(it)
             }
         )
     }

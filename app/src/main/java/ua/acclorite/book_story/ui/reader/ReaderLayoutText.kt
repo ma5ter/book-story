@@ -47,6 +47,9 @@ fun LazyItemScope.ReaderLayoutText(
     highlightedReadingThickness: FontWeight,
     toolbarHidden: Boolean,
     openTranslator: (ReaderEvent.OnOpenTranslator) -> Unit,
+    shareImage: (ReaderEvent.OnShareImage) -> Unit,
+    setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
+    deleteImage: (ReaderEvent.OnDeleteImage) -> Unit,
     menuVisibility: (ReaderEvent.OnMenuVisibility) -> Unit
 ) {
     when (entry) {
@@ -57,7 +60,16 @@ fun LazyItemScope.ReaderLayoutText(
                 imagesCornersRoundness = imagesCornersRoundness,
                 imagesAlignment = imagesAlignment,
                 imagesWidth = imagesWidth,
-                imagesColorEffects = imagesColorEffects
+                imagesColorEffects = imagesColorEffects,
+                shareImage = shareImage,
+                setCoverImage = setCoverImage,
+                deleteImage = deleteImage
+            )
+        }
+
+        is ReaderText.PendingImage -> {
+            ReaderLayoutTextPendingImage(
+                sidePadding = sidePadding
             )
         }
 

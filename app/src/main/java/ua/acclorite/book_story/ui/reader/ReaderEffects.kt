@@ -10,6 +10,7 @@ import android.app.SearchManager
 import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -166,6 +167,39 @@ fun ReaderEffects(
                     )
 
                     activity.getString(R.string.error_no_dictionary)
+                        .showToast(context = activity, longToast = false)
+                }
+
+                is ReaderEffect.OnShowToast -> {
+                    effect.message.showToast(context = activity, longToast = true)
+                }
+
+                is ReaderEffect.OnCoverImageSet -> {
+                    activity.getString(R.string.cover_image_set)
+                        .showToast(context = activity, longToast = false)
+                }
+
+                is ReaderEffect.OnShareImage -> {
+                    val uri = FileProvider.getUriForFile(
+                        activity,
+                        "${activity.packageName}.file_provider",
+                        effect.file
+                    )
+                    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                        type = "image/webp"
+                        putExtra(Intent.EXTRA_STREAM, uri)
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+
+                    shareIntent.launchActivity(
+                        activity = activity,
+                        createChooser = true,
+                        success = {
+                            return@collect
+                        }
+                    )
+
+                    activity.getString(R.string.error_no_share_app)
                         .showToast(context = activity, longToast = false)
                 }
 

@@ -12,6 +12,7 @@ import java.io.File
 
 interface CoverImageHandler {
     suspend fun saveCover(coverImage: CoverImage): Result<File>
+    suspend fun saveImageAttachment(coverImage: CoverImage): Result<File>
     suspend fun deleteCover(coverImage: Uri): Result<Unit>
     suspend fun compressCover(coverImage: CoverImage): Result<CoverImage>
 }

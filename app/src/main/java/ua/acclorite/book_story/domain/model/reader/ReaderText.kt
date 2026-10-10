@@ -28,6 +28,13 @@ sealed class ReaderText {
 
     @Immutable
     data class Image(
-        val imageBitmap: ImageBitmap
+        val imageBitmap: ImageBitmap,
+        val generated: Boolean = false,
+        val attachmentId: Int? = null
+    ) : ReaderText()
+
+    @Immutable
+    data class PendingImage(
+        val attachmentId: Int
     ) : ReaderText()
 }

@@ -65,6 +65,23 @@ sealed class ReaderEvent {
         val textToDefine: String
     ) : ReaderEvent()
 
+    data class OnGenerateImage(
+        val textToIllustrate: String,
+        val paragraphIndex: Int
+    ) : ReaderEvent()
+
+    data class OnShareImage(
+        val attachmentId: Int
+    ) : ReaderEvent()
+
+    data class OnDeleteImage(
+        val attachmentId: Int
+    ) : ReaderEvent()
+
+    data class OnSetCoverImage(
+        val attachmentId: Int
+    ) : ReaderEvent()
+
     data object OnShowSettingsBottomSheet : ReaderEvent()
 
     data object OnDismissBottomSheet : ReaderEvent()

@@ -1,17 +1,17 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.devtools.ksp")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.aboutlibraries)
+    alias(libs.plugins.androidx.room)
     id("kotlin-parcelize")
-    id("com.mikepenz.aboutlibraries.plugin")
-    id("androidx.room")
 }
 
 android {
     namespace = "ua.acclorite.book_story"
-    compileSdk = 36
+    compileSdk = 37
 
     // Default configuration
     defaultConfig {
@@ -19,7 +19,7 @@ android {
         minSdk = 26
         targetSdk = 36
         versionCode = 14
-        versionName = "1.8.0"
+        versionName = "1.8.0a"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -57,21 +57,9 @@ android {
         }
     }
 
-    // Kotlin configuration
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    // Room configuration
-    ksp {
-        arg("room.schemaLocation", "$projectDir/schemas")
-    }
-    room {
-        schemaDirectory("$projectDir/schemas")
     }
 
     buildFeatures {
@@ -90,89 +78,98 @@ android {
     }
 }
 
-// About Libraries configuration
-aboutLibraries {
-    registerAndroidTasks = false
-    prettyPrint = true
-
-    filterVariants = arrayOf("debug", "release", "release-debug")
-    excludeFields = arrayOf("generated", "funding", "description")
+// Room schema output (project-level, not inside android { })
+room {
+    schemaDirectory("$projectDir/schemas")
 }
+
+kotlin {
+    jvmToolchain(17)
+}
+
+// NOTE: The old `aboutLibraries { android { ... } }` block has been removed.
+// The new `com.mikepenz.aboutlibraries.plugin.android` plugin handles task
+// registration automatically. If you need prettyPrint / excludeFields /
+// filterVariants, configure them via the plugin's new `collect { }` and
+// `export { }` blocks (see docs: https://github.com/mikepenz/AboutLibraries).
 
 dependencies {
     // Core
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
-    implementation("androidx.activity:activity-compose:1.11.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
 
-    // Compose BOM libraries
-    // Compose BOM was eliminated - it is recognized as Closed Source in AboutLibraries..
-    // although it is not.
-    implementation("androidx.compose.foundation:foundation:1.9.3")
-    implementation("androidx.compose.animation:animation:1.9.3")
-    implementation("androidx.compose.animation:animation-android:1.9.3")
-    implementation("androidx.compose.foundation:foundation-layout:1.9.3")
-    implementation("androidx.compose.ui:ui:1.9.3")
-    implementation("androidx.compose.ui:ui-graphics:1.9.3")
-    implementation("androidx.compose.ui:ui-android:1.9.3")
-    implementation("androidx.compose.material3:material3:1.5.0-alpha06")
-    implementation("androidx.compose.material3:material3-window-size-class:1.4.0")
-    implementation("androidx.compose.material:material-icons-extended:1.7.8")
-    implementation("androidx.compose.material:material:1.9.3")
+    // Compose
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.animation)
+    implementation(libs.androidx.compose.animation.android)
+    implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.android)
+    implementation(libs.androidx.compose.ui.util)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material3.window.size)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.compose.material)
 
     // All dependencies
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
-    implementation("com.google.accompanist:accompanist-swiperefresh:0.36.0")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.accompanist.swiperefresh)
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.57.2")
-    ksp("com.google.dagger:hilt-android-compiler:2.57.2")
-    implementation("com.google.dagger:hilt-compiler:2.57.2")
-    ksp("androidx.hilt:hilt-compiler:1.2.0")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Room
-    implementation("androidx.room:room-runtime:2.7.2")
-    ksp("androidx.room:room-compiler:2.7.2")
-
-    // Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:2.7.2")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     // Datastore (Settings)
-    implementation("androidx.datastore:datastore-preferences:1.1.7")
+    implementation(libs.androidx.datastore.preferences)
 
     // Splash Screen API
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
 
     // SAF
-    implementation("com.anggrayudi:storage:2.2.0")
+    implementation(libs.anggrayudi.storage)
 
     // PDF parser
-    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
+    implementation(libs.pdfbox.android)
 
     // EPUB parser
-    implementation("org.jsoup:jsoup:1.21.2")
+    implementation(libs.jsoup)
 
     // Language Switcher
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.appcompat:appcompat-resources:1.7.1")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat.resources)
 
-    // Coil for loading images
-    implementation("io.coil-kt:coil-compose:2.7.0")
+    // Coil
+    implementation(libs.coil.compose)
 
-    // Open source libraries
-    implementation("com.mikepenz:aboutlibraries-core:11.4.0")
-    implementation("com.mikepenz:aboutlibraries-compose-m3:11.4.0")
+    // AboutLibraries — runtime versions bumped to match plugin v15
+    implementation(libs.aboutlibraries.core)
+    implementation(libs.aboutlibraries.compose.m3)
 
     // Drag & Drop
-    implementation("sh.calvin.reorderable:reorderable:2.4.3")
+    implementation(libs.reorderable)
 
     // Scrollbar
-    implementation("com.github.nanihadesuka:LazyColumnScrollbar:2.2.0")
+    implementation(libs.lazycolumnscrollbar)
 
     // Markdown
-    implementation("org.commonmark:commonmark:0.26.0")
+    implementation(libs.commonmark)
+
+    // OkHttp
+    implementation(libs.okhttp)
+
+    // SVG rasterization for AI image generation responses
+    implementation("com.caverock:androidsvg:1.4")
 
     // Json
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.collections.immutable)
 }

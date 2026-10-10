@@ -109,6 +109,10 @@ fun ReaderScaffold(
     openWebBrowser: (ReaderEvent.OnOpenWebBrowser) -> Unit,
     openTranslator: (ReaderEvent.OnOpenTranslator) -> Unit,
     openDictionary: (ReaderEvent.OnOpenDictionary) -> Unit,
+    generateImage: (ReaderEvent.OnGenerateImage) -> Unit,
+    shareImage: (ReaderEvent.OnShareImage) -> Unit,
+    setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
+    deleteImage: (ReaderEvent.OnDeleteImage) -> Unit,
     showSettingsBottomSheet: (ReaderEvent.OnShowSettingsBottomSheet) -> Unit,
     showChaptersDrawer: (ReaderEvent.OnShowChaptersDrawer) -> Unit,
     navigateToBookInfo: (ReaderEvent.OnNavigateToBookInfo) -> Unit,
@@ -208,7 +212,11 @@ fun ReaderScaffold(
             openShareApp = openShareApp,
             openWebBrowser = openWebBrowser,
             openTranslator = openTranslator,
-            openDictionary = openDictionary
+            openDictionary = openDictionary,
+            generateImage = generateImage,
+            shareImage = shareImage,
+            setCoverImage = setCoverImage,
+            deleteImage = deleteImage
         )
 
         ReaderPerceptionExpander(

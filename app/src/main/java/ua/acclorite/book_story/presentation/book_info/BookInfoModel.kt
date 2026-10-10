@@ -368,7 +368,7 @@ class BookInfoModel @Inject constructor(
                 return@launch
             }
 
-            clear()
+            clearState()
 
             _state.update {
                 BookInfoState(
@@ -398,7 +398,7 @@ class BookInfoModel @Inject constructor(
         }
     }
 
-    suspend fun clear() {
+    suspend fun clearState() {
         eventStack.forEach { job ->
             job.cancel()
             job.join()
