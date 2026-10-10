@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -24,7 +24,6 @@ fun StartContent(
     navigateForward: () -> Unit,
     navigateBack: () -> Unit,
     navigateToBrowse: () -> Unit,
-    navigateToHelp: () -> Unit
 ) {
     StartContentTransition(
         modifier = Modifier.background(MaterialTheme.colorScheme.surface),
@@ -48,7 +47,6 @@ fun StartContent(
             StartScreen.DONE -> {
                 StartDone(
                     navigateToBrowse = navigateToBrowse,
-                    navigateToHelp = navigateToHelp
                 )
             }
         }

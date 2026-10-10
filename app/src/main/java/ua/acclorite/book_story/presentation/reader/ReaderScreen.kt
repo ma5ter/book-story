@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -165,6 +165,16 @@ data class ReaderScreen(val bookId: Int) : Screen, Parcelable {
             settings.perceptionExpanderThickness.value
         ) {
             (settings.perceptionExpanderThickness.lastValue * 0.25f).dp
+        }
+        val horizontalLimiterHeight = remember(
+            settings.horizontalLimiterHeight.value
+        ) {
+            (settings.horizontalLimiterHeight.lastValue * 20).dp
+        }
+        val horizontalLimiterRulerThickness = remember(
+            settings.horizontalLimiterRulerThickness.value
+        ) {
+            (settings.horizontalLimiterRulerThickness.lastValue * 0.25f).dp
         }
         val horizontalGestureSensitivity = remember(settings.horizontalGestureSensitivity.value) {
             (36f + settings.horizontalGestureSensitivity.lastValue * (4f - 36f)).dp
@@ -395,6 +405,12 @@ data class ReaderScreen(val bookId: Int) : Screen, Parcelable {
             perceptionExpander = settings.perceptionExpander.value,
             perceptionExpanderPadding = perceptionExpanderPadding,
             perceptionExpanderThickness = perceptionExpanderThickness,
+            horizontalLimiter = settings.horizontalLimiter.value,
+            horizontalLimiterHeight = horizontalLimiterHeight,
+            horizontalLimiterVerticalOffset = settings.horizontalLimiterVerticalOffset.value,
+            horizontalLimiterRuler = settings.horizontalLimiterRuler.value,
+            horizontalLimiterRulerThickness = horizontalLimiterRulerThickness,
+            horizontalLimiterDimming = settings.horizontalLimiterDimming.value,
             currentChapterProgress = state.value.currentChapterProgress,
             isLoading = state.value.isLoading,
             errorMessage = state.value.errorMessage,

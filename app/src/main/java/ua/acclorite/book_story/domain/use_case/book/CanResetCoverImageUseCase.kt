@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -14,6 +14,8 @@ import ua.acclorite.book_story.domain.repository.BookRepository
 import ua.acclorite.book_story.domain.service.CoverImageHandler
 import javax.inject.Inject
 
+private const val TAG = "CanResetCover"
+
 class CanResetCoverImageUseCase @Inject constructor(
     private val application: Application,
     private val bookRepository: BookRepository,
@@ -21,14 +23,12 @@ class CanResetCoverImageUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(bookId: Int): Boolean {
-        logI("Checking if can reset cover image of [$bookId].")
+        logI(TAG, "Checking if can reset cover image of [$bookId].")
 
         bookRepository.getBook(bookId).mapCatching { book ->
             // Getting default cover image
             val defaultCoverImage = bookRepository.getDefaultCover(book).getOrThrow()
-            if (defaultCoverImage == null) {
-                return@mapCatching false
-            }
+                ?: return@mapCatching false
 
             // Return true if current cover is null (and default is not)
             if (book.coverImage == null) {
@@ -45,11 +45,14 @@ class CanResetCoverImageUseCase @Inject constructor(
             !compressedDefaultCoverImage.sameAs(compressedCoverImage)
         }.fold(
             onSuccess = {
-                logI("Can reset cover image of [$bookId]: $it.")
+                logI(TAG, "Can reset cover image of [$bookId]: $it.")
                 return it
             },
             onFailure = {
-                logE("Could not check if can reset cover image of [$bookId] with error: ${it.message}")
+                logE(
+                    TAG,
+                    "Could not check if can reset cover image of [$bookId] with error: ${it.message}"
+                )
                 return false
             }
         )

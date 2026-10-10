@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -12,6 +12,8 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import ua.acclorite.book_story.core.log.logD
+
+private const val TAG = "ThemeLogger"
 
 /**
  * This function logs all the colors of the colorScheme.
@@ -32,6 +34,7 @@ fun ColorScheme.logTheme(darkTheme: Boolean): ColorScheme {
     }
 
     logD(
+        TAG,
         "Theme $suffix:\n" +
                 "------------------------\n" +
                 primary.convertToVal("primary") +

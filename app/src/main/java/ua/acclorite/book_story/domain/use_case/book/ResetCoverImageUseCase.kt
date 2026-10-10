@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -14,24 +14,24 @@ import ua.acclorite.book_story.domain.repository.BookRepository
 import ua.acclorite.book_story.domain.service.CoverImageHandler
 import javax.inject.Inject
 
+private const val TAG = "ResetCoverImage"
+
 class ResetCoverImageUseCase @Inject constructor(
     private val bookRepository: BookRepository,
     private val coverImageHandler: CoverImageHandler
 ) {
 
     suspend operator fun invoke(bookId: Int): Boolean {
-        logI("Resetting cover image of [$bookId].")
+        logI(TAG, "Resetting cover image of [$bookId].")
 
         bookRepository.getBook(bookId).mapCatching { book ->
             // Getting default cover image
             val defaultCoverImage = bookRepository.getDefaultCover(book).getOrThrow()
-            if (defaultCoverImage == null) {
-                throw NoSuchElementException("Could not find default cover image")
-            }
+                ?: throw NoSuchElementException("Could not find default cover image")
 
             // Deleting old cover
             book.coverImage?.let { coverImageHandler.deleteCover(it) }?.onFailure {
-                logW("Could not delete old cover image with error: ${it.message}")
+                logW(TAG, "Could not delete old cover image with error: ${it.message}")
             }
 
             // Resetting cover
@@ -44,11 +44,11 @@ class ResetCoverImageUseCase @Inject constructor(
             bookRepository.updateBook(newBook).getOrThrow()
         }.fold(
             onSuccess = {
-                logI("Successfully reset cover image of [$bookId].")
+                logI(TAG, "Successfully reset cover image of [$bookId].")
                 return true
             },
             onFailure = {
-                logE("Could not reset cover image of [$bookId] with error: ${it.message}")
+                logE(TAG, "Could not reset cover image of [$bookId] with error: ${it.message}")
                 return false
             }
         )

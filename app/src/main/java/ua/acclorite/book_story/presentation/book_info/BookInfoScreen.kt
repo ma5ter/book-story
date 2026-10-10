@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -79,6 +79,7 @@ data class BookInfoScreen(val bookId: Int) : Screen, Parcelable {
             BookInfoContent(
                 book = state.value.book,
                 file = state.value.file,
+                loadingFile = state.value.loadingFile,
                 categories = categories,
                 bottomSheet = state.value.bottomSheet,
                 dialog = state.value.dialog,

@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -15,7 +15,9 @@ import ua.acclorite.book_story.domain.model.library.Book
 @Immutable
 data class BookInfoState(
     val book: Book = Book.default,
+
     val file: File? = null,
+    val loadingFile: Boolean = true,
 
     val canResetCover: Boolean = false,
 

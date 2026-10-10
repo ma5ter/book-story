@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -49,6 +49,8 @@ import java.util.Locale
 import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 import javax.inject.Singleton
+
+private const val TAG = "SettingsManager"
 
 @Suppress("UNCHECKED_CAST")
 @Singleton
@@ -177,6 +179,26 @@ class SettingsManager @Inject constructor(
     )
     val perceptionExpanderThickness = setting<Int, Int>(
         key = intPreferencesKey("perception_expander_thickness"), default = 4
+    )
+    val horizontalLimiter = setting<Boolean, Boolean>(
+        key = booleanPreferencesKey("horizontal_limiter"), default = false
+    )
+    val horizontalLimiterHeight = setting<Int, Int>(
+        key = intPreferencesKey("horizontal_limiter_height"), default = 6
+    )
+    val horizontalLimiterVerticalOffset = setting<Float, Double>(
+        key = doublePreferencesKey("horizontal_limiter_vertical_offset"), default = 0.5f,
+        serialize = { it.toDouble() }, deserialize = { it.toFloat() }
+    )
+    val horizontalLimiterRuler = setting<Boolean, Boolean>(
+        key = booleanPreferencesKey("horizontal_limiter_ruler"), default = true
+    )
+    val horizontalLimiterRulerThickness = setting<Int, Int>(
+        key = intPreferencesKey("horizontal_limiter_ruler_thickness"), default = 4
+    )
+    val horizontalLimiterDimming = setting<Float, Double>(
+        key = doublePreferencesKey("horizontal_limiter_dimming"), default = 0.0f,
+        serialize = { it.toDouble() }, deserialize = { it.toFloat() }
     )
     val screenOrientation = setting<ReaderScreenOrientation, String>(
         key = stringPreferencesKey("screen_orientation"), default = ReaderScreenOrientation.DEFAULT,
@@ -346,7 +368,7 @@ class SettingsManager @Inject constructor(
             default = default,
             setSetting = {
                 scope.launch {
-                    logI("Updating setting: [${key.name}].")
+                    logI(TAG, "Updating setting: [${key.name}].")
                     dataStore.putData(key, it)
                 }
             },
@@ -355,7 +377,7 @@ class SettingsManager @Inject constructor(
         ).also { setting ->
             scope.launch {
                 setting.init(dataStore.getNullableData<P>(key))
-                logI("Successfully initialized setting: [${key.name}].")
+                logI(TAG, "Successfully initialized setting: [${key.name}].")
                 initializeSetting()
             }
         }
@@ -363,7 +385,7 @@ class SettingsManager @Inject constructor(
 
     private fun initializeSetting() {
         if (initializedSettingsCount.incrementAndGet() == settingsCount.get()) {
-            logI("Successfully initialized all $settingsCount settings.")
+            logI(TAG, "Successfully initialized all $settingsCount settings.")
             _initialized.update { true }
         }
     }

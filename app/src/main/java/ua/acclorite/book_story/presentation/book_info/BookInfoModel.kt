@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -257,7 +257,8 @@ class BookInfoModel @Inject constructor(
                             it.copy(
                                 book = it.book.copy(
                                     filePath = event.path
-                                )
+                                ),
+                                loadingFile = true
                             )
                         }
                         updateBookUseCase(_state.value.book)
@@ -270,7 +271,8 @@ class BookInfoModel @Inject constructor(
                         val file = getFileFromBookUseCase(_state.value.book.id)
                         _state.update {
                             it.copy(
-                                file = file
+                                file = file,
+                                loadingFile = false
                             )
                         }
                     }
@@ -380,7 +382,8 @@ class BookInfoModel @Inject constructor(
             val file = getFileFromBookUseCase(bookId)
             _state.update {
                 it.copy(
-                    file = file
+                    file = file,
+                    loadingFile = false
                 )
             }
         }

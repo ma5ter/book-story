@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -12,20 +12,22 @@ import ua.acclorite.book_story.domain.model.history.History
 import ua.acclorite.book_story.domain.repository.HistoryRepository
 import javax.inject.Inject
 
+private const val TAG = "GetHistoryForBook"
+
 class GetHistoryForBookUseCase @Inject constructor(
     private val historyRepository: HistoryRepository
 ) {
 
     suspend operator fun invoke(bookId: Int): History? {
-        logI("Getting history for [$bookId].")
+        logI(TAG, "Getting history for [$bookId].")
 
         return historyRepository.getHistoryForBook(bookId = bookId).fold(
             onSuccess = {
-                logI("Successfully got history for [$bookId].")
+                logI(TAG, "Successfully got history for [$bookId].")
                 it
             },
             onFailure = {
-                logE("Could not get history for [$bookId] with error: ${it.message}")
+                logE(TAG, "Could not get history for [$bookId] with error: ${it.message}")
                 null
             }
         )

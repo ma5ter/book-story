@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -11,19 +11,21 @@ import ua.acclorite.book_story.domain.model.library.Category
 import ua.acclorite.book_story.domain.repository.CategoryRepository
 import javax.inject.Inject
 
+private const val TAG = "UpdateCategory"
+
 class UpdateCategoryUseCase @Inject constructor(
     private val categoryRepository: CategoryRepository
 ) {
 
     suspend operator fun invoke(category: Category) {
-        logI("Updating category [${category.id}].")
+        logI(TAG, "Updating category [${category.id}].")
 
         categoryRepository.updateCategory(category).fold(
             onSuccess = {
-                logI("Successfully updated [${category.id}].")
+                logI(TAG, "Successfully updated [${category.id}].")
             },
             onFailure = {
-                logI("Could not update [${category.id}] with error: ${it.message}")
+                logI(TAG, "Could not update [${category.id}] with error: ${it.message}")
             }
         )
     }

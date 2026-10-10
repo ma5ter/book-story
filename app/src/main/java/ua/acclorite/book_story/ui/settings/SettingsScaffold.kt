@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -29,6 +29,7 @@ fun SettingsScaffold(
     navigateToReaderSettings: () -> Unit,
     navigateToLibrarySettings: () -> Unit,
     navigateToBrowseSettings: () -> Unit,
+    navigateToStart: () -> Unit,
     navigateBack: () -> Unit
 ) {
     Scaffold(
@@ -40,6 +41,7 @@ fun SettingsScaffold(
         topBar = {
             SettingsTopBar(
                 scrollBehavior = scrollBehavior,
+                navigateToStart = navigateToStart,
                 navigateBack = navigateBack
             )
         }

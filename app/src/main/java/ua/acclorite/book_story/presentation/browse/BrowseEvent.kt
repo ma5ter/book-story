@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -8,7 +8,7 @@ package ua.acclorite.book_story.presentation.browse
 
 import androidx.compose.runtime.Immutable
 import ua.acclorite.book_story.presentation.browse.model.SelectableFile
-import ua.acclorite.book_story.presentation.library.model.SelectableNullableBook
+import ua.acclorite.book_story.presentation.browse.model.SelectableNullableBook
 
 @Immutable
 sealed class BrowseEvent {

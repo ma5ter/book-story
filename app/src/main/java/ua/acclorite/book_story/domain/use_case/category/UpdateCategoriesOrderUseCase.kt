@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -11,19 +11,24 @@ import ua.acclorite.book_story.domain.model.library.Category
 import ua.acclorite.book_story.domain.repository.CategoryRepository
 import javax.inject.Inject
 
+private const val TAG = "UpdateCategoryOrder"
+
 class UpdateCategoriesOrderUseCase @Inject constructor(
     private val categoryRepository: CategoryRepository
 ) {
 
     suspend operator fun invoke(categories: List<Category>) {
-        logI("Updating order of [${categories.size}] categories.")
+        logI(TAG, "Updating order of [${categories.size}] categories.")
 
         categoryRepository.updateOrder(categories).fold(
             onSuccess = {
-                logI("Successfully updated order of [${categories.size}] categories.")
+                logI(TAG, "Successfully updated order of [${categories.size}] categories.")
             },
             onFailure = {
-                logI("Could not update order of [${categories.size}] categories with error: ${it.message}")
+                logI(
+                    TAG,
+                    "Could not update order of [${categories.size}] categories with error: ${it.message}"
+                )
             }
         )
     }

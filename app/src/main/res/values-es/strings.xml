@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Book's Story — free and open-source Material You eBook reader.
-  ~ Copyright (C) 2024-2025 Acclorite
+  ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
   --><resources>
     <string name="library_screen">Biblioteca</string>
@@ -9,7 +10,6 @@
     <string name="browse_screen">Navegar</string>
     <string name="settings_screen">Ajustes</string>
     <string name="about_screen">Acerca de la aplicación</string>
-    <string name="help_screen">Ayuda</string>
     <string name="add_books">¿Añadir libros?</string>
     <string name="delete_books">¿Borrar libros?</string>
     <string name="delete_book">¿Borrar libro?</string>
@@ -57,8 +57,6 @@
     <string name="aqua_theme">Urano</string>
     <string name="history_deleted">Se borró el historial.</string>
     <string name="copied">Copiado</string>
-    <string name="help_desc_how_to_customize_app_2">Ajustes</string>
-    <string name="help_desc_how_to_customize_app_3">Puedes hacerlo desde las pantallas de Biblioteca, Historial y Explorar haciendo clic en tres puntos en la esquina superior derecha y seleccionando «Ajustes» desde el menú desplegable. A continuación, verá todos los ajustes disponibles para esta aplicación. ¡No dudes en experimentar con ellos!</string>
     <string name="start_language_preferences">Configuración del idioma</string>
     <string name="start_theme_preferences">Preferencias de tema</string>
     <string name="start_welcome">¡Bienvenid@ a %1$s!</string>
@@ -79,8 +77,6 @@
     <string name="done">Hecho</string>
     <string name="undo">Deshacer</string>
     <string name="next">Siguiente</string>
-    <string name="no">No</string>
-    <string name="yes_go_to_help">Sí, ir a Ayuda</string>
     <string name="dictionary">Diccionario</string>
     <string name="unknown_author">Desconocido</string>
     <string name="delete_cover">Borrar portada</string>
@@ -111,7 +107,6 @@
     <string name="books_added">Todos los libros seleccionados fueron añadidos.</string>
     <string name="press_again_toast">Presione atrás de nuevo para salir</string>
     <string name="cover_image_deleted">La portada fue eliminada.</string>
-    <string name="help_desc_how_to_read_book_3">Para empezar a leer el libro haga clic en el botón en la esquina inferior derecha del libro que desea leer. También puede comenzar a leer el libro haciendo clic en la portada para ver los detalles del libro y luego haga clic en el botón en la esquina inferior derecha. El progreso será guardado y restaurado automáticamente. Puede traer barras superiores e inferiores haciendo clic en cualquier lugar de la pantalla. Al hacer clic en el título del libro será transferido a los detalles del libro. Al hacer clic en el icono de engranaje verá los ajustes del lector. Puedes usar el control deslizante de la barra inferior para cambiar el progreso.</string>
     <string name="cover_reset">La imagen de la portada se restableció correctamente.</string>
     <string name="book_deleted">El libro fue eliminado.</string>
     <string name="purple_theme">Júpiter</string>
@@ -131,44 +126,14 @@
     <string name="unknown">Desconocido</string>
     <string name="app_version_option">Versión de la aplicación</string>
     <string name="credits_design">Diseño</string>
-    <string name="help_desc_how_to_add_books_1">Ir a la</string>
-    <string name="help_desc_how_to_add_books_4">Biblioteca</string>
-    <string name="help_title_how_to_customize_app">¿Cómo personalizo la aplicación?</string>
-    <string name="help_desc_how_to_customize_app_1">Ir a la</string>
-    <string name="help_title_how_to_move_or_delete_books">¿Cómo muevo o borro libros?</string>
-    <string name="help_desc_how_to_move_or_delete_books_1">Ir a la</string>
-    <string name="help_desc_how_to_move_or_delete_books_2">Biblioteca</string>
-    <string name="help_desc_how_to_move_or_delete_books_3">Mantén presionado la imagen de la portada del primer libro hasta que quede seleccionado; ahora solo tienes que hacer clic en todas las imágenes de portada de los libros que desees seleccionar. También puedes seleccionar libros de varias categorías. Una vez seleccionados todos los libros que desees, puedes hacer clic en el icono de la flecha para moverlos y en el icono de la papelera para eliminarlos.</string>
-    <string name="help_desc_how_to_edit_book_1">Ir a la</string>
-    <string name="help_desc_how_to_edit_book_2">Biblioteca</string>
-    <string name="help_desc_how_to_edit_book_3">y haz clic en la imagen de la portada del libro para ver los detalles del libro. Ahora puedes mantener presionado el título, el autor o la descripción del libro para editarlo o la imagen de la portada para cambiarla, restablecerla o eliminarla.</string>
-    <string name="help_title_how_to_customize_reader">¿Cómo personalizo el lector?</string>
     <string name="file_path">Ruta del archivo</string>
-    <string name="help_desc_how_to_add_books_2">Navegar</string>
     <string name="report_bug_option">Informar de un error</string>
     <string name="licenses_option">Licencias de código abierto</string>
     <string name="credits_option">Créditos</string>
     <string name="credits_icon">Iconos</string>
     <string name="credits_updates">Gestión de nuevas actualizaciones</string>
-    <string name="help_title_how_to_add_books">¿Cómo añado libros a la biblioteca?</string>
-    <string name="help_desc_how_to_add_books_3">Si no ves los libros descargados intenta actualizar la lista tirando de ella hacia abajo. Asegúrate de que tus libros tienen un formato de archivo compatible. A continuación, haz clic en el libro para seleccionarlo o manténlo presionado para ver su ubicación. Cuando hayas seleccionado todos los libros que quieres, haz clic en el icono de la marca de verificación en la esquina superior derecha, espera a que se carguen todos los libros y haz clic en \"Añadir\". Ahora deberías ver todos los libros que ha añadido en la sección</string>
-    <string name="help_title_how_to_edit_book">¿Cómo se edita un libro?</string>
-    <string name="help_title_how_to_read_book">¿Cómo leo un libro?</string>
-    <string name="help_desc_how_to_read_book_1">Ir al</string>
-    <string name="help_desc_how_to_read_book_2">Biblioteca</string>
-    <string name="help_title_how_to_use_double_click_translation">¿Cómo utilizo la traducción de doble clic?</string>
     <string name="start_welcome_desc">¡Hacia un mundo donde las palabras cautivan, enseñan y conducen a increíbles aventuras! ¡Vamos a preparar algunas cosas!</string>
     <string name="start_done">¡Todo está listo!</string>
-    <string name="help_desc_how_to_use_double_click_translation_1">En primer lugar, vaya a los ajustes del lector (ver: ¿Cómo personalizo el lector?), luego encienda el ajuste correspondiente. Después de eso, comienza a leer el libro (ver: ¿Cómo leo un libro?). Ahora si hace doble clic en el párrafo deseado, el traductor externo se abrirá con el texto del párrafo.</string>
-    <string name="help_desc_how_to_customize_reader_2">Ajustes</string>
-    <string name="help_desc_how_to_manage_history_1">Ir al</string>
-    <string name="help_desc_how_to_manage_history_2">Historial</string>
-    <string name="help_title_how_to_manage_history">¿Cómo administro el historial?</string>
-    <string name="help_title_how_to_use_tooltip">¿Cómo utilizo las herramientas?</string>
-    <string name="help_desc_how_to_manage_history_3">Al hacer clic en el botón eliminar a la derecha del elemento del historial, se eliminará. El historial afecta el orden de libros en la Biblioteca, eliminando el historial también reordenará el libro. El último libro abierto es siempre el primero en Biblioteca e Historial.</string>
-    <string name="help_desc_how_to_use_tooltip_1">La mayoría de los botones con íconos tienen información sobre herramientas que pueden ayudarte si no sabes qué hace un botón. Para mostrar la información sobre las herramientas, puedes mantener presionado el botón.</string>
-    <string name="help_desc_how_to_customize_reader_1">Comienza a leer el libro (consulta: ¿Cómo leo un libro?), luego haz clic en cualquier parte de la pantalla para abrir las barras superior e inferior. Luego, haz clic en el ícono del engranaje en la esquina superior derecha. Esto mostrará todas las configuraciones del lector. La segunda forma es ir a los</string>
-    <string name="help_desc_how_to_customize_reader_3">y selecciona la categoría Lector para personalizar la configuración general, o la categoría Apariencia para personalizar los temas.</string>
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
     <string name="start_done_desc">Has completado correctamente la configuración básica de la aplicación. ¿Te gustaría aprender a usar la aplicación leyendo la ayuda?</string>
@@ -196,8 +161,6 @@
     <string name="browse_content_desc">Añadir libros</string>
     <string name="history_content_desc">Historial de lectura</string>
     <string name="revert_content_desc">Revertir</string>
-    <string name="help_title_how_to_create_color_presets">¿Cómo puedo crear y modificar un color predeterminado?</string>
-    <string name="help_title_how_to_use_color_presets">¿Cómo se utilizan los colores preestablecidos?</string>
     <string name="checkbox_content_desc">Casilla de verificación</string>
     <string name="reset_start_content_desc">Restablecer la guía de inicio</string>
     <string name="delete_color_preset_content_desc">Borrar color predefinido</string>
@@ -271,8 +234,6 @@
     <string name="screen_orientation_option">Orientación de la pantalla</string>
     <string name="screen_orientation_locked_landscape">Bloqueado en apaisado</string>
     <string name="contributors_option">Colaboradores</string>
-    <string name="help_title_how_to_use_perception_expander">¿Qué es un potenciador de la percepción y cómo utilizarlo?</string>
-    <string name="help_desc_how_to_use_perception_expander_1">El expansor de percepción puede ayudarte a leer más rápido. En primer lugar, actívelo en los ajustes del Lector (consulte: ¿Cómo personalizo el Lector?). Una vez activado, aparecerán dos líneas verticales a cada lado del Reader. Para optimizar aún más su velocidad de lectura, ajuste el relleno para crear menos espacio alrededor del centro. Para utilizarlo, concéntrate en el centro de la pantalla y deja que tu visión periférica capte el texto de los lados. Mientras lees, mantén la atención en el centro sin mirar directamente a los lados después de cada línea.</string>
     <string name="perception_expander_padding_option">Sangrías en la línea de mejoran la percepción</string>
     <string name="perception_expander_thickness_option">Grosor de la línea</string>
     <string name="more_content_desc">Más</string>
@@ -390,4 +351,6 @@
     <string name="gray_theme">Jápeto</string>
     <string name="select_all_books_content_desc">Seleccionar todos los libros</string>
     <string name="library_per_category_sort_option_note">El método de clasificación se puede cambiar en la libreria.</string>
+    <string name="show_navigation_labels_option">Mostrar etiquetas de navegación</string>
+    <string name="show_navigation_labels_option_desc">Mostrar etiquetación de navegación bajo los iconos</string>
 </resources>

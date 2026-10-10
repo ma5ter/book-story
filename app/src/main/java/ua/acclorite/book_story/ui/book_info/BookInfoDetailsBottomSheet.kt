@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -32,6 +32,7 @@ import java.util.Locale
 fun BookInfoDetailsBottomSheet(
     book: Book,
     file: File?,
+    loadingFile: Boolean,
     showPathDialog: (BookInfoEvent.OnShowPathDialog) -> Unit,
     dismissBottomSheet: (BookInfoEvent.OnDismissBottomSheet) -> Unit
 ) {
@@ -53,6 +54,7 @@ fun BookInfoDetailsBottomSheet(
 
     val fileExists = remember(file) {
         file.let { file ->
+            if (loadingFile) return@let true
             if (file == null) return@let false
             if (file.isDirectory) return@let false
             if (
@@ -99,7 +101,8 @@ fun BookInfoDetailsBottomSheet(
                         showPathDialog(BookInfoEvent.OnShowPathDialog)
                     },
                     showError = !fileExists,
-                    errorMessage = stringResource(id = R.string.error_no_file)
+                    errorMessage = stringResource(id = R.string.error_no_file),
+                    loading = loadingFile
                 )
             }
 

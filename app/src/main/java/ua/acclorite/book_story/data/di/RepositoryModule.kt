@@ -1,6 +1,6 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
- * Copyright (C) 2024-2025 Acclorite
+ * Copyright (C) 2024-2026 Acclorite
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -22,10 +22,12 @@ import ua.acclorite.book_story.data.mapper.file.FileMapper
 import ua.acclorite.book_story.data.mapper.file.FileMapperImpl
 import ua.acclorite.book_story.data.mapper.history.HistoryMapper
 import ua.acclorite.book_story.data.mapper.history.HistoryMapperImpl
-import ua.acclorite.book_story.data.parser.FileParser
-import ua.acclorite.book_story.data.parser.FileParserImpl
-import ua.acclorite.book_story.data.parser.TextParser
-import ua.acclorite.book_story.data.parser.TextParserImpl
+import ua.acclorite.book_story.data.parser.cover.CoverParser
+import ua.acclorite.book_story.data.parser.cover.CoverParserImpl
+import ua.acclorite.book_story.data.parser.file.FileParser
+import ua.acclorite.book_story.data.parser.file.FileParserImpl
+import ua.acclorite.book_story.data.parser.text.TextParser
+import ua.acclorite.book_story.data.parser.text.TextParserImpl
 import ua.acclorite.book_story.data.repository.BookRepositoryImpl
 import ua.acclorite.book_story.data.repository.CategoryRepositoryImpl
 import ua.acclorite.book_story.data.repository.ColorPresetRepositoryImpl
@@ -120,6 +122,12 @@ abstract class RepositoryModule {
     abstract fun bindFileParser(
         fileParserImpl: FileParserImpl
     ): FileParser
+
+    @Binds
+    @Singleton
+    abstract fun bindCoverParser(
+        coverParserImpl: CoverParserImpl
+    ): CoverParser
 
     @Binds
     @Singleton
