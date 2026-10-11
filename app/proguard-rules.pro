@@ -1,4 +1,8 @@
 # Proguard-rules
+# androidx.window references optional OEM extension/sidecar classes that only
+# exist on devices shipping the vendor library; they are resolved reflectively
+# at runtime, so they must not fail the R8 build.
+-dontwarn androidx.window.**
 -dontwarn android.content.res.**
 -dontwarn com.gemalto.jp2.JP2Decoder
 -dontwarn com.google.auto.service.AutoService
