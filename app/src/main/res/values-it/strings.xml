@@ -169,9 +169,6 @@
     <string name="press_again_toast">Premere di nuovo Indietro per uscire</string>
     <string name="file_size">Dimensione</string>
     <string name="checkbox_content_desc">Casella di controllo</string>
-    <string name="help_title_how_to_create_color_presets">Come posso creare e modificare le preimpostazioni di colore?</string>
-    <string name="help_title_how_to_customize_reader">Come personalizzo il Lettore?</string>
-    <string name="help_desc_how_to_customize_app_1">Vai alle</string>
     <string name="file_path">Percorso</string>
     <string name="file_last_opened">Ultimo aperto</string>
     <string name="book_moved">Questo libro è stato spostato con successo.</string>
