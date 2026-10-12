@@ -30,10 +30,11 @@ import kotlin.coroutines.resumeWithException
 import kotlin.math.roundToInt
 
 /**
- * OkHttp-based client for the OpenRouter dedicated image generation API.
+ * OkHttp-based client for the OpenRouter image generation and chat
+ * completion APIs.
  */
 @Singleton
-class OpenRouterImageClient @Inject constructor(
+class OpenRouterClient @Inject constructor(
     private val okHttpClient: OkHttpClient,
     private val settingsManager: SettingsManager
 ) {
@@ -45,42 +46,17 @@ class OpenRouterImageClient @Inject constructor(
      */
     suspend fun generateImage(selectedText: String): Result<CoverImage> {
         logI(TAG, "generateImage: started, selected text length: ${selectedText.length}.")
-        val apiKey = settingsManager.imageGenerationApiKey.lastValue.trim()
-        if (apiKey.isBlank()) {
-            logI(TAG, "generateImage: failed validation, API key is not configured.")
-            return Result.failure(
-                IllegalStateException(
-                    "API key is not configured. Set it under Settings - Reader - AI."
-                )
-            )
-        }
-
         val model = settingsManager.imageGenerationModel.lastValue.trim()
-        if (model.isBlank()) {
-            logI(TAG, "generateImage: failed validation, image model is not configured.")
-            return Result.failure(
-                IllegalStateException(
-                    "Image model is not configured. Set it under Settings - Reader - AI."
-                )
-            )
-        }
+        requireValidConfiguration(model, "Image model").fold(
+            onSuccess = {},
+            onFailure = { return Result.failure(it) }
+        )
 
         val systemPrompt = settingsManager.imageGenerationPrompt.lastValue.trim()
         val prompt = if (systemPrompt.isBlank()) {
             selectedText
         } else {
             "$systemPrompt\n\n$selectedText"
-        }
-
-        val requestClient = resolveClient()
-        if (requestClient == null) {
-            logI(TAG, "generateImage: failed validation, proxy is misconfigured.")
-            return Result.failure(
-                IllegalStateException(
-                    "Proxy is misconfigured. Provide a valid host and port (1-65535) " +
-                            "under Settings -> Reader -> AI."
-                )
-            )
         }
 
         val requestBody = json.encodeToString(
@@ -90,41 +66,134 @@ class OpenRouterImageClient @Inject constructor(
                 prompt = prompt
             )
         )
-        val request = Request.Builder()
-            .url("$OPENROUTER_BASE_URL/images")
-            .header("Authorization", "Bearer $apiKey")
-            .header("Accept", "application/json")
-            .post(requestBody.toRequestBody("application/json".toMediaType()))
-            .build()
+        val request = buildRequest(
+            endpoint = "images",
+            apiKey = settingsManager.imageGenerationApiKey.lastValue.trim(),
+            requestBody = requestBody
+        )
         logI(
             TAG,
             "generateImage: sending request, model: [$model], prompt length: ${prompt.length}."
         )
 
+        return execute(request, "generateImage") { parseGeneratedImage(it) }
+            .onSuccess { image ->
+                logI(TAG, "generateImage: succeeded, image size: ${image.width}x${image.height}.")
+            }
+    }
+
+    /**
+     * Sends the given chat messages to the configured text assistant model
+     * via the /chat/completions endpoint and returns the assistant's reply.
+     */
+    suspend fun chatCompletion(messages: List<ChatMessage>): Result<ChatMessage> {
+        logI(TAG, "chatCompletion: started, messages: ${messages.size}.")
+        val model = settingsManager.textAssistantModel.lastValue.trim()
+        requireValidConfiguration(model, "Text model").fold(
+            onSuccess = {},
+            onFailure = { return Result.failure(it) }
+        )
+
+        val requestBody = json.encodeToString(
+            ChatCompletionRequest.serializer(),
+            ChatCompletionRequest(model = model, messages = messages)
+        )
+        val request = buildRequest(
+            endpoint = "chat/completions",
+            apiKey = settingsManager.imageGenerationApiKey.lastValue.trim(),
+            requestBody = requestBody
+        )
+        logI(TAG, "chatCompletion: sending request, model: [$model].")
+
+        return execute(request, "chatCompletion") { parseChatCompletion(it) }
+            .onSuccess { message ->
+                logI(TAG, "chatCompletion: succeeded, role: ${message.role}.")
+            }
+    }
+
+    /**
+     * Validates configuration shared by all OpenRouter requests: API key,
+     * model slug, and proxy setup. Returns a failure result describing the
+     * first misconfigured setting, or success when everything is valid.
+     */
+    private fun requireValidConfiguration(model: String, modelLabel: String): Result<Unit> {
+        if (settingsManager.imageGenerationApiKey.lastValue.trim().isBlank()) {
+            logI(TAG, "requireValidConfiguration: failed validation, API key is not configured.")
+            return Result.failure(
+                IllegalStateException(
+                    "API key is not configured. Set it under Settings - Reader - AI."
+                )
+            )
+        }
+        if (model.isBlank()) {
+            logI(TAG, "requireValidConfiguration: failed validation, $modelLabel is not configured.")
+            return Result.failure(
+                IllegalStateException(
+                    "$modelLabel is not configured. Set it under Settings - Reader - AI."
+                )
+            )
+        }
+        if (resolveClient() == null) {
+            logI(TAG, "requireValidConfiguration: failed validation, proxy is misconfigured.")
+            return Result.failure(
+                IllegalStateException(
+                    "Proxy is misconfigured. Provide a valid host and port (1-65535) " +
+                            "under Settings -> Reader -> AI."
+                )
+            )
+        }
+        return Result.success(Unit)
+    }
+
+    /**
+     * Builds a POST request to the given OpenRouter endpoint with a JSON
+     * body, authentication, and JSON accept headers.
+     */
+    private fun buildRequest(endpoint: String, apiKey: String, requestBody: String): Request {
+        return Request.Builder()
+            .url("$OPENROUTER_BASE_URL/$endpoint")
+            .header("Authorization", "Bearer $apiKey")
+            .header("Accept", "application/json")
+            .post(requestBody.toRequestBody("application/json".toMediaType()))
+            .build()
+    }
+
+    /**
+     * Executes the given request on the resolved client, converts HTTP
+     * failures to descriptive exceptions and parses the response body with
+     * [parse]. Transport and parsing errors are wrapped into the result.
+     */
+    private suspend fun <T> execute(request: Request, logTag: String, parse: (String) -> T): Result<T> {
         return runCatching {
             withContext(Dispatchers.IO) {
+                val requestClient = resolveClient()
+                if (requestClient == null) {
+                    logI(TAG, "$logTag: failed validation, proxy is misconfigured.")
+                    throw IllegalStateException(
+                        "Proxy is misconfigured. Provide a valid host and port (1-65535) " +
+                                "under Settings -> Reader -> AI."
+                    )
+                }
                 val response = requestClient.newCall(request).await()
                 response.use {
                     val responseBody = it.body?.string().orEmpty()
                     if (!it.isSuccessful) {
-                        logI(TAG, "generateImage: HTTP failure, code: ${it.code}.")
+                        logI(TAG, "$logTag: HTTP failure, code: ${it.code}.")
                         throw buildHttpException(it.code, responseBody)
                     }
                     logI(
                         TAG,
-                        "generateImage: HTTP success, code: ${it.code}, response length: ${responseBody.length}."
+                        "$logTag: HTTP success, code: ${it.code}, response length: ${responseBody.length}."
                     )
-                    parseGeneratedImage(responseBody)
+                    parse(responseBody)
                 }
             }
         }.onFailure { throwable ->
             if (throwable is CancellationException) throw throwable
             logI(
                 TAG,
-                "generateImage: failed with ${throwable::class.java.simpleName}: ${throwable.message}."
+                "$logTag: failed with ${throwable::class.java.simpleName}: ${throwable.message}."
             )
-        }.onSuccess { image ->
-            logI(TAG, "generateImage: succeeded, image size: ${image.width}x${image.height}.")
         }
     }
 
@@ -188,6 +257,25 @@ class OpenRouterImageClient @Inject constructor(
         }
 
         return decodeImage(image.b64Json, image.mediaType)
+    }
+
+    private fun parseChatCompletion(responseBody: String): ChatMessage {
+        val response = json.decodeFromString(
+            ChatCompletionResponse.serializer(),
+            responseBody
+        )
+
+        response.error?.message?.let { message ->
+            logI(TAG, "parseChatCompletion: API error: $message.")
+            throw IOException("OpenRouter error: $message")
+        }
+
+        val message = response.choices?.firstOrNull()?.message
+        if (message == null) {
+            logI(TAG, "parseChatCompletion: incomplete response, no message was returned by the model.")
+            throw IOException("Incomplete response: no message was returned by the model.")
+        }
+        return message
     }
 
     /**
@@ -292,13 +380,13 @@ class OpenRouterImageClient @Inject constructor(
                 401 -> "Invalid credentials: API key is invalid or revoked."
                 402 -> "Payment required: your account or API key has insufficient credits."
                 403 -> "Forbidden: this API key doesn't have permission to use the requested model."
-                404 -> "Not found: the configured image model doesn't exist. Check it under Settings -> Reader -> AI illustrations."
+                404 -> "Not found: the configured model doesn't exist. Check it under Settings -> Reader -> AI."
                 413 -> "Request payload too large. Try a shorter prompt."
                 429 -> "Rate limit exceeded. Please wait a moment before retrying."
                 500 -> "Internal server error. Please try again later."
-                502 -> "The image provider returned an error. Please try again or choose another model."
+                502 -> "The provider returned an error. Please try again or choose another model."
                 524 -> "The request timed out. Please try again later."
-                529 -> "The image provider is temporarily overloaded. Please try again later."
+                529 -> "The provider is temporarily overloaded. Please try again later."
                 else -> "Request failed with status code $statusCode."
             }
 

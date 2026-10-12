@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.core.CoverImage
 import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
 import ua.acclorite.book_story.data.local.room.BookDatabase
-import su.mya.openrouter.OpenRouterImageClient
+import su.mya.openrouter.OpenRouterClient
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachmentStatus
 import ua.acclorite.book_story.domain.repository.ImageAttachmentRepository
@@ -28,7 +28,7 @@ import javax.inject.Singleton
 class ImageAttachmentRepositoryImpl @Inject constructor(
     private val database: BookDatabase,
     private val coverImageHandler: CoverImageHandler,
-    private val openRouterImageClient: OpenRouterImageClient
+    private val openRouterClient: OpenRouterClient
 ) : ImageAttachmentRepository {
 
     override suspend fun createImageAttachment(
@@ -56,7 +56,7 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                 val current = database.bookAttachmentDao.findAttachmentById(attachmentId)
                     ?: throw IOException("Image attachment [$attachmentId] was not found.")
 
-                val bitmap = openRouterImageClient.generateImage(selectedText).getOrThrow()
+                val bitmap = openRouterClient.generateImage(selectedText).getOrThrow()
                 val file = coverImageHandler.saveImageAttachment(bitmap).getOrThrow()
 
                 val completedAttachment = current.copy(
