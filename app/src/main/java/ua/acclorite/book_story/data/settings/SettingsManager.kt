@@ -370,20 +370,26 @@ class SettingsManager @Inject constructor(
                 "Compose the image for a portrait screen, using an aspect ratio between 2:3 and 9:16. " +
                 "Return only the image without any captions or additional text."
     )
-        val imageGenerationProxyEnabled = setting<Boolean, Boolean>(
-            key = booleanPreferencesKey("image_generation_proxy_enabled"), default = false
-        )
-        val imageGenerationProxyProtocol = setting<ImageProxyProtocol, String>(
-            key = stringPreferencesKey("image_generation_proxy_protocol"),
-            default = ImageProxyProtocol.HTTP,
-            serialize = { it.name }, deserialize = { ImageProxyProtocol.valueOf(it) }
-        )
-        val imageGenerationProxyHost = setting<String, String>(
-            key = stringPreferencesKey("image_generation_proxy_host"), default = ""
-        )
-        val imageGenerationProxyPort = setting<String, String>(
-            key = stringPreferencesKey("image_generation_proxy_port"), default = ""
-        )
+    val imageGenerationProxyEnabled = setting<Boolean, Boolean>(
+        key = booleanPreferencesKey("image_generation_proxy_enabled"), default = false
+    )
+    val imageGenerationProxyProtocol = setting<ImageProxyProtocol, String>(
+        key = stringPreferencesKey("image_generation_proxy_protocol"),
+        default = ImageProxyProtocol.HTTP,
+        serialize = { it.name }, deserialize = { ImageProxyProtocol.valueOf(it) }
+    )
+    val imageGenerationProxyHost = setting<String, String>(
+        key = stringPreferencesKey("image_generation_proxy_host"), default = ""
+    )
+    val imageGenerationProxyPort = setting<String, String>(
+        key = stringPreferencesKey("image_generation_proxy_port"), default = ""
+    )
+
+    /* ------ AI assistant ------------------------ */
+    val textAssistantModel = setting<String, String>(
+        key = stringPreferencesKey("text_assistant_model"),
+        default = "qwen/qwen3.7-flash"
+    )
     /* - - - - - - - - - - - - - - - - - - - - - - */
     private fun <T, P> setting(
         key: Preferences.Key<P>,

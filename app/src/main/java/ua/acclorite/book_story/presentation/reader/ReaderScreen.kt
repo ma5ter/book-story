@@ -396,6 +396,7 @@ data class ReaderScreen(val bookId: Int) : Screen, Parcelable {
         ReaderContent(
             book = state.value.book,
             text = state.value.text,
+            imageAttachments = state.value.imageAttachments,
             bottomSheet = state.value.bottomSheet,
             drawer = state.value.drawer,
             listState = listState,
@@ -468,6 +469,7 @@ data class ReaderScreen(val bookId: Int) : Screen, Parcelable {
             shareImage = screenModel::onEvent,
             setCoverImage = screenModel::onEvent,
             deleteImage = screenModel::onEvent,
+            scrollToImage = screenModel::onEvent,
             scrollToChapter = screenModel::onEvent,
             showSettingsBottomSheet = screenModel::onEvent,
             dismissBottomSheet = screenModel::onEvent,

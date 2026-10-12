@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-package ua.acclorite.book_story.ui.settings.reader.ai_image.components
+package ua.acclorite.book_story.ui.settings.reader.ai.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource

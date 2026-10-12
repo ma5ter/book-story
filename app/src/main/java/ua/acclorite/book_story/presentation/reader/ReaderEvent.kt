@@ -36,6 +36,10 @@ sealed class ReaderEvent {
         val chapter: Chapter
     ) : ReaderEvent()
 
+    data class OnScrollToImage(
+        val attachmentId: Int
+    ) : ReaderEvent()
+
     data class OnScroll(
         val progress: Float
     ) : ReaderEvent()

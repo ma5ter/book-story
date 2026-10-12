@@ -50,7 +50,7 @@ class OpenRouterImageClient @Inject constructor(
             logI(TAG, "generateImage: failed validation, API key is not configured.")
             return Result.failure(
                 IllegalStateException(
-                    "API key is not configured. Please set it under Settings -> Reader -> AI illustrations."
+                    "API key is not configured. Set it under Settings - Reader - AI."
                 )
             )
         }
@@ -60,7 +60,7 @@ class OpenRouterImageClient @Inject constructor(
             logI(TAG, "generateImage: failed validation, image model is not configured.")
             return Result.failure(
                 IllegalStateException(
-                    "Image model is not configured. Please set it under Settings -> Reader -> AI illustrations."
+                    "Image model is not configured. Set it under Settings - Reader - AI."
                 )
             )
         }
@@ -78,7 +78,7 @@ class OpenRouterImageClient @Inject constructor(
             return Result.failure(
                 IllegalStateException(
                     "Proxy is misconfigured. Provide a valid host and port (1-65535) " +
-                            "under Settings -> Reader -> AI illustrations."
+                            "under Settings -> Reader -> AI."
                 )
             )
         }

@@ -121,6 +121,7 @@
     <string name="general_tab">General</string>
     <string name="display_tab">Display</string>
     <string name="color_tab">Colors</string>
+    <string name="ai_tab">AI</string>
     <string name="filter_tab">Filter</string>
     <string name="sort_tab">Sort</string>
     <string name="reader_tab">Reader</string>
@@ -157,7 +158,7 @@
     <string name="categories_settings">Categories</string>
     <string name="filter_browse_settings">Filter</string>
     <string name="sort_settings">Sort</string>
-    <string name="ai_image_reader_settings">AI illustrations</string>
+    <string name="ai_reader_settings">AI assistant</string>
 
     <!-- Settings notes -->
     <string name="browse_scan_option_note">
@@ -279,6 +280,11 @@
     <string name="proxy_host_option_label">e.g. 127.0.0.1</string>
     <string name="proxy_port_option">Proxy port</string>
     <string name="proxy_port_option_label">e.g. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI assistant</string>
+    <string name="text_assistant_model_option">Text Model</string>
+    <string name="text_assistant_model_option_label">OpenRouter model slug</string>
 
     <!-- Library -->
     <string name="read_button_option">Show «Read» button</string>
@@ -431,6 +437,7 @@
     <!-- Reader -->
     <string name="no_chapters">No chapters</string>
     <string name="chapters">Chapters</string>
+    <string name="ai_illustrations">AI illustrations</string>
 
     <!-- About -->
     <!-- Options -->

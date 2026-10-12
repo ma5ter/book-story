@@ -237,6 +237,29 @@ class ReaderModel @Inject constructor(
                     }
                 }
 
+                is ReaderEvent.OnScrollToImage -> {
+                    withContext(Dispatchers.Default) {
+                        val imageIndex = _state.value.text.indexOfFirst { entry ->
+                            entry is ReaderText.Image && entry.attachmentId == event.attachmentId
+                        }
+                        if (imageIndex == -1) return@withContext
+
+                        _state.value.listState.requestScrollToItem(
+                            index = imageIndex,
+                            scrollOffset = 0
+                        )
+
+                        onEvent(ReaderEvent.OnUpdateChapter(imageIndex))
+                        onEvent(
+                            ReaderEvent.OnChangeProgress(
+                                progress = calculateProgress(imageIndex),
+                                firstVisibleItemIndex = imageIndex,
+                                firstVisibleItemOffset = 0
+                            )
+                        )
+                    }
+                }
+
                 is ReaderEvent.OnScroll -> {
                     scrollJob?.cancel()
                     scrollJob = viewModelScope.launch(Dispatchers.IO) {

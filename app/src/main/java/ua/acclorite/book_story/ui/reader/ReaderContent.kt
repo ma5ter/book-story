@@ -22,6 +22,7 @@ import ua.acclorite.book_story.core.BottomSheet
 import ua.acclorite.book_story.core.Drawer
 import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.domain.model.library.Book
+import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
 import ua.acclorite.book_story.presentation.reader.ReaderEvent
@@ -37,6 +38,7 @@ import ua.acclorite.book_story.ui.theme.model.HorizontalAlignment
 fun ReaderContent(
     book: Book,
     text: List<ReaderText>,
+    imageAttachments: List<ImageAttachment>,
     bottomSheet: BottomSheet?,
     drawer: Drawer?,
     listState: LazyListState,
@@ -109,6 +111,7 @@ fun ReaderContent(
     shareImage: (ReaderEvent.OnShareImage) -> Unit,
     setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
     deleteImage: (ReaderEvent.OnDeleteImage) -> Unit,
+    scrollToImage: (ReaderEvent.OnScrollToImage) -> Unit,
     scrollToChapter: (ReaderEvent.OnScrollToChapter) -> Unit,
     showSettingsBottomSheet: (ReaderEvent.OnShowSettingsBottomSheet) -> Unit,
     dismissBottomSheet: (ReaderEvent.OnDismissBottomSheet) -> Unit,
@@ -119,8 +122,11 @@ fun ReaderContent(
 ) {
     ReaderBottomSheet(
         bottomSheet = bottomSheet,
+        text = text,
+        imageAttachments = imageAttachments,
         menuVisibility = menuVisibility,
-        dismissBottomSheet = dismissBottomSheet
+        dismissBottomSheet = dismissBottomSheet,
+        scrollToImage = scrollToImage
     )
 
     if (isLoading || errorMessage == null) {
