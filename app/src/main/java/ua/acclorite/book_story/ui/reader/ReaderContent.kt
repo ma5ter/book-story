@@ -23,6 +23,7 @@ import ua.acclorite.book_story.core.Drawer
 import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.domain.model.library.Book
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
+import ua.acclorite.book_story.domain.model.character.BookCharacter
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
 import ua.acclorite.book_story.presentation.reader.ReaderEvent
@@ -39,6 +40,8 @@ fun ReaderContent(
     book: Book,
     text: List<ReaderText>,
     imageAttachments: List<ImageAttachment>,
+    characters: List<BookCharacter>,
+    isGeneratingCharacters: Boolean,
     bottomSheet: BottomSheet?,
     drawer: Drawer?,
     listState: LazyListState,
@@ -108,6 +111,7 @@ fun ReaderContent(
     openTranslator: (ReaderEvent.OnOpenTranslator) -> Unit,
     openDictionary: (ReaderEvent.OnOpenDictionary) -> Unit,
     generateImage: (ReaderEvent.OnGenerateImage) -> Unit,
+    generateCharacters: (ReaderEvent.OnGenerateCharacters) -> Unit,
     shareImage: (ReaderEvent.OnShareImage) -> Unit,
     setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
     deleteImage: (ReaderEvent.OnDeleteImage) -> Unit,
@@ -124,6 +128,9 @@ fun ReaderContent(
         bottomSheet = bottomSheet,
         text = text,
         imageAttachments = imageAttachments,
+        characters = characters,
+        isGeneratingCharacters = isGeneratingCharacters,
+        generateCharacters = generateCharacters,
         menuVisibility = menuVisibility,
         dismissBottomSheet = dismissBottomSheet,
         scrollToImage = scrollToImage

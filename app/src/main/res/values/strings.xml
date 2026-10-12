@@ -285,6 +285,17 @@
     <string name="text_assistant_settings">AI assistant</string>
     <string name="text_assistant_model_option">Text Model</string>
     <string name="text_assistant_model_option_label">OpenRouter model slug</string>
+    <string name="text_assistant_max_tokens_option">Max input tokens</string>
+    <string name="text_assistant_max_tokens_option_label">Model context limit used to chunk long books</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Characters</string>
+    <string name="analyze_characters">Analyze book characters</string>
+    <string name="characters_generating">Extracting characters…</string>
+    <string name="characters_empty">No characters yet. Analyze the book content to build a characters catalog.</string>
+    <string name="characters_prompt">Read the entire book text, ignoring any image references. Identify the protagonist and all major and significant recurring characters. For each character, synthesize a consistent visual description from the entire text.</string>
+    <string name="characters_indeterminate">Processing…</string>
+    <string name="characters_processing">Processing %1$d%%</string>
 
     <!-- Library -->
     <string name="read_button_option">Show «Read» button</string>

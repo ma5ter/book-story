@@ -33,8 +33,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,16 +46,20 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
+import ua.acclorite.book_story.domain.model.character.BookCharacter
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.presentation.reader.ReaderEvent
 import ua.acclorite.book_story.presentation.reader.ReaderIllustration
+import ua.acclorite.book_story.presentation.reader.ReaderModel
 import ua.acclorite.book_story.presentation.reader.findIllustrationItems
 import ua.acclorite.book_story.ui.common.components.common.LazyColumnWithScrollbar
 import ua.acclorite.book_story.ui.common.components.common.StyledText
+import ua.acclorite.book_story.ui.common.components.dialog.DialogWithTextField
 import ua.acclorite.book_story.ui.common.components.modal_bottom_sheet.ModalBottomSheet
 import ua.acclorite.book_story.ui.settings.appearance.colors.ColorsSubcategory
 import ua.acclorite.book_story.ui.settings.components.SettingsSubcategoryTitle
 import ua.acclorite.book_story.ui.settings.reader.ai.AiSubcategory
+import ua.acclorite.book_story.ui.settings.reader.ai.CharactersSubcategory
 import ua.acclorite.book_story.ui.settings.reader.chapters.ChaptersSubcategory
 import ua.acclorite.book_story.ui.settings.reader.font.FontSubcategory
 import ua.acclorite.book_story.ui.settings.reader.images.ImagesSubcategory
@@ -72,12 +79,17 @@ private var initialPage = 0
 fun ReaderSettingsBottomSheet(
     text: List<ReaderText>,
     imageAttachments: List<ImageAttachment>,
+    characters: List<BookCharacter>,
+    isGeneratingCharacters: Boolean,
+    generateCharacters: (ReaderEvent.OnGenerateCharacters) -> Unit,
     menuVisibility: (ReaderEvent.OnMenuVisibility) -> Unit,
     dismissBottomSheet: (ReaderEvent.OnDismissBottomSheet) -> Unit,
     scrollToImage: (ReaderEvent.OnScrollToImage) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState(initialPage) { 4 }
+    val readerModel = hiltViewModel<ReaderModel>()
+    val editTarget = remember { mutableStateOf<BookCharacter?>(null) }
     val illustrations = remember(text, imageAttachments) {
         findIllustrationItems(text, imageAttachments)
     }
@@ -187,6 +199,12 @@ fun ReaderSettingsBottomSheet(
                             dismissBottomSheet = dismissBottomSheet,
                             scrollToImage = scrollToImage
                         )
+                        CharactersSubcategory(
+                            characters = characters,
+                            isGenerating = isGeneratingCharacters,
+                            generate = generateCharacters,
+                            onEdit = { editTarget.value = it }
+                        )
                         AiSubcategory(
                             titleColor = { MaterialTheme.colorScheme.onSurface },
                             showConnection = false,
@@ -196,6 +214,21 @@ fun ReaderSettingsBottomSheet(
                 }
             }
         }
+    }
+
+    editTarget.value?.let { character ->
+        DialogWithTextField(
+            initialValue = character.description,
+            lengthLimit = 10000,
+            onDismiss = { editTarget.value = null },
+            onAction = { description ->
+                readerModel.onEvent(
+                    ReaderEvent.OnEditCharacter(
+                        character.copy(description = description.trim())
+                    )
+                )
+            }
+        )
     }
 }
 

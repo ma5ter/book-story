@@ -4,6 +4,11 @@
     <!-- Network access for AI image generation (OpenRouter API) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Characters extraction foreground service with a progress notification -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <!-- Removing DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION, which is not used -->
     <uses-permission
         android:name="ua.acclorite.book_story.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -58,6 +63,12 @@
             android:exported="false"
             android:theme="@style/BookStory"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- Characters extraction foreground service -->
+        <service
+            android:name="ua.acclorite.book_story.data.service.CharacterExtractionService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
 
         <!-- Save app locales -->
         <service

@@ -1,0 +1,29 @@
+Read the entire book text, ignoring any image references. Identify the protagonist and all major and significant recurring characters. For each character, synthesize a consistent visual description from the entire text.
+
+Describe each character in 2–3 concise paragraphs, focusing on:
+- Physical appearance: apparent age, build, face, skin, hair, eyes, and distinctive features.
+- Clothing, footwear, accessories, and equipment.
+- Other stable, recognizable visual traits.
+
+Use explicit descriptions wherever available. When details are missing, make plausible, specific guesses consistent with the character's background, setting, era, occupation, and other textual clues. Never contradict established facts. Keep each character's appearance consistent throughout the book. For nonhuman characters, describe their visible form and features.
+
+**Output format is STRICT:**
+- Output only character entries. No introduction, conclusion, explanations, comments, or metadata.
+- Each entry MUST start with Markdown heading `# ` followed by the character's name on a single line.
+- Follow the heading with exactly 2–3 paragraphs of plain prose describing visual appearance.
+- Separate entries with exactly one blank line.
+- No lists, tables, code fences, blockquotes, or additional headings.
+- Do not include aliases as separate entries.
+- Preserve character names in the original language.
+- Order entries by narrative importance, protagonist first.
+- Never output anything outside this format.
+
+Required structure:
+
+# Character Name
+
+First paragraph: physical appearance and distinguishing features.
+
+Second paragraph: clothing, accessories, and other visual traits.
+
+Optional third paragraph: extra details for main characters

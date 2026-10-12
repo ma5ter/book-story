@@ -6,12 +6,14 @@
 
 package ua.acclorite.book_story.presentation.reader
 
+import android.content.Context
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
@@ -32,6 +34,9 @@ import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.core.helpers.coerceAndPreventNaN
 import ua.acclorite.book_story.core.ui.UIText
+import ua.acclorite.book_story.data.service.CharacterExtractionManager
+import ua.acclorite.book_story.data.service.CharacterExtractionResult
+import ua.acclorite.book_story.data.service.CharacterExtractionService
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
@@ -40,6 +45,8 @@ import ua.acclorite.book_story.domain.use_case.attachment.DeleteImageAttachmentU
 import ua.acclorite.book_story.domain.use_case.attachment.GenerateImageForAttachmentUseCase
 import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentImageUseCase
 import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentsUseCase
+import ua.acclorite.book_story.domain.use_case.character.GetCharactersUseCase
+import ua.acclorite.book_story.domain.use_case.character.UpdateCharacterUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetBookUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetChapterProgressUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetTextUseCase
@@ -66,6 +73,10 @@ class ReaderModel @Inject constructor(
     private val getImageAttachmentsUseCase: GetImageAttachmentsUseCase,
     private val deleteImageAttachmentUseCase: DeleteImageAttachmentUseCase,
     private val getImageAttachmentImageUseCase: GetImageAttachmentImageUseCase,
+    private val getCharactersUseCase: GetCharactersUseCase,
+    private val updateCharacterUseCase: UpdateCharacterUseCase,
+    private val characterExtractionManager: CharacterExtractionManager,
+    @ApplicationContext private val context: Context,
     private val updateCoverImageUseCase: UpdateCoverImageUseCase
 ) : ViewModel() {
 
@@ -79,6 +90,10 @@ class ReaderModel @Inject constructor(
 
     private var scrollJob: Job? = null
     private val eventStack = mutableListOf<Job>()
+
+    init {
+        observeCharacterExtraction()
+    }
 
     fun onEvent(event: ReaderEvent) {
         viewModelScope.launch {
@@ -105,6 +120,7 @@ class ReaderModel @Inject constructor(
 
                         val lastOpened = getHistoryForBookUseCase(_state.value.book.id)?.time
                         val imageAttachments = getImageAttachmentsUseCase(_state.value.book.id)
+                        val characters = getCharactersUseCase(_state.value.book.id)
                         _state.update {
                             it.copy(
                                 showMenu = false,
@@ -112,7 +128,8 @@ class ReaderModel @Inject constructor(
                                     lastOpened = lastOpened
                                 ),
                                 text = text,
-                                imageAttachments = imageAttachments
+                                imageAttachments = imageAttachments,
+                                characters = characters
                             )
                         }
                         ensureActive()
@@ -458,6 +475,46 @@ class ReaderModel @Inject constructor(
                     }
                 }
 
+                is ReaderEvent.OnGenerateCharacters -> {
+                    withContext(Dispatchers.Default) {
+                        val bookId = _state.value.book.id
+                        if (bookId == -1) return@withContext
+                        if (characterExtractionManager.state.value.isRunning) return@withContext
+
+                        // The extraction runs in a foreground service with a
+                        // progress notification; its state and result are
+                        // observed in observeCharacterExtraction().
+                        CharacterExtractionService.start(
+                            context = context,
+                            bookId = bookId,
+                            systemPrompt = event.systemPrompt
+                        )
+                    }
+                }
+
+                is ReaderEvent.OnEditCharacter -> {
+                    withContext(Dispatchers.Default) {
+                        updateCharacterUseCase(event.character).fold(
+                            onSuccess = { updated ->
+                                _state.update { state ->
+                                    state.copy(
+                                        characters = state.characters.map { character ->
+                                            if (character.id == updated.id) updated else character
+                                        }
+                                    )
+                                }
+                            },
+                            onFailure = {
+                                _effects.emit(
+                                    ReaderEffect.OnShowToast(
+                                        message = it.message ?: "Could not edit character."
+                                    )
+                                )
+                            }
+                        )
+                    }
+                }
+
                 is ReaderEvent.OnShareImage -> {
                     val file = _state.value.imageAttachments
                         .find { it.id == event.attachmentId }
@@ -590,6 +647,47 @@ class ReaderModel @Inject constructor(
             }
 
             onEvent(ReaderEvent.OnLoadText)
+        }
+    }
+
+    /**
+     * Observes the character extraction foreground service: keeps the
+     * generating flag of the current book in sync and reports finished
+     * extractions (updated catalog or error) via toasts.
+     */
+    private fun observeCharacterExtraction() {
+        viewModelScope.launch {
+            characterExtractionManager.state.collect { extraction ->
+                _state.update {
+                    it.copy(
+                        isGeneratingCharacters = extraction.isRunning &&
+                                extraction.bookId == it.book.id
+                    )
+                }
+            }
+        }
+
+        viewModelScope.launch {
+            characterExtractionManager.results.collect { result ->
+                if (result.bookId != _state.value.book.id) return@collect
+                when (result) {
+                    is CharacterExtractionResult.Success -> {
+                        _state.update {
+                            it.copy(characters = result.characters)
+                        }
+                        _effects.emit(
+                            ReaderEffect.OnShowToast(
+                                message = "Characters catalog generated: " +
+                                        "${result.characters.size} entries."
+                            )
+                        )
+                    }
+
+                    is CharacterExtractionResult.Failure -> {
+                        _effects.emit(ReaderEffect.OnShowToast(message = result.message))
+                    }
+                }
+            }
         }
     }
 

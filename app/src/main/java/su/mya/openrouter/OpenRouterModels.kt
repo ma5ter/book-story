@@ -51,7 +51,9 @@ data class OpenRouterErrorEnvelope(
 @Serializable
 data class ChatMessage(
     val role: String,
-    val content: String
+    // Nullable so assistant messages that omit content (reasoning-only,
+    // refusals, tool calls) can still be deserialized.
+    val content: String? = null
 )
 
 /**

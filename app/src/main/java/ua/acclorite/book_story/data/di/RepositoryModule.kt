@@ -22,6 +22,8 @@ import ua.acclorite.book_story.data.mapper.file.FileMapper
 import ua.acclorite.book_story.data.mapper.file.FileMapperImpl
 import ua.acclorite.book_story.data.mapper.history.HistoryMapper
 import ua.acclorite.book_story.data.mapper.history.HistoryMapperImpl
+import ua.acclorite.book_story.data.parser.character.CharacterParser
+import ua.acclorite.book_story.data.parser.character.CharacterParserImpl
 import ua.acclorite.book_story.data.parser.cover.CoverParser
 import ua.acclorite.book_story.data.parser.cover.CoverParserImpl
 import ua.acclorite.book_story.data.parser.file.FileParser
@@ -30,6 +32,7 @@ import ua.acclorite.book_story.data.parser.text.TextParser
 import ua.acclorite.book_story.data.parser.text.TextParserImpl
 import ua.acclorite.book_story.data.repository.BookRepositoryImpl
 import ua.acclorite.book_story.data.repository.CategoryRepositoryImpl
+import ua.acclorite.book_story.data.repository.CharacterRepositoryImpl
 import ua.acclorite.book_story.data.repository.ColorPresetRepositoryImpl
 import ua.acclorite.book_story.data.repository.FileSystemRepositoryImpl
 import ua.acclorite.book_story.data.repository.HistoryRepositoryImpl
@@ -37,6 +40,7 @@ import ua.acclorite.book_story.data.repository.ImageAttachmentRepositoryImpl
 import ua.acclorite.book_story.data.repository.PermissionRepositoryImpl
 import ua.acclorite.book_story.domain.repository.BookRepository
 import ua.acclorite.book_story.domain.repository.CategoryRepository
+import ua.acclorite.book_story.domain.repository.CharacterRepository
 import ua.acclorite.book_story.domain.repository.ColorPresetRepository
 import ua.acclorite.book_story.domain.repository.FileSystemRepository
 import ua.acclorite.book_story.domain.repository.HistoryRepository
@@ -91,6 +95,12 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
+    abstract fun bindCharacterRepository(
+        characterRepositoryImpl: CharacterRepositoryImpl
+    ): CharacterRepository
+
+    @Binds
+    @Singleton
     abstract fun bindImageAttachmentRepository(
         imageAttachmentRepositoryImpl: ImageAttachmentRepositoryImpl
     ): ImageAttachmentRepository
@@ -136,6 +146,12 @@ abstract class RepositoryModule {
     abstract fun bindCoverParser(
         coverParserImpl: CoverParserImpl
     ): CoverParser
+
+    @Binds
+    @Singleton
+    abstract fun bindCharacterParser(
+        characterParserImpl: CharacterParserImpl
+    ): CharacterParser
 
     @Binds
     @Singleton

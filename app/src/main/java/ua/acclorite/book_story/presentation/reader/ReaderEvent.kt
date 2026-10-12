@@ -7,6 +7,7 @@
 package ua.acclorite.book_story.presentation.reader
 
 import androidx.compose.runtime.Immutable
+import ua.acclorite.book_story.domain.model.character.BookCharacter
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
 import ua.acclorite.book_story.presentation.reader.model.Checkpoint
 
@@ -72,6 +73,21 @@ sealed class ReaderEvent {
     data class OnGenerateImage(
         val textToIllustrate: String,
         val paragraphIndex: Int
+    ) : ReaderEvent()
+
+    /**
+     * Analyzes the whole book content and rebuilds the characters catalog.
+     * [systemPrompt] is the localized analysis prompt from resources.
+     */
+    data class OnGenerateCharacters(
+        val systemPrompt: String
+    ) : ReaderEvent()
+
+    /**
+     * Persists an edited characters catalog entry.
+     */
+    data class OnEditCharacter(
+        val character: BookCharacter
     ) : ReaderEvent()
 
     data class OnShareImage(

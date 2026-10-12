@@ -44,8 +44,8 @@ class OpenRouterClient @Inject constructor(
      * to the configured image generation model via the /images endpoint
      * and returns the decoded image.
      */
-    suspend fun generateImage(selectedText: String): Result<CoverImage> {
-        logI(TAG, "generateImage: started, selected text length: ${selectedText.length}.")
+    suspend fun generateImage(text: String): Result<CoverImage> {
+        logI(TAG, "generateImage: started, selected text length: ${text.length}.")
         val model = settingsManager.imageGenerationModel.lastValue.trim()
         requireValidConfiguration(model, "Image model").fold(
             onSuccess = {},
@@ -54,9 +54,9 @@ class OpenRouterClient @Inject constructor(
 
         val systemPrompt = settingsManager.imageGenerationPrompt.lastValue.trim()
         val prompt = if (systemPrompt.isBlank()) {
-            selectedText
+            text
         } else {
-            "$systemPrompt\n\n$selectedText"
+            "$systemPrompt\n\n$text"
         }
 
         val requestBody = json.encodeToString(
@@ -394,7 +394,7 @@ class OpenRouterClient @Inject constructor(
     }
 
     companion object {
-        private const val TAG = "OpenRouterImageClient"
+        private const val TAG = "OpenRouterClient"
 
         private const val OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
@@ -404,7 +404,7 @@ class OpenRouterClient @Inject constructor(
         private const val SVG_TARGET_SIZE = 1600f
 
         /** Maximum dimension for raster images before downsampling. */
-        private const val MAX_RASTER_SIZE = 4096
+        private const val MAX_RASTER_SIZE = 1600
 
         private val json = Json {
             ignoreUnknownKeys = true

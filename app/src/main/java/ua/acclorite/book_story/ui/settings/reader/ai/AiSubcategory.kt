@@ -22,6 +22,7 @@ import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationP
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationProxyOption
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationProxyPortOption
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationProxyProtocolOption
+import ua.acclorite.book_story.ui.settings.reader.ai.components.TextAssistantMaxTokensOption
 import ua.acclorite.book_story.ui.settings.reader.ai.components.TextAssistantModelOption
 
 fun LazyListScope.AiSubcategory(
@@ -46,6 +47,10 @@ fun LazyListScope.AiSubcategory(
 
         item {
             TextAssistantModelOption()
+        }
+
+        item {
+            TextAssistantMaxTokensOption()
         }
 
         item {

@@ -16,6 +16,7 @@ import androidx.room.migration.AutoMigrationSpec
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
+import ua.acclorite.book_story.data.local.dto.BookCharacterEntity
 import ua.acclorite.book_story.data.local.dto.BookEntity
 import ua.acclorite.book_story.data.local.dto.CategoryEntity
 import ua.acclorite.book_story.data.local.dto.ColorPresetEntity
@@ -28,9 +29,10 @@ import java.io.File
         HistoryEntity::class,
         ColorPresetEntity::class,
         CategoryEntity::class,
-        BookAttachmentEntity::class
+        BookAttachmentEntity::class,
+        BookCharacterEntity::class
     ],
-    version = 17,
+    version = 18,
     autoMigrations = [
         AutoMigration(1, 2),
         AutoMigration(2, 3),
@@ -56,6 +58,7 @@ abstract class BookDatabase : RoomDatabase() {
     abstract val colorPresetDao: ColorPresetDao
     abstract val categoryDao: CategoryDao
     abstract val bookAttachmentDao: BookAttachmentDao
+    abstract val bookCharacterDao: BookCharacterDao
 }
 
 @Suppress("ClassName")
@@ -266,6 +269,29 @@ object DatabaseHelper {
                 """
                     CREATE INDEX IF NOT EXISTS `index_BookAttachmentEntity_bookId` 
                     ON `BookAttachmentEntity` (bookId)
+                """
+            )
+        }
+    }
+
+    val MANUAL_MIGRATION_17_18 = object : Migration(17, 18) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                """
+                    CREATE TABLE IF NOT EXISTS `BookCharacterEntity` (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        bookId INTEGER NOT NULL,
+                        name TEXT NOT NULL,
+                        description TEXT NOT NULL,
+                        FOREIGN KEY(bookId) REFERENCES BookEntity(id) 
+                            ON UPDATE NO ACTION ON DELETE CASCADE 
+                    )
+                """
+            )
+            db.execSQL(
+                """
+                    CREATE INDEX IF NOT EXISTS `index_BookCharacterEntity_bookId` 
+                    ON `BookCharacterEntity` (bookId)
                 """
             )
         }

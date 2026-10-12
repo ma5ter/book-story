@@ -12,6 +12,7 @@ import ua.acclorite.book_story.core.BottomSheet
 import ua.acclorite.book_story.core.Drawer
 import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
+import ua.acclorite.book_story.domain.model.character.BookCharacter
 import ua.acclorite.book_story.domain.model.library.Book
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
@@ -22,6 +23,8 @@ data class ReaderState(
     val book: Book = Book.default,
     val text: List<ReaderText> = emptyList(),
     val imageAttachments: List<ImageAttachment> = emptyList(),
+    val characters: List<BookCharacter> = emptyList(),
+    val isGeneratingCharacters: Boolean = false,
     val listState: LazyListState = LazyListState(),
 
     val currentChapter: Chapter? = null,

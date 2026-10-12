@@ -73,6 +73,7 @@ object AppModule {
             DatabaseHelper.MANUAL_MIGRATION_14_15, // remove author nullability from BookEntity
             DatabaseHelper.MANUAL_MIGRATION_15_16, // merge CategoryEntity and CategorySortEntity
             DatabaseHelper.MANUAL_MIGRATION_16_17, // creates BookAttachmentEntity table
+            DatabaseHelper.MANUAL_MIGRATION_17_18, // creates BookCharacterEntity table
         ).allowMainThreadQueries().build().also { database ->
             // Additional Migrations
             DatabaseHelper.AUTO_MIGRATION_7_8.removeBooksDir(app)

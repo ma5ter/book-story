@@ -56,7 +56,23 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                 val current = database.bookAttachmentDao.findAttachmentById(attachmentId)
                     ?: throw IOException("Image attachment [$attachmentId] was not found.")
 
-                val bitmap = openRouterClient.generateImage(selectedText).getOrThrow()
+                // The persisted characters catalog gives the image model a
+                // visual reference, so recurring characters are reproducible
+                // across generations. It is appended to the selected text
+                // before the request is sent to the image model.
+                val charactersDescription = database.bookCharacterDao
+                    .getCharactersForBook(current.bookId)
+                    .takeIf { it.isNotEmpty() }
+                    ?.joinToString(separator = "\n\n") { character ->
+                        "# ${character.name}\n\n${character.description}".trim()
+                    }?.let { catalog ->
+                        "$CHARACTERS_ADDENDUM_HEADER\n\n$catalog"
+                    }
+
+                val bitmap = openRouterClient.generateImage(
+                    text = if (charactersDescription == null) selectedText
+                    else "$selectedText\n\n$charactersDescription"
+                ).getOrThrow()
                 val file = coverImageHandler.saveImageAttachment(bitmap).getOrThrow()
 
                 val completedAttachment = current.copy(
@@ -141,5 +157,12 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
             status = ImageAttachmentStatus.entries.firstOrNull { it.name == status }
                 ?: ImageAttachmentStatus.PENDING
         )
+    }
+
+    private companion object {
+
+        /** Header marking the characters catalog as an addendum to the system prompt. */
+        private const val CHARACTERS_ADDENDUM_HEADER =
+            "Characters of this book, for visual consistency across illustrations, **do not include unrelated to the selected fragment into image generation**:"
     }
 }
