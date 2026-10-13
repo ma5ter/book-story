@@ -20,8 +20,11 @@ interface ImageAttachmentRepository {
     ): Result<ImageAttachment>
 
     /**
-     * Generates an image for the selected text via OpenRouter,
-     * saves it to local storage and upgrades the attachment to COMPLETED.
+     * Generates an image for the selected text via OpenRouter in two
+     * steps: the text model first distills the selected text and the
+     * persisted characters catalog into an English scene description,
+     * then the image model illustrates it. The image is saved to local
+     * storage and the attachment is upgraded to COMPLETED.
      * Returns the completed attachment together with the generated bitmap.
      */
     suspend fun generateImageForAttachment(

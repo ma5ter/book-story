@@ -567,6 +567,19 @@ class ReaderModel @Inject constructor(
                         updateCoverImageUseCase(_state.value.book.id, cover)
                             .fold(
                                 onSuccess = {
+                                    // Keep the reader's book state in sync with the new
+                                    // cover, otherwise subsequent progress updates write
+                                    // the stale coverImage value back to the database.
+                                    getBookUseCase(_state.value.book.id)?.coverImage?.let { coverImage ->
+                                        _state.update { state ->
+                                            state.copy(
+                                                book = state.book.copy(
+                                                    coverImage = coverImage
+                                                )
+                                            )
+                                        }
+                                    }
+
                                     LibraryScreen.refreshListChannel.trySend(0)
                                     HistoryScreen.refreshListChannel.trySend(0)
 

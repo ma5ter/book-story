@@ -391,7 +391,7 @@ class SettingsManager @Inject constructor(
         default = "qwen/qwen3.7-flash"
     )
     val textAssistantMaxTokens = setting<Int, Int>(
-        key = intPreferencesKey("text_assistant_max_tokens"), default = 1000000
+        key = intPreferencesKey("text_assistant_max_tokens"), default = 100000
     )
     /* - - - - - - - - - - - - - - - - - - - - - - */
     private fun <T, P> setting(

@@ -6,6 +6,7 @@
 
 package ua.acclorite.book_story.data.repository
 
+import android.app.Application
 import android.graphics.BitmapFactory
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,9 @@ import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.core.CoverImage
 import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
 import ua.acclorite.book_story.data.local.room.BookDatabase
+import ua.acclorite.book_story.R
 import su.mya.openrouter.OpenRouterClient
+import su.mya.openrouter.ChatMessage
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachmentStatus
 import ua.acclorite.book_story.domain.repository.ImageAttachmentRepository
@@ -28,8 +31,15 @@ import javax.inject.Singleton
 class ImageAttachmentRepositoryImpl @Inject constructor(
     private val database: BookDatabase,
     private val coverImageHandler: CoverImageHandler,
-    private val openRouterClient: OpenRouterClient
+    private val openRouterClient: OpenRouterClient,
+    application: Application
 ) : ImageAttachmentRepository {
+
+    /** System prompt of the scene distillation preparation step. */
+    private val scenePrompt: String = application.resources
+        .openRawResource(R.raw.scene_prompt)
+        .bufferedReader().use { it.readText() }
+        .trim()
 
     override suspend fun createImageAttachment(
         bookId: Int,
@@ -56,10 +66,10 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                 val current = database.bookAttachmentDao.findAttachmentById(attachmentId)
                     ?: throw IOException("Image attachment [$attachmentId] was not found.")
 
-                // The persisted characters catalog gives the image model a
+                // The persisted characters catalog gives the text model a
                 // visual reference, so recurring characters are reproducible
                 // across generations. It is appended to the selected text
-                // before the request is sent to the image model.
+                // before the scene description is distilled.
                 val charactersDescription = database.bookCharacterDao
                     .getCharactersForBook(current.bookId)
                     .takeIf { it.isNotEmpty() }
@@ -69,9 +79,26 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                         "$CHARACTERS_ADDENDUM_HEADER\n\n$catalog"
                     }
 
+                // Preparation step: the text model distills the selected text
+                // and the characters catalog into a compact English scene
+                // description, which is then fed to the image model instead
+                // of the raw selected text.
+                val sceneDescription = openRouterClient.chatCompletion(
+                    listOf(
+                        ChatMessage(role = "system", content = scenePrompt),
+                        ChatMessage(
+                            role = "user",
+                            content = if (charactersDescription == null) selectedText
+                            else "$selectedText\n\n$charactersDescription"
+                        )
+                    )
+                ).mapCatching { message ->
+                    message.content?.trim()?.takeIf { it.isNotBlank() }
+                        ?: throw IOException("Model returned no scene description.")
+                }.getOrThrow()
+
                 val bitmap = openRouterClient.generateImage(
-                    text = if (charactersDescription == null) selectedText
-                    else "$selectedText\n\n$charactersDescription"
+                    text = sceneDescription
                 ).getOrThrow()
                 val file = coverImageHandler.saveImageAttachment(bitmap).getOrThrow()
 
