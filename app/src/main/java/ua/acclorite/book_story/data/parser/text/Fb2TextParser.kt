@@ -22,6 +22,18 @@ import javax.inject.Inject
 
 private const val TAG = "Fb2TextParser"
 
+/** Number of words taken from the first paragraph for unnamed subchapters. */
+private const val SUBTITLE_FALLBACK_WORD_COUNT = 5
+
+/**
+ * One block of a section's content: an optional <subtitle> chapter title
+ * and the elements following it up to the next subtitle.
+ */
+private data class SubtitleBlock(
+    val subtitle: String?,
+    val elements: MutableList<Element>
+)
+
 /**
  * Parses FictionBook 2 files.
  * Unlike the generic XML parsing, sections of the main body are split into
@@ -95,10 +107,6 @@ class Fb2TextParser @Inject constructor(
                     child.remove()
                 }
             }
-        }.let { contentElement ->
-            val shell = Document.createShell("")
-            shell.body().appendChild(contentElement)
-            documentParser.parseDocument(shell, includeChapter = false)
         }
 
         val readerText = mutableListOf<ReaderText>()
@@ -112,12 +120,71 @@ class Fb2TextParser @Inject constructor(
                 )
             )
         }
-        readerText.addAll(content)
+        // Subtitles split the section's content into subchapters: every
+        // <subtitle> together with the following elements up to the next
+        // <subtitle> (or the end of the section) forms one chapter.
+        val blocks = mutableListOf(SubtitleBlock(subtitle = null, elements = mutableListOf()))
+        content.children().forEach { child ->
+            if (child.tagName().equals("subtitle", ignoreCase = true)) {
+                val subtitleText = child.text().trim()
+                blocks.add(
+                    SubtitleBlock(
+                        // Separators like "* * *" carry no readable text,
+                        // the chapter title is then derived from the content.
+                        subtitle = subtitleText.takeIf { it.any(Char::isLetterOrDigit) }.orEmpty(),
+                        elements = mutableListOf()
+                    )
+                )
+            } else {
+                blocks.last().elements.add(child)
+            }
+        }
+
+        blocks.forEach { block ->
+            if (block.subtitle == null && block.elements.isEmpty()) return@forEach
+
+            val parsed = if (block.elements.isEmpty()) {
+                emptyList()
+            } else {
+                val shell = Document.createShell("")
+                block.elements.forEach { shell.body().appendChild(it) }
+                documentParser.parseDocument(shell, includeChapter = false)
+            }
+            if (parsed.isEmpty()) return@forEach
+
+            val chapterTitle = when {
+                block.subtitle == null -> null
+                block.subtitle.isNotBlank() -> block.subtitle
+                else -> fallbackChapterTitle(block.elements)
+            }
+            chapterTitle?.let { chapter ->
+                readerText.add(
+                    ReaderText.Chapter(
+                        title = chapter,
+                        nested = true
+                    )
+                )
+            }
+            readerText.addAll(parsed)
+        }
 
         childSections.forEach { child ->
             readerText.addAll(parseSection(child, parentTitles + titles))
         }
 
         return readerText
+    }
+
+    /**
+     * Builds a chapter title for a subtitle without readable text
+     * (e.g. "* * *") from the first words of the block's first paragraph.
+     */
+    private fun fallbackChapterTitle(elements: List<Element>): String? {
+        val firstParagraph = elements
+            .firstOrNull { it.tagName().equals("p", ignoreCase = true) }
+            ?.text()?.trim().takeIf { !it.isNullOrBlank() } ?: return null
+        val words = firstParagraph.split(Regex("\\s+")).filter { it.isNotBlank() }
+        if (words.isEmpty()) return null
+        return words.take(SUBTITLE_FALLBACK_WORD_COUNT).joinToString(" ") + "…"
     }
 }
