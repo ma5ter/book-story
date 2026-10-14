@@ -15,6 +15,10 @@ private const val CONTEXT_TOKEN_FRACTION = 10
 /** Conservative characters-per-token ratio, same as the characters extraction. */
 private const val CHARS_PER_TOKEN = 3
 
+/** Absolute context cap in characters, so a large user-set max tokens
+ *  value cannot produce an unbounded chapter context. */
+private const val MAX_CONTEXT_CHARS = 60_000
+
 /**
  * Finds the displayed index of the paragraph the selected text belongs to.
  *
@@ -127,7 +131,10 @@ private fun limitChapterContext(
     text: List<ReaderText>,
     textModelMaxTokens: Int
 ): String {
-    val budgetChars = textModelMaxTokens / CONTEXT_TOKEN_FRACTION * CHARS_PER_TOKEN
+    val budgetChars = minOf(
+        textModelMaxTokens / CONTEXT_TOKEN_FRACTION * CHARS_PER_TOKEN,
+        MAX_CONTEXT_CHARS
+    )
     if (budgetChars <= 0 || context.length <= budgetChars) return context
 
     val trimmedSelection = selectedText.trim()

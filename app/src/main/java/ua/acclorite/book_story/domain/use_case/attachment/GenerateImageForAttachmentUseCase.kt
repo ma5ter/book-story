@@ -14,22 +14,52 @@ import javax.inject.Inject
 
 private const val TAG = "GenerateImageForAttachment"
 
+/**
+ * Stepwise AI image generation pipeline, used by the image generation
+ * foreground service. Steps are exposed individually, so a failed step
+ * can be retried without repeating the preceding ones.
+ */
 class GenerateImageForAttachmentUseCase @Inject constructor(
     private val imageAttachmentRepository: ImageAttachmentRepository
 ) {
 
-    suspend operator fun invoke(
-        attachmentId: Int,
-        selectedText: String
-    ): Result<Pair<ImageAttachment, CoverImage>> {
-        logI(TAG, "Generating image for attachment [$attachmentId].")
+    /**
+     * Prepares the generation input: verifies the attachment and appends
+     * the persisted characters catalog to the selected text.
+     */
+    suspend fun prepare(attachmentId: Int, selectedText: String): Result<String> {
+        logI(TAG, "Preparing image generation input for attachment [$attachmentId].")
         if (selectedText.isBlank()) {
             return Result.failure(IllegalStateException("Selected text is empty."))
         }
 
-        return imageAttachmentRepository.generateImageForAttachment(
+        return imageAttachmentRepository.prepareGenerationInput(
             attachmentId = attachmentId,
             selectedText = selectedText
+        )
+    }
+
+    /**
+     * Distills the prepared input into a compact English scene description
+     * with the configured text assistant model.
+     */
+    suspend fun distill(preparedInput: String): Result<String> {
+        logI(TAG, "Distilling scene description, input length: ${preparedInput.length}.")
+        return imageAttachmentRepository.distillSceneDescription(preparedInput)
+    }
+
+    /**
+     * Renders the scene with the configured image model, saves the image
+     * and upgrades the attachment to COMPLETED.
+     */
+    suspend fun complete(
+        attachmentId: Int,
+        sceneDescription: String
+    ): Result<Pair<ImageAttachment, CoverImage>> {
+        logI(TAG, "Rendering image for attachment [$attachmentId].")
+        return imageAttachmentRepository.completeImageGeneration(
+            attachmentId = attachmentId,
+            sceneDescription = sceneDescription
         )
     }
 }

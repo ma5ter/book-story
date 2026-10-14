@@ -37,13 +37,15 @@ import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.data.service.CharacterExtractionManager
 import ua.acclorite.book_story.data.service.CharacterExtractionResult
 import ua.acclorite.book_story.data.service.CharacterExtractionService
+import ua.acclorite.book_story.data.service.ImageGenerationManager
+import ua.acclorite.book_story.data.service.ImageGenerationResult
+import ua.acclorite.book_story.data.service.ImageGenerationService
 import ua.acclorite.book_story.data.settings.SettingsManager
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
 import ua.acclorite.book_story.domain.use_case.attachment.CreateImageAttachmentUseCase
 import ua.acclorite.book_story.domain.use_case.attachment.DeleteImageAttachmentUseCase
-import ua.acclorite.book_story.domain.use_case.attachment.GenerateImageForAttachmentUseCase
 import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentImageUseCase
 import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentsUseCase
 import ua.acclorite.book_story.domain.use_case.character.GetCharactersUseCase
@@ -70,13 +72,13 @@ class ReaderModel @Inject constructor(
     private val getHistoryForBookUseCase: GetHistoryForBookUseCase,
     private val getChapterProgressUseCase: GetChapterProgressUseCase,
     private val createImageAttachmentUseCase: CreateImageAttachmentUseCase,
-    private val generateImageForAttachmentUseCase: GenerateImageForAttachmentUseCase,
     private val getImageAttachmentsUseCase: GetImageAttachmentsUseCase,
     private val deleteImageAttachmentUseCase: DeleteImageAttachmentUseCase,
     private val getImageAttachmentImageUseCase: GetImageAttachmentImageUseCase,
     private val getCharactersUseCase: GetCharactersUseCase,
     private val updateCharacterUseCase: UpdateCharacterUseCase,
     private val characterExtractionManager: CharacterExtractionManager,
+    private val imageGenerationManager: ImageGenerationManager,
     private val settingsManager: SettingsManager,
     @ApplicationContext private val context: Context,
     private val updateCoverImageUseCase: UpdateCoverImageUseCase
@@ -95,6 +97,7 @@ class ReaderModel @Inject constructor(
 
     init {
         observeCharacterExtraction()
+        observeImageGeneration()
     }
 
     fun onEvent(event: ReaderEvent) {
@@ -397,6 +400,14 @@ class ReaderModel @Inject constructor(
                     withContext(Dispatchers.Default) {
                         val bookId = _state.value.book.id
                         if (bookId == -1) return@withContext
+                        if (imageGenerationManager.state.value.isRunning) {
+                            _effects.emit(
+                                ReaderEffect.OnShowToast(
+                                    message = context.getString(R.string.image_already_generating)
+                                )
+                            )
+                            return@withContext
+                        }
 
                         val selectedParagraphIndex = findSelectedParagraphIndex(
                             selectedText = event.textToIllustrate,
@@ -444,43 +455,13 @@ class ReaderModel @Inject constructor(
                                     )
                                 }
 
-                                generateImageForAttachmentUseCase(
+                                // Generation runs in a foreground service with per-step
+                                // progress; its result is observed in observeImageGeneration().
+                                ImageGenerationService.start(
+                                    context = context,
+                                    bookId = bookId,
                                     attachmentId = attachment.id,
                                     selectedText = selectedTextWithChapterContext
-                                ).fold(
-                                    onSuccess = { (completedAttachment, bitmap) ->
-                                        _state.update { state ->
-                                            state.copy(
-                                                text = state.text.map { entry ->
-                                                    if (
-                                                        entry is ReaderText.PendingImage &&
-                                                        entry.attachmentId == completedAttachment.id
-                                                    ) {
-                                                        ReaderText.Image(
-                                                            imageBitmap = bitmap.asImageBitmap(),
-                                                            generated = true,
-                                                            attachmentId = completedAttachment.id
-                                                        )
-                                                    } else {
-                                                        entry
-                                                    }
-                                                },
-                                                imageAttachments = state.imageAttachments.map {
-                                                    if (it.id == completedAttachment.id) {
-                                                        completedAttachment
-                                                    } else {
-                                                        it
-                                                    }
-                                                }
-                                            )
-                                        }
-                                    },
-                                    onFailure = {
-                                        onImageGenerationFailed(
-                                            attachmentId = attachment.id,
-                                            message = it.message ?: "Image generation failed."
-                                        )
-                                    }
                                 )
                             },
                             onFailure = {
@@ -548,6 +529,16 @@ class ReaderModel @Inject constructor(
                 }
 
                 is ReaderEvent.OnDeleteImage -> {
+                    if (imageGenerationManager.state.value.isRunning &&
+                        imageGenerationManager.state.value.attachmentId == event.attachmentId
+                    ) {
+                        _effects.emit(
+                            ReaderEffect.OnShowToast(
+                                message = context.getString(R.string.image_already_generating)
+                            )
+                        )
+                        return@launch
+                    }
                     deleteImageAttachmentUseCase(event.attachmentId).fold(
                         onSuccess = {
                             _state.update { state ->
@@ -815,19 +806,71 @@ class ReaderModel @Inject constructor(
     }
 
     /**
-     * Removes a failed image attachment placeholder from the reader text
-     * and reports the failure to the user.
+     * Observes the image generation foreground service: replaces the pending
+     * placeholder with the generated image on success and reports failures
+     * via toasts. On failure the pending placeholder and the PENDING row are
+     * kept, so the failed step can be retried from the service notification.
      */
-    private suspend fun onImageGenerationFailed(attachmentId: Int, message: String) {
-        _state.update { state ->
-            state.copy(
-                text = state.text.filterNot { entry ->
-                    entry is ReaderText.PendingImage && entry.attachmentId == attachmentId
-                },
-                imageAttachments = state.imageAttachments.filterNot { it.id == attachmentId }
-            )
+    private fun observeImageGeneration() {
+        viewModelScope.launch {
+            imageGenerationManager.results.collect { result ->
+                val belongsToCurrentBook = when (result) {
+                    is ImageGenerationResult.Success ->
+                        result.attachment.bookId == _state.value.book.id
+                    is ImageGenerationResult.Failure, is ImageGenerationResult.Cancelled ->
+                        _state.value.imageAttachments.any {
+                            it.id == result.attachmentId &&
+                                    it.bookId == _state.value.book.id
+                        }
+                }
+                if (!belongsToCurrentBook) return@collect
+
+                when (result) {
+                    is ImageGenerationResult.Success -> {
+                        _state.update { state ->
+                            state.copy(
+                                text = state.text.map { entry ->
+                                    if (
+                                        entry is ReaderText.PendingImage &&
+                                        entry.attachmentId == result.attachmentId
+                                    ) {
+                                        ReaderText.Image(
+                                            imageBitmap = result.image.asImageBitmap(),
+                                            generated = true,
+                                            attachmentId = result.attachmentId
+                                        )
+                                    } else {
+                                        entry
+                                    }
+                                },
+                                imageAttachments = state.imageAttachments.map {
+                                    if (it.id == result.attachmentId) result.attachment else it
+                                }
+                            )
+                        }
+                    }
+
+                    is ImageGenerationResult.Failure -> {
+                        _effects.emit(ReaderEffect.OnShowToast(message = result.message))
+                    }
+                    is ImageGenerationResult.Cancelled -> {
+                        // The service has already dropped the PENDING row;
+                        // remove the pending placeholder and the attachment.
+                        _state.update { state ->
+                            state.copy(
+                                text = state.text.filterNot { entry ->
+                                    entry is ReaderText.PendingImage &&
+                                            entry.attachmentId == result.attachmentId
+                                },
+                                imageAttachments = state.imageAttachments.filterNot {
+                                    it.id == result.attachmentId
+                                }
+                            )
+                        }
+                    }
+                }
+            }
         }
-        _effects.emit(ReaderEffect.OnShowToast(message))
     }
 
     private fun calculateProgress(firstVisibleItemIndex: Int? = null): Float {

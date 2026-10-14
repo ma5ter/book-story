@@ -12,7 +12,8 @@ import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 interface ImageAttachmentRepository {
 
     /**
-     * Inserts a PENDING attachment row linked to the book paragraph.
+     * Inserts a PENDING attachment row linked to the book paragraph,
+     * dropping abandoned PENDING rows of previous attempts for the book.
      */
     suspend fun createImageAttachment(
         bookId: Int,
@@ -20,21 +21,33 @@ interface ImageAttachmentRepository {
     ): Result<ImageAttachment>
 
     /**
-     * Generates an image for the selected text via OpenRouter in two
-     * steps: the text model first distills the selected text and the
-     * persisted characters catalog into an English scene description,
-     * then the image model illustrates it. The image is saved to local
-     * storage and the attachment is upgraded to COMPLETED.
-     * Returns the completed attachment together with the generated bitmap.
+     * Prepares the generation input of [attachmentId]: verifies the
+     * attachment exists and appends the persisted characters catalog
+     * to the [selectedText].
      */
-    suspend fun generateImageForAttachment(
+    suspend fun prepareGenerationInput(
         attachmentId: Int,
         selectedText: String
+    ): Result<String>
+
+    /**
+     * Distills the [preparedInput] into a compact English scene description
+     * with the configured text assistant model.
+     */
+    suspend fun distillSceneDescription(preparedInput: String): Result<String>
+
+    /**
+     * Renders the [sceneDescription] with the configured image model,
+     * saves the image and upgrades the attachment to COMPLETED.
+     * Returns the completed attachment together with the generated bitmap.
+     */
+    suspend fun completeImageGeneration(
+        attachmentId: Int,
+        sceneDescription: String
     ): Result<Pair<ImageAttachment, CoverImage>>
 
     /**
      * Retrieves persisted attachments for the book,
-     * removing stale PENDING rows along the way.
      */
     suspend fun getImageAttachments(bookId: Int): Result<List<ImageAttachment>>
 
