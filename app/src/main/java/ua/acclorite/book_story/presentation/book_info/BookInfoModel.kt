@@ -22,6 +22,7 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.domain.use_case.book.CanResetCoverImageUseCase
 import ua.acclorite.book_story.domain.use_case.book.DeleteBookUseCase
+import ua.acclorite.book_story.domain.use_case.book.ExportBookWithImagesUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetBookUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetFileFromBookUseCase
 import ua.acclorite.book_story.domain.use_case.book.ResetCoverImageUseCase
@@ -41,7 +42,8 @@ class BookInfoModel @Inject constructor(
     private val getFileFromBookUseCase: GetFileFromBookUseCase,
     private val deleteBookUseCase: DeleteBookUseCase,
     private val canResetCoverImageUseCase: CanResetCoverImageUseCase,
-    private val resetCoverImageUseCase: ResetCoverImageUseCase
+    private val resetCoverImageUseCase: ResetCoverImageUseCase,
+    private val exportBookWithImagesUseCase: ExportBookWithImagesUseCase
 ) : ViewModel() {
 
     private val mutex = Mutex()
@@ -330,6 +332,19 @@ class BookInfoModel @Inject constructor(
                         HistoryScreen.refreshListChannel.trySend(0)
 
                         _effects.emit(BookInfoEffect.OnBookMoved)
+                    }
+                }
+
+                is BookInfoEvent.OnExportWithImages -> {
+                    withContext(Dispatchers.Default) {
+                        exportBookWithImagesUseCase(_state.value.book).fold(
+                            onSuccess = { file ->
+                                _effects.emit(BookInfoEffect.OnShareExportedBook(file))
+                            },
+                            onFailure = {
+                                _effects.emit(BookInfoEffect.OnErrorExport)
+                            }
+                        )
                     }
                 }
 

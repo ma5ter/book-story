@@ -42,6 +42,7 @@ fun BookInfoContent(
     changeCover: (BookInfoEvent.OnChangeCover) -> Unit,
     resetCover: (BookInfoEvent.OnResetCover) -> Unit,
     deleteCover: (BookInfoEvent.OnDeleteCover) -> Unit,
+    exportWithImages: (BookInfoEvent.OnExportWithImages) -> Unit,
     checkCoverReset: (BookInfoEvent.OnCheckCoverReset) -> Unit,
     dismissDialog: (BookInfoEvent.OnDismissDialog) -> Unit,
     dismissBottomSheet: (BookInfoEvent.OnDismissBottomSheet) -> Unit,
@@ -87,6 +88,7 @@ fun BookInfoContent(
         showDetailsBottomSheet = showDetailsBottomSheet,
         showMoveDialog = showMoveDialog,
         showDeleteDialog = showDeleteDialog,
+        exportWithImages = exportWithImages,
         navigateToReader = navigateToReader,
         navigateBack = navigateBack
     )

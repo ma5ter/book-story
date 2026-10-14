@@ -30,6 +30,7 @@ fun BookInfoScaffold(
     showDescriptionDialog: (BookInfoEvent.OnShowDescriptionDialog) -> Unit,
     showMoveDialog: (BookInfoEvent.OnShowMoveDialog) -> Unit,
     showDeleteDialog: (BookInfoEvent.OnShowDeleteDialog) -> Unit,
+    exportWithImages: (BookInfoEvent.OnExportWithImages) -> Unit,
     navigateToReader: (BookInfoEvent.OnNavigateToReader) -> Unit,
     navigateBack: (BookInfoEvent.OnNavigateBack) -> Unit
 ) {
@@ -58,6 +59,7 @@ fun BookInfoScaffold(
             showChangeCoverBottomSheet = showChangeCoverBottomSheet,
             showMoveDialog = showMoveDialog,
             showDeleteDialog = showDeleteDialog,
+            exportWithImages = exportWithImages,
             navigateToReader = navigateToReader
         )
     }

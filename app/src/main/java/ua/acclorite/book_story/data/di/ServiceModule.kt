@@ -11,8 +11,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ua.acclorite.book_story.data.service.CoverImageHandlerImpl
+import ua.acclorite.book_story.data.service.Fb2BookExporterImpl
 import ua.acclorite.book_story.data.service.FileProviderImpl
 import ua.acclorite.book_story.domain.service.CoverImageHandler
+import ua.acclorite.book_story.domain.service.Fb2BookExporter
 import ua.acclorite.book_story.domain.service.FileProvider
 import javax.inject.Singleton
 
@@ -31,4 +33,10 @@ abstract class ServiceModule {
     abstract fun bindCoverImageHandler(
         coverImageHandlerImpl: CoverImageHandlerImpl
     ): CoverImageHandler
+
+    @Binds
+    @Singleton
+    abstract fun bindFb2BookExporter(
+        fb2BookExporterImpl: Fb2BookExporterImpl
+    ): Fb2BookExporter
 }

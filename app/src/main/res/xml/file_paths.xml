@@ -8,4 +8,9 @@
     <files-path
         name="image_attachments"
         path="image_attachments/" />
+
+    <!-- Exported FB2 books with embedded generated images -->
+    <cache-path
+        name="exports"
+        path="exports/" />
 </paths>

@@ -7,10 +7,17 @@
 package ua.acclorite.book_story.presentation.book_info
 
 import androidx.compose.runtime.Immutable
+import java.io.File
 
 @Immutable
 sealed class BookInfoEffect {
     data object OnChangedCover : BookInfoEffect()
+
+    data class OnShareExportedBook(
+        val file: File
+    ) : BookInfoEffect()
+
+    data object OnErrorExport : BookInfoEffect()
 
     data object OnErrorResetCover : BookInfoEffect()
 

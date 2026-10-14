@@ -59,6 +59,7 @@
     </string>
     <string name="error_could_not_reset_cover">Could not reset cover image.</string>
     <string name="error_closed_source">Closed source</string>
+    <string name="error_could_not_export">Could not export book with images.</string>
     <string name="error_no_file">File does not exist or inaccessible</string>
     <string name="error_field_empty">This field should not be empty.</string>
 
@@ -105,6 +106,10 @@
     <string name="edit">Edit</string>
     <string name="create_category">Create category</string>
     <string name="set_up_scanning">Set up scanning</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Export</string>
+    <string name="export_with_images_desc">Export the FB2 file with all generated images embedded</string>
 
     <!-- Book -->
     <string name="unknown_author">Unknown</string>

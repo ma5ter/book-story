@@ -33,6 +33,7 @@ fun BookInfoLayout(
     showDescriptionDialog: (BookInfoEvent.OnShowDescriptionDialog) -> Unit,
     showMoveDialog: (BookInfoEvent.OnShowMoveDialog) -> Unit,
     showDeleteDialog: (BookInfoEvent.OnShowDeleteDialog) -> Unit,
+    exportWithImages: (BookInfoEvent.OnExportWithImages) -> Unit,
     navigateToReader: (BookInfoEvent.OnNavigateToReader) -> Unit
 ) {
     LazyColumnWithScrollbar(
@@ -65,8 +66,10 @@ fun BookInfoLayout(
         item {
             Spacer(Modifier.height(18.dp))
             BookInfoLayoutActions(
+                book = book,
                 showMoveDialog = showMoveDialog,
-                showDeleteDialog = showDeleteDialog
+                showDeleteDialog = showDeleteDialog,
+                exportWithImages = exportWithImages
             )
         }
 

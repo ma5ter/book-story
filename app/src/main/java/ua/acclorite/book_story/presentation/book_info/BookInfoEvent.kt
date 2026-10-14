@@ -59,6 +59,8 @@ sealed class BookInfoEvent {
 
     data object OnShowMoveDialog : BookInfoEvent()
 
+    data object OnExportWithImages : BookInfoEvent()
+
     data class OnActionMoveDialog(
         val selectedCategories: List<Category>
     ) : BookInfoEvent()

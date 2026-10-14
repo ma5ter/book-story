@@ -21,7 +21,30 @@ import javax.inject.Inject
 
 private const val TAG = "Fb2CoverParser"
 
-private const val XLINK_NAMESPACE = "http://www.w3.org/1999/xlink"
+internal const val XLINK_NAMESPACE = "http://www.w3.org/1999/xlink"
+
+/**
+ * Returns the prefix the document binds the XLink namespace to
+ * (e.g. `l:` for `xmlns:l="http://www.w3.org/1999/xlink"`),
+ * preferring the prefix already used by href references, or an empty
+ * string when the namespace is declared as default.
+ * Shared with the FB2 export.
+ */
+internal fun Document.fb2XlinkPrefix(): String {
+    val used = allElements.asSequence()
+        .mapNotNull { element ->
+            element.attributes().firstOrNull { it.key.endsWith(":href") }?.key
+        }
+        .firstOrNull()?.substringBefore("href")
+    if (!used.isNullOrBlank()) return used
+
+    return children().firstOrNull()?.attributes()
+        ?.firstOrNull { attribute ->
+            attribute.key.startsWith("xmlns") && attribute.value == XLINK_NAMESPACE
+        }?.key?.substringAfter("xmlns:")
+        ?.let { "$it:" }
+        ?: ""
+}
 
 class Fb2CoverParser @Inject constructor() : CoverParser {
 
@@ -41,8 +64,8 @@ class Fb2CoverParser @Inject constructor() : CoverParser {
 
                 // The XLink namespace may be bound to an arbitrary prefix
                 // (e.g. xmlns:l), Jsoup's XML parser does not resolve it,
-                // so resolve the prefix from the root element's declarations.
-                val href = imageElement.attr("${document.xlinkPrefix()}href")
+                // so resolve the prefix from the document itself.
+                val href = imageElement.attr("${document.fb2XlinkPrefix()}href")
                     .ifBlank {
                         imageElement.attributes()
                             .firstOrNull { it.key.endsWith(":href") }?.value
@@ -64,19 +87,5 @@ class Fb2CoverParser @Inject constructor() : CoverParser {
             logE(TAG, "Could not parse cover image with message: ${e.message}.")
             null
         }
-    }
-
-    /**
-     * Returns the prefix the document binds the XLink namespace to
-     * (e.g. `l:` for `xmlns:l="http://www.w3.org/1999/xlink"`),
-     * or an empty string when the namespace is declared as default.
-     */
-    private fun Document.xlinkPrefix(): String {
-        return root().attributes()
-            .firstOrNull { attribute ->
-                attribute.key.startsWith("xmlns") && attribute.value == XLINK_NAMESPACE
-            }?.key?.substringAfter("xmlns:")
-            ?.let { "$it:" }
-            ?: ""
     }
 }
