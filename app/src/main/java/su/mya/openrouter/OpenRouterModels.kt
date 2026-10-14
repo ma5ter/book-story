@@ -4,10 +4,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 
+/**
+ * OpenRouter provider routing preferences. Currently only price sorting
+ * is used: `sort: "price"` disables load balancing and always tries the
+ * lowest-cost provider first.
+ */
+@Serializable
+data class ProviderRouting(
+    val sort: String
+)
+
 @Serializable
 data class ImageGenerationRequest(
     val model: String,
-    val prompt: String
+    val prompt: String,
+    val provider: ProviderRouting
 )
 
 @Serializable
@@ -67,7 +78,8 @@ data class ChatCompletionRequest(
     val messages: List<ChatMessage>,
     @SerialName("max_completion_tokens") val maxCompletionTokens: Int? = null,
     val temperature: Double? = null,
-    val stream: Boolean = false
+    val stream: Boolean = false,
+    val provider: ProviderRouting
 )
 
 /**

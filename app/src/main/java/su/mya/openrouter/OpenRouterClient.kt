@@ -56,7 +56,8 @@ class OpenRouterClient @Inject constructor(
             ImageGenerationRequest.serializer(),
             ImageGenerationRequest(
                 model = model,
-                prompt = prompt
+                prompt = prompt,
+                provider = ProviderRouting(sort = "price")
             )
         )
         val request = buildRequest(
@@ -89,7 +90,11 @@ class OpenRouterClient @Inject constructor(
 
         val requestBody = json.encodeToString(
             ChatCompletionRequest.serializer(),
-            ChatCompletionRequest(model = model, messages = messages)
+            ChatCompletionRequest(
+                model = model,
+                messages = messages,
+                provider = ProviderRouting(sort = "price")
+            )
         )
         val request = buildRequest(
             endpoint = "chat/completions",
