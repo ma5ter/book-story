@@ -44,7 +44,7 @@ class GenerateCharactersUseCase @Inject constructor(
 
     /**
      * Analyzes the whole book text (without images, only clean text
-     * delimited with \n) with the configured text assistant model,
+     * delimited with \n) with the configured summarize model,
      * parses the returned markdown catalog and
      * persists it as book metadata, replacing any previous catalog.
      *
@@ -101,7 +101,7 @@ class GenerateCharactersUseCase @Inject constructor(
         bookText: String,
         onProgress: (Int?) -> Unit
     ): Result<String> {
-        val maxTokens = settingsManager.textAssistantMaxTokens.lastValue
+        val maxTokens = settingsManager.textMaxTokens.lastValue
         val systemTokens = estimateTokens(systemPrompt)
         val chunkBudget = maxTokens - systemTokens -
                 OUTPUT_TOKENS_RESERVE - EXTEND_PROMPT_RESERVE
@@ -144,7 +144,10 @@ class GenerateCharactersUseCase @Inject constructor(
                 )
             }
 
-            val reply = openRouterClient.chatCompletion(messages)
+            val reply = openRouterClient.chatCompletion(
+                model = settingsManager.summarizeModel.lastValue.trim(),
+                messages = messages
+            )
             if (reply.isFailure) {
                 val error = reply.exceptionOrNull() ?: IOException("Character generation failed.")
                 if (catalog.isNullOrBlank()) return Result.failure(error)

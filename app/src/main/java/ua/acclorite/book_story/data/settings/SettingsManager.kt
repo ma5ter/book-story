@@ -399,7 +399,11 @@ class SettingsManager @Inject constructor(
         key = stringPreferencesKey("text_assistant_model"),
         default = "qwen/qwen3.7-flash"
     )
-    val textAssistantMaxTokens = setting<Int, Int>(
+    val summarizeModel = setting<String, String>(
+        key = stringPreferencesKey("summarize_model"),
+        default = "scaledown/summarize"
+    )
+    val textMaxTokens = setting<Int, Int>(
         key = intPreferencesKey("text_assistant_max_tokens"), default = 100000
     )
     /* - - - - - - - - - - - - - - - - - - - - - - */

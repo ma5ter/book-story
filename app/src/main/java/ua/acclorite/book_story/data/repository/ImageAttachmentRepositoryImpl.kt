@@ -92,7 +92,8 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
         runCatching {
             withContext(Dispatchers.IO) {
                 openRouterClient.chatCompletion(
-                    listOf(
+                    model = settingsManager.textAssistantModel.lastValue.trim(),
+                    messages = listOf(
                         ChatMessage(role = "system", content = scenePrompt),
                         ChatMessage(role = "user", content = preparedInput)
                     )

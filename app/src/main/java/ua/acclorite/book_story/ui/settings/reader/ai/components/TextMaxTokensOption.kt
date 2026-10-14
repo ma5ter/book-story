@@ -15,11 +15,11 @@ import ua.acclorite.book_story.ui.common.components.settings.TextFieldWithTitle
 import ua.acclorite.book_story.ui.common.helpers.LocalSettings
 
 @Composable
-fun TextAssistantMaxTokensOption() {
+fun TextMaxTokensOption() {
     val settings = LocalSettings.current
 
     TextFieldWithTitle(
-        value = settings.textAssistantMaxTokens.value.toString(),
+        value = settings.textMaxTokens.value.toString(),
         title = stringResource(id = R.string.text_assistant_max_tokens_option),
         label = stringResource(id = R.string.text_assistant_max_tokens_option_label),
         keyboardOptions = KeyboardOptions(
@@ -28,7 +28,7 @@ fun TextAssistantMaxTokensOption() {
         ),
         onValueChange = { raw ->
             raw.filter(Char::isDigit).take(9).toIntOrNull()?.let { tokens ->
-                settings.textAssistantMaxTokens.update(tokens)
+                settings.textMaxTokens.update(tokens)
             }
         }
     )

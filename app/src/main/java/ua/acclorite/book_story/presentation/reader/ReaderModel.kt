@@ -428,7 +428,7 @@ class ReaderModel @Inject constructor(
                             index = selectedParagraphIndex,
                             text = _state.value.text,
                             selectedText = event.textToIllustrate,
-                            textModelMaxTokens = settingsManager.textAssistantMaxTokens.lastValue
+                            textModelMaxTokens = settingsManager.textMaxTokens.lastValue
                         )?.let { context ->
                             "${event.textToIllustrate}\n\n${
                                 "--- Context around the selected fragment, supplied for additional **weak** context. " +

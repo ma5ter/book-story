@@ -275,7 +275,7 @@
     <string name="api_key_option">API key</string>
     <string name="api_key_option_label">OpenRouter API key</string>
     <string name="image_model_option">Image model</string>
-    <string name="image_model_option_label">OpenRouter model slug</string>
+    <string name="image_model_option_label">OpenRouter image model slug</string>
     <string name="image_style_option">Style block</string>
     <string name="image_style_option_label">Style block for image prompt</string>
     <string name="proxy_option">Proxy</string>
@@ -289,7 +289,11 @@
     <!-- AI assistant -->
     <string name="text_assistant_settings">AI assistant</string>
     <string name="text_assistant_model_option">Text Model</string>
-    <string name="text_assistant_model_option_label">OpenRouter model slug</string>
+    <string name="text_assistant_model_option_label">OpenRouter smart text model slug</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Summarize Model</string>
+    <string name="summarize_model_option_label">OpenRouter model slug used for characters extraction</string>
     <string name="text_assistant_max_tokens_option">Max input tokens</string>
     <string name="text_assistant_max_tokens_option_label">Model context limit used to chunk long books</string>
 

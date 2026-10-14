@@ -77,13 +77,16 @@ class OpenRouterClient @Inject constructor(
     }
 
     /**
-     * Sends the given chat messages to the configured text assistant model
-     * via the /chat/completions endpoint and returns the assistant's reply.
+     * Sends the given chat messages to the given text model via the
+     * /chat/completions endpoint and returns the assistant's reply.
      */
-    suspend fun chatCompletion(messages: List<ChatMessage>): Result<ChatMessage> {
+    suspend fun chatCompletion(
+        model: String,
+        messages: List<ChatMessage>
+    ): Result<ChatMessage> {
         logI(TAG, "chatCompletion: started, messages: ${messages.size}.")
-        val model = settingsManager.textAssistantModel.lastValue.trim()
-        requireValidConfiguration(model, "Text model").fold(
+        val resolvedModel = model.trim()
+        requireValidConfiguration(resolvedModel, "Text model").fold(
             onSuccess = {},
             onFailure = { return Result.failure(it) }
         )
@@ -91,7 +94,7 @@ class OpenRouterClient @Inject constructor(
         val requestBody = json.encodeToString(
             ChatCompletionRequest.serializer(),
             ChatCompletionRequest(
-                model = model,
+                model = resolvedModel,
                 messages = messages,
                 provider = ProviderRouting(sort = "price")
             )
@@ -101,7 +104,7 @@ class OpenRouterClient @Inject constructor(
             apiKey = settingsManager.imageGenerationApiKey.lastValue.trim(),
             requestBody = requestBody
         )
-        logI(TAG, "chatCompletion: sending request, model: [$model].")
+        logI(TAG, "chatCompletion: sending request, model: [$resolvedModel].")
 
         return execute(request, "chatCompletion") { parseChatCompletion(it) }
             .onSuccess { message ->
