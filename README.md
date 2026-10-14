@@ -67,6 +67,7 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 - Organized Library with custom categories and chapters in the Reader
 - Highly customizable
 - AI assisted illustration generation
+- Political slogans free
 
 ---
 
@@ -99,13 +100,7 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 
 > [!Important]
 >
-> You can help translating the app
-> on [Hosted Weblate](https://hosted.weblate.org/engage/book-story/).
->
-> I am thankful to everyone who helps make this app more accessible to others by translating it!
-
-[<img src="https://hosted.weblate.org/widget/book-story/book-story-translation/horizontal-auto.svg" alt="Translation progress">](https://hosted.weblate.org/engage/book-story/)
-<br/>
+> You can help translating the app by opening a pull request containing translated resources
 
 ---
 
@@ -117,8 +112,8 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 
 > [!Note]
 >
-> They do not accept code contributions. This project is maintained
-> solely by them, and they intend to keep it that way. Pull/merge requests will likely be closed, as they
+> They do not accept code contributions. The \[original\] project is maintained solely by them,
+> and they intend to keep it that way. Pull/merge requests will likely be closed, as they
 > don’t align with the project's vision.
 
 With all respect to their position, work, and open source license permissions, I forked this app to add new features.
@@ -131,10 +126,7 @@ So you are absolutely free to:
   feel free to create a new *Issue*.
 - **Report bugs.** Encountered a crash or something went wrong? Create a new *Issue* with as much
   detail as possible to help resolve it.
-- **Translate the app.** You can help make the app accessible in multiple languages. To contribute,
-  visit [Hosted Weblate](https://hosted.weblate.org/engage/book-story/).
-- **Enjoy the app.** The best contribution is simply using and enjoying the app I spent so much time
-  on!
+- **Enjoy the app.** The best contribution is simply using and enjoying the app!
 
 ---
 
