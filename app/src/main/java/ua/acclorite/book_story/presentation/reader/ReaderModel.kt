@@ -37,6 +37,7 @@ import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.data.service.CharacterExtractionManager
 import ua.acclorite.book_story.data.service.CharacterExtractionResult
 import ua.acclorite.book_story.data.service.CharacterExtractionService
+import ua.acclorite.book_story.data.settings.SettingsManager
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
@@ -76,6 +77,7 @@ class ReaderModel @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase,
     private val updateCharacterUseCase: UpdateCharacterUseCase,
     private val characterExtractionManager: CharacterExtractionManager,
+    private val settingsManager: SettingsManager,
     @ApplicationContext private val context: Context,
     private val updateCoverImageUseCase: UpdateCoverImageUseCase
 ) : ViewModel() {
@@ -406,18 +408,22 @@ class ReaderModel @Inject constructor(
                             attachments = _state.value.imageAttachments
                         )
 
-                        // The whole chapter containing the fragment is supplied
+                        // The local context of the fragment (its subchapter, or the
+                        // whole chapter when the fragment is outside any subchapter)
+                        // is supplied
                         // as context for the distillation step, the image itself
                         // must still depict only the selected fragment.
                         val selectedTextWithChapterContext = findChapterText(
                             index = selectedParagraphIndex,
-                            text = _state.value.text
-                        )?.let { chapter ->
+                            text = _state.value.text,
+                            selectedText = event.textToIllustrate,
+                            textModelMaxTokens = settingsManager.textAssistantMaxTokens.lastValue
+                        )?.let { context ->
                             "${event.textToIllustrate}\n\n${
-                                "--- The whole chapter containing the selected fragment, supplied for additional **weak** context. " +
+                                "--- Context around the selected fragment, supplied for additional **weak** context. " +
                                         "**Illustrate only the selected fragment above**, " +
-                                        "**do not include unrelated chapter content into image generation** ---"
-                            }\n\n$chapter"
+                                        "**do not include unrelated context into image generation** ---"
+                            }\n\n$context"
                         } ?: event.textToIllustrate
 
                         createImageAttachmentUseCase(

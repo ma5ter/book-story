@@ -9,6 +9,12 @@ package ua.acclorite.book_story.presentation.reader
 import ua.acclorite.book_story.domain.model.reader.ReaderText
 import kotlin.math.abs
 
+/** Fraction of the text model's max input tokens used for image context. */
+private const val CONTEXT_TOKEN_FRACTION = 10
+
+/** Conservative characters-per-token ratio, same as the characters extraction. */
+private const val CHARS_PER_TOKEN = 3
+
 /**
  * Finds the displayed index of the paragraph the selected text belongs to.
  *
@@ -59,14 +65,25 @@ internal fun findSelectedParagraphIndex(
 }
 
 /**
- * Extracts the whole chapter of the paragraph at [index] belongs to as plain
- * text: the chapter title followed by its text lines (injected images and
- * other non-text entries are skipped). Returns null when the chapter
- * contains no usable text.
+ * Extracts the local context of the paragraph at [index] as plain text for
+ * AI image generation. The extraction starts at the nearest chapter heading
+ * before the paragraph — a nested one, when the paragraph lies inside a
+ * subchapter — and ends at the next chapter heading, so only the containing
+ * subchapter is included; when the paragraph is not inside a subchapter, the
+ * whole chapter is used as a fallback. The heading title is prepended and
+ * injected images and other non-text entries are skipped. The context is
+ * limited to roughly a tenth of the text model's max input tokens, centered
+ * on the selected text. Returns null when the context contains no usable
+ * text.
+ *
+ * @param selectedText Selected fragment used to center the trimmed context.
+ * @param textModelMaxTokens Max input tokens of the text assistant model.
  */
 internal fun findChapterText(
     index: Int,
-    text: List<ReaderText>
+    text: List<ReaderText>,
+    selectedText: String,
+    textModelMaxTokens: Int
 ): String? {
     val chapterStart = text.take(index + 1)
         .indexOfLast { it is ReaderText.Chapter }
@@ -85,6 +102,55 @@ internal fun findChapterText(
                 append(entry.line.text.trim())
             }
         }
+    }.takeIf { it.isNotBlank() } ?: return null
+
+    return limitChapterContext(
+        context = chapterText,
+        selectedText = selectedText,
+        index = index,
+        text = text,
+        textModelMaxTokens = textModelMaxTokens
+    )
+}
+
+/**
+ * Trims the context to roughly a tenth of the text model's max input tokens,
+ * centered on the selected text (or on the selected paragraph when the
+ * selection is not found inside the context, e.g. it spans several
+ * paragraphs). Boundaries snap to line breaks, so words are not cut in
+ * half; trimmed edges are marked with an ellipsis.
+ */
+private fun limitChapterContext(
+    context: String,
+    selectedText: String,
+    index: Int,
+    text: List<ReaderText>,
+    textModelMaxTokens: Int
+): String {
+    val budgetChars = textModelMaxTokens / CONTEXT_TOKEN_FRACTION * CHARS_PER_TOKEN
+    if (budgetChars <= 0 || context.length <= budgetChars) return context
+
+    val trimmedSelection = selectedText.trim()
+    val paragraphText = (text.getOrNull(index) as? ReaderText.Text)
+        ?.line?.text?.trim().orEmpty()
+    var anchor = if (trimmedSelection.isBlank()) -1 else context.indexOf(trimmedSelection)
+    if (anchor == -1 && paragraphText.isNotBlank()) anchor = context.indexOf(paragraphText)
+    if (anchor == -1) anchor = context.length / 2
+
+    var start = (anchor - budgetChars / 2).coerceAtLeast(0)
+    var end = (start + budgetChars).coerceAtMost(context.length)
+    start = (end - budgetChars).coerceAtLeast(0)
+
+    if (start > 0) {
+        context.lastIndexOf('\n', start).takeIf { it != -1 }?.let { start = it + 1 }
     }
-    return chapterText.takeIf { it.isNotBlank() }
+    if (end < context.length) {
+        context.indexOf('\n', end).let { end = if (it == -1) context.length else it + 1 }
+    }
+
+    return buildString {
+        if (start > 0) append('…')
+        append(context, start, end)
+        if (end < context.length) append('…')
+    }
 }
