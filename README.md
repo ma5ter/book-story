@@ -26,7 +26,6 @@
 
 <a href="">[![GitHub](https://img.shields.io/github/release/Acclorite/book-story.svg?labelColor=27303D&color=3f719b&label=GitHub&logo=GitHub)](https://github.com/ma5ter/book-story/releases)</a>
 <a href="">[![Translation Status](https://img.shields.io/weblate/progress/book-story?label=Translated&logo=weblate&labelColor=27303D&color=3f9b86)](https://hosted.weblate.org/engage/book-story/)</a>
-<a href="">[![Matrix](https://img.shields.io/badge/Chat-9b3f90?label=Matrix&logo=matrix&color=539b3f&labelColor=27303D)](https://matrix.to/#/#book-story:matrix.org)</a>
 <a href="">[![License: GPL-3.0-only](https://img.shields.io/badge/GPL--3.0--only-9b3f57?label=License&labelColor=27303D)](LICENSE)</a>
 
 <!------------ Overview ------------>
@@ -67,6 +66,7 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 - Material You design with unique themes and color presets
 - Organized Library with custom categories and chapters in the Reader
 - Highly customizable
+- AI assisted illustration generation
 
 ---
 
@@ -80,26 +80,16 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 
 <div>
 
-[<img src="https://raw.githubusercontent.com/Kunzisoft/Github-badge/main/get-it-on-github.png" alt='Get it on GitHub' height="80">](https://github.com/Acclorite/book-story/releases/latest)
-[<img src="fastlane/metadata/android/en-US/images/gitlab-badge.png" alt='Get it on GitLab' height="80">](https://gitlab.com/Acclorite/book-story/-/releases)
-[<img src="fastlane/metadata/android/en-US/images/codeberg-badge.png" alt='Get it on Codeberg' height="80">](https://codeberg.org/Acclorite/book-story/releases)
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/en/packages/ua.acclorite.book_story/)
-[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80">](https://apt.izzysoft.de/fdroid/index/apk/ua.acclorite.book_story)
+[<img src="https://raw.githubusercontent.com/Kunzisoft/Github-badge/main/get-it-on-github.png" alt='Get it on GitHub' height="80">](https://github.com/ma5ter/book-story/releases/latest)
 </div>
 
 ---
 
 ### 📲 How to install
 
-- _**Installing from GitHub, GitLab, Codeberg**_: Click the "Get it on ..." badge above, select
+- _**Installing from GitHub**_: Click the "Get it on ..." badge above, select
   desired release, scroll down, and download
   **book-story.apk**. Once downloaded, locate the APK file and install it.
-- _**Installing from F-Droid**_: Click the "Get it on F-Droid" badge above, scroll down, and click "
-  Download APK" under your desired release version to download the APK file. Once downloaded, locate
-  the file and install it.
-- _**Installing from IzzyOnDroid**_: Click the "Get it on IzzyOnDroid" badge above, scroll down, and
-  click "Download" to get the latest APK from IzzyOnDroid. Once downloaded, locate the file and
-  install it.
 
 ---
 
@@ -123,12 +113,20 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 
 ## 🤝 How to contribute
 
-- **I do not accept code contributions.** This project is maintained
-  solely by me, and I intend to keep it that way. Pull/merge requests will likely be closed, as they
-  don’t align with the project's vision.
+[The original author](https://github.com/Acclorite) clearly stated
+
+> [!Note]
+>
+> They do not accept code contributions. This project is maintained
+> solely by them, and they intend to keep it that way. Pull/merge requests will likely be closed, as they
+> don’t align with the project's vision.
+
+With all respect to their position, work, and open source license permissions, I forked this app to add new features.
+
+So you are absolutely free to:
+
+- **Submit pull requests.** Keep it free and community supported!
 - **Submit your suggestions on Issues.** Feel free to share your thoughts!
-- **Join the Matrix server** to share your ideas, report bugs, or just chat with me
-  on [this server](https://matrix.to/#/#book-story:matrix.org)!
 - **Share your ideas and suggestions.** If you’re missing a feature or have an interesting idea,
   feel free to create a new *Issue*.
 - **Report bugs.** Encountered a crash or something went wrong? Create a new *Issue* with as much
@@ -143,6 +141,8 @@ open-source, offering you a personalized, ad-free journey through your favorite 
 <!------------ Credits and License ------------>
 
 ## 🤗 Credits
+
+Author of the original work [Acclorite](https://github.com/Acclorite/book-story)
 
 > [!Note]
 >
