@@ -17,12 +17,12 @@ fun ImageGenerationPromptOption() {
     val settings = LocalSettings.current
 
     TextFieldWithTitle(
-        value = settings.imageGenerationPrompt.value,
-        title = stringResource(id = R.string.image_prompt_option),
-        label = stringResource(id = R.string.image_prompt_option_label),
+        value = settings.imageGenerationStyle.value,
+        title = stringResource(id = R.string.image_style_option),
+        label = stringResource(id = R.string.image_style_option_label),
         singleLine = false,
         onValueChange = {
-            settings.imageGenerationPrompt.update(it)
+            settings.imageGenerationStyle.update(it)
         }
     )
 }

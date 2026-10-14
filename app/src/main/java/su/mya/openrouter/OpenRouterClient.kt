@@ -44,20 +44,13 @@ class OpenRouterClient @Inject constructor(
      * to the configured image generation model via the /images endpoint
      * and returns the decoded image.
      */
-    suspend fun generateImage(text: String): Result<CoverImage> {
-        logI(TAG, "generateImage: started, selected text length: ${text.length}.")
+    suspend fun generateImage(prompt: String): Result<CoverImage> {
+        logI(TAG, "generateImage: started, selected text length: ${prompt.length}.")
         val model = settingsManager.imageGenerationModel.lastValue.trim()
         requireValidConfiguration(model, "Image model").fold(
             onSuccess = {},
             onFailure = { return Result.failure(it) }
         )
-
-        val systemPrompt = settingsManager.imageGenerationPrompt.lastValue.trim()
-        val prompt = if (systemPrompt.isBlank()) {
-            text
-        } else {
-            "$systemPrompt\n\n$text"
-        }
 
         val requestBody = json.encodeToString(
             ImageGenerationRequest.serializer(),

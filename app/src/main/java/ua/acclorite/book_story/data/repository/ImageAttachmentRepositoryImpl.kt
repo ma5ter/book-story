@@ -18,6 +18,7 @@ import ua.acclorite.book_story.data.local.room.BookDatabase
 import ua.acclorite.book_story.R
 import su.mya.openrouter.OpenRouterClient
 import su.mya.openrouter.ChatMessage
+import ua.acclorite.book_story.data.settings.SettingsManager
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachmentStatus
 import ua.acclorite.book_story.domain.repository.ImageAttachmentRepository
@@ -32,6 +33,7 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
     private val database: BookDatabase,
     private val coverImageHandler: CoverImageHandler,
     private val openRouterClient: OpenRouterClient,
+    private val settingsManager: SettingsManager,
     application: Application
 ) : ImageAttachmentRepository {
 
@@ -97,8 +99,15 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                         ?: throw IOException("Model returned no scene description.")
                 }.getOrThrow()
 
+                val styleBlock = settingsManager.imageGenerationStyle.lastValue.trim()
+                val prompt = if (styleBlock.isBlank()) {
+                    sceneDescription
+                } else {
+                    "<STYLE_BLOCK\n$styleBlock\n>\n\n$sceneDescription"
+                }
+
                 val bitmap = openRouterClient.generateImage(
-                    text = sceneDescription
+                    prompt = prompt
                 ).getOrThrow()
                 val file = coverImageHandler.saveImageAttachment(bitmap).getOrThrow()
 

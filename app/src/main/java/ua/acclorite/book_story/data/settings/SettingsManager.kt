@@ -362,13 +362,22 @@ class SettingsManager @Inject constructor(
         key = stringPreferencesKey("image_generation_model"),
         default = "meta/muse-image"
     )
-    val imageGenerationPrompt = setting<String, String>(
-        key = stringPreferencesKey("image_generation_prompt"),
-        default = "You are a book illustrator. Generate a single detailed, atmospheric " +
-                "illustration that visually depicts the scene, characters, or events " +
-                "described in the user's text. Match the tone and style of the book. " +
-                "Compose the image for a portrait screen, using an aspect ratio between 2:3 and 9:16. " +
-                "Return only the image without any captions or additional text."
+    val imageGenerationStyle = setting<String, String>(
+        key = stringPreferencesKey("image_generation_style"),
+        default = "SCHOOL=Expressive digital concept art, stylized realism, cinematic hand-painted illustration, sophisticated science-fiction visual storytelling\n" +
+                "BRUSHWORK=Broad visible brushstrokes, sweeping gestural marks, dry-brush scumbling, broken edges, fragmented contours and occasional color splashes; contrast loose, spontaneous painting with selectively refined focal details; allow unfinished strokes, exposed white space and partially dissolved forms\n" +
+                "CHARACTERS=Distinctive, expressive designs grounded in believable anatomy, natural body mechanics and convincing proportions; attractive yet individual features, strong silhouettes and restrained artistic exaggeration\n" +
+                "FACES=Carefully rendered faces with convincing anatomy, subtle asymmetry, nuanced facial planes, natural skin texture and expressive features; prioritize the eyes, eyelids, nose, lips and facial expression; maintain recognizable character identity\n" +
+                "HANDS=Anatomically convincing hands, correct finger count, natural joint structure, believable gestures and contact with objects; carefully render shape, pose, light and shadow whenever hands are visible or important\n" +
+                "FOCAL_OBJECTS=Precisely depict narrative-critical props, tools, weapons, devices and other important items; preserve recognizable shapes, functional structure, material identity and spatial relationships\n" +
+                "LIGHT_AND_COLOR=Scene-appropriate lighting with clear direction, expressive highlights, nuanced shadows and deliberate warm-cool contrast; harmonious colors, controlled saturation and selective accents that reinforce form, mood and focal hierarchy\n" +
+                "MATERIALS=Distinguishable skin, hair, fabric, metal, glass and other relevant surfaces through economical, material-specific brushwork rather than repetitive texture\n" +
+                "ENVIRONMENTS=Painterly landscapes, cityscapes, architecture, interiors, vehicles, spacecraft and science-fiction settings; establish convincing large-scale forms, spatial depth and atmosphere without over-rendering incidental structures\n" +
+                "DETAIL_HIERARCHY=Highest precision on faces, eyes, hands, expressions, meaningful gestures and focal objects; moderate definition for essential clothing, characters and scene-defining structures; leave incidental and undescribed elements extremely loose, abstract and impressionistic\n" +
+                "UNSPECIFIED_DETAILS=Do not elaborate unnecessarily on details absent from the source. Suggest secondary forms using broad strokes, sketchy marks, broken silhouettes, dry-brush textures, scattered color and open or nearly white areas; let edges and surfaces dissolve rather than fully describing them\n" +
+                "COMPOSITION=Clear focal hierarchy, readable silhouettes, deliberate negative space, convincing depth and dynamic narrative staging; adapt framing to the scene and preserve the visibility of essential actions and interactions\n" +
+                "FORMAT=Portrait-oriented e-book illustration, aspect ratio between 2:3 and 9:16; fill the canvas naturally, with no artificial letterboxing\n" +
+                "NEGATIVE_BLOCK=NO photorealistic rendering, NO clean vector graphics, NO flat corporate illustration, NO generic stock-art aesthetic, NO anime or manga styling, NO exaggerated cartoon anatomy, NO malformed faces or hands, NO incorrect finger counts, NO ambiguous focal objects, NO uniformly sharp outlines, NO uniformly detailed surfaces, NO elaborate invented background details, NO smooth airbrushed finish, NO chaotic brushwork obscuring focal elements, NO muddy tonal separation, NO captions, NO lettering, NO borders, NO watermarks\n"
     )
     val imageGenerationProxyEnabled = setting<Boolean, Boolean>(
         key = booleanPreferencesKey("image_generation_proxy_enabled"), default = false

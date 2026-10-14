@@ -271,8 +271,8 @@
     <string name="api_key_option_label">OpenRouter API key</string>
     <string name="image_model_option">Image model</string>
     <string name="image_model_option_label">OpenRouter model slug</string>
-    <string name="image_prompt_option">Prompt template</string>
-    <string name="image_prompt_option_label">System prompt sent with the selected text</string>
+    <string name="image_style_option">Style block</string>
+    <string name="image_style_option_label">Style block for image prompt</string>
     <string name="proxy_option">Proxy</string>
     <string name="proxy_option_desc">HTTP or SOCKS5 proxy</string>
     <string name="proxy_protocol_option">Proxy protocol</string>
