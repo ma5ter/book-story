@@ -23,7 +23,9 @@ class TextParserImpl @Inject constructor(
     // Document parser (HTML+Markdown)
     private val epubTextParser: EpubTextParser,
     private val htmlTextParser: HtmlTextParser,
-    private val xmlTextParser: XmlTextParser
+
+    // Document parser (FB2)
+    private val fb2TextParser: Fb2TextParser
 ) : TextParser {
 
     override suspend fun parse(cachedFile: CachedFile): List<ReaderText> {
@@ -48,7 +50,7 @@ class TextParserImpl @Inject constructor(
                 }
 
                 ".fb2" -> {
-                    xmlTextParser.parse(cachedFile)
+                    fb2TextParser.parse(cachedFile)
                 }
 
                 ".html" -> {
