@@ -14,8 +14,8 @@
 <div align="center">
   <img src="fastlane/metadata/android/en-US/images/icon_2.png" width="120" />
   <h1>Book's Story</h1>
-  <h3>Material You eBook Reader for Android</h3>
-  <p>Dive into the world of adventure as you discover your favorite book's story!</p>
+  <h3>Material You eBook Reader for Android with AI illustrations generator</h3>
+  <p>Dive into the world of adventure and visualize any scene as you discover your favorite book's story!</p>
 </div>
 
 ---
