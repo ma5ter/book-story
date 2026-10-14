@@ -406,6 +406,20 @@ class ReaderModel @Inject constructor(
                             attachments = _state.value.imageAttachments
                         )
 
+                        // The whole chapter containing the fragment is supplied
+                        // as context for the distillation step, the image itself
+                        // must still depict only the selected fragment.
+                        val selectedTextWithChapterContext = findChapterText(
+                            index = selectedParagraphIndex,
+                            text = _state.value.text
+                        )?.let { chapter ->
+                            "${event.textToIllustrate}\n\n${
+                                "--- The whole chapter containing the selected fragment, supplied for additional **weak** context. " +
+                                        "**Illustrate only the selected fragment above**, " +
+                                        "**do not include unrelated chapter content into image generation** ---"
+                            }\n\n$chapter"
+                        } ?: event.textToIllustrate
+
                         createImageAttachmentUseCase(
                             bookId = bookId,
                             paragraphIndex = paragraphIndex
@@ -426,7 +440,7 @@ class ReaderModel @Inject constructor(
 
                                 generateImageForAttachmentUseCase(
                                     attachmentId = attachment.id,
-                                    selectedText = event.textToIllustrate
+                                    selectedText = selectedTextWithChapterContext
                                 ).fold(
                                     onSuccess = { (completedAttachment, bitmap) ->
                                         _state.update { state ->

@@ -57,3 +57,34 @@ internal fun findSelectedParagraphIndex(
         ?: byProximity(partialMatches)
         ?: visibleItemIndex
 }
+
+/**
+ * Extracts the whole chapter of the paragraph at [index] belongs to as plain
+ * text: the chapter title followed by its text lines (injected images and
+ * other non-text entries are skipped). Returns null when the chapter
+ * contains no usable text.
+ */
+internal fun findChapterText(
+    index: Int,
+    text: List<ReaderText>
+): String? {
+    val chapterStart = text.take(index + 1)
+        .indexOfLast { it is ReaderText.Chapter }
+        .let { if (it == -1) 0 else it }
+    val chapterEnd = text.drop(chapterStart + 1)
+        .indexOfFirst { it is ReaderText.Chapter }
+        .let { if (it == -1) text.size else it + chapterStart + 1 }
+
+    val chapterText = buildString {
+        (text.getOrNull(chapterStart) as? ReaderText.Chapter)
+            ?.let { chapter -> append(chapter.title.trim()) }
+        for (i in chapterStart + 1 until chapterEnd) {
+            val entry = text[i]
+            if (entry is ReaderText.Text && entry.line.text.isNotBlank()) {
+                if (isNotEmpty()) append('\n')
+                append(entry.line.text.trim())
+            }
+        }
+    }
+    return chapterText.takeIf { it.isNotBlank() }
+}
