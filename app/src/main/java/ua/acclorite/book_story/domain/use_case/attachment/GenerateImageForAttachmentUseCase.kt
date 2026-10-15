@@ -42,26 +42,35 @@ class GenerateImageForAttachmentUseCase @Inject constructor(
     /**
      * Distills the prepared input into a compact English scene description
      * with the configured text assistant model.
+     * [onProgress] is called each time the server emits a keep-alive
+     * blank line while processing.
      */
-    suspend fun distill(preparedInput: String): Result<String> {
+    suspend fun distill(
+        preparedInput: String,
+        onProgress: () -> Unit = {}
+    ): Result<String> {
         logI(TAG, "Distilling scene description, input length: ${preparedInput.length}.")
-        return imageAttachmentRepository.distillSceneDescription(preparedInput)
+        return imageAttachmentRepository.distillSceneDescription(preparedInput, onProgress)
     }
 
     /**
      * Renders the scene with the configured image model, saves the image
      * and upgrades the attachment to COMPLETED.
+     * [onProgress] is called each time the server emits a keep-alive
+     * blank line while processing.
      */
     suspend fun complete(
         attachmentId: Int,
         sceneDescription: String,
-        styleReferencePath: String?
+        styleReferencePath: String?,
+        onProgress: () -> Unit = {}
     ): Result<Pair<ImageAttachment, CoverImage>> {
         logI(TAG, "Rendering image for attachment [$attachmentId].")
         return imageAttachmentRepository.completeImageGeneration(
             attachmentId = attachmentId,
             sceneDescription = sceneDescription,
-            styleReferencePath = styleReferencePath
+            styleReferencePath = styleReferencePath,
+            onProgress = onProgress
         )
     }
 }

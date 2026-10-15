@@ -52,14 +52,17 @@ class GenerateCharactersUseCase @Inject constructor(
      * (Settings -> Reader -> AI), it is fed in chunks; every continuation
      * request supplies the catalog received so far, so the model
      * extends it with missing information instead of starting over.
-     *
      * [onProgress] reports the percentage of completed chunk requests;
      * it is not called when the whole text fits into a single request.
+     *
+     * [onDownloadProgress] is called each time the server emits a
+     * keep-alive blank line while processing a request.
      */
     suspend operator fun invoke(
         bookId: Int,
         systemPrompt: String,
-        onProgress: (Int?) -> Unit = {}
+        onProgress: (Int?) -> Unit = {},
+        onDownloadProgress: () -> Unit = {}
     ): Result<List<BookCharacter>> {
         logI(TAG, "Generating characters catalog for book [$bookId].")
 
@@ -78,7 +81,8 @@ class GenerateCharactersUseCase @Inject constructor(
             return Result.failure(IllegalStateException("Book text is empty."))
         }
 
-        val catalog = generateCatalog(systemPrompt, bookText, onProgress).getOrElse {
+        val catalog = generateCatalog(systemPrompt, bookText, onProgress, onDownloadProgress)
+            .getOrElse {
             return Result.failure(it)
         }
 
@@ -99,7 +103,8 @@ class GenerateCharactersUseCase @Inject constructor(
     private suspend fun generateCatalog(
         systemPrompt: String,
         bookText: String,
-        onProgress: (Int?) -> Unit
+        onProgress: (Int?) -> Unit,
+        onDownloadProgress: () -> Unit
     ): Result<String> {
         val maxTokens = settingsManager.textMaxTokens.lastValue
         val systemTokens = estimateTokens(systemPrompt)
@@ -146,7 +151,8 @@ class GenerateCharactersUseCase @Inject constructor(
 
             val reply = openRouterClient.chatCompletion(
                 model = settingsManager.summarizeModel.lastValue.trim(),
-                messages = messages
+                messages = messages,
+                onProgress = onDownloadProgress
             )
             if (reply.isFailure) {
                 val error = reply.exceptionOrNull() ?: IOException("Character generation failed.")

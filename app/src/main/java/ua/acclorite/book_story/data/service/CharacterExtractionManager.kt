@@ -25,8 +25,8 @@ import javax.inject.Singleton
 @Immutable
 data class CharacterExtractionState(
     val bookId: Int? = null,
-    val isRunning: Boolean = false,
-    val progress: Int? = null
+    val progress: Int? = null,
+    val isRunning: Boolean = false
 )
 
 /**

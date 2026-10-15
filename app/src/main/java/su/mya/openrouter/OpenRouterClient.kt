@@ -17,6 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import okio.Buffer
 import ua.acclorite.book_story.core.CoverImage
 import ua.acclorite.book_story.core.log.logI
 import ua.acclorite.book_story.data.settings.SettingsManager
@@ -44,11 +45,14 @@ class OpenRouterClient @Inject constructor(
      * to the configured image generation model via the /images endpoint
      * and returns the decoded image. [inputReferences] are optional
      * image-to-image references (e.g. a style collage) sent along with
-     * the prompt.
+     * the prompt. [onProgress] is called each time the server emits a
+    * keep-alive blank line while processing the request; the total
+    * response length is never known, so no percentage is reported.
      */
     suspend fun generateImage(
         prompt: String,
-        inputReferences: List<ImageReference> = emptyList()
+        inputReferences: List<ImageReference> = emptyList(),
+        onProgress: () -> Unit = {}
     ): Result<CoverImage> {
         logI(TAG, "generateImage: started, selected text length: ${prompt.length}.")
         val model = settingsManager.imageGenerationModel.lastValue.trim()
@@ -76,7 +80,7 @@ class OpenRouterClient @Inject constructor(
             "generateImage: sending request, model: [$model], prompt length: ${prompt.length}."
         )
 
-        return execute(request, "generateImage") { parseGeneratedImage(it) }
+        return execute(request, "generateImage", onProgress) { parseGeneratedImage(it) }
             .onSuccess { image ->
                 logI(TAG, "generateImage: succeeded, image size: ${image.width}x${image.height}.")
             }
@@ -85,10 +89,14 @@ class OpenRouterClient @Inject constructor(
     /**
      * Sends the given chat messages to the given text model via the
      * /chat/completions endpoint and returns the assistant's reply.
+     * [onProgress] is called each time the server emits a keep-alive
+    * blank line while processing the request; the total response length
+    * is never known, so no percentage is reported.
      */
     suspend fun chatCompletion(
         model: String,
-        messages: List<ChatMessage>
+        messages: List<ChatMessage>,
+        onProgress: () -> Unit = {}
     ): Result<ChatMessage> {
         logI(TAG, "chatCompletion: started, messages: ${messages.size}.")
         val resolvedModel = model.trim()
@@ -112,7 +120,7 @@ class OpenRouterClient @Inject constructor(
         )
         logI(TAG, "chatCompletion: sending request, model: [$resolvedModel].")
 
-        return execute(request, "chatCompletion") { parseChatCompletion(it) }
+        return execute(request, "chatCompletion", onProgress) { parseChatCompletion(it) }
             .onSuccess { message ->
                 logI(TAG, "chatCompletion: succeeded, role: ${message.role}.")
             }
@@ -169,8 +177,16 @@ class OpenRouterClient @Inject constructor(
      * Executes the given request on the resolved client, converts HTTP
      * failures to descriptive exceptions and parses the response body with
      * [parse]. Transport and parsing errors are wrapped into the result.
+     * The body is read chunk by chunk on Dispatchers.IO, calling
+     * [onProgress] whenever a received chunk is a blank keep-alive line
+    * emitted by the server while processing.
      */
-    private suspend fun <T> execute(request: Request, logTag: String, parse: (String) -> T): Result<T> {
+    private suspend fun <T> execute(
+        request: Request,
+        logTag: String,
+        onProgress: () -> Unit,
+        parse: (String) -> T
+    ): Result<T> {
         return runCatching {
             withContext(Dispatchers.IO) {
                 val requestClient = resolveClient()
@@ -183,7 +199,7 @@ class OpenRouterClient @Inject constructor(
                 }
                 val response = requestClient.newCall(request).await()
                 response.use {
-                    val responseBody = it.body?.string().orEmpty()
+                    val responseBody = readResponseBody(it, onProgress)
                     if (!it.isSuccessful) {
                         logI(TAG, "$logTag: HTTP failure, code: ${it.code}.")
                         throw buildHttpException(it.code, responseBody)
@@ -202,6 +218,40 @@ class OpenRouterClient @Inject constructor(
                 "$logTag: failed with ${throwable::class.java.simpleName}: ${throwable.message}."
             )
         }
+    }
+
+    /**
+     * Reads the response body chunk by chunk into a buffer, calling
+     * [onProgress] whenever a received chunk is a blank keep-alive line
+     * emitted by the server while processing. The total response length
+     * is never known, so no percentage is computed.
+     */
+    private fun readResponseBody(response: Response, onProgress: () -> Unit): String {
+        val body = response.body ?: return ""
+        val source = body.source()
+        val buffer = Buffer()
+
+        while (true) {
+            val buffered = buffer.size
+            val read = source.read(buffer, READ_CHUNK_SIZE)
+            if (read == -1L) break
+            if (isBlankChunk(buffer, buffered)) onProgress()
+        }
+
+        // Leading/trailing keep-alive blank lines are not part of the JSON.
+        return buffer.readUtf8().trim()
+    }
+
+    /**
+     * Whether the bytes appended to [buffer] starting at [from] contain
+     * only whitespace, i.e. they are a blank keep-alive line emitted by
+     * the server while processing the request.
+     */
+    private fun isBlankChunk(buffer: Buffer, from: Long): Boolean {
+        for (position in from until buffer.size) {
+            if (!buffer[position].toInt().toChar().isWhitespace()) return false
+        }
+        return true
     }
 
     /**
@@ -412,6 +462,9 @@ class OpenRouterClient @Inject constructor(
 
         /** Maximum dimension for raster images before downsampling. */
         private const val MAX_RASTER_SIZE = 1600
+
+        /** Response body read chunk size. */
+        private const val READ_CHUNK_SIZE = 8192L
 
         private val json = Json {
             ignoreUnknownKeys = true

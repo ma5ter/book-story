@@ -33,8 +33,10 @@ import javax.inject.Inject
 
 /**
  * Foreground service running the long-running characters extraction.
- * Shows a persistent progress notification ("Processing ##%") while
- * analyzing the book text. On a failure the notification shows the error
+ * Shows a persistent progress notification ("Processing ##%", or an
+ * indeterminate bar with download dots while the progress cannot be
+ * estimated) while analyzing the book text. On a failure the
+ * notification shows the error
  * together with a Retry action, which restarts the whole extraction
  * (the book and the analysis prompt are retained by the service, so the
  * retry also works after the process death), and a Cancel action, which
@@ -58,6 +60,11 @@ class CharacterExtractionService : Service() {
     private var currentBookId: Int = -1
     private var currentSystemPrompt: String = ""
 
+    // Download progress dots (1..3, cycling) appended to the progress
+    // notification text.
+    private val downloadDots = ProgressDots()
+    private var dots: String = ""
+
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -69,7 +76,7 @@ class CharacterExtractionService : Service() {
             // A second start while an extraction is in progress: keep serving
             // the running one and re-post its current notification, which
             // also satisfies the startForeground contract.
-            promoteToForeground(progress = characterExtractionManager.state.value.progress)
+            promoteToForeground(characterExtractionManager.state.value.progress)
             return START_NOT_STICKY
         }
 
@@ -91,16 +98,23 @@ class CharacterExtractionService : Service() {
 
         currentBookId = bookId
         currentSystemPrompt = systemPrompt
+        dots = ""
 
         characterExtractionManager.start(bookId)
         promoteToForeground(progress = null)
 
         extractionJob = serviceScope.launch {
+            var progress: Int? = null
             val result = generateCharactersUseCase(
                 bookId = bookId,
                 systemPrompt = systemPrompt,
-                onProgress = { progress ->
-                    characterExtractionManager.updateProgress(bookId, progress)
+                onProgress = { value ->
+                    progress = value
+                    characterExtractionManager.updateProgress(bookId, value)
+                    notifyProgress(value)
+                },
+                onDownloadProgress = {
+                    dots = downloadDots.next()
                     notifyProgress(progress)
                 }
             )
@@ -214,16 +228,17 @@ class CharacterExtractionService : Service() {
     }
 
     /**
-     * Builds the progress notification: indeterminate while the progress
-     * cannot be estimated, otherwise a determinate "Processing ##%" bar.
+     * Builds the progress notification: indeterminate with download dots
+     * while the progress cannot be estimated, otherwise a determinate
+     * "Processing ##%" bar with the dots appended.
      */
     private fun buildNotification(progress: Int?): Notification {
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_popup_sync)
             .setContentTitle(getString(R.string.characters_generating))
             .setContentText(
-                if (progress == null) getString(R.string.characters_indeterminate)
-                else getString(R.string.characters_processing, progress)
+                getString(R.string.characters_processing) +
+                        (progress?.let { " $it%" } ?: "") + dots
             )
             .setOngoing(true)
             .setOnlyAlertOnce(true)

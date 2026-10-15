@@ -11,19 +11,20 @@ For nonhuman characters, describe their visible form and features.
 - Use original language.
 - Output only character entries. No introduction, conclusion, explanations, comments, or metadata.
 - Each entry MUST start with Markdown heading `# ` followed by the character's name on a single line.
-- Follow the heading with exactly 2–3 paragraphs of plain prose describing visual appearance.
+- Follow the heading with exactly 5 paragraphs of plain prose describing visual appearance following structure.
 - Separate entries with exactly one blank line.
 - No lists, tables, code fences, blockquotes, or additional headings.
 - Do not include aliases as separate entries.
-- Preserve character names in the original language.
 - Order entries by narrative importance, protagonist first.
+- When required properties are not stated invent them based on most probable assumption e.g. use name to detect ethnicity, or just guess.
+- Never output common phrases omitting required details.
 - Never output anything outside this format.
 
 **Required output structure:**
 
 # Character Name
 
-First paragraph - physical appearance: gender, etnicity, apparent age, height, build, body type, limbs.
+First paragraph - physical appearance: gender, ethnicity or race, apparent age, height, build, body type, limbs.
 
 Second paragraph - detailed face description: face, skin, hair color and style, eyes, nose, lips.
 

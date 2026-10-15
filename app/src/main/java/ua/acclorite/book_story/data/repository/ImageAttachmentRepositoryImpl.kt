@@ -91,7 +91,10 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun distillSceneDescription(preparedInput: String): Result<String> =
+    override suspend fun distillSceneDescription(
+        preparedInput: String,
+        onProgress: () -> Unit
+    ): Result<String> =
         runCatching {
             withContext(Dispatchers.IO) {
                 openRouterClient.chatCompletion(
@@ -99,7 +102,8 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                     messages = listOf(
                         ChatMessage(role = "system", content = scenePrompt),
                         ChatMessage(role = "user", content = preparedInput)
-                    )
+                    ),
+                    onProgress = onProgress
                 ).mapCatching { message ->
                     message.content?.trim()?.takeIf { it.isNotBlank() }
                         ?: throw IOException("Model returned no scene description.")
@@ -110,7 +114,8 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
     override suspend fun completeImageGeneration(
         attachmentId: Int,
         sceneDescription: String,
-        styleReferencePath: String?
+        styleReferencePath: String?,
+        onProgress: () -> Unit
     ): Result<Pair<ImageAttachment, CoverImage>> = runCatching {
         withContext(Dispatchers.IO) {
             val current = database.bookAttachmentDao.findAttachmentById(attachmentId)
@@ -135,7 +140,8 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
 
             val bitmap = openRouterClient.generateImage(
                 prompt = prompt,
-                inputReferences = inputReferences
+                inputReferences = inputReferences,
+                onProgress = onProgress
             ).getOrThrow()
             val file = coverImageHandler.saveImageAttachment(bitmap).getOrThrow()
 

@@ -305,8 +305,7 @@
     <string name="characters_generating">Extracting characters…</string>
     <string name="characters_empty">No characters yet. Analyze the book content to build a characters catalog.</string>
     <string name="characters_prompt">Read the entire book text, ignoring any image references. Identify the protagonist and all major and significant recurring characters. For each character, synthesize a consistent visual description from the entire text.</string>
-    <string name="characters_indeterminate">Processing…</string>
-    <string name="characters_processing">Processing %1$d%%</string>
+    <string name="characters_processing">Processing</string>
     <string name="characters_failed">Character extraction failed</string>
     <string name="characters_stopped_by_system">Character extraction was stopped by the system.</string>
 

@@ -76,6 +76,11 @@ class ImageGenerationService : Service() {
     private var sceneDescription: String? = null
     private var styleReferencePath: String? = null
 
+    // Download progress dots (1..3, cycling) appended to the step label
+    // in the progress notification.
+    private val downloadDots = ProgressDots()
+    private var dots: String = ""
+
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -181,6 +186,7 @@ class ImageGenerationService : Service() {
             for (step in ImageGenerationStep.entries.drop(startStep.ordinal)) {
                 currentStep = step
                 imageGenerationManager.updateStep(step)
+                dots = ""
                 notifyStep(step)
 
                 when (step) {
@@ -199,7 +205,9 @@ class ImageGenerationService : Service() {
 
                     ImageGenerationStep.DISTILL ->
                         sceneDescription = generateImageForAttachmentUseCase
-                            .distill(requireNotNull(preparedInput))
+                            .distill(requireNotNull(preparedInput)) {
+                                onDownloadProgress(step)
+                            }
                             .getOrThrow()
 
                     ImageGenerationStep.GENERATE -> {
@@ -208,7 +216,9 @@ class ImageGenerationService : Service() {
                                 currentAttachmentId,
                                 requireNotNull(sceneDescription),
                                 styleReferencePath
-                            )
+                            ) {
+                                onDownloadProgress(step)
+                            }
                             .getOrThrow()
                         imageGenerationManager.finish(
                             ImageGenerationResult.Success(
@@ -294,6 +304,15 @@ class ImageGenerationService : Service() {
         }
     }
 
+    /**
+     * Advances the download dots cycle and refreshes the progress
+     * notification with the dots appended to the current step label.
+     */
+    private fun onDownloadProgress(step: ImageGenerationStep) {
+        dots = downloadDots.next()
+        notifyStep(step)
+    }
+
     private fun createNotificationChannel() {
         val manager = getSystemService(NotificationManager::class.java)
         if (manager.getNotificationChannel(CHANNEL_ID) == null) {
@@ -311,7 +330,7 @@ class ImageGenerationService : Service() {
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_popup_sync)
             .setContentTitle(getString(R.string.image_generating))
-            .setContentText(stepLabel(step))
+            .setContentText(stepLabel(step).removeSuffix("…") + dots)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .setProgress(100, 0, true)
