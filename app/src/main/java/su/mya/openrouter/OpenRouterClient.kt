@@ -67,7 +67,7 @@ class OpenRouterClient @Inject constructor(
                 model = model,
                 prompt = prompt,
                 inputReferences = inputReferences.takeIf { it.isNotEmpty() },
-                provider = ProviderRouting(sort = "price")
+                provider = ProviderRouting(sort = ProviderSort.OfString("price"))
             )
         )
         val request = buildRequest(
@@ -89,6 +89,8 @@ class OpenRouterClient @Inject constructor(
     /**
      * Sends the given chat messages to the given text model via the
      * /chat/completions endpoint and returns the assistant's reply.
+     * [provider] holds the routing preferences of the request; the
+     * default prioritizes throughput.
      * [onProgress] is called each time the server emits a keep-alive
     * blank line while processing the request; the total response length
     * is never known, so no percentage is reported.
@@ -96,6 +98,7 @@ class OpenRouterClient @Inject constructor(
     suspend fun chatCompletion(
         model: String,
         messages: List<ChatMessage>,
+        provider: ProviderRouting = ProviderRouting(sort = ProviderSort.OfObject(by = "throughput")),
         onProgress: () -> Unit = {}
     ): Result<ChatMessage> {
         logI(TAG, "chatCompletion: started, messages: ${messages.size}.")
@@ -110,7 +113,7 @@ class OpenRouterClient @Inject constructor(
             ChatCompletionRequest(
                 model = resolvedModel,
                 messages = messages,
-                provider = ProviderRouting(sort = "price")
+                provider = provider
             )
         )
         val request = buildRequest(

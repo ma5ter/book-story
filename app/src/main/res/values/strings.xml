@@ -293,11 +293,23 @@
     <string name="text_assistant_model_option">Text Model</string>
     <string name="text_assistant_model_option_label">OpenRouter smart text model slug</string>
 
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Preferred latency (p90, sec)</string>
+    <string name="text_assistant_preferred_latency_option_label">Preferred maximum provider latency at p90 for text assistant</string>
+    <string name="text_assistant_max_input_price_option">Max input price ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Maximum prompt token price for text assistant</string>
+
     <!-- AI summarize -->
     <string name="summarize_model_option">Summarize Model</string>
     <string name="summarize_model_option_label">OpenRouter model slug used for characters extraction</string>
     <string name="text_assistant_max_tokens_option">Max input tokens</string>
     <string name="text_assistant_max_tokens_option_label">Model context limit used to chunk long books</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Preferred latency (p90, sec)</string>
+    <string name="character_preferred_latency_option_label">Preferred maximum provider latency at p90 for characters extraction</string>
+    <string name="character_max_input_price_option">Max input price ($/1M)</string>
+    <string name="character_max_input_price_option_label">Maximum prompt token price for characters extraction</string>
 
     <!-- AI characters -->
     <string name="characters_reader_settings">Characters</string>

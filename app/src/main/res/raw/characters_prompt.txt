@@ -17,7 +17,7 @@ For nonhuman characters, describe their visible form and features.
 - Do not include aliases as separate entries.
 - Order entries by narrative importance, protagonist first.
 - When required properties are not stated invent them based on most probable assumption e.g. use name to detect ethnicity, or just guess.
-- Never output common phrases omitting required details.
+- Never output "not stated" or other common phrases omitting required details.
 - Never output anything outside this format.
 
 **Required output structure:**

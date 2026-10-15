@@ -360,7 +360,7 @@ class SettingsManager @Inject constructor(
     )
     val imageGenerationModel = setting<String, String>(
         key = stringPreferencesKey("image_generation_model"),
-        default = "meta/muse-image"
+        default = "black-forest-labs/flux-3-image-klein"
     )
     val imageGenerationStyleReferenceEnabled = setting<Boolean, Boolean>(
         key = booleanPreferencesKey("image_generation_style_reference_enabled"), default = true
@@ -400,14 +400,26 @@ class SettingsManager @Inject constructor(
     /* ------ AI assistant ------------------------ */
     val textAssistantModel = setting<String, String>(
         key = stringPreferencesKey("text_assistant_model"),
-        default = "z-ai/glm-5.3-flash"
+        default = "deepseek/deepseek-v4.1-flash"
+    )
+    val textAssistantPreferredLatency = setting<Int, Int>(
+        key = intPreferencesKey("text_assistant_preferred_latency"), default = 3
+    )
+    val textAssistantMaxInputPrice = setting<Double, Double>(
+        key = doublePreferencesKey("text_assistant_max_input_price"), default = 0.03
     )
     val summarizeModel = setting<String, String>(
         key = stringPreferencesKey("summarize_model"),
-        default = "z-ai/glm-5.3-flash"
+        default = "deepseek/deepseek-v4.1-flash"
     )
     val textMaxTokens = setting<Int, Int>(
         key = intPreferencesKey("text_assistant_max_tokens"), default = 100000
+    )
+    val characterPreferredLatency = setting<Int, Int>(
+        key = intPreferencesKey("character_preferred_latency"), default = 3
+    )
+    val characterMaxInputPrice = setting<Double, Double>(
+        key = doublePreferencesKey("character_max_input_price"), default = 0.03
     )
     /* - - - - - - - - - - - - - - - - - - - - - - */
     private fun <T, P> setting(

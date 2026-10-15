@@ -8,6 +8,10 @@ package ua.acclorite.book_story.domain.use_case.character
 
 import su.mya.openrouter.ChatMessage
 import su.mya.openrouter.OpenRouterClient
+import su.mya.openrouter.MaxPrice
+import su.mya.openrouter.PreferredMaxLatency
+import su.mya.openrouter.ProviderRouting
+import su.mya.openrouter.ProviderSort
 import ua.acclorite.book_story.core.log.logI
 import ua.acclorite.book_story.core.log.logW
 import ua.acclorite.book_story.data.parser.character.CharacterParser
@@ -152,6 +156,18 @@ class GenerateCharactersUseCase @Inject constructor(
             val reply = openRouterClient.chatCompletion(
                 model = settingsManager.summarizeModel.lastValue.trim(),
                 messages = messages,
+                provider = ProviderRouting(
+                    // Prefer the highest-throughput provider within the
+                    // configured latency (p90) and hard price limits.
+                    sort = ProviderSort.OfObject(by = "throughput"),
+                    preferredMaxLatency = PreferredMaxLatency(
+                        p90 = settingsManager.characterPreferredLatency.lastValue
+                    ),
+                    maxPrice = MaxPrice(
+                        prompt = settingsManager.characterMaxInputPrice.lastValue,
+                        completion = COMPLETION_MAX_PRICE
+                    )
+                ),
                 onProgress = onDownloadProgress
             )
             if (reply.isFailure) {
@@ -204,6 +220,9 @@ class GenerateCharactersUseCase @Inject constructor(
     }
 
     private companion object {
+        /** Fixed completion price ceiling ($/1M tokens) of character requests. */
+        private const val COMPLETION_MAX_PRICE = 10.0
+
         /** Conservative characters-per-token ratio for rough token estimation. */
         private const val CHARS_PER_TOKEN = 3
 

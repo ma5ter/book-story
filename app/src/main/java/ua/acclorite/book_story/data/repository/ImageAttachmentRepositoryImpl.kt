@@ -19,6 +19,10 @@ import su.mya.openrouter.OpenRouterClient
 import su.mya.openrouter.ImageReference
 import su.mya.openrouter.ImageUrl
 import su.mya.openrouter.ChatMessage
+import su.mya.openrouter.MaxPrice
+import su.mya.openrouter.PreferredMaxLatency
+import su.mya.openrouter.ProviderRouting
+import su.mya.openrouter.ProviderSort
 import ua.acclorite.book_story.data.settings.SettingsManager
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachmentStatus
@@ -102,6 +106,18 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                     messages = listOf(
                         ChatMessage(role = "system", content = scenePrompt),
                         ChatMessage(role = "user", content = preparedInput)
+                    ),
+                    provider = ProviderRouting(
+                        // Prefer the highest-throughput provider within the
+                        // configured latency (p90) and hard price limits.
+                        sort = ProviderSort.OfObject(by = "throughput"),
+                        preferredMaxLatency = PreferredMaxLatency(
+                            p90 = settingsManager.textAssistantPreferredLatency.lastValue
+                        ),
+                        maxPrice = MaxPrice(
+                            prompt = settingsManager.textAssistantMaxInputPrice.lastValue,
+                            completion = COMPLETION_MAX_PRICE
+                        )
                     ),
                     onProgress = onProgress
                 ).mapCatching { message ->
@@ -227,6 +243,9 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
     }
 
     private companion object {
+
+        /** Fixed completion price ceiling ($/1M tokens) of text assistant requests. */
+        private const val COMPLETION_MAX_PRICE = 10.0
 
         /** Header marking the characters catalog as an addendum to the system prompt. */
         private const val CHARACTERS_ADDENDUM_HEADER =

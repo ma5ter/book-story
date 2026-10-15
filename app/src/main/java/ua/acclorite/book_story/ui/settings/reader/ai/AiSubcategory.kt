@@ -16,6 +16,10 @@ import androidx.compose.ui.res.stringResource
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.ui.settings.components.SettingsSubcategory
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationApiKeyOption
+import ua.acclorite.book_story.ui.settings.reader.ai.components.TextAssistantMaxInputPriceOption
+import ua.acclorite.book_story.ui.settings.reader.ai.components.TextAssistantPreferredLatencyOption
+import ua.acclorite.book_story.ui.settings.reader.ai.components.CharacterMaxInputPriceOption
+import ua.acclorite.book_story.ui.settings.reader.ai.components.CharacterPreferredLatencyOption
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationModelOption
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationPromptOption
 import ua.acclorite.book_story.ui.settings.reader.ai.components.ImageGenerationProxyHostOption
@@ -52,11 +56,27 @@ fun LazyListScope.AiSubcategory(
         }
 
         item {
+            TextAssistantPreferredLatencyOption()
+        }
+
+        item {
+            TextAssistantMaxInputPriceOption()
+        }
+
+        item {
             SummarizeModelOption()
         }
 
         item {
             TextMaxTokensOption()
+        }
+
+        item {
+            CharacterPreferredLatencyOption()
+        }
+
+        item {
+            CharacterMaxInputPriceOption()
         }
 
         item {
