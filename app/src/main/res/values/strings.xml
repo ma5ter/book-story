@@ -278,6 +278,8 @@
     <string name="image_model_option_label">OpenRouter image model slug</string>
     <string name="image_style_option">Style block</string>
     <string name="image_style_option_label">Style block for image prompt</string>
+    <string name="style_reference_option">Style reference</string>
+    <string name="style_reference_option_desc">Attach a collage of the book\'s illustrations as a style reference</string>
     <string name="proxy_option">Proxy</string>
     <string name="proxy_option_desc">HTTP or SOCKS5 proxy</string>
     <string name="proxy_protocol_option">Proxy protocol</string>
@@ -305,10 +307,13 @@
     <string name="characters_prompt">Read the entire book text, ignoring any image references. Identify the protagonist and all major and significant recurring characters. For each character, synthesize a consistent visual description from the entire text.</string>
     <string name="characters_indeterminate">Processing…</string>
     <string name="characters_processing">Processing %1$d%%</string>
+    <string name="characters_failed">Character extraction failed</string>
+    <string name="characters_stopped_by_system">Character extraction was stopped by the system.</string>
 
     <!-- AI image generation service -->
     <string name="image_generating">Generating image…</string>
     <string name="image_step_prepare">Preparing context…</string>
+    <string name="image_step_collage">Building style collage…</string>
     <string name="image_step_distill">Distilling scene…</string>
     <string name="image_step_generate">Rendering illustration…</string>
     <string name="image_generation_failed">Image generation failed</string>

@@ -38,12 +38,15 @@ interface ImageAttachmentRepository {
 
     /**
      * Renders the [sceneDescription] with the configured image model,
-     * saves the image and upgrades the attachment to COMPLETED.
+     * with the optional [styleReferencePath] style collage attached as an
+     * image-to-image reference to keep the overall style. Saves the image
+     * and upgrades the attachment to COMPLETED.
      * Returns the completed attachment together with the generated bitmap.
      */
     suspend fun completeImageGeneration(
         attachmentId: Int,
-        sceneDescription: String
+        sceneDescription: String,
+        styleReferencePath: String?
     ): Result<Pair<ImageAttachment, CoverImage>>
 
     /**

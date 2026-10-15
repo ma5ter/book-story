@@ -25,12 +25,12 @@ Depict one coherent, visually expressive moment rather than a sequence or summar
 <IDENTITY BLOCK
 CHARACTER=CharacterName
 GENDER=
+ETHNICITY=
 AGE=y.o.
 HEIGHT=cm
 BUILD=
 BODY_TYPE=
 LIMBS={adapt for action, even if no strict description, invent it}
-ETHNICITY=
 SKIN=
 HAIR=
 HAIR_COLOR=

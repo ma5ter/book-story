@@ -30,12 +30,15 @@ import kotlinx.coroutines.launch
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.domain.use_case.attachment.DeleteImageAttachmentUseCase
 import ua.acclorite.book_story.domain.use_case.attachment.GenerateImageForAttachmentUseCase
+import ua.acclorite.book_story.domain.use_case.attachment.GenerateStyleCollageUseCase
+import ua.acclorite.book_story.data.settings.SettingsManager
 import javax.inject.Inject
 
 /**
  * Foreground service running the AI image generation step by step.
  * Shows a persistent progress notification with the current step
- * ("Preparing context…", "Distilling scene…", "Rendering illustration…").
+ * ("Preparing context…", "Building style collage…", "Distilling scene…",
+ * "Rendering illustration…").
  * On a failed step the notification shows the error together with a Retry
  * action, which restarts the service from the failed step; intermediate
  * results travel in the intent extras, so the retry also works after
@@ -52,6 +55,12 @@ class ImageGenerationService : Service() {
     lateinit var deleteImageAttachmentUseCase: DeleteImageAttachmentUseCase
 
     @Inject
+    lateinit var generateStyleCollageUseCase: GenerateStyleCollageUseCase
+
+    @Inject
+    lateinit var settingsManager: SettingsManager
+
+    @Inject
     lateinit var imageGenerationManager: ImageGenerationManager
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
@@ -65,6 +74,7 @@ class ImageGenerationService : Service() {
     private var currentStep: ImageGenerationStep = ImageGenerationStep.PREPARE
     private var preparedInput: String? = null
     private var sceneDescription: String? = null
+    private var styleReferencePath: String? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -77,6 +87,8 @@ class ImageGenerationService : Service() {
             ?: ImageGenerationStep.PREPARE
         val input = intent?.getStringExtra(EXTRA_PREPARED_INPUT)?.takeIf { it.isNotBlank() }
         val scene = intent?.getStringExtra(EXTRA_SCENE_DESCRIPTION)?.takeIf { it.isNotBlank() }
+        val styleReference =
+            intent?.getStringExtra(EXTRA_STYLE_REFERENCE)?.takeIf { it.isNotBlank() }
         val cancelRequested = intent?.getBooleanExtra(EXTRA_CANCEL, false) == true
 
         if (imageGenerationManager.state.value.isRunning) {
@@ -98,8 +110,8 @@ class ImageGenerationService : Service() {
         val invalid = bookId == -1 ||
                 attachmentId == -1 ||
                 selectedText.isBlank() ||
-                (startStep == ImageGenerationStep.DISTILL && input == null) ||
-                (startStep == ImageGenerationStep.GENERATE && scene == null)
+                (startStep.ordinal > ImageGenerationStep.PREPARE.ordinal && input == null) ||
+                (startStep.ordinal > ImageGenerationStep.DISTILL.ordinal && scene == null)
         if (invalid) {
             promoteToForeground(step = null)
             stopSelf()
@@ -110,9 +122,10 @@ class ImageGenerationService : Service() {
         currentAttachmentId = attachmentId
         currentSelectedText = selectedText
         currentStep = startStep
-        preparedInput = if (startStep == ImageGenerationStep.PREPARE) null else input
+        preparedInput = if (startStep.ordinal > ImageGenerationStep.PREPARE.ordinal) input else null
         sceneDescription =
             if (startStep.ordinal <= ImageGenerationStep.DISTILL.ordinal) null else scene
+        styleReferencePath = styleReference
 
         imageGenerationManager.start(bookId, attachmentId)
         promoteToForeground(startStep)
@@ -176,6 +189,14 @@ class ImageGenerationService : Service() {
                             .prepare(currentAttachmentId, currentSelectedText)
                             .getOrThrow()
 
+                    ImageGenerationStep.COLLAGE ->
+                        // Optional style reference, skipped entirely when disabled
+                        // in settings; null when the book has no illustrations yet,
+                        // the pipeline continues without it.
+                        if (settingsManager.imageGenerationStyleReferenceEnabled.lastValue) {
+                            styleReferencePath = generateStyleCollageUseCase(currentBookId).getOrNull()
+                        }
+
                     ImageGenerationStep.DISTILL ->
                         sceneDescription = generateImageForAttachmentUseCase
                             .distill(requireNotNull(preparedInput))
@@ -183,7 +204,11 @@ class ImageGenerationService : Service() {
 
                     ImageGenerationStep.GENERATE -> {
                         val (attachment, bitmap) = generateImageForAttachmentUseCase
-                            .complete(currentAttachmentId, requireNotNull(sceneDescription))
+                            .complete(
+                                currentAttachmentId,
+                                requireNotNull(sceneDescription),
+                                styleReferencePath
+                            )
                             .getOrThrow()
                         imageGenerationManager.finish(
                             ImageGenerationResult.Success(
@@ -336,7 +361,8 @@ class ImageGenerationService : Service() {
             },
             sceneDescription = sceneDescription?.takeIf {
                 failedStep.ordinal > ImageGenerationStep.DISTILL.ordinal
-            }
+            },
+            styleReferencePath = styleReferencePath
         )
         return PendingIntent.getForegroundService(
             this,
@@ -365,6 +391,7 @@ class ImageGenerationService : Service() {
 
     private fun stepLabel(step: ImageGenerationStep?): String = when (step) {
         ImageGenerationStep.PREPARE -> getString(R.string.image_step_prepare)
+        ImageGenerationStep.COLLAGE -> getString(R.string.image_step_collage)
         ImageGenerationStep.DISTILL -> getString(R.string.image_step_distill)
         ImageGenerationStep.GENERATE -> getString(R.string.image_step_generate)
         null -> getString(R.string.image_generating)
@@ -385,6 +412,7 @@ class ImageGenerationService : Service() {
         const val EXTRA_CANCEL = "image_cancel"
         private const val EXTRA_PREPARED_INPUT = "image_prepared_input"
         private const val EXTRA_SCENE_DESCRIPTION = "image_scene_description"
+        private const val EXTRA_STYLE_REFERENCE = "image_style_reference"
 
         /** Distinct request code of the cancel action's PendingIntent. */
         private const val CANCEL_REQUEST_CODE = 1003
@@ -396,7 +424,8 @@ class ImageGenerationService : Service() {
             selectedText: String,
             startStep: ImageGenerationStep,
             preparedInput: String?,
-            sceneDescription: String?
+            sceneDescription: String?,
+            styleReferencePath: String?
         ): Intent {
             return Intent(context, ImageGenerationService::class.java)
                 .putExtra(EXTRA_BOOK_ID, bookId)
@@ -405,6 +434,7 @@ class ImageGenerationService : Service() {
                 .putExtra(EXTRA_START_STEP, startStep.name)
                 .putExtra(EXTRA_PREPARED_INPUT, preparedInput?.sanitizeExtra())
                 .putExtra(EXTRA_SCENE_DESCRIPTION, sceneDescription?.sanitizeExtra())
+                .putExtra(EXTRA_STYLE_REFERENCE, styleReferencePath)
         }
 
         /**
@@ -432,7 +462,8 @@ class ImageGenerationService : Service() {
                     selectedText = selectedText,
                     startStep = ImageGenerationStep.PREPARE,
                     preparedInput = null,
-                    sceneDescription = null
+                sceneDescription = null,
+                styleReferencePath = null
                 )
             )
         }

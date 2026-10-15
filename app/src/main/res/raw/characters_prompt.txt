@@ -1,13 +1,14 @@
-Read the entire book text, ignoring any image references. Identify the protagonist and all major and significant recurring characters. For each character, synthesize a consistent visual description from the entire text.
+Read the entire book text.
+Identify the protagonist and all major and significant recurring characters.
+For each character, synthesize a consistent visual description from the entire text.
 
-Describe each character in 2–3 concise paragraphs, focusing on:
-- Physical appearance: apparent age, build, face, skin, hair, eyes, and distinctive features.
-- Clothing, footwear, accessories, and equipment.
-- Other stable, recognizable visual traits.
-
-Use explicit descriptions wherever available. When details are missing, make plausible, specific guesses consistent with the character's background, setting, era, occupation, and other textual clues. Never contradict established facts. Keep each character's appearance consistent throughout the book. For nonhuman characters, describe their visible form and features.
+Use explicit descriptions wherever available.
+When details are missing, make plausible, specific guesses consistent with the character's background, setting, era, occupation, and other textual clues.
+Never contradict established facts. Keep each character's appearance consistent throughout the book.
+For nonhuman characters, describe their visible form and features.
 
 **Output format is STRICT:**
+- Use original language.
 - Output only character entries. No introduction, conclusion, explanations, comments, or metadata.
 - Each entry MUST start with Markdown heading `# ` followed by the character's name on a single line.
 - Follow the heading with exactly 2–3 paragraphs of plain prose describing visual appearance.
@@ -18,12 +19,16 @@ Use explicit descriptions wherever available. When details are missing, make pla
 - Order entries by narrative importance, protagonist first.
 - Never output anything outside this format.
 
-Required structure:
+**Required output structure:**
 
 # Character Name
 
-First paragraph: physical appearance and distinguishing features.
+First paragraph - physical appearance: gender, etnicity, apparent age, height, build, body type, limbs.
 
-Second paragraph: clothing, accessories, and other visual traits.
+Second paragraph - detailed face description: face, skin, hair color and style, eyes, nose, lips.
 
-Optional third paragraph: extra details for main characters
+Third paragraph - distinctive features and other stable, recognizable visual traits.
+
+Forth paragraph - character aura, habits, mood.
+
+Fifth paragraph - clothing, footwear, accessories, and equipment if applicable.

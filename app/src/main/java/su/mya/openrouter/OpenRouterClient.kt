@@ -42,9 +42,14 @@ class OpenRouterClient @Inject constructor(
     /**
      * Sends the selected text together with the configured system prompt
      * to the configured image generation model via the /images endpoint
-     * and returns the decoded image.
+     * and returns the decoded image. [inputReferences] are optional
+     * image-to-image references (e.g. a style collage) sent along with
+     * the prompt.
      */
-    suspend fun generateImage(prompt: String): Result<CoverImage> {
+    suspend fun generateImage(
+        prompt: String,
+        inputReferences: List<ImageReference> = emptyList()
+    ): Result<CoverImage> {
         logI(TAG, "generateImage: started, selected text length: ${prompt.length}.")
         val model = settingsManager.imageGenerationModel.lastValue.trim()
         requireValidConfiguration(model, "Image model").fold(
@@ -57,6 +62,7 @@ class OpenRouterClient @Inject constructor(
             ImageGenerationRequest(
                 model = model,
                 prompt = prompt,
+                inputReferences = inputReferences.takeIf { it.isNotEmpty() },
                 provider = ProviderRouting(sort = "price")
             )
         )

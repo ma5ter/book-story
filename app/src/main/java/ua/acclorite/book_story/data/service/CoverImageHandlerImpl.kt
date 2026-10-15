@@ -29,6 +29,7 @@ class CoverImageHandlerImpl @Inject constructor(
     private val filesDir: File = application.filesDir
     private val coversDir = File(filesDir, "covers")
     private val imageAttachmentsDir = File(filesDir, "image_attachments")
+    private val styleCollagesDir = File(application.cacheDir, "style_collages")
 
     override suspend fun saveCover(coverImage: CoverImage): Result<File> = runCatching {
         if (!coversDir.exists()) {
@@ -73,6 +74,35 @@ class CoverImageHandlerImpl @Inject constructor(
         }
 
         attachment
+    }
+
+    /**
+     * Saves the style collage of [bookId] under a deterministic name in
+     * the cache directory, overwriting the previous reference. Cache
+     * storage is used because the collage is transient, regenerable data.
+     */
+    override suspend fun saveStyleCollage(
+        bookId: Int,
+        coverImage: CoverImage
+    ): Result<File> = runCatching {
+        if (!styleCollagesDir.exists()) {
+            styleCollagesDir.mkdirs()
+        }
+
+        val collage = File(styleCollagesDir, "collage_$bookId.webp")
+
+        withContext(Dispatchers.IO) {
+            BufferedOutputStream(FileOutputStream(collage)).use { output ->
+                coverImage
+                    .compress(Bitmap.CompressFormat.WEBP, 85, output)
+                    .let { success ->
+                        if (success) return@let
+                        throw Exception("Couldn't save style collage.")
+                    }
+            }
+        }
+
+        collage
     }
 
     override suspend fun deleteCover(coverImage: Uri): Result<Unit> = runCatching {

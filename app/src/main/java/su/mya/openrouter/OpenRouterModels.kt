@@ -14,10 +14,26 @@ data class ProviderRouting(
     val sort: String
 )
 
+/**
+ * A reference image for image-to-image generation, sent under
+ * `input_references` as a base64 data URL.
+ */
+@Serializable
+data class ImageReference(
+    val type: String,
+    @SerialName("image_url") val imageUrl: ImageUrl
+)
+
+@Serializable
+data class ImageUrl(
+    val url: String
+)
+
 @Serializable
 data class ImageGenerationRequest(
     val model: String,
     val prompt: String,
+    @SerialName("input_references") val inputReferences: List<ImageReference>? = null,
     val provider: ProviderRouting
 )
 

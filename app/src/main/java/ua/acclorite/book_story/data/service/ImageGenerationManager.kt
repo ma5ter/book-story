@@ -28,6 +28,9 @@ enum class ImageGenerationStep {
     /** Validates the attachment and appends the characters catalog to the selected text. */
     PREPARE,
 
+    /** Renders a collage of the book's existing illustrations as a style reference. */
+    COLLAGE,
+
     /** The text model distills the prepared input into a scene description. */
     DISTILL,
 

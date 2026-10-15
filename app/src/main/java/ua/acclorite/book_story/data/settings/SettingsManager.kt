@@ -362,6 +362,9 @@ class SettingsManager @Inject constructor(
         key = stringPreferencesKey("image_generation_model"),
         default = "meta/muse-image"
     )
+    val imageGenerationStyleReferenceEnabled = setting<Boolean, Boolean>(
+        key = booleanPreferencesKey("image_generation_style_reference_enabled"), default = true
+    )
     val imageGenerationStyle = setting<String, String>(
         key = stringPreferencesKey("image_generation_style"),
         default = "SCHOOL=Expressive digital concept art, stylized realism, cinematic hand-painted illustration, sophisticated science-fiction visual storytelling\n" +
@@ -397,11 +400,11 @@ class SettingsManager @Inject constructor(
     /* ------ AI assistant ------------------------ */
     val textAssistantModel = setting<String, String>(
         key = stringPreferencesKey("text_assistant_model"),
-        default = "qwen/qwen3.7-flash"
+        default = "z-ai/glm-5.3-flash"
     )
     val summarizeModel = setting<String, String>(
         key = stringPreferencesKey("summarize_model"),
-        default = "scaledown/summarize"
+        default = "z-ai/glm-5.3-flash"
     )
     val textMaxTokens = setting<Int, Int>(
         key = intPreferencesKey("text_assistant_max_tokens"), default = 100000

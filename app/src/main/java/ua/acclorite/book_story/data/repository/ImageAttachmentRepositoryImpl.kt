@@ -8,6 +8,7 @@ package ua.acclorite.book_story.data.repository
 
 import android.app.Application
 import android.graphics.BitmapFactory
+import android.util.Base64
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.core.CoverImage
@@ -15,6 +16,8 @@ import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
 import ua.acclorite.book_story.data.local.room.BookDatabase
 import ua.acclorite.book_story.R
 import su.mya.openrouter.OpenRouterClient
+import su.mya.openrouter.ImageReference
+import su.mya.openrouter.ImageUrl
 import su.mya.openrouter.ChatMessage
 import ua.acclorite.book_story.data.settings.SettingsManager
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
@@ -106,21 +109,33 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
 
     override suspend fun completeImageGeneration(
         attachmentId: Int,
-        sceneDescription: String
+        sceneDescription: String,
+        styleReferencePath: String?
     ): Result<Pair<ImageAttachment, CoverImage>> = runCatching {
         withContext(Dispatchers.IO) {
             val current = database.bookAttachmentDao.findAttachmentById(attachmentId)
                 ?: throw IOException("Image attachment [$attachmentId] was not found.")
 
+            val inputReferences = encodeStyleReference(styleReferencePath)
+                ?.takeIf { settingsManager.imageGenerationStyleReferenceEnabled.lastValue }
+                ?.let { url ->
+                    listOf(ImageReference(type = "image_url", imageUrl = ImageUrl(url)))
+                }
+                .orEmpty()
+
             val styleBlock = settingsManager.imageGenerationStyle.lastValue.trim()
-            val prompt = if (styleBlock.isBlank()) {
+            var prompt = if (styleBlock.isBlank()) {
                 sceneDescription
             } else {
                 "<STYLE_BLOCK\n$styleBlock\n>\n\n$sceneDescription"
             }
+            if (inputReferences.isNotEmpty()) {
+                prompt += "\n\nUse attached image for style reference only"
+            }
 
             val bitmap = openRouterClient.generateImage(
-                prompt = prompt
+                prompt = prompt,
+                inputReferences = inputReferences
             ).getOrThrow()
             val file = coverImageHandler.saveImageAttachment(bitmap).getOrThrow()
 
@@ -178,6 +193,20 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
 
     private suspend fun getAttachment(attachmentId: Int): ImageAttachment? {
         return database.bookAttachmentDao.findAttachmentById(attachmentId)?.toImageAttachment()
+    }
+
+    /**
+     * Reads the style reference collage from [path] and encodes it as a
+     * base64 data URL for the image generation request. Returns null when
+     * the reference is missing or unreadable — the generation then
+     * proceeds without it.
+     */
+    private fun encodeStyleReference(path: String?): String? {
+        if (path.isNullOrBlank()) return null
+        val bytes = runCatching { File(path).takeIf { it.exists() }?.readBytes() }
+            .getOrNull()
+            ?: return null
+        return "data:image/webp;base64," + Base64.encodeToString(bytes, Base64.NO_WRAP)
     }
 
     private fun BookAttachmentEntity.toImageAttachment(): ImageAttachment {

@@ -13,6 +13,13 @@ import java.io.File
 interface CoverImageHandler {
     suspend fun saveCover(coverImage: CoverImage): Result<File>
     suspend fun saveImageAttachment(coverImage: CoverImage): Result<File>
+
+    /**
+     * Saves a style collage of the book's illustrations as the style
+     * reference of the image generation pipeline, overwriting the
+     * previous reference of the book.
+     */
+    suspend fun saveStyleCollage(bookId: Int, coverImage: CoverImage): Result<File>
     suspend fun deleteCover(coverImage: Uri): Result<Unit>
     suspend fun compressCover(coverImage: CoverImage): Result<CoverImage>
 }

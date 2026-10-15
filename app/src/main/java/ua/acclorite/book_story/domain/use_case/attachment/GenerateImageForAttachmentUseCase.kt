@@ -54,12 +54,14 @@ class GenerateImageForAttachmentUseCase @Inject constructor(
      */
     suspend fun complete(
         attachmentId: Int,
-        sceneDescription: String
+        sceneDescription: String,
+        styleReferencePath: String?
     ): Result<Pair<ImageAttachment, CoverImage>> {
         logI(TAG, "Rendering image for attachment [$attachmentId].")
         return imageAttachmentRepository.completeImageGeneration(
             attachmentId = attachmentId,
-            sceneDescription = sceneDescription
+            sceneDescription = sceneDescription,
+            styleReferencePath = styleReferencePath
         )
     }
 }
