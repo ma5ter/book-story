@@ -4,7 +4,8 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
     <!-- Basic Strings -->
     <string name="default_string">Varsayılan</string>
     <!-- Screens -->
@@ -425,4 +426,95 @@
     <string name="show_navigation_labels_option_desc">Simgelerin altında gezinme çubuğu etiketlerini göster</string>
     <string name="horizontal_gesture_disable_scrolling_option">Kaydırmayı devre dışı bırak</string>
     <string name="horizontal_gesture_disable_scrolling_option_desc">Okuyucu kaydırmayı tamamen devre dışı bırakın</string>
+    <string name="error_could_not_export">Resimli kitap dışa aktarılamadı.</string>
+
+    <!-- Action Texts -->
+    <string name="generate_image">Görsel oluştur</string>
+    <string name="set_cover_image">Kitap kapağı olarak ayarla</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Dışa aktar</string>
+    <string name="export_with_images_desc">Tüm oluşturulan görseller gömülü olarak FB2 dosyasını dışa aktar</string>
+
+    <!-- Tabs -->
+    <string name="ai_tab">YZ</string>
+
+    <!-- Settings subcategories -->
+    <string name="ai_reader_settings">YZ asistanı</string>
+
+    <!-- Reader -->
+    <string name="horizontal_limiter_option">Yatay sınırlayıcı</string>
+    <string name="horizontal_limiter_option_desc">Yatay cetveli göster ve odaklanılmayan ekran kısmını karart</string>
+    <string name="horizontal_limiter_height_option">Yükseklik</string>
+    <string name="horizontal_limiter_vertical_offset_option">Dikey kaydırma</string>
+    <string name="horizontal_limiter_ruler_option">Yatay cetvel</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Cetvel kalınlığı</string>
+    <string name="horizontal_limiter_dimming_option">Karartma</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API anahtarı</string>
+    <string name="api_key_option_label">OpenRouter API anahtarı</string>
+    <string name="image_model_option">Görsel modeli</string>
+    <string name="image_model_option_label">OpenRouter görsel model kısaltması (slug)</string>
+    <string name="image_style_option">Stil bloğu</string>
+    <string name="image_style_option_label">Görsel istemi için stil bloğu</string>
+    <string name="style_reference_option">Stil referansı</string>
+    <string name="style_reference_option_desc">Kitabın görsellerinden oluşan bir kolajı stil referansı olarak ekle</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP veya SOCKS5 proxy</string>
+    <string name="proxy_protocol_option">Proxy protokolü</string>
+    <string name="proxy_host_option">Proxy ana makinesi</string>
+    <string name="proxy_host_option_label">örn. 127.0.0.1</string>
+    <string name="proxy_port_option">Proxy bağlantı noktası</string>
+    <string name="proxy_port_option_label">örn. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">YZ asistanı</string>
+    <string name="text_assistant_model_option">Metin modeli</string>
+    <string name="text_assistant_model_option_label">OpenRouter akıllı metin model kısaltması</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Tercih edilen gecikme (p90, sn)</string>
+    <string name="text_assistant_preferred_latency_option_label">Metin asistanı için sağlayıcının tercih edilen en fazla p90 gecikmesi</string>
+    <string name="text_assistant_max_input_price_option">En fazla giriş fiyatı ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Metin asistanı için en fazla istem belirteci (token) fiyatı</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Özetleme modeli</string>
+    <string name="summarize_model_option_label">Karakter çıkarımı için kullanılan OpenRouter model kısaltması</string>
+    <string name="text_assistant_max_tokens_option">En fazla giriş token sayısı</string>
+    <string name="text_assistant_max_tokens_option_label">Uzun kitapları parçalamak için kullanılan model bağlam sınırı</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Tercih edilen gecikme (p90, sn)</string>
+    <string name="character_preferred_latency_option_label">Karakter çıkarımı için sağlayıcının tercih edilen en fazla p90 gecikmesi</string>
+    <string name="character_max_input_price_option">En fazla giriş fiyatı ($/1M)</string>
+    <string name="character_max_input_price_option_label">Karakter çıkarımı için en fazla istem belirteci (token) fiyatı</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Karakterler</string>
+    <string name="analyze_characters">Kitap karakterlerini analiz et</string>
+    <string name="characters_generating">Karakterler çıkarılıyor…</string>
+    <string name="characters_empty">Henüz karakter yok. Karakter kataloğu oluşturmak için kitap içeriğini analiz edin.</string>
+    <string name="characters_prompt">Kitabın tamamını okuyun, görsel referanslarını yok sayın. Baş karakteri ve tüm ana ile önemli, tekrarlayan yan karakterleri belirleyin. Her karakter için, metnin tamamından tutarlı bir görsel açıklama oluşturun.</string>
+    <string name="characters_processing">İşleniyor</string>
+    <string name="characters_failed">Karakter çıkarımı başarısız oldu</string>
+    <string name="characters_stopped_by_system">Karakter çıkarımı sistem tarafından durduruldu.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Görsel oluşturuluyor…</string>
+    <string name="image_step_prepare">Bağlam hazırlanıyor…</string>
+    <string name="image_step_collage">Stil kolajı oluşturuluyor…</string>
+    <string name="image_step_distill">Sahne özetleniyor…</string>
+    <string name="image_step_generate">Çizim oluşturuluyor…</string>
+    <string name="image_generation_failed">Görsel oluşturma başarısız oldu</string>
+    <string name="image_stopped_by_system">Görsel oluşturma sistem tarafından durduruldu.</string>
+    <string name="image_already_generating">Zaten bir görsel oluşturuluyor.</string>
+    <string name="retry">Tekrar dene</string>
+
+    <!-- Toast messages -->
+    <string name="cover_image_set">Kitap kapağı başarıyla ayarlandı.</string>
+
+    <!-- Reader -->
+    <string name="ai_illustrations">YZ çizimleri</string>
 </resources>

@@ -4,7 +4,8 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
     <string name="red_color">Vermelho</string>
     <string name="delete_book">Apagar livro?</string>
     <string name="default_string">Padrão</string>
@@ -155,7 +156,7 @@
     <string name="sort_order_content_desc">Ordem de classificação</string>
     <string name="continue_reading_content_desc">Continuar a ler</string>
     <string name="go_back_content_desc">Voltar</string>
-    <string name="start_language_preferences">Prefêrencias linguísticas</string>
+    <string name="start_language_preferences">Preferências linguísticas</string>
     <string name="help_translate_option">Ajude a traduzir</string>
     <string name="start_done">Está tudo pronto!</string>
     <string name="cover_image_content_desc">Imagem da capa</string>
@@ -164,7 +165,7 @@
     <string name="app_icon_content_desc">Ícone do App</string>
     <string name="add_book">Adicione um livro</string>
     <string name="pure_dark_option">Preto puro</string>
-    <string name="start_welcome">Boas vindas ao %1$s!</string>
+    <string name="start_welcome">Boas-vindas ao %1$s!</string>
     <string name="shuffle_color_preset_content_desc">Sortear cores</string>
     <string name="delete_cover">Apagar imagem da capa</string>
     <string name="screen_orientation_option">Orientação da tela</string>
@@ -326,7 +327,7 @@
     <string name="create_category">Criar categoria</string>
     <string name="default_tab">Padrão</string>
     <string name="library_settings">Biblioteca</string>
-    <string name="library_settings_desc">Categorias, aparencia e abas</string>
+    <string name="library_settings_desc">Categorias, aparência e abas</string>
     <string name="tabs_settings">Abas</string>
     <string name="categories_settings">Categorias</string>
     <string name="library_categories_option_note">Inicialmente, livros são adicionados à categoria padrão, mas podem pertencer à outras categorias personalizadas criadas aqui. Remover a categoria daqui não irar apagar livros da Biblioteca. Segure e mova o ícone da categoria para rearranjar as categorias.</string>
@@ -351,4 +352,95 @@
     <string name="show_navigation_labels_option">Mostrar rótulos de navegação</string>
     <string name="show_navigation_labels_option_desc">Mostrar rótulos embaixo dos ícones na barra de navegação</string>
     <string name="select_all_books_content_desc">Selecionar todos os livros</string>
+
+    <!-- Reader -->
+    <string name="horizontal_limiter_option">Limitador horizontal</string>
+    <string name="horizontal_limiter_option_desc">Mostrar régua horizontal e escurecer a parte não focada da tela</string>
+    <string name="horizontal_limiter_height_option">Altura</string>
+    <string name="horizontal_limiter_vertical_offset_option">Deslocamento vertical</string>
+    <string name="horizontal_limiter_ruler_option">Régua horizontal</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Espessura da régua</string>
+    <string name="horizontal_limiter_dimming_option">Escurecimento</string>
+    <string name="horizontal_gesture_disable_scrolling_option">Desativar rolagem</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Desativar completamente a rolagem do leitor</string>
+
+    <!-- Action Texts -->
+    <string name="generate_image">Gerar imagem</string>
+    <string name="set_cover_image">Definir como capa do livro</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Exportar</string>
+    <string name="export_with_images_desc">Exportar o arquivo FB2 com todas as imagens geradas incorporadas</string>
+    <string name="error_could_not_export">Não foi possível exportar o livro com imagens.</string>
+
+    <!-- Tabs -->
+    <string name="ai_tab">IA</string>
+
+    <!-- Settings subcategories -->
+    <string name="ai_reader_settings">Assistente de IA</string>
+    <string name="ai_illustrations">Ilustrações de IA</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">Chave de API</string>
+    <string name="api_key_option_label">Chave de API do OpenRouter</string>
+    <string name="image_model_option">Modelo de imagem</string>
+    <string name="image_model_option_label">Slug do modelo de imagem do OpenRouter</string>
+    <string name="image_style_option">Bloco de estilo</string>
+    <string name="image_style_option_label">Bloco de estilo para o prompt de imagem</string>
+    <string name="style_reference_option">Referência de estilo</string>
+    <string name="style_reference_option_desc">Anexar uma colagem das ilustrações do livro como referência de estilo</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">Proxy HTTP ou SOCKS5</string>
+    <string name="proxy_protocol_option">Protocolo do proxy</string>
+    <string name="proxy_host_option">Host do proxy</string>
+    <string name="proxy_host_option_label">ex.: 127.0.0.1</string>
+    <string name="proxy_port_option">Porta do proxy</string>
+    <string name="proxy_port_option_label">ex.: 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">Assistente de IA</string>
+    <string name="text_assistant_model_option">Modelo de texto</string>
+    <string name="text_assistant_model_option_label">Slug do modelo de texto inteligente do OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Latência preferida (p90, s)</string>
+    <string name="text_assistant_preferred_latency_option_label">Latência máxima preferida do provedor em p90 para o assistente de texto</string>
+    <string name="text_assistant_max_input_price_option">Preço máximo de entrada ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Preço máximo dos tokens de prompt para o assistente de texto</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Modelo de resumo</string>
+    <string name="summarize_model_option_label">Slug do modelo do OpenRouter usado para extração de personagens</string>
+    <string name="text_assistant_max_tokens_option">Máximo de tokens de entrada</string>
+    <string name="text_assistant_max_tokens_option_label">Limite de contexto do modelo usado para dividir livros longos</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Latência preferida (p90, s)</string>
+    <string name="character_preferred_latency_option_label">Latência máxima preferida do provedor em p90 para extração de personagens</string>
+    <string name="character_max_input_price_option">Preço máximo de entrada ($/1M)</string>
+    <string name="character_max_input_price_option_label">Preço máximo dos tokens de prompt para extração de personagens</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Personagens</string>
+    <string name="analyze_characters">Analisar personagens do livro</string>
+    <string name="characters_generating">Extraindo personagens…</string>
+    <string name="characters_empty">Nenhum personagem ainda. Analise o conteúdo do livro para construir um catálogo de personagens.</string>
+    <string name="characters_prompt">Leia o texto inteiro do livro, ignorando quaisquer referências a imagens. Identifique o protagonista e todos os personagens principais e recorrentes significativos. Para cada personagem, sintetize uma descrição visual consistente a partir de todo o texto.</string>
+    <string name="characters_processing">Processando</string>
+    <string name="characters_failed">Falha na extração de personagens</string>
+    <string name="characters_stopped_by_system">A extração de personagens foi interrompida pelo sistema.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Gerando imagem…</string>
+    <string name="image_step_prepare">Preparando contexto…</string>
+    <string name="image_step_collage">Construindo colagem de estilo…</string>
+    <string name="image_step_distill">Destilando cena…</string>
+    <string name="image_step_generate">Renderizando ilustração…</string>
+    <string name="image_generation_failed">Falha na geração da imagem</string>
+    <string name="image_stopped_by_system">A geração de imagem foi interrompida pelo sistema.</string>
+    <string name="image_already_generating">Uma imagem já está sendo gerada.</string>
+    <string name="retry">Tentar novamente</string>
+
+    <!-- Toast messages -->
+    <string name="cover_image_set">A capa do livro foi definida com sucesso.</string>
 </resources>

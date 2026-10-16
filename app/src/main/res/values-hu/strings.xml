@@ -5,33 +5,30 @@
   -->
 
 <resources>
-    <string name="appearance_settings">Kinézet</string>
-    <string name="appearance_settings_desc">Témák, színek</string>
-    <string name="reader_settings">Olvasó</string>
-    <string name="browse_settings">Keresés</string>
-    <string name="library_settings">Könyvtár</string>
-    <string name="text_reader_settings">Szöveg</string>
-    <string name="translator_reader_settings">Fordító</string>
-    <string name="misc_reader_settings">Stb</string>
-    <string name="system_reader_settings">Rendszer</string>
-    <string name="images_reader_settings">Képek</string>
-    <string name="colors_appearance_settings">Színek</string>
     <string name="default_string">Alap</string>
-    <string name="library_screen">Képernyők</string>
+
+    <!-- Screens -->
+    <string name="library_screen">Könyvtár</string>
     <string name="history_screen">Előzmények</string>
-    <string name="browse_screen">Keresés</string>
+    <string name="browse_screen">Tallózás</string>
     <string name="settings_screen">Beállítások</string>
-    <string name="about_screen">Appról</string>
-    <string name="add_books">Könyv hozzáadása?</string>
+    <string name="about_screen">Az alkalmazásról</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">Könyvek hozzáadása?</string>
     <string name="delete_books">Könyvek törlése?</string>
     <string name="delete_book">Könyv törlése?</string>
-    <string name="delete_history">Előzmények törlése?</string>
-    <string name="remove_category">Kategória törlése?</string>
+    <string name="delete_history">Olvasási előzmények törlése?</string>
+    <string name="remove_category">Kategória eltávolítása?</string>
+
+    <!-- Dialog Descriptions -->
     <string name="add_books_description">Kiválaszthatod, mely könyveket szeretnéd hozzáadni. A könyv címét és borítóképét később is szerkesztheted. A betöltési folyamat akár több percig is eltarthat.</string>
-    <string name="delete_books_description">Ez törli az összes kiválasztott könyveket (%1$s) az adatbázisból. A kiválasztott könyveket a készülékedről nem törli.</string>
-    <string name="delete_book_description">Ez törli az összes kiválasztott könyvet az adatbázisból. A kiválasztott könyvet a készülékedről nem törli.</string>
+    <string name="delete_books_description">Ez törli az összes kiválasztott könyvet (%1$s) az adatbázisból. A kiválasztott könyveket a készülékedről nem törli.</string>
+    <string name="delete_book_description">Ez törli ezt a könyvet az adatbázisból. A könyvet a készülékedről nem törli.</string>
     <string name="delete_history_description">Ez törli az egész előzményt az adatbázisból. Az előzmények teljes törlése után a könyvek sorrendje alaphelyzetbe áll.</string>
     <string name="remove_category_description">Ez eltávolítja ezt a kategóriát a könyvtárból, de a könyveket nem törli.</string>
+
+    <!-- Errors -->
     <string name="error_no_description">Nincs leírás.</string>
     <string name="error_something_went_wrong">Hiba történt.</string>
     <string name="error_no_translator">Nem található fordító alkalmazás.</string>
@@ -40,4 +37,485 @@
     <string name="error_no_share_app">Nem található megosztó alkalmazás.</string>
     <string name="error_no_file_manager_app">Nem található alkalmazás a mappa kiválasztásához.</string>
     <string name="error_could_not_get_text">A fájl üres, hiányzik, vagy nem elérhető. Ellenőrizd a fájlt, a beolvasási beállításokat, vagy módosítsd az elérési utat, majd próbáld újra.</string>
+    <string name="error_could_not_reset_cover">Nem sikerült visszaállítani a borítóképet.</string>
+    <string name="error_closed_source">Zárt forráskód</string>
+    <string name="error_could_not_export">Nem sikerült exportálni a könyvet képekkel.</string>
+    <string name="error_no_file">A fájl nem létezik vagy nem elérhető</string>
+    <string name="error_field_empty">Ez a mező nem lehet üres.</string>
+
+    <!-- Is Empty -->
+    <string name="search_field_empty">Keresés…</string>
+    <string name="browse_empty">Bővítsd a könyvtár gyűjteményét a letöltéseiddel</string>
+    <string name="library_empty">Olvass kedvenc könyveidet, és rendezd őket kategóriákba</string>
+    <string name="history_empty">Hadd nyisson az utoljára olvasott könyved lapot egy új nagyszerű olvasási kalandhoz</string>
+    <string name="categories_empty">Nincsenek kategóriák.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s kiválasztva</string>
+    <string name="color_preset_query">Előbeállítás %1$s</string>
+    <string name="color_preset_selected_query">Kiválasztva: «%1$s»</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Mégse</string>
+    <string name="add_book">Könyv hozzáadása</string>
+    <string name="move">Áthelyezés</string>
+    <string name="delete">Törlés</string>
+    <string name="never">Soha</string>
+    <string name="undo">Visszavonás</string>
+    <string name="copy">Másolás</string>
+    <string name="report">Jelentés</string>
+    <string name="translate">Fordítás</string>
+    <string name="dictionary">Szótár</string>
+    <string name="generate_image">Kép generálása</string>
+    <string name="set_cover_image">Beállítás könyvborítóként</string>
+    <string name="next">Következő</string>
+    <string name="done">Kész</string>
+    <string name="web_search">Webes keresés</string>
+    <string name="share">Megosztás</string>
+    <string name="ok">OK</string>
+    <string name="change_path">Útvonal módosítása</string>
+    <string name="add_folder">Mappa hozzáadása</string>
+    <string name="edit">Szerkesztés</string>
+    <string name="create_category">Kategória létrehozása</string>
+    <string name="set_up_scanning">Beolvasás beállítása</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Exportálás</string>
+    <string name="export_with_images_desc">Az FB2 fájl exportálása az összes generált képpel beágyazva</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Ismeretlen</string>
+    <string name="reset_cover">Borítókép visszaállítása</string>
+    <string name="reset_cover_desc">A könyv borítóképének visszaállítása az alapértelmezettre</string>
+    <string name="change_cover">Borítókép módosítása</string>
+    <string name="change_cover_desc">Új borító kiválasztása a fotóid közül</string>
+    <string name="delete_cover">Borítókép törlése</string>
+    <string name="delete_cover_desc">A könyv aktuális borítóképének törlése</string>
+    <string name="author">Szerző</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Alapértelmezett</string>
+    <string name="general_tab">Általános</string>
+    <string name="display_tab">Megjelenítés</string>
+    <string name="color_tab">Színek</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Szűrő</string>
+    <string name="sort_tab">Rendezés</string>
+    <string name="reader_tab">Olvasó</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Általános</string>
+    <string name="general_settings_desc">Alkalmazás nyelve</string>
+    <string name="appearance_settings">Kinézet</string>
+    <string name="appearance_settings_desc">Témák, színek</string>
+    <string name="reader_settings">Olvasó</string>
+    <string name="reader_settings_desc">Betűtípus, szöveg</string>
+    <string name="browse_settings">Tallózás</string>
+    <string name="browse_settings_desc">Beolvasás, megjelenítés</string>
+    <string name="library_settings">Könyvtár</string>
+    <string name="library_settings_desc">Kategóriák, megjelenítés, lapok</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Betűtípus</string>
+    <string name="text_reader_settings">Szöveg</string>
+    <string name="translator_reader_settings">Fordító</string>
+    <string name="padding_reader_settings">Margók</string>
+    <string name="misc_reader_settings">Egyéb</string>
+    <string name="reading_speed_reader_settings">Olvasási sebesség</string>
+    <string name="reading_mode_reader_settings">Olvasási mód</string>
+    <string name="system_reader_settings">Rendszer</string>
+    <string name="chapters_reader_settings">Fejezetek</string>
+    <string name="images_reader_settings">Képek</string>
+    <string name="progress_reader_settings">Haladás</string>
+    <string name="theme_appearance_settings">Téma beállítások</string>
+    <string name="colors_appearance_settings">Színek</string>
+    <string name="scan_browse_settings">Beolvasás</string>
+    <string name="display_settings">Megjelenítés</string>
+    <string name="tabs_settings">Lapok</string>
+    <string name="categories_settings">Kategóriák</string>
+    <string name="filter_browse_settings">Szűrő</string>
+    <string name="sort_settings">Rendezés</string>
+    <string name="ai_reader_settings">AI asszisztens</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">Ezek a mappák a Tallózás fájljainak beolvasására szolgálnak. A mappa itt történő eltávolítása nem törli a tényleges fájlokat vagy a Könyvtárban lévő könyveket. A hozzáférés visszavonásához kattints a megfelelő gombra.</string>
+    <string name="library_categories_option_note">Kezdetben a könyvek az alapértelmezett kategóriába kerülnek, de több, itt létrehozott egyéni kategóriához is tartozhatnak. A kategória itt történő eltávolítása nem törli a könyveket a Könyvtárból. A kategóriák átrendezéséhez tartsd lenyomva és mozgasd a kategória ikonját.</string>
+    <string name="library_per_category_sort_option_note">A rendezés a Könyvtárban módosítható.</string>
+
+    <!-- Settings options — General -->
+    <string name="language_option">Alkalmazás nyelve</string>
+    <string name="dark_theme_option">Sötét téma</string>
+    <string name="pure_dark_option">Mély sötét</string>
+    <string name="absolute_dark_option">Abszolút sötét</string>
+    <string name="absolute_dark_option_desc">A háttérszín teljesen feketére váltása</string>
+    <string name="theme_contrast_option">Téma kontraszt</string>
+    <string name="app_theme_option">Alkalmazás témája</string>
+    <string name="double_press_exit_option">Kétszeri visszagomb a kilépéshez</string>
+    <string name="double_press_exit_option_desc">A kilépéshez nyomd meg kétszer a visszagombot</string>
+    <string name="show_navigation_labels_option">Navigációs feliratok megjelenítése</string>
+    <string name="show_navigation_labels_option_desc">Navigációs sáv feliratainak megjelenítése az ikonok alatt</string>
+
+    <!-- Settings options — Reader -->
+    <string name="font_family_option">Betűtípus</string>
+    <string name="font_thickness_option">Betűvastagság</string>
+    <string name="font_style_option">Betűstílus</string>
+    <string name="font_size_option">Betűméret</string>
+    <string name="line_height_option">Sormagasság</string>
+    <string name="paragraph_height_option">Bekezdések közti távolság</string>
+    <string name="paragraph_indentation_option">Bekezdés behúzása</string>
+    <string name="color_preset_option">Színelőbeállítás</string>
+    <string name="background_color_option">Háttérszín</string>
+    <string name="font_color_option">Betűszín</string>
+    <string name="side_padding_option">Oldalmargók</string>
+    <string name="vertical_padding_option">Függőleges margók</string>
+    <string name="double_click_translation_option">Dupla kattintásos fordítás</string>
+    <string name="double_click_translation_option_desc">Kattints duplán a bekezdésre a fordításhoz</string>
+    <string name="fast_color_preset_change_option">Gyors előbeállítás-váltás</string>
+    <string name="fast_color_preset_change_option_desc">Húzd balra vagy jobbra a felső sávot az előbeállítás váltásához</string>
+    <string name="text_alignment_option">Szövegigazítás</string>
+    <string name="chapter_title_alignment_option">Fejezetcím igazítása</string>
+    <string name="letter_spacing_option">Betűköz</string>
+    <string name="cutout_padding_option">Kivágás margója</string>
+    <string name="cutout_padding_option_desc">Margó alkalmazása a kivágás területén</string>
+    <string name="fullscreen_option">Teljes képernyő</string>
+    <string name="fullscreen_option_desc">Rendszersávok és margók elrejtése</string>
+    <string name="keep_screen_on_option">Képernyő ébrentartása</string>
+    <string name="hide_bars_on_fast_scroll_option">Sávok elrejtése gyors görgetéskor</string>
+    <string name="perception_expander_option">Percepcióbővítő</string>
+    <string name="perception_expander_option_desc">Növeld olvasási sebességedet a középpontra fókuszálva</string>
+    <string name="perception_expander_padding_option">Vonal oldalmargója</string>
+    <string name="perception_expander_thickness_option">Vonalvastagság</string>
+    <string name="horizontal_limiter_option">Vízszintes korlátozó</string>
+    <string name="horizontal_limiter_option_desc">Vízszintes vonalzó megjelenítése és a fókuszon kívüli rész sötétítése</string>
+    <string name="horizontal_limiter_height_option">Magasság</string>
+    <string name="horizontal_limiter_vertical_offset_option">Függőleges eltolás</string>
+    <string name="horizontal_limiter_ruler_option">Vízszintes vonalzó</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Vonalzó vastagsága</string>
+    <string name="horizontal_limiter_dimming_option">Sötétítés</string>
+    <string name="screen_orientation_option">Képernyő tájolása</string>
+    <string name="custom_screen_brightness_option">Egyéni fényerő</string>
+    <string name="screen_brightness_option">Fényerő</string>
+    <string name="horizontal_gesture_option">Vízszintes gesztus</string>
+    <string name="horizontal_gesture_scroll_option">Görgetési hányad</string>
+    <string name="horizontal_gesture_sensitivity_option">Érzékenység</string>
+    <string name="horizontal_gesture_alpha_anim_option">Láthatósági animáció</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">Láthatósági animáció engedélyezése vízszintes gesztus használatakor</string>
+    <string name="horizontal_gesture_pull_anim_option">Húzási animáció</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">Húzási animáció engedélyezése vízszintes gesztus használatakor</string>
+    <string name="horizontal_gesture_disable_scrolling_option">Görgetés letiltása</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Az olvasó görgetésének teljes letiltása</string>
+    <string name="bottom_bar_padding_option">Alsó sáv margója</string>
+    <string name="highlighted_reading_option">Szavak kiemelése</string>
+    <string name="highlighted_reading_option_desc">Minden szó elejének kiemelése</string>
+    <string name="highlighted_reading_thickness_option">Kiemelés vastagsága</string>
+    <string name="images_option">Képek</string>
+    <string name="images_option_desc">Képek megjelenítése</string>
+    <string name="images_captions_option">Feliratok</string>
+    <string name="images_captions_option_desc">Feliratok megjelenítése a képek alatt</string>
+    <string name="images_corners_roundness_option">Saroklekerekítés</string>
+    <string name="images_alignment_option">Igazítás</string>
+    <string name="images_width_option">Méret</string>
+    <string name="images_color_effects_option">Színeffektek</string>
+    <string name="progress_bar_option">Haladássáv</string>
+    <string name="progress_bar_option_desc">Haladássáv megjelenítése alul</string>
+    <string name="progress_bar_padding_option">Margók</string>
+    <string name="progress_bar_alignment_option">Igazítás</string>
+    <string name="progress_bar_font_size_option">Betűméret</string>
+    <string name="progress_count_option">Haladás formátuma</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API-kulcs</string>
+    <string name="api_key_option_label">OpenRouter API-kulcs</string>
+    <string name="image_model_option">Képmodell</string>
+    <string name="image_model_option_label">OpenRouter képmodell slug</string>
+    <string name="image_style_option">Stílusblokk</string>
+    <string name="image_style_option_label">Stílusblokk a képi prompthoz</string>
+    <string name="style_reference_option">Stílusreferencia</string>
+    <string name="style_reference_option_desc">A könyv illusztrációinak kollázsának csatolása stílusreferenciaként</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP vagy SOCKS5 proxy</string>
+    <string name="proxy_protocol_option">Proxy protokoll</string>
+    <string name="proxy_host_option">Proxy kiszolgáló</string>
+    <string name="proxy_host_option_label">pl. 127.0.0.1</string>
+    <string name="proxy_port_option">Proxy port</string>
+    <string name="proxy_port_option_label">pl. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI asszisztens</string>
+    <string name="text_assistant_model_option">Szövegmodell</string>
+    <string name="text_assistant_model_option_label">OpenRouter okos szövegmodell slug</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Preferált késleltetés (p90, mp)</string>
+    <string name="text_assistant_preferred_latency_option_label">Preferált maximális szolgáltatói késleltetés p90 esetén a szövegasszisztenshez</string>
+    <string name="text_assistant_max_input_price_option">Max bemeneti ár ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Maximális prompt token ár a szövegasszisztenshez</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Összegző modell</string>
+    <string name="summarize_model_option_label">OpenRouter modell slug a karakterek kinyeréséhez</string>
+    <string name="text_assistant_max_tokens_option">Max bemeneti tokenek</string>
+    <string name="text_assistant_max_tokens_option_label">A modell kontextuskorlátja hosszú könyvek darabolásához</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Preferált késleltetés (p90, mp)</string>
+    <string name="character_preferred_latency_option_label">Preferált maximális szolgáltatói késleltetés p90 esetén a karakterek kinyeréséhez</string>
+    <string name="character_max_input_price_option">Max bemeneti ár ($/1M)</string>
+    <string name="character_max_input_price_option_label">Maximális prompt token ár a karakterek kinyeréséhez</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Karakterek</string>
+    <string name="analyze_characters">Könyv karaktereinek elemzése</string>
+    <string name="characters_generating">Karakterek kinyerése…</string>
+    <string name="characters_empty">Még nincsenek karakterek. Elemezd a könyv tartalmát a karakterkatalógus felépítéséhez.</string>
+    <string name="characters_prompt">Olvass el a teljes könyv szövegét, figyelmen kívül hagyva a képhivatkozásokat. Azonosítsd a főszereplőt és az összes fő és jelentős visszatérő karaktert. Minden karakterhez szintetizálj egységes vizuális leírást a teljes szövegből.</string>
+    <string name="characters_processing">Feldolgozás</string>
+    <string name="characters_failed">A karakterek kinyerése sikertelen</string>
+    <string name="characters_stopped_by_system">A karakterek kinyerését a rendszer leállította.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Kép generálása…</string>
+    <string name="image_step_prepare">Kontextus előkészítése…</string>
+    <string name="image_step_collage">Stíluskollázs készítése…</string>
+    <string name="image_step_distill">Jelenet kibontása…</string>
+    <string name="image_step_generate">Illusztráció renderelése…</string>
+    <string name="image_generation_failed">A kép generálása sikertelen</string>
+    <string name="image_stopped_by_system">A képgenerálást a rendszer leállította.</string>
+    <string name="image_already_generating">Már folyamatban van egy képgenerálás.</string>
+    <string name="retry">Újra</string>
+
+    <!-- Library -->
+    <string name="read_button_option">«Olvasás» gomb megjelenítése</string>
+    <string name="show_progress_option">Haladás megjelenítése</string>
+    <string name="title_position_option">Cím pozíciója</string>
+    <string name="show_book_count_option">Könyvszám megjelenítése</string>
+    <string name="show_category_tabs_option">Kategórialapok megjelenítése</string>
+    <string name="always_show_default_tab_option">Alapértelmezett lap mindig megjelenjen</string>
+    <string name="per_category_sort_option">Kategóriánkénti rendezés</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Vörös</string>
+    <string name="green_color">Zöld</string>
+    <string name="blue_color">Kék</string>
+    <string name="color_preset_placeholder">Nevezd el az előbeállítást…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Letiltva</string>
+    <string name="dark_theme_on">Engedélyezve</string>
+    <string name="dark_theme_follow_system">Rendszer</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Letiltva</string>
+    <string name="pure_dark_on">Engedélyezve</string>
+    <string name="pure_dark_power_saver">Takarékos</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Alap</string>
+    <string name="theme_contrast_medium">Közepes</string>
+    <string name="theme_contrast_high">Magas</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Dőlt</string>
+    <string name="font_style_normal">Normál</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Rejtett</string>
+    <string name="library_title_position_below">Alatta</string>
+    <string name="library_title_position_inside">Rajta</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Cím</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Megjelenítési mód</string>
+    <string name="layout_list">Lista</string>
+    <string name="layout_grid">Rács</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Betűrendben</string>
+    <string name="sort_order_file_format">Fájlformátum</string>
+    <string name="sort_order_last_modified">Utoljára módosítva</string>
+    <string name="sort_order_file_size">Fájlméret</string>
+    <string name="sort_order_last_read">Utolsó olvasás</string>
+    <string name="sort_order_progress">Haladás</string>
+    <string name="sort_order_author">Szerző</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Rács mérete</string>
+    <string name="grid_size_auto">Auto</string>
+    <string name="grid_size_per_row">soranként</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Kezdet</string>
+    <string name="alignment_justify">Sorkizárt</string>
+    <string name="alignment_center">Közép</string>
+    <string name="alignment_end">Vég</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Szabad</string>
+    <string name="screen_orientation_portrait">Álló</string>
+    <string name="screen_orientation_landscape">Fekvő</string>
+    <string name="screen_orientation_locked_portrait">Zárolt álló</string>
+    <string name="screen_orientation_locked_landscape">Zárolt fekvő</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Ki</string>
+    <string name="horizontal_gesture_on">Be</string>
+    <string name="horizontal_gesture_inverse">Be (Fordított)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">szint</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Ki</string>
+    <string name="color_effects_grayscale">Szürkeárnyalatos</string>
+    <string name="color_effects_font">Betűszín</string>
+    <string name="color_effects_background">Háttérszín</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Vékony</string>
+    <string name="font_thickness_extra_light">Extravékony</string>
+    <string name="font_thickness_light">Halvány</string>
+    <string name="font_thickness_normal">Normál</string>
+    <string name="font_thickness_medium">Közepes</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Százalék</string>
+    <string name="progress_count_quantity">Darabszám</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Higany</string>
+    <string name="blue_theme">Neptunusz</string>
+    <string name="green_theme">Föld</string>
+    <string name="green2_theme">Io</string>
+    <string name="green_gray_theme">Enceladus</string>
+    <string name="red_theme">Mars</string>
+    <string name="red_gray_theme">Callisto</string>
+    <string name="purple_theme">Jupiter</string>
+    <string name="purple_gray_theme">Ceres</string>
+    <string name="pink_theme">Szaturnusz</string>
+    <string name="pink2_theme">Ganymedes</string>
+    <string name="lavender_theme">Eris</string>
+    <string name="marsh_theme">Plútó</string>
+    <string name="yellow_theme">Vénusz</string>
+    <string name="yellow2_theme">Makemake</string>
+    <string name="aqua_theme">Uránusz</string>
+    <string name="gray_theme">Iapetus</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Nyomd meg újra a visszagombot a kilépéshez</string>
+    <string name="books_added">Az összes kiválasztott könyv sikeresen hozzáadva.</string>
+    <string name="books_moved">Az összes kiválasztott könyv sikeresen áthelyezve.</string>
+    <string name="books_deleted">Az összes kiválasztott könyv sikeresen törölve.</string>
+    <string name="cover_image_changed">A borítókép sikeresen módosítva.</string>
+    <string name="cover_image_deleted">A borítókép sikeresen törölve.</string>
+    <string name="book_deleted">Ez a könyv sikeresen törölve.</string>
+    <string name="book_moved">Ez a könyv sikeresen áthelyezve.</string>
+    <string name="copied">Másolva</string>
+    <string name="history_deleted">Az előzmények sikeresen törölve.</string>
+    <string name="cover_reset">A borítókép sikeresen visszaállítva.</string>
+    <string name="title_changed">A cím sikeresen módosítva.</string>
+    <string name="author_changed">A szerző sikeresen módosítva.</string>
+    <string name="description_changed">A leírás sikeresen módosítva.</string>
+    <string name="path_changed">A fájl útvonala sikeresen módosítva.</string>
+    <string name="cover_image_set">A könyv borítója sikeresen beállítva.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Az előzményelem sikeresen törölve.</string>
+
+    <!-- Book Info -->
+    <string name="start_reading">Kezdés</string>
+    <string name="continue_reading_query">Folytatás: %1$s</string>
+    <string name="file_details">Fájladatok</string>
+    <string name="file_path">Útvonal</string>
+    <string name="file_last_opened">Utoljára megnyitva</string>
+    <string name="file_size">Méret</string>
+    <string name="unknown">Ismeretlen</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Nincsenek fejezetek</string>
+    <string name="chapters">Fejezetek</string>
+    <string name="ai_illustrations">AI illusztrációk</string>
+
+    <!-- About -->
+    <string name="app_version_option">Alkalmazás verziója</string>
+    <string name="report_bug_option">Hiba jelentése</string>
+    <string name="licenses_option">Nyílt forráskódú licencek</string>
+    <string name="credits_option">Készítők</string>
+    <string name="help_translate_option">Segíts fordítani</string>
+    <string name="support_development_option">Fejlesztés támogatása</string>
+    <string name="contributors_option">Közreműködők</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Dizájn</string>
+    <string name="credits_icon">Ikonok</string>
+    <string name="credits_updates">Frissítések kezelése</string>
+    <string name="credits_fonts">Betűtípusok</string>
+    <string name="credits_translation">Fordítás</string>
+    <string name="credits_contribution">Hozzájárulás</string>
+    <string name="credits_ideas">Ötletek</string>
+
+    <!-- Start -->
+    <string name="start_welcome">Üdvözöl a(z) %1$s!</string>
+    <string name="start_welcome_desc">Üdvözlünk egy világban, ahol a szavak elbűvölnek, tanítanak és hihetetlen kalandokkal kecsegtetnek! Állítsunk be néhány dolgot!</string>
+    <string name="start_language_preferences">Nyelvi beállítások</string>
+    <string name="start_theme_preferences">Téma beállítások</string>
+    <string name="start_scan_preferences">Beolvasási beállítások</string>
+    <string name="start_done">Minden készen van!</string>
+    <string name="start_done_desc">A beállítás befejeződött.</string>
+
+    <!-- History -->
+    <string name="today">Ma</string>
+    <string name="yesterday">Tegnap</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Hoppá! Az alkalmazás összeomlott.</string>
+    <string name="crash_description">Kérjük, jelezd ezt az összeomlási üzenetet a neked legkényelmesebb módon.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Olvasás folytatása</string>
+    <string name="go_back_content_desc">Vissza</string>
+    <string name="cover_image_content_desc">Borítókép</string>
+    <string name="open_reader_settings_content_desc">Olvasó beállításai</string>
+    <string name="file_icon_content_desc">Fájl</string>
+    <string name="sort_order_content_desc">Rendezés iránya</string>
+    <string name="checkbox_content_desc">Jelölőnégyzet</string>
+    <string name="cover_image_not_found_content_desc">A borítókép nem található</string>
+    <string name="error_content_desc">Hiba</string>
+    <string name="search_content_desc">Keresés</string>
+    <string name="clear_selected_items_content_desc">Kijelölt elemek törlése</string>
+    <string name="add_files_content_desc">Fájlok hozzáadása</string>
+    <string name="select_all_files_content_desc">Összes fájl kijelölése</string>
+    <string name="select_all_books_content_desc">Összes könyv kijelölése</string>
+    <string name="exit_search_content_desc">Kilépés a keresésből</string>
+    <string name="delete_whole_history_content_desc">Összes előzmény törlése</string>
+    <string name="move_books_content_desc">Kijelölt könyvek áthelyezése</string>
+    <string name="delete_books_content_desc">Kijelölt könyvek törlése</string>
+    <string name="revert_content_desc">Visszaállítás</string>
+    <string name="selected_content_desc">Kiválasztva</string>
+    <string name="app_icon_content_desc">Alkalmazás ikonja</string>
+    <string name="delete_history_element_content_desc">Előzményelem törlése</string>
+    <string name="library_content_desc">Könyvtár</string>
+    <string name="history_content_desc">Olvasási előzmények</string>
+    <string name="browse_content_desc">Könyvek hozzáadása</string>
+    <string name="arrow_content_desc">Nyíl</string>
+    <string name="reset_start_content_desc">Útmutató újraindítása</string>
+    <string name="open_in_web_content_desc">Megnyitás a weben</string>
+    <string name="delete_color_preset_content_desc">Színelőbeállítás törlése</string>
+    <string name="create_color_preset_content_desc">Új színelőbeállítás létrehozása</string>
+    <string name="shuffle_color_preset_content_desc">Színek keverése</string>
+    <string name="drag_content_desc">Húzás</string>
+    <string name="filter_content_desc">Szűrő</string>
+    <string name="checkpoint_back_content_desc">Ellenőrzőpont vissza</string>
+    <string name="checkpoint_forward_content_desc">Ellenőrzőpont előre</string>
+    <string name="chapters_content_desc">Fejezetek</string>
+    <string name="more_content_desc">Több</string>
+    <string name="pin_content_desc">Rögzítés</string>
+    <string name="show_less_content_desc">Kevesebb megjelenítése</string>
+    <string name="show_more_content_desc">Több megjelenítése</string>
+    <string name="edit_content_desc">Szerkesztés</string>
+    <string name="expand_content_desc">Kibontás</string>
+    <string name="collapse_content_desc">Összecsukás</string>
+    <string name="remove_content_desc">Eltávolítás</string>
+    <string name="note_content_desc">Jegyzet</string>
 </resources>

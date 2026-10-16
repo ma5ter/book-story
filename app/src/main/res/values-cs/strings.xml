@@ -353,4 +353,95 @@
     <string name="collapse_content_desc">Sbalit</string>
     <string name="remove_content_desc">Odstranit</string>
     <string name="note_content_desc">Poznámka</string>
+
+    <!-- Errors -->
+    <string name="error_could_not_export">Nelze exportovat knihu s obrázky.</string>
+
+    <!-- Action Texts -->
+    <string name="generate_image">Vygenerovat obrázek</string>
+    <string name="set_cover_image">Nastavit jako obálku knihy</string>
+    <string name="retry">Zkusit znovu</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Exportovat</string>
+    <string name="export_with_images_desc">Exportovat soubor FB2 se všemi vygenerovanými obrázky vloženými dovnitř</string>
+
+    <!-- Tabs -->
+    <string name="ai_tab">AI</string>
+
+    <!-- Settings subcategories -->
+    <string name="ai_reader_settings">AI asistent</string>
+
+    <!-- Reader -->
+    <string name="horizontal_limiter_option">Horizontální omezovač</string>
+    <string name="horizontal_limiter_option_desc">Zobrazit horizontální pravítko a ztlumit nezaměřenou část obrazovky</string>
+    <string name="horizontal_limiter_height_option">Výška</string>
+    <string name="horizontal_limiter_vertical_offset_option">Vertikální posun</string>
+    <string name="horizontal_limiter_ruler_option">Horizontální pravítko</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Tloušťka pravítka</string>
+    <string name="horizontal_limiter_dimming_option">Ztmavení</string>
+    <string name="ai_illustrations">AI ilustrace</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">Klíč API</string>
+    <string name="api_key_option_label">Klíč API OpenRouter</string>
+    <string name="image_model_option">Model obrázků</string>
+    <string name="image_model_option_label">Slug modelu obrázků OpenRouter</string>
+    <string name="image_style_option">Stylový blok</string>
+    <string name="image_style_option_label">Stylový blok pro prompt obrázku</string>
+    <string name="style_reference_option">Stylová reference</string>
+    <string name="style_reference_option_desc">Připojit koláž ilustrací knihy jako stylovou referenci</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP nebo SOCKS5 proxy</string>
+    <string name="proxy_protocol_option">Protokol proxy</string>
+    <string name="proxy_host_option">Hostitel proxy</string>
+    <string name="proxy_host_option_label">např. 127.0.0.1</string>
+    <string name="proxy_port_option">Port proxy</string>
+    <string name="proxy_port_option_label">např. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI asistent</string>
+    <string name="text_assistant_model_option">Textový model</string>
+    <string name="text_assistant_model_option_label">Slug textového modelu OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Preferovaná latence (p90, s)</string>
+    <string name="text_assistant_preferred_latency_option_label">Preferovaná maximální latence poskytovatele p90 pro textového asistenta</string>
+    <string name="text_assistant_max_input_price_option">Max. cena vstupu ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Maximální cena promptových tokenů pro textového asistenta</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Model shrnutí</string>
+    <string name="summarize_model_option_label">Slug modelu OpenRouter pro extrakci postav</string>
+    <string name="text_assistant_max_tokens_option">Max. vstupních tokenů</string>
+    <string name="text_assistant_max_tokens_option_label">Limit kontextu modelu pro dělení dlouhých knih</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Preferovaná latence (p90, s)</string>
+    <string name="character_preferred_latency_option_label">Preferovaná maximální latence poskytovatele p90 pro extrakci postav</string>
+    <string name="character_max_input_price_option">Max. cena vstupu ($/1M)</string>
+    <string name="character_max_input_price_option_label">Maximální cena promptových tokenů pro extrakci postav</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Postavy</string>
+    <string name="analyze_characters">Analyzovat postavy knihy</string>
+    <string name="characters_generating">Extrahování postav…</string>
+    <string name="characters_empty">Zatím žádné postavy. Analyzujte obsah knihy a vytvořte katalog postav.</string>
+    <string name="characters_prompt">Přečtěte celý text knihy a ignorujte odkazy na obrázky. Identifikujte protagonistu a všechny hlavní a významné opakující se postavy. Pro každou postavu vytvořte konzistentní vizuální popis založený na celém textu.</string>
+    <string name="characters_processing">Zpracování</string>
+    <string name="characters_failed">Extrakce postav se nezdařila</string>
+    <string name="characters_stopped_by_system">Extrakce postav byla zastavena systémem.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Generování obrázku…</string>
+    <string name="image_step_prepare">Příprava kontextu…</string>
+    <string name="image_step_collage">Vytváření stylové koláže…</string>
+    <string name="image_step_distill">Zpracování scény…</string>
+    <string name="image_step_generate">Vykreslování ilustrace…</string>
+    <string name="image_generation_failed">Generování obrázku se nezdařilo</string>
+    <string name="image_stopped_by_system">Generování obrázku bylo zastaveno systémem.</string>
+    <string name="image_already_generating">Obrázek už se právě generuje.</string>
+
+    <!-- Toast messages -->
+    <string name="cover_image_set">Obálka knihy byla úspěšně nastavena.</string>
 </resources>

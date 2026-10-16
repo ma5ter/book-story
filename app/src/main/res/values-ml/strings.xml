@@ -4,17 +4,508 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
-    <string name="about_screen">ആപ്പിനെക്കുറിച്ച്</string>
-    <string name="settings_screen">ക്രമീകരണങ്ങൾ</string>
-    <string name="error_no_description">വിവരണം ലഭ്യമല്ല</string>
+  -->
+<resources>
+    <!-- Basic -->
+    <string name="default_string">സ്ഥിരസ്ഥിതി</string>
+
+    <!-- Screens -->
     <string name="library_screen">ലൈബ്രറി</string>
     <string name="history_screen">ചരിത്രം</string>
+    <string name="browse_screen">ബ്രൗസ്</string>
+    <string name="settings_screen">ക്രമീകരണങ്ങൾ</string>
+    <string name="about_screen">ആപ്പിനെക്കുറിച്ച്</string>
+
+    <!-- Dialog Labels -->
     <string name="add_books">പുസ്തകങ്ങൾ ചേർക്കണോ?</string>
     <string name="delete_books">പുസ്തകങ്ങൾ ഒഴിവാക്കണമോ?</string>
     <string name="delete_book">പുസ്തകം ഒഴിവാക്കണമോ?</string>
     <string name="delete_history">വായന ചരിത്രം ഒഴിവാക്കണമോ?</string>
     <string name="remove_category">വിഭാഗം നീക്കം ചെയ്യണോ?</string>
+
+    <!-- Dialog Descriptions -->
     <string name="add_books_description">ഏതൊക്കെ പുസ്തകങ്ങളാണ് ചേർക്കേണ്ടതെന്ന് നിങ്ങൾക്ക് തിരഞ്ഞെടുക്കാം. പുസ്തകത്തിന്റെ ശീർഷകവും കവർ ചിത്രവും പിന്നീട് എഡിറ്റ് ചെയ്യാം. ലോഡിംഗ് പ്രക്രിയയ്ക്ക് നിരവധി മിനിറ്റ് വരെ എടുത്തേക്കാം.</string>
     <string name="delete_books_description">ഇത് ഡാറ്റാബേസിൽ നിന്ന് തിരഞ്ഞെടുത്ത എല്ലാ പുസ്തകങ്ങളെയും (%1$s) ഇല്ലാതാക്കും. നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് തിരഞ്ഞെടുത്ത പുസ്തകങ്ങളെ ഇത് ഇല്ലാതാക്കില്ല.</string>
+    <string name="delete_book_description">ഇത് ഡാറ്റാബേസിൽ നിന്ന് ഈ പുസ്തകം ഇല്ലാതാക്കും. നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് ഈ പുസ്തകം ഇത് ഇല്ലാതാക്കില്ല.</string>
+    <string name="delete_history_description">ഇത് ഡാറ്റാബേസിൽ നിന്ന് മുഴുവൻ ചരിത്രവും ഇല്ലാതാക്കും. മുഴുവൻ ചരിത്രവും ഇല്ലാതാക്കിയ ശേഷം, പുസ്തകങ്ങളുടെ ക്രമം പുനഃസജ്ജമാകും.</string>
+    <string name="remove_category_description">ഇത് ഈ വിഭാഗത്തെ ലൈബ്രറിയിൽ നിന്ന് നീക്കം ചെയ്യും, പക്ഷേ ഒരു പുസ്തകവും ഇല്ലാതാക്കില്ല.</string>
+
+    <!-- Errors -->
+    <string name="error_no_description">വിവരണം ലഭ്യമല്ല</string>
+    <string name="error_something_went_wrong">എന്തോ തെറ്റ് സംഭവിച്ചു.</string>
+    <string name="error_no_translator">പരിഭാഷ ആപ്പ് കണ്ടെത്താനായില്ല.</string>
+    <string name="error_no_dictionary">നിഘണ്ടു ആപ്പ് കണ്ടെത്താനായില്ല.</string>
+    <string name="error_no_browser">ബ്രൗസർ ആപ്പ് കണ്ടെത്താനായില്ല.</string>
+    <string name="error_no_share_app">പങ്കിടാൻ ആപ്പ് കണ്ടെത്താനായില്ല.</string>
+    <string name="error_no_file_manager_app">ഫോൾഡർ തിരഞ്ഞെടുക്കാൻ ആപ്പ് കണ്ടെത്താനായില്ല.</string>
+    <string name="error_could_not_get_text">ഫയൽ ശൂന്യമാണ്, ലഭ്യമല്ല, അല്ലെങ്കിൽ ആക്സസ് ചെയ്യാനാവില്ല. ഫയൽ പരിശോധിക്കുക, സ്കാൻ ക്രമീകരണങ്ങൾ പരിശോധിക്കുക അല്ലെങ്കിൽ പാത മാറ്റുക, പിന്നീട് വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="error_could_not_reset_cover">കവർ ചിത്രം പുനഃസജ്ജമാക്കാനായില്ല.</string>
+    <string name="error_closed_source">ക്ലോസ്ഡ് സോഴ്സ്</string>
+    <string name="error_could_not_export">ചിത്രങ്ങളുള്ള പുസ്തകം എക്സ്പോർട്ട് ചെയ്യാനായില്ല.</string>
+    <string name="error_no_file">ഫയൽ നിലവിലില്ല അല്ലെങ്കിൽ ആക്സസ് ചെയ്യാനാവില്ല</string>
+    <string name="error_field_empty">ഈ ഫീൽഡ് ശൂന്യമായിരിക്കരുത്.</string>
+
+    <!-- Is Empty -->
+    <string name="search_field_empty">തിരയുക…</string>
+    <string name="browse_empty">നിങ്ങളുടെ ഡൗൺലോഡുകളിലൂടെ ലൈബ്രറിയുടെ പുസ്തക ശേഖരം വിപുലീകരിക്കുക</string>
+    <string name="library_empty">നിങ്ങളുടെ പ്രിയപ്പെട്ട പുസ്തകങ്ങൾ വായിച്ച് വിഭാഗങ്ങൾക്കിടയിൽ ക്രമീകരിക്കുക</string>
+    <string name="history_empty">നിങ്ങൾ അവസാനം വായിച്ച പുസ്തകം നിങ്ങളുടെ വായനയാത്രയുടെ ഒരു മഹത്തായ പുതിയ കഥയുടെ പേജുകൾ തുറക്കട്ടെ</string>
+    <string name="categories_empty">വിഭാഗങ്ങളില്ല.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s തിരഞ്ഞെടുത്തു</string>
+    <string name="color_preset_query">പ്രീസെറ്റ് %1$s</string>
+    <string name="color_preset_selected_query">തിരഞ്ഞെടുത്തത് «%1$s»</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">റദ്ദാമാക്കുക</string>
+    <string name="add_book">ഒരു പുസ്തകം ചേർക്കുക</string>
+    <string name="move">മാറ്റുക</string>
+    <string name="delete">ഇല്ലാതാക്കുക</string>
+    <string name="never">ഒരിക്കലുമില്ല</string>
+    <string name="undo">പഴയപടിയാക്കുക</string>
+    <string name="copy">പകർത്തുക</string>
+    <string name="report">റിപ്പോർട്ട് ചെയ്യുക</string>
+    <string name="translate">പരിഭാഷപ്പെടുത്തുക</string>
+    <string name="dictionary">നിഘണ്ടു</string>
+    <string name="generate_image">ചിത്രം സൃഷ്ടിക്കുക</string>
+    <string name="set_cover_image">പുസ്തക കവറായി സജ്ജമാക്കുക</string>
+    <string name="next">അടുത്തത്</string>
+    <string name="done">പൂർത്തിയായി</string>
+    <string name="web_search">വെബ് തിരച്ചിൽ</string>
+    <string name="share">പങ്കിടുക</string>
+    <string name="ok">ശരി</string>
+    <string name="change_path">പാത മാറ്റുക</string>
+    <string name="add_folder">ഫോൾഡർ ചേർക്കുക</string>
+    <string name="edit">എഡിറ്റ് ചെയ്യുക</string>
+    <string name="create_category">വിഭാഗം സൃഷ്ടിക്കുക</string>
+    <string name="set_up_scanning">സ്കാനിംഗ് സജ്ജമാക്കുക</string>
+
+    <!-- Export -->
+    <string name="export_with_images">എക്സ്പോർട്ട് ചെയ്യുക</string>
+    <string name="export_with_images_desc">എല്ലാ സൃഷ്ടിച്ച ചിത്രങ്ങളും ഉൾപ്പെടുത്തി FB2 ഫയൽ എക്സ്പോർട്ട് ചെയ്യുക</string>
+
+    <!-- Book -->
+    <string name="unknown_author">അജ്ഞാതം</string>
+    <string name="reset_cover">കവർ ചിത്രം പുനഃസജ്ജമാക്കുക</string>
+    <string name="reset_cover_desc">പുസ്തകത്തിന്റെ കവർ ചിത്രം സ്ഥിരസ്ഥിതിയിലേക്ക് പുനഃസജ്ജമാക്കുക</string>
+    <string name="change_cover">കവർ ചിത്രം മാറ്റുക</string>
+    <string name="change_cover_desc">നിങ്ങളുടെ ഫോട്ടോകളിൽ നിന്ന് പുതിയ കവർ തിരഞ്ഞെടുക്കുക</string>
+    <string name="delete_cover">കവർ ചിത്രം ഇല്ലാതാക്കുക</string>
+    <string name="delete_cover_desc">പുസ്തകത്തിന്റെ നിലവിലുള്ള കവർ ചിത്രം ഇല്ലാതാക്കുക</string>
+    <string name="author">രചയിതാവ്</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">സ്ഥിരസ്ഥിതി</string>
+    <string name="general_tab">പൊതുവായ</string>
+    <string name="display_tab">ഡിസ്പ്ലേ</string>
+    <string name="color_tab">നിറങ്ങൾ</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">ഫിൽട്ടർ</string>
+    <string name="sort_tab">അടുക്കൽ</string>
+    <string name="reader_tab">റീഡർ</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">പൊതുവായ</string>
+    <string name="general_settings_desc">ആപ്പ് ഭാഷ</string>
+    <string name="appearance_settings">രൂപഭംഗി</string>
+    <string name="appearance_settings_desc">തീം, നിറങ്ങൾ</string>
+    <string name="reader_settings">റീഡർ</string>
+    <string name="reader_settings_desc">ഫോണ്ട്, ടെക്സ്റ്റ്</string>
+    <string name="browse_settings">ബ്രൗസ്</string>
+    <string name="browse_settings_desc">സ്കാൻ, ഡിസ്പ്ലേ</string>
+    <string name="library_settings">ലൈബ്രറി</string>
+    <string name="library_settings_desc">വിഭാഗങ്ങൾ, ഡിസ്പ്ലേ, ടാബുകൾ</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">ഫോണ്ട്</string>
+    <string name="text_reader_settings">ടെക്സ്റ്റ്</string>
+    <string name="translator_reader_settings">പരിഭാഷ</string>
+    <string name="padding_reader_settings">മാർജിനുകൾ</string>
+    <string name="misc_reader_settings">മറ്റുള്ളവ</string>
+    <string name="reading_speed_reader_settings">വായന വേഗത</string>
+    <string name="reading_mode_reader_settings">വായന രീതി</string>
+    <string name="system_reader_settings">സിസ്റ്റം</string>
+    <string name="chapters_reader_settings">അധ്യായങ്ങൾ</string>
+    <string name="images_reader_settings">ചിത്രങ്ങൾ</string>
+    <string name="progress_reader_settings">പുരോഗതി</string>
+    <string name="theme_appearance_settings">തീം മുൻഗണനകൾ</string>
+    <string name="colors_appearance_settings">നിറങ്ങൾ</string>
+    <string name="scan_browse_settings">സ്കാൻ</string>
+    <string name="display_settings">ഡിസ്പ്ലേ</string>
+    <string name="tabs_settings">ടാബുകൾ</string>
+    <string name="categories_settings">വിഭാഗങ്ങൾ</string>
+    <string name="filter_browse_settings">ഫിൽട്ടർ</string>
+    <string name="sort_settings">അടുക്കൽ</string>
+    <string name="ai_reader_settings">AI അസിസ്റ്റന്റ്</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">ബ്രൗസിൽ ഫയലുകൾ സ്കാൻ ചെയ്യാനും ലഭ്യമാക്കാനും ഈ ഫോൾഡറുകൾ ഉപയോഗിക്കുന്നു. ഇവിടെ ഒരു ഫോൾഡർ നീക്കം ചെയ്യുന്നത് യഥാർത്ഥ ഫയലുകളോ ലൈബ്രറിയിലെ പുസ്തകങ്ങളോ ഇല്ലാതാക്കില്ല. ആക്സസ് പിൻവലിക്കാൻ, അനുബന്ധ ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</string>
+    <string name="library_categories_option_note">ആദ്യം, പുസ്തകങ്ങൾ സ്ഥിരസ്ഥിതി വിഭാഗത്തിലേക്ക് ചേർക്കുന്നു, പക്ഷേ ഇവിടെ സൃഷ്ടിക്കുന്ന നിരവധി ഇഷ്ടാനുസൃത വിഭാഗങ്ങളിൽ അംഗമാകാം. ഇവിടെ ഒരു വിഭാഗം നീക്കം ചെയ്യുന്നത് ലൈബ്രറിയിൽ നിന്ന് പുസ്തകങ്ങളെ ഇല്ലാതാക്കില്ല. വിഭാഗങ്ങൾ പുനഃക്രമീകരിക്കാൻ വിഭാഗ ഐക്കൺ അമർത്തിപ്പിടിച്ച് നീക്കുക.</string>
+    <string name="library_per_category_sort_option_note">അടുക്കൽ ലൈബ്രറിയിൽ മാറ്റാവുന്നതാണ്.</string>
+
+    <!-- Settings options — General -->
+    <string name="language_option">ആപ്പ് ഭാഷ</string>
+    <string name="dark_theme_option">ഇരുണ്ട തീം</string>
+    <string name="pure_dark_option">പ്യൂർ ഡാർക്ക്</string>
+    <string name="absolute_dark_option">ആബ്സല്യൂട്ട് ഡാർക്ക്</string>
+    <string name="absolute_dark_option_desc">പശ്ചാത്ല നിറം പൂർണ്ണമായും കറുപ്പാക്കുക</string>
+    <string name="theme_contrast_option">തീം കോൺട്രാസ്റ്റ്</string>
+    <string name="app_theme_option">ആപ്പ് തീം</string>
+    <string name="double_press_exit_option">പുറത്തുകയറാൻ ഇരട്ട ബാക്ക് അമർത്തൽ</string>
+    <string name="double_press_exit_option_desc">ആപ്പിൽ നിന്ന് പുറത്തുകയറാൻ ബാക്ക് രണ്ടുതവണ അമർത്തുക</string>
+    <string name="show_navigation_labels_option">നാവിഗേഷൻ ലേബലുകൾ കാണിക്കുക</string>
+    <string name="show_navigation_labels_option_desc">ഐക്കണുകൾക്ക് താഴെ നാവിഗേഷൻ ബാർ ലേബലുകൾ കാണിക്കുക</string>
+
+    <!-- Settings options — Reader (Font & Text) -->
+    <string name="font_family_option">ഫോണ്ട് കുടുംബം</string>
+    <string name="font_thickness_option">ഫോണ്ട് കനം</string>
+    <string name="font_style_option">ഫോണ്ട് ശൈലി</string>
+    <string name="font_size_option">ഫോണ്ട് വലുപ്പം</string>
+    <string name="line_height_option">വരി ഉയരം</string>
+    <string name="paragraph_height_option">ഖണ്ഡിക ഇടവേള</string>
+    <string name="paragraph_indentation_option">ഖണ്ഡിക ഇൻഡെന്റേഷൻ</string>
+    <string name="color_preset_option">നിറ പ്രീസെറ്റ്</string>
+    <string name="background_color_option">പശ്ചാത്ല നിറം</string>
+    <string name="font_color_option">ഫോണ്ട് നിറം</string>
+    <string name="side_padding_option">വശങ്ങളിലെ മാർജിനുകൾ</string>
+    <string name="vertical_padding_option">ലംബ മാർജിനുകൾ</string>
+    <string name="double_click_translation_option">ഇരട്ട ക്ലിക്ക് പരിഭാഷ</string>
+    <string name="double_click_translation_option_desc">ഖണ്ഡിക ഇരട്ട ക്ലിക്ക് ചെയ്ത് പരിഭാഷപ്പെടുത്തുക</string>
+    <string name="fast_color_preset_change_option">വേഗത്തിലുള്ള നിറ പ്രീസെറ്റ് മാറ്റം</string>
+    <string name="fast_color_preset_change_option_desc">നിറ പ്രീസെറ്റ് മാറ്റാൻ ടോപ്പ് ബാർ ഇടത്തോട്ടോ വലത്തോട്ടോ സ്വൈപ്പ് ചെയ്യുക</string>
+    <string name="text_alignment_option">ടെക്സ്റ്റ് വിന്യാസം</string>
+    <string name="chapter_title_alignment_option">അധ്യായ ശീർഷക വിന്യാസം</string>
+    <string name="letter_spacing_option">അക്ഷര ഇടവേള</string>
+    <string name="cutout_padding_option">കട്ട്ഔട്ട് മാർജിൻ</string>
+    <string name="cutout_padding_option_desc">കട്ട്ഔട്ട് ഏരിയയിൽ മാർജിൻ പ്രയോഗിക്കുക</string>
+    <string name="fullscreen_option">ഫുൾസ്ക്രീൻ</string>
+    <string name="fullscreen_option_desc">സിസ്റ്റം ബാറുകളും മാർജിനുകളും മറയ്ക്കുക</string>
+    <string name="keep_screen_on_option">സ്ക്രീൻ ഓൺ ആയി നിർത്തുക</string>
+    <string name="hide_bars_on_fast_scroll_option">വേഗത്തിലുള്ള സ്ക്രോളിൽ ബാറുകൾ മറയ്ക്കുക</string>
+    <string name="perception_expander_option">പർസെപ്ഷൻ എക്സ്പാൻഡർ</string>
+    <string name="perception_expander_option_desc">കേന്ദ്രത്തിൽ ശ്രദ്ധ കേന്ദ്രീകരിച്ച് വായന വേഗത വർദ്ധിപ്പിക്കുക</string>
+    <string name="perception_expander_padding_option">വരി വശ മാർജിൻ</string>
+    <string name="perception_expander_thickness_option">വരി കനം</string>
+    <string name="horizontal_limiter_option">ഹോറിസോണ്ടൽ ലിമിറ്റർ</string>
+    <string name="horizontal_limiter_option_desc">ഹോറിസോണ്ടൽ റൂളർ കാണിക്കുക, ശ്രദ്ധ കേന്ദ്രീകരിക്കാത്ത സ്ക്രീൻ ഭാഗം ഇരുട്ടിക്കുക</string>
+    <string name="horizontal_limiter_height_option">ഉയരം</string>
+    <string name="horizontal_limiter_vertical_offset_option">ലംബ ഓഫ്സെറ്റ്</string>
+    <string name="horizontal_limiter_ruler_option">ഹോറിസോണ്ടൽ റൂളർ</string>
+    <string name="horizontal_limiter_ruler_thickness_option">റൂളർ കനം</string>
+    <string name="horizontal_limiter_dimming_option">ഇരുട്ടാക്കൽ</string>
+    <string name="screen_orientation_option">സ്ക്രീൻ ഓറിയന്റേഷൻ</string>
+    <string name="custom_screen_brightness_option">ഇഷ്ടാനുസൃത തെളിച്ചം</string>
+    <string name="screen_brightness_option">തെളിച്ചം</string>
+    <string name="horizontal_gesture_option">ഹോറിസോണ്ടൽ ജെസ്ച്ചർ</string>
+    <string name="horizontal_gesture_scroll_option">സ്ക്രോൾ ഭിന്നം</string>
+    <string name="horizontal_gesture_sensitivity_option">സംവേദനക്ഷമത</string>
+    <string name="horizontal_gesture_alpha_anim_option">ദൃശ്യത ആനിമേഷൻ</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">ഹോറിസോണ്ടൽ ജെസ്ച്ചർ ഉപയോഗിക്കുമ്പോൾ ദൃശ്യത ആനിമേഷൻ പ്രവർത്തനക്ഷമമാക്കുക</string>
+    <string name="horizontal_gesture_pull_anim_option">പുൾ ആനിമേഷൻ</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">ഹോറിസോണ്ടൽ ജെസ്ച്ചർ ഉപയോഗിക്കുമ്പോൾ പുൾ ആനിമേഷൻ പ്രവർത്തനക്ഷമമാക്കുക</string>
+    <string name="horizontal_gesture_disable_scrolling_option">സ്ക്രോളിംഗ് പ്രവർത്തനരഹിതമാക്കുക</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">റീഡർ സ്ക്രോളിംഗ് പൂർണ്ണമായും പ്രവർത്തനരഹിതമാക്കുക</string>
+    <string name="bottom_bar_padding_option">ബോട്ടം ബാർ മാർജിൻ</string>
+    <string name="highlighted_reading_option">വാക്കുകൾ ഹൈലൈറ്റ് ചെയ്യുക</string>
+    <string name="highlighted_reading_option_desc">ഓരോ വാക്കിന്റെയും തുടക്കം ഹൈലൈറ്റ് ചെയ്യുക</string>
+    <string name="highlighted_reading_thickness_option">ഹൈലൈറ്റ് കനം</string>
+    <string name="images_option">ചിത്രങ്ങൾ</string>
+    <string name="images_option_desc">ചിത്രങ്ങൾ പ്രദർശിപ്പിക്കുക</string>
+    <string name="images_captions_option">ക്യാപ്ഷനുകൾ</string>
+    <string name="images_captions_option_desc">ചിത്രങ്ങൾക്ക് താഴെ ക്യാപ്ഷനുകൾ പ്രദർശിപ്പിക്കുക</string>
+    <string name="images_corners_roundness_option">മൂലകളുടെ വൃത്താകൃതി</string>
+    <string name="images_alignment_option">വിന്യാസം</string>
+    <string name="images_width_option">വലുപ്പം</string>
+    <string name="images_color_effects_option">നിറ ഇഫക്റ്റുകൾ</string>
+    <string name="progress_bar_option">പ്രോഗ്രസ് ബാർ</string>
+    <string name="progress_bar_option_desc">താഴെ പ്രോഗ്രസ് ബാർ പ്രദർശിപ്പിക്കുക</string>
+    <string name="progress_bar_padding_option">മാർജിനുകൾ</string>
+    <string name="progress_bar_alignment_option">വിന്യാസം</string>
+    <string name="progress_bar_font_size_option">ഫോണ്ട് വലുപ്പം</string>
+    <string name="progress_count_option">പുരോഗതി എണ്ണം</string>
+
+    <!-- Settings Options — AI -->
+    <string name="api_key_option">API കീ</string>
+    <string name="api_key_option_label">OpenRouter API കീ</string>
+    <string name="image_model_option">ഇമേജ് മോഡൽ</string>
+    <string name="image_model_option_label">OpenRouter ഇമേജ് മോഡൽ സ്ലഗ്</string>
+    <string name="image_style_option">സ്റ്റൈൽ ബ്ലോക്ക്</string>
+    <string name="image_style_option_label">ഇമേജ് പ്രോംപ്റ്റിനുള്ള സ്റ്റൈൽ ബ്ലോക്ക്</string>
+    <string name="style_reference_option">സ്റ്റൈൽ റഫറൻസ്</string>
+    <string name="style_reference_option_desc">സ്റ്റൈൽ റഫറൻസായി പുസ്തകത്തിന്റെ ചിത്രങ്ങളുടെ കൊളാജ് അറ്റാച്ച് ചെയ്യുക</string>
+    <string name="proxy_option">പ്രോക്സി</string>
+    <string name="proxy_option_desc">HTTP അല്ലെങ്കിൽ SOCKS5 പ്രോക്സി</string>
+    <string name="proxy_protocol_option">പ്രോക്സി പ്രോട്ടോക്കോൾ</string>
+    <string name="proxy_host_option">പ്രോക്സി ഹോസ്റ്റ്</string>
+    <string name="proxy_host_option_label">ഉദാ. 127.0.0.1</string>
+    <string name="proxy_port_option">പ്രോക്സി പോർട്ട്</string>
+    <string name="proxy_port_option_label">ഉദാ. 1080</string>
+    <string name="text_assistant_settings">AI അസിസ്റ്റന്റ്</string>
+    <string name="text_assistant_model_option">ടെക്സ്റ്റ് മോഡൽ</string>
+    <string name="text_assistant_model_option_label">OpenRouter ബുദ്ധിമാനായ ടെക്സ്റ്റ് മോഡൽ സ്ലഗ്</string>
+    <string name="text_assistant_preferred_latency_option">മുൻഗണന ലേറ്റൻസി (p90, സെക്കൻഡ്)</string>
+    <string name="text_assistant_preferred_latency_option_label">ടെക്സ്റ്റ് അസിസ്റ്റന്റിനായി p90-ൽ മുൻഗണന നൽകുന്ന പരമാവധി പ്രൊവൈഡർ ലേറ്റൻസി</string>
+    <string name="text_assistant_max_input_price_option">പരമാവധി ഇൻപുട്ട് വില ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">ടെക്സ്റ്റ് അസിസ്റ്റന്റിനായി പരമാവധി പ്രോംപ്റ്റ് ടോക്കൺ വില</string>
+    <string name="summarize_model_option">സമ്മറൈസ് മോഡൽ</string>
+    <string name="summarize_model_option_label">കഥാപാത്ര വേർതിരിവിനായി ഉപയോഗിക്കുന്ന OpenRouter മോഡൽ സ്ലഗ്</string>
+    <string name="text_assistant_max_tokens_option">പരമാവധി ഇൻപുട്ട് ടോക്കണുകൾ</string>
+    <string name="text_assistant_max_tokens_option_label">ദീർഘമായ പുസ്തകങ്ങൾ ചങ്ക് ചെയ്യാൻ ഉപയോഗിക്കുന്ന മോഡൽ കോൺടെക്സ്റ്റ് പരിധി</string>
+    <string name="character_preferred_latency_option">മുൻഗണന ലേറ്റൻസി (p90, സെക്കൻഡ്)</string>
+    <string name="character_preferred_latency_option_label">കഥാപാത്ര വേർതിരിവിനായി p90-ൽ മുൻഗണന നൽകുന്ന പരമാവധി പ്രൊവൈഡർ ലേറ്റൻസി</string>
+    <string name="character_max_input_price_option">പരമാവധി ഇൻപുട്ട് വില ($/1M)</string>
+    <string name="character_max_input_price_option_label">കഥാപാത്ര വേർതിരിവിനായി പരമാവധി പ്രോംപ്റ്റ് ടോക്കൺ വില</string>
+    <string name="characters_reader_settings">കഥാപാത്രങ്ങൾ</string>
+    <string name="analyze_characters">പുസ്തക കഥാപാത്രങ്ങളെ വിശകലനം ചെയ്യുക</string>
+    <string name="characters_generating">കഥാപാത്രങ്ങളെ വേർതിരിക്കുന്നു…</string>
+    <string name="characters_empty">ഇതുവരെ കഥാപാത്രങ്ങളില്ല. കഥാപാത്ര കാറ്റലോഗ് നിർമ്മിക്കാൻ പുസ്തകത്തിന്റെ ഉള്ളടക്കം വിശകലനം ചെയ്യുക.</string>
+    <string name="characters_prompt">മുഴുവൻ പുസ്തക വാചകവും വായിക്കുക, ഏതെങ്കിലും ചിത്ര റഫറൻസുകൾ അവഗണിക്കുക. നായകനെയും എല്ലാ പ്രധാന, ശ്രദ്ധേയമായ ആവർത്തിക്കുന്ന കഥാപാത്രങ്ങളെയും കണ്ടെത്തുക. ഓരോ കഥാപാത്രത്തിനും, മുഴുവൻ വാചകത്തിൽ നിന്ന് സുസംഗതമായ ഒരു ദൃശ്യ വിവരണം സമന്വയിപ്പിക്കുക.</string>
+    <string name="characters_processing">പ്രോസസ്സിംഗ്</string>
+    <string name="characters_failed">കഥാപാത്ര വേർതിരിവ് പരാജയപ്പെട്ടു</string>
+    <string name="characters_stopped_by_system">കഥാപാത്ര വേർതിരിവ് സിസ്റ്റം നിർത്തിവെച്ചു.</string>
+    <string name="image_generating">ചിത്രം സൃഷ്ടിക്കുന്നു…</string>
+    <string name="image_step_prepare">കോൺടെക്സ്റ്റ് തയ്യാറാക്കുന്നു…</string>
+    <string name="image_step_collage">സ്റ്റൈൽ കൊളാജ് നിർമ്മിക്കുന്നു…</string>
+    <string name="image_step_distill">രംഗം വേർതിരിക്കുന്നു…</string>
+    <string name="image_step_generate">ചിത്രം റെൻഡർ ചെയ്യുന്നു…</string>
+    <string name="image_generation_failed">ചിത്ര സൃഷ്ടി പരാജയപ്പെട്ടു</string>
+    <string name="image_stopped_by_system">ചിത്ര സൃഷ്ടി സിസ്റ്റം നിർത്തിവെച്ചു.</string>
+    <string name="image_already_generating">ഒരു ചിത്രം ഇതിനകം സൃഷ്ടിക്കപ്പെടുന്നു.</string>
+    <string name="retry">വീണ്ടും ശ്രമിക്കുക</string>
+
+    <!-- Settings Options — Library -->
+    <string name="read_button_option">«വായിക്കുക» ബട്ടൺ കാണിക്കുക</string>
+    <string name="show_progress_option">പുരോഗതി കാണിക്കുക</string>
+    <string name="title_position_option">ശീർഷക സ്ഥാനം</string>
+    <string name="show_book_count_option">പുസ്തക എണ്ണം കാണിക്കുക</string>
+    <string name="show_category_tabs_option">വിഭാഗ ടാബുകൾ കാണിക്കുക</string>
+    <string name="always_show_default_tab_option">സ്ഥിരസ്ഥിതി ടാബ് എപ്പോഴും കാണിക്കുക</string>
+    <string name="per_category_sort_option">വിഭാഗം തിരിച്ചുള്ള അടുക്കൽ</string>
+
+    <!-- Color Presets -->
+    <string name="red_color">ചുവപ്പ്</string>
+    <string name="green_color">പച്ച</string>
+    <string name="blue_color">നീല</string>
+    <string name="color_preset_placeholder">ഒരു പ്രീസെറ്റിന് പേരിടുക…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">പ്രവർത്തനരഹിതം</string>
+    <string name="dark_theme_on">പ്രവർത്തനക്ഷമം</string>
+    <string name="dark_theme_follow_system">സിസ്റ്റം</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">പ്രവർത്തനരഹിതം</string>
+    <string name="pure_dark_on">പ്രവർത്തനക്ഷമം</string>
+    <string name="pure_dark_power_saver">സേവർ</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">സ്റ്റാൻഡേർഡ്</string>
+    <string name="theme_contrast_medium">മീഡിയം</string>
+    <string name="theme_contrast_high">ഹൈ</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">ഇറ്റാലിക്</string>
+    <string name="font_style_normal">സാധാരണ</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">മറച്ചുവെച്ച</string>
+    <string name="library_title_position_below">താഴെ</string>
+    <string name="library_title_position_inside">അകത്ത്</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">ശീർഷകം</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">ഡിസ്പ്ലേ രീതി</string>
+    <string name="layout_list">ലിസ്റ്റ്</string>
+    <string name="layout_grid">ഗ്രിഡ്</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">അക്ഷരമാലാക്രമത്തിൽ</string>
+    <string name="sort_order_file_format">ഫയൽ ഫോർമാറ്റ്</string>
+    <string name="sort_order_last_modified">അവസാനം മാറ്റം വരുത്തിയത്</string>
+    <string name="sort_order_file_size">ഫയൽ വലുപ്പം</string>
+    <string name="sort_order_last_read">അവസാനം വായിച്ചത്</string>
+    <string name="sort_order_progress">പുരോഗതി</string>
+    <string name="sort_order_author">രചയിതാവ്</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">ഗ്രിഡ് വലുപ്പം</string>
+    <string name="grid_size_auto">ഓട്ടോ</string>
+    <string name="grid_size_per_row">ഓരോ വരിയിലും</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">തുടക്കം</string>
+    <string name="alignment_justify">ജസ്റ്റിഫൈ</string>
+    <string name="alignment_center">കേന്ദ്രം</string>
+    <string name="alignment_end">അന്ത്യം</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">സ്വതന്ത്രം</string>
+    <string name="screen_orientation_portrait">പോർട്രെയ്റ്റ്</string>
+    <string name="screen_orientation_landscape">ലാൻഡ്സ്കേപ്പ്</string>
+    <string name="screen_orientation_locked_portrait">ലോക്ക് ചെയ്ത പോർട്രെയ്റ്റ്</string>
+    <string name="screen_orientation_locked_landscape">ലോക്ക് ചെയ്ത ലാൻഡ്സ്കേപ്പ്</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">ഓഫ്</string>
+    <string name="horizontal_gesture_on">ഓൺ</string>
+    <string name="horizontal_gesture_inverse">ഓൺ (വിപരീതം)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">ലെവൽ</string>
+
+    <!-- Color Effects properties -->
+    <string name="color_effects_off">ഓഫ്</string>
+    <string name="color_effects_grayscale">ഗ്രേസ്കെയ്ൽ</string>
+    <string name="color_effects_font">ഫോണ്ട് നിറം</string>
+    <string name="color_effects_background">പശ്ചാത്ല നിറം</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">തിൻ</string>
+    <string name="font_thickness_extra_light">എക്സ്ട്ര ലൈറ്റ്</string>
+    <string name="font_thickness_light">ലൈറ്റ്</string>
+    <string name="font_thickness_normal">സാധാരണ</string>
+    <string name="font_thickness_medium">മീഡിയം</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">ശതമാനം</string>
+    <string name="progress_count_quantity">എണ്ണം</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">ബുധൻ</string>
+    <string name="blue_theme">നെപ്ച്യൂൺ</string>
+    <string name="green_theme">ഭൂമി</string>
+    <string name="green2_theme">ഇഒ</string>
+    <string name="green_gray_theme">എൻസെലാഡസ്</string>
+    <string name="red_theme">ചൊവ്വ</string>
+    <string name="red_gray_theme">കാലിസ്റ്റോ</string>
+    <string name="purple_theme">വ്യാഴം</string>
+    <string name="purple_gray_theme">സെറസ്</string>
+    <string name="pink_theme">ശനി</string>
+    <string name="pink2_theme">ഗാനിമീഡ്</string>
+    <string name="lavender_theme">എറിസ്</string>
+    <string name="marsh_theme">പ്ലൂട്ടോ</string>
+    <string name="yellow_theme">ശുക്രൻ</string>
+    <string name="yellow2_theme">മാകെമാകെ</string>
+    <string name="aqua_theme">യുറാനസ്</string>
+    <string name="gray_theme">ഇയാപെറ്റസ്</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">പുറത്തുകയറാൻ വീണ്ടും ബാക്ക് അമർത്തുക</string>
+    <string name="books_added">തിരഞ്ഞെടുത്ത എല്ലാ പുസ്തകങ്ങളും വിജയകരമായി ചേർത്തു.</string>
+    <string name="books_moved">തിരഞ്ഞെടുത്ത എല്ലാ പുസ്തകങ്ങളും വിജയകരമായി മാറ്റി.</string>
+    <string name="books_deleted">തിരഞ്ഞെടുത്ത എല്ലാ പുസ്തകങ്ങളും വിജയകരമായി ഇല്ലാതാക്കി.</string>
+    <string name="cover_image_changed">കവർ ചിത്രം വിജയകരമായി മാറ്റി.</string>
+    <string name="cover_image_deleted">കവർ ചിത്രം വിജയകരമായി ഇല്ലാതാക്കി.</string>
+    <string name="book_deleted">ഈ പുസ്തകം വിജയകരമായി ഇല്ലാതാക്കി.</string>
+    <string name="book_moved">ഈ പുസ്തകം വിജയകരമായി മാറ്റി.</string>
+    <string name="copied">പകർത്തി</string>
+    <string name="history_deleted">ചരിത്രം വിജയകരമായി ഇല്ലാതാക്കി.</string>
+    <string name="cover_reset">കവർ ചിത്രം വിജയകരമായി പുനഃസജ്ജമാക്കി.</string>
+    <string name="title_changed">ശീർഷകം വിജയകരമായി മാറ്റി.</string>
+    <string name="author_changed">രചയിതാവിനെ വിജയകരമായി മാറ്റി.</string>
+    <string name="description_changed">വിവരണം വിജയകരമായി മാറ്റി.</string>
+    <string name="path_changed">ഫയൽ പാത വിജയകരമായി മാറ്റി.</string>
+    <string name="cover_image_set">പുസ്തക കവർ വിജയകരമായി സജ്ജമാക്കി.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">ചരിത്ര ഘടകം വിജയകരമായി ഇല്ലാതാക്കി.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">ആരംഭിക്കുക</string>
+    <string name="continue_reading_query">%1$s-ൽ നിന്ന് തുടരുക</string>
+    <string name="file_details">ഫയൽ വിവരങ്ങൾ</string>
+    <string name="file_path">പാത</string>
+    <string name="file_last_opened">അവസാനം തുറന്നത്</string>
+    <string name="file_size">വലുപ്പം</string>
+    <string name="unknown">അജ്ഞാതം</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">അധ്യായങ്ങളില്ല</string>
+    <string name="chapters">അധ്യായങ്ങൾ</string>
+    <string name="ai_illustrations">AI ചിത്രങ്ങൾ</string>
+
+    <!-- About -->
+    <string name="app_version_option">ആപ്പ് പതിപ്പ്</string>
+    <string name="report_bug_option">ഒരു ബഗ് റിപ്പോർട്ട് ചെയ്യുക</string>
+    <string name="licenses_option">ഓപ്പൺ സോഴ്സ് ലൈസൻസുകൾ</string>
+    <string name="credits_option">ക്രെഡിറ്റുകൾ</string>
+    <string name="help_translate_option">പരിഭാഷയിൽ സഹായിക്കുക</string>
+    <string name="support_development_option">വികസനത്തെ പിന്തുണയ്ക്കുക</string>
+    <string name="contributors_option">സംഭാവകർ</string>
+
+    <!-- Credits -->
+    <string name="credits_design">ഡിസൈൻ</string>
+    <string name="credits_icon">ഐക്കണുകൾ</string>
+    <string name="credits_updates">പുതിയ അപ്ഡേറ്റുകൾ കൈകാര്യം ചെയ്യൽ</string>
+    <string name="credits_fonts">ഫോണ്ടുകൾ</string>
+    <string name="credits_translation">പരിഭാഷ</string>
+    <string name="credits_contribution">സംഭാവന</string>
+    <string name="credits_ideas">ആശയങ്ങൾ</string>
+
+    <!-- Start -->
+    <string name="start_welcome">%1$s-ൽ സ്വാഗതം!</string>
+    <string name="start_welcome_desc">വാക്കുകൾ മോഹിപ്പിക്കുകയും പഠിപ്പിക്കുകയും അവിസ്മരണീയമായ സാഹസിക യാത്രകളിലേക്ക് നയിക്കുകയും ചെയ്യുന്ന ഒരു ലോകത്തേക്ക്! ചില കാര്യങ്ങൾ സജ്ജമാക്കാം!</string>
+    <string name="start_language_preferences">ഭാഷ മുൻഗണനകൾ</string>
+    <string name="start_theme_preferences">തീം മുൻഗണനകൾ</string>
+    <string name="start_scan_preferences">സ്കാൻ മുൻഗണനകൾ</string>
+    <string name="start_done">എല്ലാം പൂർത്തിയായി!</string>
+    <string name="start_done_desc">സജ്ജീകരണം പൂർത്തിയായി.</string>
+
+    <!-- History -->
+    <string name="today">ഇന്ന്</string>
+    <string name="yesterday">ഇന്നലെ</string>
+
+    <!-- Crash -->
+    <string name="crash_title">അയ്യോ! ആപ്പ് ക്രാഷ് ആയി.</string>
+    <string name="crash_description">നിങ്ങൾക്ക് ഏറ്റവും സൗകര്യപ്രദമായ രീതിയിൽ ഈ ക്രാഷ് സന്ദേശം റിപ്പോർട്ട് ചെയ്യുക.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">വായന തുടരുക</string>
+    <string name="go_back_content_desc">തിരികെ പോവുക</string>
+    <string name="cover_image_content_desc">കവർ ചിത്രം</string>
+    <string name="open_reader_settings_content_desc">റീഡർ ക്രമീകരണങ്ങൾ</string>
+    <string name="file_icon_content_desc">ഫയൽ</string>
+    <string name="sort_order_content_desc">അടുക്കൽ ക്രമം</string>
+    <string name="checkbox_content_desc">ചെക്ക്ബോക്സ്</string>
+    <string name="cover_image_not_found_content_desc">കവർ ചിത്രം കണ്ടെത്തിയില്ല</string>
+    <string name="error_content_desc">പിശക്</string>
+    <string name="search_content_desc">തിരയുക</string>
+    <string name="clear_selected_items_content_desc">തിരഞ്ഞെടുത്ത ഇനങ്ങൾ മായ്ക്കുക</string>
+    <string name="add_files_content_desc">ഫയലുകൾ ചേർക്കുക</string>
+    <string name="select_all_files_content_desc">എല്ലാ ഫയലുകളും തിരഞ്ഞെടുക്കുക</string>
+    <string name="select_all_books_content_desc">എല്ലാ പുസ്തകങ്ങളും തിരഞ്ഞെടുക്കുക</string>
+    <string name="exit_search_content_desc">തിരച്ചിൽ പുറത്തുകയറുക</string>
+    <string name="delete_whole_history_content_desc">മുഴുവൻ ചരിത്രവും ഇല്ലാതാക്കുക</string>
+    <string name="move_books_content_desc">തിരഞ്ഞെടുത്ത പുസ്തകങ്ങളെ മാറ്റുക</string>
+    <string name="delete_books_content_desc">തിരഞ്ഞെടുത്ത പുസ്തകങ്ങൾ ഇല്ലാതാക്കുക</string>
+    <string name="revert_content_desc">പഴയപടിയാക്കുക</string>
+    <string name="selected_content_desc">തിരഞ്ഞെടുത്തു</string>
+    <string name="app_icon_content_desc">ആപ്പ് ഐക്കൺ</string>
+    <string name="delete_history_element_content_desc">ചരിത്ര ഘടകം ഇല്ലാതാക്കുക</string>
+    <string name="library_content_desc">നിങ്ങളുടെ ലൈബ്രറി</string>
+    <string name="history_content_desc">വായന ചരിത്രം</string>
+    <string name="browse_content_desc">പുസ്തകങ്ങൾ ചേർക്കുക</string>
+    <string name="arrow_content_desc">അമ്പ്</string>
+    <string name="reset_start_content_desc">സ്റ്റാർട്ട് ഗൈഡ് പുനഃസജ്ജമാക്കുക</string>
+    <string name="open_in_web_content_desc">വെബിൽ തുറക്കുക</string>
+    <string name="delete_color_preset_content_desc">നിറ പ്രീസെറ്റ് ഇല്ലാതാക്കുക</string>
+    <string name="create_color_preset_content_desc">പുതിയ നിറ പ്രീസെറ്റ് സൃഷ്ടിക്കുക</string>
+    <string name="shuffle_color_preset_content_desc">നിറങ്ങൾ കലർത്തുക</string>
+    <string name="drag_content_desc">വലിക്കുക</string>
+    <string name="filter_content_desc">ഫിൽട്ടർ</string>
+    <string name="checkpoint_back_content_desc">ചെക്ക്പോയിന്റ് പിന്നോട്ട്</string>
+    <string name="checkpoint_forward_content_desc">ചെക്ക്പോയിന്റ് മുന്നോട്ട്</string>
+    <string name="chapters_content_desc">അധ്യായങ്ങൾ</string>
+    <string name="more_content_desc">കൂടുതൽ</string>
+    <string name="pin_content_desc">പിൻ ചെയ്യുക</string>
+    <string name="show_less_content_desc">കുറച്ച് കാണിക്കുക</string>
+    <string name="show_more_content_desc">കൂടുതൽ കാണിക്കുക</string>
+    <string name="edit_content_desc">എഡിറ്റ് ചെയ്യുക</string>
+    <string name="expand_content_desc">വിപുലീകരിക്കുക</string>
+    <string name="collapse_content_desc">ചുരുക്കുക</string>
+    <string name="remove_content_desc">നീക്കം ചെയ്യുക</string>
+    <string name="note_content_desc">കുറിപ്പ്</string>
 </resources>

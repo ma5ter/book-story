@@ -4,4 +4,572 @@
   ~ SPDX-License-Identifier: GPL-3.0-only
   -->
 
-<resources></resources>
+<resources>
+    <!-- Basic Strings -->
+    <string name="default_string">По подразбиране</string>
+
+    <!-- Screens -->
+    <string name="library_screen">Библиотека</string>
+    <string name="history_screen">История</string>
+    <string name="browse_screen">Разглеждане</string>
+    <string name="settings_screen">Настройки</string>
+    <string name="about_screen">За приложението</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">Добавяне на книги?</string>
+    <string name="delete_books">Изтриване на книги?</string>
+    <string name="delete_book">Изтриване на книгата?</string>
+    <string name="delete_history">Изтриване на историята на четене?</string>
+    <string name="remove_category">Премахване на категорията?</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">
+        Можете да изберете кои книги да добавите.
+        Можете да редактирате заглавието и корицата на книгата по-късно.
+        Зареждането може да отнеме няколко минути.
+    </string>
+    <string name="delete_books_description">
+        Това ще изтрие всички избрани книги (%1$s) от базата данни.
+        Няма да изтрие избраните книги от устройството ви.
+    </string>
+    <string name="delete_book_description">
+        Това ще изтрие тази книга от базата данни.
+        Няма да изтрие книгата от устройството ви.
+    </string>
+    <string name="delete_history_description">
+        Това ще изтрие цялата история от базата данни.
+        След изтриване на цялата история подредбата на книгите ще бъде нулирана.
+    </string>
+    <string name="remove_category_description">
+        Това ще премахне тази категория от Библиотеката, но няма да изтрие нито една книга.
+    </string>
+
+    <!-- Errors -->
+    <string name="error_no_description">Няма описание.</string>
+    <string name="error_something_went_wrong">Нещо се обърка.</string>
+    <string name="error_no_translator">Не е намерено приложение за превод.</string>
+    <string name="error_no_dictionary">Не е намерено приложение за речник.</string>
+    <string name="error_no_browser">Не е намерен браузър.</string>
+    <string name="error_no_share_app">Не е намерено приложение за споделяне.</string>
+    <string name="error_no_file_manager_app">Не е намерено приложение за избор на папка.</string>
+    <string name="error_could_not_get_text">
+        Файлът е празен, липсва или е недостъпен.
+        Проверете файла, настройките за сканиране или сменете пътя, след което опитайте отново.
+    </string>
+    <string name="error_could_not_reset_cover">Корицата не може да бъде възстановена.</string>
+    <string name="error_closed_source">Затворен код</string>
+    <string name="error_could_not_export">Книгата с изображения не може да бъде експортирана.</string>
+    <string name="error_no_file">Файлът не съществува или е недостъпен</string>
+    <string name="error_field_empty">Това поле не трябва да е празно.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">
+        Търсене…
+    </string>
+    <string name="browse_empty">
+        Разширете колекцията от книги в библиотеката с вашите изтегляния
+    </string>
+    <string name="library_empty">
+        Четете любимите си книги и ги подреждайте по категории
+    </string>
+    <string name="history_empty">
+        Нека последната прочетена книга отвори страниците на нова прекрасна история от вашето четене
+    </string>
+    <string name="categories_empty">Няма категории.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s избрани</string>
+    <string name="color_preset_query">Профил %1$s</string>
+    <string name="color_preset_selected_query">Избран «%1$s»</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Отказ</string>
+    <string name="add_book">Добавяне на книга</string>
+    <string name="move">Преместване</string>
+    <string name="delete">Изтриване</string>
+    <string name="never">Никога</string>
+    <string name="undo">Възстановяване</string>
+    <string name="copy">Копиране</string>
+    <string name="report">Докладване</string>
+    <string name="translate">Превод</string>
+    <string name="dictionary">Речник</string>
+    <string name="generate_image">Генериране на изображение</string>
+    <string name="set_cover_image">Задаване като корица</string>
+    <string name="next">Напред</string>
+    <string name="done">Готово</string>
+    <string name="web_search">Търсене в интернет</string>
+    <string name="share">Споделяне</string>
+    <string name="ok">ОК</string>
+    <string name="change_path">Промяна на пътя</string>
+    <string name="add_folder">Добавяне на папка</string>
+    <string name="edit">Редактиране</string>
+    <string name="create_category">Създаване на категория</string>
+    <string name="set_up_scanning">Настройване на сканирането</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Експортиране</string>
+    <string name="export_with_images_desc">Експортиране на FB2 файла с вградени всички генерирани изображения</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Непознат</string>
+    <string name="reset_cover">Възстановяване на корицата</string>
+    <string name="reset_cover_desc">Възстановяване на оригиналната корица на книгата</string>
+    <string name="change_cover">Смяна на корицата</string>
+    <string name="change_cover_desc">Избор на нова корица от снимките ви</string>
+    <string name="delete_cover">Изтриване на корицата</string>
+    <string name="delete_cover_desc">Изтриване на текущата корица на книгата</string>
+    <string name="author">Автор</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">По подразбиране</string>
+    <string name="general_tab">Общи</string>
+    <string name="display_tab">Показване</string>
+    <string name="color_tab">Цветове</string>
+    <string name="ai_tab">ИИ</string>
+    <string name="filter_tab">Филтър</string>
+    <string name="sort_tab">Подреждане</string>
+    <string name="reader_tab">Четец</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Общи</string>
+    <string name="general_settings_desc">Език на приложението</string>
+    <string name="appearance_settings">Външен вид</string>
+    <string name="appearance_settings_desc">Тема, цветове</string>
+    <string name="reader_settings">Четец</string>
+    <string name="reader_settings_desc">Шрифт, текст</string>
+    <string name="browse_settings">Разглеждане</string>
+    <string name="browse_settings_desc">Сканиране, показване</string>
+    <string name="library_settings">Библиотека</string>
+    <string name="library_settings_desc">Категории, показване, раздели</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Шрифт</string>
+    <string name="text_reader_settings">Текст</string>
+    <string name="translator_reader_settings">Преводач</string>
+    <string name="padding_reader_settings">Полета</string>
+    <string name="misc_reader_settings">Разни</string>
+    <string name="reading_speed_reader_settings">Скорост на четене</string>
+    <string name="reading_mode_reader_settings">Режим на четене</string>
+    <string name="system_reader_settings">Система</string>
+    <string name="chapters_reader_settings">Глави</string>
+    <string name="images_reader_settings">Изображения</string>
+    <string name="progress_reader_settings">Напредък</string>
+    <string name="theme_appearance_settings">Настройки на темата</string>
+    <string name="colors_appearance_settings">Цветове</string>
+    <string name="scan_browse_settings">Сканиране</string>
+    <string name="display_settings">Показване</string>
+    <string name="tabs_settings">Раздели</string>
+    <string name="categories_settings">Категории</string>
+    <string name="filter_browse_settings">Филтър</string>
+    <string name="sort_settings">Подреждане</string>
+    <string name="ai_reader_settings">ИИ асистент</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">
+        Тези папки се използват за сканиране и извличане на файлове в Разглеждане.
+        Премахването на папка оттук няма да изтрие действителните файлове или книгите от Библиотеката.
+        За отмяна на достъпа натиснете съответния бутон.
+    </string>
+    <string name="library_categories_option_note">
+        Първоначално книгите се добавят към категорията по подразбиране,
+        но могат да принадлежат към няколко персонални категории, създадени тук.
+        Премахването на категория оттук няма да изтрие книгите от Библиотеката.
+        Задръжте и преместете иконата на категорията, за да подредите категориите.
+    </string>
+    <string name="library_per_category_sort_option_note">
+        Подреждането може да бъде променено в Библиотеката.
+    </string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">Език на приложението</string>
+    <string name="dark_theme_option">Тъмна тема</string>
+    <string name="pure_dark_option">Чисто тъмна</string>
+    <string name="absolute_dark_option">Абсолютно тъмна</string>
+    <string name="absolute_dark_option_desc">Променя цвета на фона на напълно черен</string>
+    <string name="theme_contrast_option">Контраст на темата</string>
+    <string name="app_theme_option">Тема на приложението</string>
+    <string name="double_press_exit_option">Двоен натиск „Назад“ за изход</string>
+    <string name="double_press_exit_option_desc">Натиснете два пъти „Назад“, за да излезете от приложението</string>
+    <string name="show_navigation_labels_option">Показване на етикети в навигацията</string>
+    <string name="show_navigation_labels_option_desc">Показване на етикети под иконите в навигационната лента</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">Шрифтово семейство</string>
+    <string name="font_thickness_option">Дебелина на шрифта</string>
+    <string name="font_style_option">Стил на шрифта</string>
+    <string name="font_size_option">Размер на шрифта</string>
+    <string name="line_height_option">Височина на реда</string>
+    <string name="paragraph_height_option">Разстояние между параграфи</string>
+    <string name="paragraph_indentation_option">Отстъп на параграфа</string>
+    <string name="color_preset_option">Цветов профил</string>
+    <string name="background_color_option">Цвят на фона</string>
+    <string name="font_color_option">Цвят на шрифта</string>
+    <string name="side_padding_option">Странични полета</string>
+    <string name="vertical_padding_option">Вертикални полета</string>
+    <string name="double_click_translation_option">Превод с двоен клик</string>
+    <string name="double_click_translation_option_desc">Двоен клик върху параграф за превод</string>
+    <string name="fast_color_preset_change_option">Бърза смяна на цветовия профил</string>
+    <string name="fast_color_preset_change_option_desc">Прекарайте пръст по горната лента наляво или надясно, за да смените цветовия профил</string>
+    <string name="text_alignment_option">Подравняване на текста</string>
+    <string name="chapter_title_alignment_option">Подравняване на заглавията на глави</string>
+    <string name="letter_spacing_option">Разстояние между буквите</string>
+    <string name="cutout_padding_option">Поле на изреза</string>
+    <string name="cutout_padding_option_desc">Прилагане на поле около изреза</string>
+    <string name="fullscreen_option">Цял екран</string>
+    <string name="fullscreen_option_desc">Скриване на системните ленти и полета</string>
+    <string name="keep_screen_on_option">Дръж екрана включен</string>
+    <string name="hide_bars_on_fast_scroll_option">Скриване на лентите при бързо превъртане</string>
+    <string name="perception_expander_option">Перцепционен разширител</string>
+    <string name="perception_expander_option_desc">
+        Увеличете скоростта си на четене, като се фокусирате върху центъра
+    </string>
+    <string name="perception_expander_padding_option">Странично поле на линията</string>
+    <string name="perception_expander_thickness_option">Дебелина на линията</string>
+    <string name="horizontal_limiter_option">Хоризонтален ограничител</string>
+    <string name="horizontal_limiter_option_desc">
+        Показване на хоризонтална линия и затъмняване на нефокусираната част от екрана
+    </string>
+    <string name="horizontal_limiter_height_option">Височина</string>
+    <string name="horizontal_limiter_vertical_offset_option">Вертикално отместване</string>
+    <string name="horizontal_limiter_ruler_option">Хоризонтална линия</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Дебелина на линията</string>
+    <string name="horizontal_limiter_dimming_option">Затъмняване</string>
+    <string name="screen_orientation_option">Ориентация на екрана</string>
+    <string name="custom_screen_brightness_option">Персонална яркост</string>
+    <string name="screen_brightness_option">Яркост</string>
+    <string name="horizontal_gesture_option">Хоризонтален жест</string>
+    <string name="horizontal_gesture_scroll_option">Част за превъртане</string>
+    <string name="horizontal_gesture_sensitivity_option">Чувствителност</string>
+    <string name="horizontal_gesture_alpha_anim_option">Анимация на видимостта</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">
+        Активиране на анимация на видимостта при хоризонтален жест
+    </string>
+    <string name="horizontal_gesture_pull_anim_option">Анимация на издърпване</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">
+        Активиране на анимация на издърпването при хоризонтален жест
+    </string>
+    <string name="horizontal_gesture_disable_scrolling_option">Забраняване на превъртането</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Пълно забраняване на превъртането в четеца</string>
+    <string name="bottom_bar_padding_option">Поле на долната лента</string>
+    <string name="highlighted_reading_option">Открояване на думи</string>
+    <string name="highlighted_reading_option_desc">Открояване на началото на всяка дума</string>
+    <string name="highlighted_reading_thickness_option">Дебелина на открояването</string>
+    <string name="images_option">Изображения</string>
+    <string name="images_option_desc">Показване на изображения</string>
+    <string name="images_captions_option">Надписи</string>
+    <string name="images_captions_option_desc">Показване на надписи под изображенията</string>
+    <string name="images_corners_roundness_option">Закръгленост на ъглите</string>
+    <string name="images_alignment_option">Подравняване</string>
+    <string name="images_width_option">Размер</string>
+    <string name="images_color_effects_option">Цветови ефекти</string>
+    <string name="progress_bar_option">Лента за напредък</string>
+    <string name="progress_bar_option_desc">Показване на лента за напредък в долната част</string>
+    <string name="progress_bar_padding_option">Полета</string>
+    <string name="progress_bar_alignment_option">Подравняване</string>
+    <string name="progress_bar_font_size_option">Размер на шрифта</string>
+    <string name="progress_count_option">Показан напредък</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API ключ</string>
+    <string name="api_key_option_label">OpenRouter API ключ</string>
+    <string name="image_model_option">Модел за изображения</string>
+    <string name="image_model_option_label">Идентификатор на OpenRouter модел за изображения</string>
+    <string name="image_style_option">Стилов блок</string>
+    <string name="image_style_option_label">Стилов блок за подсказката на изображението</string>
+    <string name="style_reference_option">Референция на стила</string>
+    <string name="style_reference_option_desc">Прикачване на колаж от илюстрациите на книгата като референция на стила</string>
+    <string name="proxy_option">Прокси</string>
+    <string name="proxy_option_desc">HTTP или SOCKS5 прокси</string>
+    <string name="proxy_protocol_option">Протокол на прокси</string>
+    <string name="proxy_host_option">Хост на прокси</string>
+    <string name="proxy_host_option_label">напр. 127.0.0.1</string>
+    <string name="proxy_port_option">Порт на прокси</string>
+    <string name="proxy_port_option_label">напр. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">ИИ асистент</string>
+    <string name="text_assistant_model_option">Текстов модел</string>
+    <string name="text_assistant_model_option_label">Идентификатор на OpenRouter умен текстов модел</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Предпочитана латентност (p90, сек)</string>
+    <string name="text_assistant_preferred_latency_option_label">Предпочитана максимална латентност на доставчика при p90 за текстовия асистент</string>
+    <string name="text_assistant_max_input_price_option">Макс. входна цена ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Максимална цена на промпт токен за текстовия асистент</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Модел за обобщаване</string>
+    <string name="summarize_model_option_label">Идентификатор на OpenRouter модел за извличане на герои</string>
+    <string name="text_assistant_max_tokens_option">Макс. входни токени</string>
+    <string name="text_assistant_max_tokens_option_label">Лимит на контекста на модела за разделяне на дълги книги</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Предпочитана латентност (p90, сек)</string>
+    <string name="character_preferred_latency_option_label">Предпочитана максимална латентност на доставчика при p90 за извличането на герои</string>
+    <string name="character_max_input_price_option">Макс. входна цена ($/1M)</string>
+    <string name="character_max_input_price_option_label">Максимална цена на промпт токен за извличането на герои</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Герои</string>
+    <string name="analyze_characters">Анализ на героите в книгата</string>
+    <string name="characters_generating">Извличане на герои…</string>
+    <string name="characters_empty">Още няма герои. Анализирайте съдържанието на книгата, за да създадете каталог с герои.</string>
+    <string name="characters_prompt">Прочетете целия текст на книгата, като игнорирате всякакви препратки към изображения. Идентифицирайте протагониста и всички главни и значими повтарящи се герои. За всеки герой синтезирайте последователно визуално описание от целия текст.</string>
+    <string name="characters_processing">Обработка</string>
+    <string name="characters_failed">Извличането на герои не успя</string>
+    <string name="characters_stopped_by_system">Извличането на герои беше спряно от системата.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Генериране на изображение…</string>
+    <string name="image_step_prepare">Подготовка на контекста…</string>
+    <string name="image_step_collage">Създаване на стилов колаж…</string>
+    <string name="image_step_distill">Обобщаване на сцената…</string>
+    <string name="image_step_generate">Изчертаване на илюстрация…</string>
+    <string name="image_generation_failed">Генерирането на изображение не успя</string>
+    <string name="image_stopped_by_system">Генерирането на изображение беше спряно от системата.</string>
+    <string name="image_already_generating">Вече се генерира изображение.</string>
+    <string name="retry">Опитайте отново</string>
+
+    <!-- Library -->
+    <string name="read_button_option">Показване на бутона «Четене»</string>
+    <string name="show_progress_option">Показване на напредъка</string>
+    <string name="title_position_option">Позиция на заглавието</string>
+    <string name="show_book_count_option">Показване на броя книги</string>
+    <string name="show_category_tabs_option">Показване на разделите за категории</string>
+    <string name="always_show_default_tab_option">Винаги показвай раздел по подразбиране</string>
+    <string name="per_category_sort_option">Подреждане по категория</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Червено</string>
+    <string name="green_color">Зелено</string>
+    <string name="blue_color">Синьо</string>
+    <string name="color_preset_placeholder">Наименувайте профила…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Изключено</string>
+    <string name="dark_theme_on">Включено</string>
+    <string name="dark_theme_follow_system">Система</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Изключено</string>
+    <string name="pure_dark_on">Включено</string>
+    <string name="pure_dark_power_saver">Пестелив</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Стандартен</string>
+    <string name="theme_contrast_medium">Среден</string>
+    <string name="theme_contrast_high">Висок</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Курсив</string>
+    <string name="font_style_normal">Нормален</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Скрито</string>
+    <string name="library_title_position_below">Долу</string>
+    <string name="library_title_position_inside">Отгоре</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Заглавие</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Режим на показване</string>
+    <string name="layout_list">Списък</string>
+    <string name="layout_grid">Мрежа</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">По азбучен ред</string>
+    <string name="sort_order_file_format">Файлов формат</string>
+    <string name="sort_order_last_modified">Последна промяна</string>
+    <string name="sort_order_file_size">Размер на файла</string>
+    <string name="sort_order_last_read">Последно четено</string>
+    <string name="sort_order_progress">Напредък</string>
+    <string name="sort_order_author">Автор</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Размер на мрежата</string>
+    <string name="grid_size_auto">Автоматично</string>
+    <string name="grid_size_per_row">на ред</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Начало</string>
+    <string name="alignment_justify">Двустранно</string>
+    <string name="alignment_center">Център</string>
+    <string name="alignment_end">Край</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Свободна</string>
+    <string name="screen_orientation_portrait">Портретна</string>
+    <string name="screen_orientation_landscape">Ландшафтна</string>
+    <string name="screen_orientation_locked_portrait">Заключена портретна</string>
+    <string name="screen_orientation_locked_landscape">Заключена ландшафтна</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Изключен</string>
+    <string name="horizontal_gesture_on">Включен</string>
+    <string name="horizontal_gesture_inverse">Включен (Обърнат)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">ниво</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Изключени</string>
+    <string name="color_effects_grayscale">Черно-бели</string>
+    <string name="color_effects_font">Цвят на шрифта</string>
+    <string name="color_effects_background">Цвят на фона</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Тънък</string>
+    <string name="font_thickness_extra_light">Съвсем лек</string>
+    <string name="font_thickness_light">Лек</string>
+    <string name="font_thickness_normal">Нормален</string>
+    <string name="font_thickness_medium">Среден</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Процент</string>
+    <string name="progress_count_quantity">Количество</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Меркурий</string>
+    <string name="blue_theme">Нептун</string>
+    <string name="green_theme">Земя</string>
+    <string name="green2_theme">Йо</string>
+    <string name="green_gray_theme">Енцелад</string>
+    <string name="red_theme">Марс</string>
+    <string name="red_gray_theme">Калисто</string>
+    <string name="purple_theme">Юпитер</string>
+    <string name="purple_gray_theme">Церера</string>
+    <string name="pink_theme">Сатурн</string>
+    <string name="pink2_theme">Ганимед</string>
+    <string name="lavender_theme">Ерида</string>
+    <string name="marsh_theme">Плутон</string>
+    <string name="yellow_theme">Венера</string>
+    <string name="yellow2_theme">Макемаке</string>
+    <string name="aqua_theme">Уран</string>
+    <string name="gray_theme">Япет</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Натиснете „Назад“ отново, за да излезете</string>
+    <string name="books_added">Всички избрани книги бяха успешно добавени.</string>
+    <string name="books_moved">Всички избрани книги бяха успешно преместени.</string>
+    <string name="books_deleted">Всички избрани книги бяха успешно изтрити.</string>
+    <string name="cover_image_changed">Корицата беше успешно сменена.</string>
+    <string name="cover_image_deleted">Корицата беше успешно изтрита.</string>
+    <string name="book_deleted">Тази книга беше успешно изтрита.</string>
+    <string name="book_moved">Тази книга беше успешно преместена.</string>
+    <string name="copied">Копирано</string>
+    <string name="history_deleted">Историята беше успешно изтрита.</string>
+    <string name="cover_reset">Корицата беше успешно възстановена.</string>
+    <string name="title_changed">Заглавието беше успешно променено.</string>
+    <string name="author_changed">Авторът беше успешно променен.</string>
+    <string name="description_changed">Описанието беше успешно променено.</string>
+    <string name="path_changed">Пътят на файла беше успешно променен.</string>
+    <string name="cover_image_set">Корицата на книгата беше успешно зададена.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Елементът от историята беше успешно изтрит.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Начало</string>
+    <string name="continue_reading_query">Продължете от %1$s</string>
+    <string name="file_details">Детайли на файла</string>
+    <string name="file_path">Път</string>
+    <string name="file_last_opened">Последно отваряне</string>
+    <string name="file_size">Размер</string>
+    <string name="unknown">Непознат</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Няма глави</string>
+    <string name="chapters">Глави</string>
+    <string name="ai_illustrations">ИИ илюстрации</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">Версия на приложението</string>
+    <string name="report_bug_option">Докладване на грешка</string>
+    <string name="licenses_option">Лицензи с отворен код</string>
+    <string name="credits_option">Заслуги</string>
+    <string name="help_translate_option">Помогнете с превода</string>
+    <string name="support_development_option">Подкрепете разработката</string>
+    <string name="contributors_option">Сътрудници</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Дизайн</string>
+    <string name="credits_icon">Икони</string>
+    <string name="credits_updates">Управление на новите актуализации</string>
+    <string name="credits_fonts">Шрифтове</string>
+    <string name="credits_translation">Превод</string>
+    <string name="credits_contribution">Принос</string>
+    <string name="credits_ideas">Идеи</string>
+
+    <!-- Start -->
+    <!-- Welcome message. %1$s is the application name. -->
+    <string name="start_welcome">Добре дошли в %1$s!</string>
+    <string name="start_welcome_desc">
+        Към свят, в който думите очароват,
+        учат и водят към невероятни приключения!
+        Нека настроим някои неща!
+    </string>
+    <string name="start_language_preferences">Езикови настройки</string>
+    <string name="start_theme_preferences">Настройки на темата</string>
+    <string name="start_scan_preferences">Настройки за сканиране</string>
+    <string name="start_done">Всичко е готово!</string>
+    <string name="start_done_desc">Настройването е завършено.</string>
+
+    <!-- History -->
+    <string name="today">Днес</string>
+    <string name="yesterday">Вчера</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Ой! Приложението се срина.</string>
+    <string name="crash_description">Моля, докладвайте това съобщение за срив по най-удобния за вас начин.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Продължаване на четенето</string>
+    <string name="go_back_content_desc">Назад</string>
+    <string name="cover_image_content_desc">Корица на книгата</string>
+    <string name="open_reader_settings_content_desc">Настройки на четеца</string>
+    <string name="file_icon_content_desc">Файл</string>
+    <string name="sort_order_content_desc">Начин на подреждане</string>
+    <string name="checkbox_content_desc">Поле за отметка</string>
+    <string name="cover_image_not_found_content_desc">Корицата не е намерена</string>
+    <string name="error_content_desc">Грешка</string>
+    <string name="search_content_desc">Търсене</string>
+    <string name="clear_selected_items_content_desc">Изчистване на избраните елементи</string>
+    <string name="add_files_content_desc">Добавяне на файлове</string>
+    <string name="select_all_files_content_desc">Избор на всички файлове</string>
+    <string name="select_all_books_content_desc">Избор на всички книги</string>
+    <string name="exit_search_content_desc">Изход от търсенето</string>
+    <string name="delete_whole_history_content_desc">Изтриване на цялата история</string>
+    <string name="move_books_content_desc">Преместване на избраните книги</string>
+    <string name="delete_books_content_desc">Изтриване на избраните книги</string>
+    <string name="revert_content_desc">Връщане</string>
+    <string name="selected_content_desc">Избрано</string>
+    <string name="app_icon_content_desc">Икона на приложението</string>
+    <string name="delete_history_element_content_desc">Изтриване на елемент от историята</string>
+    <string name="library_content_desc">Вашата библиотека</string>
+    <string name="history_content_desc">История на четенето</string>
+    <string name="browse_content_desc">Добавяне на книги</string>
+    <string name="arrow_content_desc">Стрелка</string>
+    <string name="reset_start_content_desc">Нулиране на началното ръководство</string>
+    <string name="open_in_web_content_desc">Отваряне в браузър</string>
+    <string name="delete_color_preset_content_desc">Изтриване на цветовия профил</string>
+    <string name="create_color_preset_content_desc">Създаване на нов цветови профил</string>
+    <string name="shuffle_color_preset_content_desc">Разбъркване на цветовете</string>
+    <string name="drag_content_desc">Влачене</string>
+    <string name="filter_content_desc">Филтър</string>
+    <string name="checkpoint_back_content_desc">Контролна точка назад</string>
+    <string name="checkpoint_forward_content_desc">Контролна точка напред</string>
+    <string name="chapters_content_desc">Глави</string>
+    <string name="more_content_desc">Още</string>
+    <string name="pin_content_desc">Закачване</string>
+    <string name="show_less_content_desc">Показване на по-малко</string>
+    <string name="show_more_content_desc">Показване на повече</string>
+    <string name="edit_content_desc">Редактиране</string>
+    <string name="expand_content_desc">Разгъване</string>
+    <string name="collapse_content_desc">Свиване</string>
+    <string name="remove_content_desc">Премахване</string>
+    <string name="note_content_desc">Бележка</string>
+
+</resources>

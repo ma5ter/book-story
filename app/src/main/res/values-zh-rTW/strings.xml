@@ -5,4 +5,571 @@
   -->
 
 <resources>
+    <!-- Basic Strings -->
+    <string name="default_string">預設</string>
+
+    <!-- Screens -->
+    <string name="library_screen">書庫</string>
+    <string name="history_screen">歷史記錄</string>
+    <string name="browse_screen">瀏覽</string>
+    <string name="settings_screen">設定</string>
+    <string name="about_screen">關於應用程式</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">新增書籍？</string>
+    <string name="delete_books">刪除書籍？</string>
+    <string name="delete_book">刪除書籍？</string>
+    <string name="delete_history">刪除閱讀歷史？</string>
+    <string name="remove_category">移除分類？</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">
+        您可以選擇要新增的書籍。
+        稍後可以編輯書名和封面圖片。
+        載入程序可能需要數分鐘。
+    </string>
+    <string name="delete_books_description">
+        將從資料庫中刪除所有選取的書籍(%1$s)。
+        不會從您的裝置上刪除選取的書籍。
+    </string>
+    <string name="delete_book_description">
+        將從資料庫中刪除此書籍。
+        不會從您的裝置上刪除此書籍。
+    </string>
+    <string name="delete_history_description">
+        將從資料庫中刪除整個歷史記錄。
+        刪除整個歷史記錄後，書籍的排序將會重設。
+    </string>
+    <string name="remove_category_description">
+        將從書庫中移除此分類，但不會刪除任何書籍。
+    </string>
+
+    <!-- Errors -->
+    <string name="error_no_description">暫無簡介。</string>
+    <string name="error_something_went_wrong">發生錯誤。</string>
+    <string name="error_no_translator">找不到翻譯應用程式。</string>
+    <string name="error_no_dictionary">找不到字典應用程式。</string>
+    <string name="error_no_browser">找不到瀏覽器應用程式。</string>
+    <string name="error_no_share_app">找不到可分享的應用程式。</string>
+    <string name="error_no_file_manager_app">找不到可選擇資料夾的應用程式。</string>
+    <string name="error_could_not_get_text">
+        檔案空白、遺失或無法存取。
+        請檢查檔案、掃描設定或變更路徑，然後再試一次。
+    </string>
+    <string name="error_could_not_reset_cover">無法重設封面圖片。</string>
+    <string name="error_closed_source">封閉原始碼</string>
+    <string name="error_could_not_export">無法匯出含圖片的書籍。</string>
+    <string name="error_no_file">檔案不存在或無法存取</string>
+    <string name="error_field_empty">此欄位不可為空白。</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">
+        搜尋…
+    </string>
+    <string name="browse_empty">
+        用您的下載內容擴充書庫藏書
+    </string>
+    <string name="library_empty">
+        閱讀您喜愛的書籍，並將它們整理到不同分類
+    </string>
+    <string name="history_empty">
+        讓您最後閱讀的書籍開啟嶄新精彩的閱讀旅程
+    </string>
+    <string name="categories_empty">沒有分類。</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">已選取 %1$s 個項目</string>
+    <string name="color_preset_query">預設集 %1$s</string>
+    <string name="color_preset_selected_query">已選取「%1$s」</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">取消</string>
+    <string name="add_book">新增書籍</string>
+    <string name="move">移動</string>
+    <string name="delete">刪除</string>
+    <string name="never">從未</string>
+    <string name="undo">復原</string>
+    <string name="copy">複製</string>
+    <string name="report">回報</string>
+    <string name="translate">翻譯</string>
+    <string name="dictionary">字典</string>
+    <string name="generate_image">產生圖片</string>
+    <string name="set_cover_image">設為書籍封面</string>
+    <string name="next">下一步</string>
+    <string name="done">完成</string>
+    <string name="web_search">網頁搜尋</string>
+    <string name="share">分享</string>
+    <string name="ok">確定</string>
+    <string name="change_path">變更路徑</string>
+    <string name="add_folder">新增資料夾</string>
+    <string name="edit">編輯</string>
+    <string name="create_category">建立分類</string>
+    <string name="set_up_scanning">設定掃描</string>
+
+    <!-- Export -->
+    <string name="export_with_images">匯出</string>
+    <string name="export_with_images_desc">匯出包含所有已產生圖片的 FB2 檔案</string>
+
+    <!-- Book -->
+    <string name="unknown_author">未知</string>
+    <string name="reset_cover">重設封面圖片</string>
+    <string name="reset_cover_desc">將書籍封面圖片重設為預設</string>
+    <string name="change_cover">變更封面圖片</string>
+    <string name="change_cover_desc">從您的相片中選擇新封面</string>
+    <string name="delete_cover">刪除封面圖片</string>
+    <string name="delete_cover_desc">刪除書籍目前的封面圖片</string>
+    <string name="author">作者</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">預設</string>
+    <string name="general_tab">一般</string>
+    <string name="display_tab">顯示</string>
+    <string name="color_tab">顏色</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">篩選</string>
+    <string name="sort_tab">排序</string>
+    <string name="reader_tab">閱讀器</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">一般</string>
+    <string name="general_settings_desc">應用程式語言</string>
+    <string name="appearance_settings">外觀</string>
+    <string name="appearance_settings_desc">主題、顏色</string>
+    <string name="reader_settings">閱讀器</string>
+    <string name="reader_settings_desc">字型、文字</string>
+    <string name="browse_settings">瀏覽</string>
+    <string name="browse_settings_desc">掃描、顯示</string>
+    <string name="library_settings">書庫</string>
+    <string name="library_settings_desc">分類、顯示、分頁</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">字型</string>
+    <string name="text_reader_settings">文字</string>
+    <string name="translator_reader_settings">翻譯</string>
+    <string name="padding_reader_settings">邊距</string>
+    <string name="misc_reader_settings">其他</string>
+    <string name="reading_speed_reader_settings">閱讀速度</string>
+    <string name="reading_mode_reader_settings">閱讀模式</string>
+    <string name="system_reader_settings">系統</string>
+    <string name="chapters_reader_settings">章節</string>
+    <string name="images_reader_settings">圖片</string>
+    <string name="progress_reader_settings">進度</string>
+    <string name="theme_appearance_settings">主題偏好設定</string>
+    <string name="colors_appearance_settings">顏色</string>
+    <string name="scan_browse_settings">掃描</string>
+    <string name="display_settings">顯示</string>
+    <string name="tabs_settings">分頁</string>
+    <string name="categories_settings">分類</string>
+    <string name="filter_browse_settings">篩選</string>
+    <string name="sort_settings">排序</string>
+    <string name="ai_reader_settings">AI 助理</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">
+        這些資料夾用於在「瀏覽」中掃描及擷取檔案。
+        在此移除資料夾不會刪除實際檔案或書庫中的書籍。
+        如要撤銷存取權，請點選對應的按鈕。
+    </string>
+    <string name="library_categories_option_note">
+        書籍最初會加入預設分類，
+        但也可以屬於多個在此建立的自訂分類。
+        在此移除分類不會從書庫中刪除書籍。
+        按住分類圖示並移動即可重新排列分類。
+    </string>
+    <string name="library_per_category_sort_option_note">
+        排序可在書庫中變更。
+    </string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">應用程式語言</string>
+    <string name="dark_theme_option">深色主題</string>
+    <string name="pure_dark_option">純深色</string>
+    <string name="absolute_dark_option">絕對深色</string>
+    <string name="absolute_dark_option_desc">將背景顏色變更為純黑</string>
+    <string name="theme_contrast_option">主題對比</string>
+    <string name="app_theme_option">應用程式主題</string>
+    <string name="double_press_exit_option">按兩次返回鍵以結束</string>
+    <string name="double_press_exit_option_desc">按兩次返回鍵以結束應用程式</string>
+    <string name="show_navigation_labels_option">顯示導覽列標籤</string>
+    <string name="show_navigation_labels_option_desc">在導覽列圖示下方顯示標籤</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">字型</string>
+    <string name="font_thickness_option">字型粗細</string>
+    <string name="font_style_option">字型樣式</string>
+    <string name="font_size_option">字型大小</string>
+    <string name="line_height_option">行高</string>
+    <string name="paragraph_height_option">段落間距</string>
+    <string name="paragraph_indentation_option">段落縮排</string>
+    <string name="color_preset_option">顏色預設集</string>
+    <string name="background_color_option">背景顏色</string>
+    <string name="font_color_option">文字顏色</string>
+    <string name="side_padding_option">左右邊距</string>
+    <string name="vertical_padding_option">上下邊距</string>
+    <string name="double_click_translation_option">按兩下翻譯</string>
+    <string name="double_click_translation_option_desc">按兩下段落即可翻譯</string>
+    <string name="fast_color_preset_change_option">快速切換顏色預設集</string>
+    <string name="fast_color_preset_change_option_desc">左右滑動頂列以切換顏色預設集</string>
+    <string name="text_alignment_option">文字對齊</string>
+    <string name="chapter_title_alignment_option">章節標題對齊</string>
+    <string name="letter_spacing_option">字元間距</string>
+    <string name="cutout_padding_option">挖孔邊距</string>
+    <string name="cutout_padding_option_desc">在挖孔區域套用邊距</string>
+    <string name="fullscreen_option">全螢幕</string>
+    <string name="fullscreen_option_desc">隱藏系統列和邊距</string>
+    <string name="keep_screen_on_option">保持螢幕開啟</string>
+    <string name="hide_bars_on_fast_scroll_option">快速捲動時隱藏列</string>
+    <string name="perception_expander_option">感知擴展器</string>
+    <string name="perception_expander_option_desc">
+        專注於中心以提升閱讀速度
+    </string>
+    <string name="perception_expander_padding_option">行左右邊距</string>
+    <string name="perception_expander_thickness_option">行粗細</string>
+    <string name="horizontal_limiter_option">水平限制器</string>
+    <string name="horizontal_limiter_option_desc">
+        顯示水平標尺並調暗未聚焦的螢幕區域
+    </string>
+    <string name="horizontal_limiter_height_option">高度</string>
+    <string name="horizontal_limiter_vertical_offset_option">垂直偏移</string>
+    <string name="horizontal_limiter_ruler_option">水平標尺</string>
+    <string name="horizontal_limiter_ruler_thickness_option">標尺粗細</string>
+    <string name="horizontal_limiter_dimming_option">調暗程度</string>
+    <string name="screen_orientation_option">螢幕方向</string>
+    <string name="custom_screen_brightness_option">自訂亮度</string>
+    <string name="screen_brightness_option">亮度</string>
+    <string name="horizontal_gesture_option">水平手勢</string>
+    <string name="horizontal_gesture_scroll_option">捲動比例</string>
+    <string name="horizontal_gesture_sensitivity_option">靈敏度</string>
+    <string name="horizontal_gesture_alpha_anim_option">可見度動畫</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">
+        使用水平手勢時啟用可見度動畫
+    </string>
+    <string name="horizontal_gesture_pull_anim_option">拉動動畫</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">
+        使用水平手勢時啟用拉動動畫
+    </string>
+    <string name="horizontal_gesture_disable_scrolling_option">停用捲動</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">完全停用閱讀器捲動</string>
+    <string name="bottom_bar_padding_option">底部列邊距</string>
+    <string name="highlighted_reading_option">高亮字詞</string>
+    <string name="highlighted_reading_option_desc">高亮每個字詞的開頭</string>
+    <string name="highlighted_reading_thickness_option">高亮粗細</string>
+    <string name="images_option">圖片</string>
+    <string name="images_option_desc">顯示圖片</string>
+    <string name="images_captions_option">圖說</string>
+    <string name="images_captions_option_desc">在圖片下方顯示圖說</string>
+    <string name="images_corners_roundness_option">圓角弧度</string>
+    <string name="images_alignment_option">對齊</string>
+    <string name="images_width_option">大小</string>
+    <string name="images_color_effects_option">顏色效果</string>
+    <string name="progress_bar_option">進度列</string>
+    <string name="progress_bar_option_desc">在底部顯示進度列</string>
+    <string name="progress_bar_padding_option">邊距</string>
+    <string name="progress_bar_alignment_option">對齊</string>
+    <string name="progress_bar_font_size_option">字型大小</string>
+    <string name="progress_count_option">進度計數</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API 金鑰</string>
+    <string name="api_key_option_label">OpenRouter API 金鑰</string>
+    <string name="image_model_option">圖片模型</string>
+    <string name="image_model_option_label">OpenRouter 圖片模型代稱</string>
+    <string name="image_style_option">風格區塊</string>
+    <string name="image_style_option_label">圖片提示詞的風格區塊</string>
+    <string name="style_reference_option">風格參考</string>
+    <string name="style_reference_option_desc">將書籍插圖拼貼作為風格參考附加</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP 或 SOCKS5 代理</string>
+    <string name="proxy_protocol_option">代理通訊協定</string>
+    <string name="proxy_host_option">Proxy 主機</string>
+    <string name="proxy_host_option_label">例如 127.0.0.1</string>
+    <string name="proxy_port_option">Proxy 連接埠</string>
+    <string name="proxy_port_option_label">例如 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI 助理</string>
+    <string name="text_assistant_model_option">文字模型</string>
+    <string name="text_assistant_model_option_label">OpenRouter 智慧文字模型代稱</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">偏好延遲（p90，秒）</string>
+    <string name="text_assistant_preferred_latency_option_label">文字助理偏好的供應商 p90 延遲上限</string>
+    <string name="text_assistant_max_input_price_option">輸入價格上限（$/1M）</string>
+    <string name="text_assistant_max_input_price_option_label">文字助理的提示詞 Token 價格上限</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">摘要模型</string>
+    <string name="summarize_model_option_label">用於角色擷取的 OpenRouter 模型代稱</string>
+    <string name="text_assistant_max_tokens_option">輸入 Token 上限</string>
+    <string name="text_assistant_max_tokens_option_label">用於分割長書籍的模型脈絡上限</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">偏好延遲（p90，秒）</string>
+    <string name="character_preferred_latency_option_label">角色擷取偏好的供應商 p90 延遲上限</string>
+    <string name="character_max_input_price_option">輸入價格上限（$/1M）</string>
+    <string name="character_max_input_price_option_label">角色擷取的提示詞 Token 價格上限</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">角色</string>
+    <string name="analyze_characters">分析書籍角色</string>
+    <string name="characters_generating">正在擷取角色…</string>
+    <string name="characters_empty">目前沒有角色。分析書籍內容以建立角色目錄。</string>
+    <string name="characters_prompt">通讀整本書的文字，忽略所有圖片引用。找出主角以及所有重要且反覆出現的角色。為每個角色根據全文整合出一致的視覺外觀描述。</string>
+    <string name="characters_processing">處理中</string>
+    <string name="characters_failed">角色擷取失敗</string>
+    <string name="characters_stopped_by_system">角色擷取已被系統停止。</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">正在產生圖片…</string>
+    <string name="image_step_prepare">正在準備上下文…</string>
+    <string name="image_step_collage">正在製作風格拼貼…</string>
+    <string name="image_step_distill">正在精煉場景…</string>
+    <string name="image_step_generate">正在繪製插圖…</string>
+    <string name="image_generation_failed">圖片產生失敗</string>
+    <string name="image_stopped_by_system">圖片產生已被系統停止。</string>
+    <string name="image_already_generating">已有圖片正在產生中。</string>
+    <string name="retry">重試</string>
+
+    <!-- Library -->
+    <string name="read_button_option">顯示「閱讀」按鈕</string>
+    <string name="show_progress_option">顯示進度</string>
+    <string name="title_position_option">標題位置</string>
+    <string name="show_book_count_option">顯示書籍數量</string>
+    <string name="show_category_tabs_option">顯示分類分頁</string>
+    <string name="always_show_default_tab_option">一律顯示預設分頁</string>
+    <string name="per_category_sort_option">各分類獨立排序</string>
+
+    <!-- Color presets -->
+    <string name="red_color">紅色</string>
+    <string name="green_color">綠色</string>
+    <string name="blue_color">藍色</string>
+    <string name="color_preset_placeholder">為預設集命名…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">停用</string>
+    <string name="dark_theme_on">啟用</string>
+    <string name="dark_theme_follow_system">跟隨系統</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">停用</string>
+    <string name="pure_dark_on">啟用</string>
+    <string name="pure_dark_power_saver">省電模式</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">標準</string>
+    <string name="theme_contrast_medium">中等</string>
+    <string name="theme_contrast_high">高</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">斜體</string>
+    <string name="font_style_normal">標準</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">隱藏</string>
+    <string name="library_title_position_below">下方</string>
+    <string name="library_title_position_inside">覆蓋</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">標題</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">顯示模式</string>
+    <string name="layout_list">清單</string>
+    <string name="layout_grid">格線</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">依字母排序</string>
+    <string name="sort_order_file_format">檔案格式</string>
+    <string name="sort_order_last_modified">上次修改時間</string>
+    <string name="sort_order_file_size">檔案大小</string>
+    <string name="sort_order_last_read">上次閱讀時間</string>
+    <string name="sort_order_progress">進度</string>
+    <string name="sort_order_author">作者</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">格線大小</string>
+    <string name="grid_size_auto">自動</string>
+    <string name="grid_size_per_row">每列</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">靠左對齊</string>
+    <string name="alignment_justify">兩端對齊</string>
+    <string name="alignment_center">置中</string>
+    <string name="alignment_end">靠右對齊</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">自由</string>
+    <string name="screen_orientation_portrait">直向</string>
+    <string name="screen_orientation_landscape">橫向</string>
+    <string name="screen_orientation_locked_portrait">鎖定直向</string>
+    <string name="screen_orientation_locked_landscape">鎖定橫向</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">關閉</string>
+    <string name="horizontal_gesture_on">開啟</string>
+    <string name="horizontal_gesture_inverse">開啟（反向）</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">級</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">關閉</string>
+    <string name="color_effects_grayscale">灰階</string>
+    <string name="color_effects_font">文字顏色</string>
+    <string name="color_effects_background">背景顏色</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">極細</string>
+    <string name="font_thickness_extra_light">特細</string>
+    <string name="font_thickness_light">細體</string>
+    <string name="font_thickness_normal">標準</string>
+    <string name="font_thickness_medium">中等</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">百分比</string>
+    <string name="progress_count_quantity">數量</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Mercury</string>
+    <string name="blue_theme">Neptune</string>
+    <string name="green_theme">Earth</string>
+    <string name="green2_theme">Io</string>
+    <string name="green_gray_theme">Enceladus</string>
+    <string name="red_theme">Mars</string>
+    <string name="red_gray_theme">Callisto</string>
+    <string name="purple_theme">Jupiter</string>
+    <string name="purple_gray_theme">Ceres</string>
+    <string name="pink_theme">Saturn</string>
+    <string name="pink2_theme">Ganymede</string>
+    <string name="lavender_theme">Eris</string>
+    <string name="marsh_theme">Pluto</string>
+    <string name="yellow_theme">Venus</string>
+    <string name="yellow2_theme">Makemake</string>
+    <string name="aqua_theme">Uranus</string>
+    <string name="gray_theme">Iapetus</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">再按一次返回鍵即可結束</string>
+    <string name="books_added">已成功新增所有選取的書籍。</string>
+    <string name="books_moved">已成功移動所有選取的書籍。</string>
+    <string name="books_deleted">已成功刪除所有選取的書籍。</string>
+    <string name="cover_image_changed">已成功變更封面圖片。</string>
+    <string name="cover_image_deleted">已成功刪除封面圖片。</string>
+    <string name="book_deleted">此書籍已成功刪除。</string>
+    <string name="book_moved">此書籍已成功移動。</string>
+    <string name="copied">已複製</string>
+    <string name="history_deleted">已成功刪除歷史記錄。</string>
+    <string name="cover_reset">已成功重設封面圖片。</string>
+    <string name="title_changed">已成功變更書名。</string>
+    <string name="author_changed">已成功變更作者。</string>
+    <string name="description_changed">已成功變更簡介。</string>
+    <string name="path_changed">已成功變更檔案路徑。</string>
+    <string name="cover_image_set">已成功設定書籍封面。</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">已成功刪除歷史記錄項目。</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">開始</string>
+    <string name="continue_reading_query">從 %1$s 繼續</string>
+    <string name="file_details">檔案詳細資訊</string>
+    <string name="file_path">路徑</string>
+    <string name="file_last_opened">上次開啟</string>
+    <string name="file_size">大小</string>
+    <string name="unknown">未知</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">無章節</string>
+    <string name="chapters">章節</string>
+    <string name="ai_illustrations">AI 插圖</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">應用程式版本</string>
+    <string name="report_bug_option">回報錯誤</string>
+    <string name="licenses_option">開放原始碼授權</string>
+    <string name="credits_option">製作人員</string>
+    <string name="help_translate_option">協助翻譯</string>
+    <string name="support_development_option">支持開發</string>
+    <string name="contributors_option">貢獻者</string>
+
+    <!-- Credits -->
+    <string name="credits_design">設計</string>
+    <string name="credits_icon">圖示</string>
+    <string name="credits_updates">更新管理</string>
+    <string name="credits_fonts">字型</string>
+    <string name="credits_translation">翻譯</string>
+    <string name="credits_contribution">貢獻</string>
+    <string name="credits_ideas">構想</string>
+
+    <!-- Start -->
+    <!-- Welcome message. %1$s is the application name. -->
+    <string name="start_welcome">歡迎使用 %1$s！</string>
+    <string name="start_welcome_desc">
+        歡迎來到一個文字令人著迷、
+        啟發心靈並引領您展開精彩冒險的世界！
+        我們先來做一些設定吧！
+    </string>
+    <string name="start_language_preferences">語言偏好設定</string>
+    <string name="start_theme_preferences">主題偏好設定</string>
+    <string name="start_scan_preferences">掃描偏好設定</string>
+    <string name="start_done">全部設定完成！</string>
+    <string name="start_done_desc">設定已完成。</string>
+
+    <!-- History -->
+    <string name="today">今天</string>
+    <string name="yesterday">昨天</string>
+
+    <!-- Crash -->
+    <string name="crash_title">哎呀！應用程式當機了。</string>
+    <string name="crash_description">請以您最方便的方式回報這則當機訊息。</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">繼續閱讀</string>
+    <string name="go_back_content_desc">返回</string>
+    <string name="cover_image_content_desc">封面圖片</string>
+    <string name="open_reader_settings_content_desc">閱讀器設定</string>
+    <string name="file_icon_content_desc">檔案</string>
+    <string name="sort_order_content_desc">排序方式</string>
+    <string name="checkbox_content_desc">核取方塊</string>
+    <string name="cover_image_not_found_content_desc">找不到封面圖片</string>
+    <string name="error_content_desc">錯誤</string>
+    <string name="search_content_desc">搜尋</string>
+    <string name="clear_selected_items_content_desc">清除所選項目</string>
+    <string name="add_files_content_desc">新增檔案</string>
+    <string name="select_all_files_content_desc">全選檔案</string>
+    <string name="select_all_books_content_desc">全選書籍</string>
+    <string name="exit_search_content_desc">結束搜尋</string>
+    <string name="delete_whole_history_content_desc">刪除整個歷史記錄</string>
+    <string name="move_books_content_desc">移動所選書籍</string>
+    <string name="delete_books_content_desc">刪除所選書籍</string>
+    <string name="revert_content_desc">還原</string>
+    <string name="selected_content_desc">已選取</string>
+    <string name="app_icon_content_desc">應用程式圖示</string>
+    <string name="delete_history_element_content_desc">刪除歷史記錄項目</string>
+    <string name="library_content_desc">您的書庫</string>
+    <string name="history_content_desc">閱讀歷史</string>
+    <string name="browse_content_desc">新增書籍</string>
+    <string name="arrow_content_desc">箭號</string>
+    <string name="reset_start_content_desc">重設新手指南</string>
+    <string name="open_in_web_content_desc">在網頁中開啟</string>
+    <string name="delete_color_preset_content_desc">刪除顏色預設集</string>
+    <string name="create_color_preset_content_desc">建立新顏色預設集</string>
+    <string name="shuffle_color_preset_content_desc">隨機調整顏色</string>
+    <string name="drag_content_desc">拖曳</string>
+    <string name="filter_content_desc">篩選</string>
+    <string name="checkpoint_back_content_desc">向後檢查點</string>
+    <string name="checkpoint_forward_content_desc">向前檢查點</string>
+    <string name="chapters_content_desc">章節</string>
+    <string name="more_content_desc">更多</string>
+    <string name="pin_content_desc">釘選</string>
+    <string name="show_less_content_desc">收合</string>
+    <string name="show_more_content_desc">展開</string>
+    <string name="edit_content_desc">編輯</string>
+    <string name="expand_content_desc">展開</string>
+    <string name="collapse_content_desc">收合</string>
+    <string name="remove_content_desc">移除</string>
+    <string name="note_content_desc">提示</string>
+
 </resources>

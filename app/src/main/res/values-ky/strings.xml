@@ -1,0 +1,581 @@
+<!--
+  ~ Book's Story — free and open-source Material You eBook reader.
+  ~ Copyright (C) 2024-2026 Acclorite
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<resources>
+    <!-- Basic Strings -->
+    <string name="app_name" translatable="false">Book\'s Story</string>
+    <string name="default_string">Демейки</string>
+
+    <!-- Screens -->
+    <string name="library_screen">Китепкана</string>
+    <string name="history_screen">Тарых</string>
+    <string name="browse_screen">Карап чыгуу</string>
+    <string name="settings_screen">Параметрлер</string>
+    <string name="about_screen">Колдонмо жөнүндө</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">Китептерди кошосузбу?</string>
+    <string name="delete_books">Китептерди өчүрөсүзбү?</string>
+    <string name="delete_book">Китепти өчүрөсүзбү?</string>
+    <string name="delete_history">Окуу тарыхын өчүрөсүзбү?</string>
+    <string name="remove_category">Категорияны алып санайсызбы?</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">
+        Кайсы китептерди кошкуңуз келерин тандай аласыз.
+        Китептин аталышын жана мукаба сүрөтүн кийин түзөтө аласыз.
+        Жүктөө процесси бир нече мүнөткө созулушу мүмкүн.
+    </string>
+    <string name="delete_books_description">
+        Тандалган китептердин бардыгы(%1$s) маалымат базасынан өчүрүлөт.
+        Тандалган китептер түзмөгүңүздөн өчүрүлбөйт.
+    </string>
+    <string name="delete_book_description">
+        Бул китеп маалымат базасынан өчүрүлөт.
+        Бул китеп түзмөгүңүздөн өчүрүлбөйт.
+    </string>
+    <string name="delete_history_description">
+        Тарыхтын баары маалымат базасынан өчүрүлөт.
+        Тарыхты толук өчүргөндөн кийин, китептердин тартиби баштапкы абалына келтирилет.
+    </string>
+    <string name="remove_category_description">
+        Бул категория Китепканадан алынып салынат, бирок эч кандай китеп өчүрүлбөйт.
+    </string>
+
+    <!-- Errors -->
+    <string name="error_no_description">Сүрөттөмө жок.</string>
+    <string name="error_something_went_wrong">Бир нерсе туура эмес болду.</string>
+    <string name="error_no_translator">Которуучу колдонмо табылган жок.</string>
+    <string name="error_no_dictionary">Сөздүк колдонмосу табылган жок.</string>
+    <string name="error_no_browser">Браузер колдонмосу табылган жок.</string>
+    <string name="error_no_share_app">Бөлүшүү үчүн колдонмо табылган жок.</string>
+    <string name="error_no_file_manager_app">Папка тандоо үчүн колдонмо табылган жок.</string>
+    <string name="error_could_not_get_text">
+        Файл бош, жок же жеткиликсиз.
+        Файлды жана сканерлөө параметрлерин текшериңиз же жолду өзгөртүп, кайра аракет кылыңыз.
+    </string>
+    <string name="error_could_not_reset_cover">Мукаба сүрөтүн баштапкы абалга келтире албады.</string>
+    <string name="error_closed_source">Жабык булак</string>
+    <string name="error_could_not_export">Сүрөттөрү менен китепти экспорттоо мүмкүн болбоду.</string>
+    <string name="error_no_file">Файл жок же жеткиликсиз</string>
+    <string name="error_field_empty">Бул талаа бош болбошу керек.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">
+        Издөө…
+    </string>
+    <string name="browse_empty">
+        Жүктөп алгандарыңыз менен китепкананын китептер жыйнагын кеңейтиңиз
+    </string>
+    <string name="library_empty">
+        Сүйүктүү китептериңизди окуңуз жана аларды категорияларга бөлүңүз
+    </string>
+    <string name="history_empty">
+        Акыркы окуган китебиңиз окуу сапарыңыздын жаңы сонун окуясынын беттерин ачсын
+    </string>
+    <string name="categories_empty">Категориялар жок.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s тандалды</string>
+    <string name="color_preset_query">Пресет %1$s</string>
+    <string name="color_preset_selected_query">«%1$s» тандалды</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Жокко чыгаруу</string>
+    <string name="add_book">Китеп кошуу</string>
+    <string name="move">Жылдыруу</string>
+    <string name="delete">Өчүрүү</string>
+    <string name="never">Эч качан</string>
+    <string name="undo">Кайтаруу</string>
+    <string name="copy">Көчүрүү</string>
+    <string name="report">Кабарлоо</string>
+    <string name="translate">Которуу</string>
+    <string name="dictionary">Сөздүк</string>
+    <string name="generate_image">Сүрөт түзүү</string>
+    <string name="set_cover_image">Китептин мукабасы кылуу</string>
+    <string name="next">Ары</string>
+    <string name="done">Даяр</string>
+    <string name="web_search">Веб издөө</string>
+    <string name="share">Бөлүшүү</string>
+    <string name="ok">ОК</string>
+    <string name="change_path">Жолду өзгөртүү</string>
+    <string name="add_folder">Папка кошуу</string>
+    <string name="edit">Түзөтүү</string>
+    <string name="create_category">Категория түзүү</string>
+    <string name="set_up_scanning">Сканерлөөнү жөндөө</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Экспорттоо</string>
+    <string name="export_with_images_desc">Түзүлгөн бардык сүрөттөр ичине киргизилген FB2 файлын экспорттоо</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Белгисиз</string>
+    <string name="reset_cover">Мукаба сүрөтүн баштапкы абалга келтирүү</string>
+    <string name="reset_cover_desc">Китептин мукаба сүрөтүн баштапкы абалга келтирүү</string>
+    <string name="change_cover">Мукаба сүрөтүн өзгөртүү</string>
+    <string name="change_cover_desc">Жаңы мукабаны сүрөттөрүңүздөн тандоо</string>
+    <string name="delete_cover">Мукаба сүрөтүн өчүрүү</string>
+    <string name="delete_cover_desc">Китептин учурдагы мукаба сүрөтүн өчүрүү</string>
+    <string name="author">Автор</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Демейки</string>
+    <string name="general_tab">Жалпы</string>
+    <string name="display_tab">Көрүнүш</string>
+    <string name="color_tab">Түстөр</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Фильтр</string>
+    <string name="sort_tab">Иреттөө</string>
+    <string name="reader_tab">Окугуч</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Жалпы</string>
+    <string name="general_settings_desc">Колдонмо тили</string>
+    <string name="appearance_settings">Көрүнүш</string>
+    <string name="appearance_settings_desc">Тема, түстөр</string>
+    <string name="reader_settings">Окугуч</string>
+    <string name="reader_settings_desc">Шрифт, текст</string>
+    <string name="browse_settings">Карап чыгуу</string>
+    <string name="browse_settings_desc">Сканерлөө, көрүнүш</string>
+    <string name="library_settings">Китепкана</string>
+    <string name="library_settings_desc">Категориялар, көрүнүш, вкладкалар</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Шрифт</string>
+    <string name="text_reader_settings">Текст</string>
+    <string name="translator_reader_settings">Которгуч</string>
+    <string name="padding_reader_settings">Чектер</string>
+    <string name="misc_reader_settings">Башкалар</string>
+    <string name="reading_speed_reader_settings">Окуу ылдамдыгы</string>
+    <string name="reading_mode_reader_settings">Окуу режими</string>
+    <string name="system_reader_settings">Тутум</string>
+    <string name="chapters_reader_settings">Баптар</string>
+    <string name="images_reader_settings">Сүрөттөр</string>
+    <string name="progress_reader_settings">Прогресс</string>
+    <string name="theme_appearance_settings">Тема параметрлери</string>
+    <string name="colors_appearance_settings">Түстөр</string>
+    <string name="scan_browse_settings">Сканерлөө</string>
+    <string name="display_settings">Көрүнүш</string>
+    <string name="tabs_settings">Вкладкалар</string>
+    <string name="categories_settings">Категориялар</string>
+    <string name="filter_browse_settings">Фильтр</string>
+    <string name="sort_settings">Иреттөө</string>
+    <string name="ai_reader_settings">AI жардамчы</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">
+        Бул папкалар Карап чыгууда файлдарды издөө жана алуу үчүн колдонулат.
+        Бул жерден папканы алып салуу файлдарды же Китепканадагы китептерди өчүрбөйт.
+        Кириштин укугун жокко чыгаруу үчүн тиешелүү баскычты басыңыз.
+    </string>
+    <string name="library_categories_option_note">
+        Башында китептер демейки категорияга кошулат,
+        бирок бул жерде түзүлгөн бир нече өзгөчө категорияларга таандык болушу мүмкүн.
+        Бул жерден категорияны алып салуу Китепканадагы китептерди өчүрбөйт.
+        Категориялардын тартибин өзгөртүү үчүн категория сүрөтчөсүн басып кармап, жылдырыңыз.
+    </string>
+    <string name="library_per_category_sort_option_note">
+        Иреттөөнү Китепканада өзгөртүүгө болот.
+    </string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">Колдонмо тили</string>
+    <string name="dark_theme_option">Караңгы тема</string>
+    <string name="pure_dark_option">Таза караңгы</string>
+    <string name="absolute_dark_option">Абсолюттук караңгы</string>
+    <string name="absolute_dark_option_desc">Фондун түсүн толук караңгы кылуу</string>
+    <string name="theme_contrast_option">Тема контрасты</string>
+    <string name="app_theme_option">Колдонмо темасы</string>
+    <string name="double_press_exit_option">Чыгуу үчүн эки жолу басуу</string>
+    <string name="double_press_exit_option_desc">Колдонмодон чыгуу үчүн эки жолу басыңыз</string>
+    <string name="show_navigation_labels_option">Навигация белгилерин көрсөтүү</string>
+    <string name="show_navigation_labels_option_desc">Сүрөтчөлөрдүн астында навигация панелинин белгилерин көрсөтүү</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">Шрифт түрү</string>
+    <string name="font_thickness_option">Шрифт калыңдыгы</string>
+    <string name="font_style_option">Шрифт стили</string>
+    <string name="font_size_option">Шрифт өлчөмү</string>
+    <string name="line_height_option">Сап бийиктиги</string>
+    <string name="paragraph_height_option">Абзац аралыгы</string>
+    <string name="paragraph_indentation_option">Абзац кетирмеси</string>
+    <string name="color_preset_option">Түс пресети</string>
+    <string name="background_color_option">Фондун түсү</string>
+    <string name="font_color_option">Шрифттин түсү</string>
+    <string name="side_padding_option">Боктук чектер</string>
+    <string name="vertical_padding_option">Вертикалдык чектер</string>
+    <string name="double_click_translation_option">Эки жолу басып которуу</string>
+    <string name="double_click_translation_option_desc">Абзацды которуу үчүн эки жолу басыңыз</string>
+    <string name="fast_color_preset_change_option">Түс пресетин тез өзгөртүү</string>
+    <string name="fast_color_preset_change_option_desc">Түс пресетин өзгөртүү үчүн жогорку панелди солго же оңго сүйрөңүз</string>
+    <string name="text_alignment_option">Текстти тегиздөө</string>
+    <string name="chapter_title_alignment_option">Бап аталышын тегиздөө</string>
+    <string name="letter_spacing_option">Тамгалар аралыгы</string>
+    <string name="cutout_padding_option">Кесилген жердин чеги</string>
+    <string name="cutout_padding_option_desc">Кесилген жердин аймагына чек колдонуу</string>
+    <string name="fullscreen_option">Толук экран</string>
+    <string name="fullscreen_option_desc">Тутум панелдерин жана чектерди жашыруу</string>
+    <string name="keep_screen_on_option">Экранды жандырып кармаңыз</string>
+    <string name="hide_bars_on_fast_scroll_option">Тез жылдырууда панелдерди жашыруу</string>
+    <string name="perception_expander_option">Назар кеңейтүүчү</string>
+    <string name="perception_expander_option_desc">
+        Борборго назар түшүрүү менен окуу ылдамдыгын жогорулатуу
+    </string>
+    <string name="perception_expander_padding_option">Саптын боктук чеги</string>
+    <string name="perception_expander_thickness_option">Саптын калыңдыгы</string>
+    <string name="horizontal_limiter_option">Горизонталдык чектегич</string>
+    <string name="horizontal_limiter_option_desc">
+        Горизонталдык сызгычты көрсөтүп, фокуссыз бөлүктү караңгылатуу
+    </string>
+    <string name="horizontal_limiter_height_option">Бийиктик</string>
+    <string name="horizontal_limiter_vertical_offset_option">Вертикалдык жылыш</string>
+    <string name="horizontal_limiter_ruler_option">Горизонталдык сызгыч</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Сызгычтын калыңдыгы</string>
+    <string name="horizontal_limiter_dimming_option">Караңгылатуу</string>
+    <string name="screen_orientation_option">Экрандын багыты</string>
+    <string name="custom_screen_brightness_option">Кошумча жарыктык</string>
+    <string name="screen_brightness_option">Жарыктык</string>
+    <string name="horizontal_gesture_option">Горизонталдык жест</string>
+    <string name="horizontal_gesture_scroll_option">Жылдыруу үлүшү</string>
+    <string name="horizontal_gesture_sensitivity_option">Сезгичтик</string>
+    <string name="horizontal_gesture_alpha_anim_option">Көрүнүш анимациясы</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">
+        Горизонталдык жест колдонгондо көрүнүш анимациясын иштетүү
+    </string>
+    <string name="horizontal_gesture_pull_anim_option">Тартуу анимациясы</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">
+        Горизонталдык жест колдонгондо бетти тартуу анимациясын иштетүү
+    </string>
+    <string name="horizontal_gesture_disable_scrolling_option">Жылдырууну өчүрүү</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Окугучтун жылдыруусун толук өчүрүү</string>
+    <string name="bottom_bar_padding_option">Төмөнкү панелдин чеги</string>
+    <string name="highlighted_reading_option">Сөздөрдү белгилөө</string>
+    <string name="highlighted_reading_option_desc">Ар бир сөздүн башын белгилөө</string>
+    <string name="highlighted_reading_thickness_option">Белгилөө калыңдыгы</string>
+    <string name="images_option">Сүрөттөр</string>
+    <string name="images_option_desc">Сүрөттөрдү көрсөтүү</string>
+    <string name="images_captions_option">Сүрөттөмөлөр</string>
+    <string name="images_captions_option_desc">Сүрөттөрдүн астында сүрөттөмөлөрдү көрсөтүү</string>
+    <string name="images_corners_roundness_option">Бурчтардын жумурулугу</string>
+    <string name="images_alignment_option">Тегиздөө</string>
+    <string name="images_width_option">Өлчөм</string>
+    <string name="images_color_effects_option">Түс эффекттери</string>
+    <string name="progress_bar_option">Прогресс панели</string>
+    <string name="progress_bar_option_desc">Төмөндө прогресс панелин көрсөтүү</string>
+    <string name="progress_bar_padding_option">Чектер</string>
+    <string name="progress_bar_alignment_option">Тегиздөө</string>
+    <string name="progress_bar_font_size_option">Шрифт өлчөмү</string>
+    <string name="progress_count_option">Прогресс эсеби</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API ачкычы</string>
+    <string name="api_key_option_label">OpenRouter API ачкычы</string>
+    <string name="image_model_option">Сүрөт модели</string>
+    <string name="image_model_option_label">OpenRouter сүрөт моделинин слагы</string>
+    <string name="image_style_option">Стиль блогу</string>
+    <string name="image_style_option_label">Сүрөт промптунун стиль блогу</string>
+    <string name="style_reference_option">Стиль үлгүсү</string>
+    <string name="style_reference_option_desc">Стиль үлгүсү катары китептин иллюстрацияларынын коллажын тиркөө</string>
+    <string name="proxy_option">Прокси</string>
+    <string name="proxy_option_desc">HTTP же SOCKS5 прокси</string>
+    <string name="proxy_protocol_option">Прокси протоколу</string>
+    <string name="proxy_host_option">Прокси хост</string>
+    <string name="proxy_host_option_label">мис. 127.0.0.1</string>
+    <string name="proxy_port_option">Прокси порт</string>
+    <string name="proxy_port_option_label">мис. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI жардамчы</string>
+    <string name="text_assistant_model_option">Текст модели</string>
+    <string name="text_assistant_model_option_label">OpenRouter акылдуу текст моделинин слагы</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Каалаган кечигүү (p90, сек)</string>
+    <string name="text_assistant_preferred_latency_option_label">Текст жардамчысы үчүн провайдердин эң көп кечигүүсү p90</string>
+    <string name="text_assistant_max_input_price_option">Максималдуу киргизүү баасы ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Текст жардамчысы үчүн максималдуу промпт токен баасы</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Корутундулоо модели</string>
+    <string name="summarize_model_option_label">Кейипкерлерди бөлүп алуу үчүн колдонула турган OpenRouter моделинин слагы</string>
+    <string name="text_assistant_max_tokens_option">Максималдуу киргизүү токендери</string>
+    <string name="text_assistant_max_tokens_option_label">Узун китептерди бөлүктөргө бөлүү үчүн колдонула турган модель контекстинин чеги</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Каалаган кечигүү (p90, сек)</string>
+    <string name="character_preferred_latency_option_label">Кейипкерлерди бөлүп алуу үчүн провайдердин эң көп кечигүүсү p90</string>
+    <string name="character_max_input_price_option">Максималдуу киргизүү баасы ($/1M)</string>
+    <string name="character_max_input_price_option_label">Кейипкерлерди бөлүп алуу үчүн максималдуу промпт токен баасы</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Кейипкерлер</string>
+    <string name="analyze_characters">Китептин кейипкерлерин талдоо</string>
+    <string name="characters_generating">Кейипкерлер бөлүп алынууда…</string>
+    <string name="characters_empty">Азырынча кейипкерлер жок. Кейипкерлер каталогун түзүү үчүн китептин мазмунун талдаңыз.</string>
+    <string name="characters_prompt">Китептин бүткүл текстин, сүрөт шилтемелерин элемей, толук оку. Башкы кейипкерди жана бардык негизги, маанилүү кайталануучу кейипкерлерди аныкта. Ар бир кейипкер үчүн бүткүл тексттен бирдиктүү визуалдык сүрөттөмө түз.</string>
+    <string name="characters_processing">Иштетүү</string>
+    <string name="characters_failed">Кейипкерлерди бөлүп алуу ишке ашпады</string>
+    <string name="characters_stopped_by_system">Кейипкерлерди бөлүп алуу тутум тарабынан токтотулду.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Сүрөт түзүлүүдө…</string>
+    <string name="image_step_prepare">Контекстти даярдоо…</string>
+    <string name="image_step_collage">Стиль коллажын түзүү…</string>
+    <string name="image_step_distill">Көрүнүштү кыскартуу…</string>
+    <string name="image_step_generate">Иллюстрация тартуу…</string>
+    <string name="image_generation_failed">Сүрөт түзүү ишке ашпады</string>
+    <string name="image_stopped_by_system">Сүрөт түзүү тутум тарабынан токтотулду.</string>
+    <string name="image_already_generating">Сүрөт азыр түзүлүүдө.</string>
+    <string name="retry">Кайра аракет кылуу</string>
+
+    <!-- Library -->
+    <string name="read_button_option">«Окуу» баскычын көрсөтүү</string>
+    <string name="show_progress_option">Прогресс көрсөтүү</string>
+    <string name="title_position_option">Аталыштын орду</string>
+    <string name="show_book_count_option">Китептердин санын көрсөтүү</string>
+    <string name="show_category_tabs_option">Категория вкладкаларын көрсөтүү</string>
+    <string name="always_show_default_tab_option">Демейки вкладканы ар дайым көрсөтүү</string>
+    <string name="per_category_sort_option">Категория боюнча иреттөө</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Кызыл</string>
+    <string name="green_color">Жашыл</string>
+    <string name="blue_color">Көк</string>
+    <string name="color_preset_placeholder">Пресеттин атын жазыңыз…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Өчүк</string>
+    <string name="dark_theme_on">Жандырылган</string>
+    <string name="dark_theme_follow_system">Тутум</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Өчүк</string>
+    <string name="pure_dark_on">Жандырылган</string>
+    <string name="pure_dark_power_saver">Үнөмдөгүч</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Стандарттык</string>
+    <string name="theme_contrast_medium">Орто</string>
+    <string name="theme_contrast_high">Жогору</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Курсив</string>
+    <string name="font_style_normal">Жөнөкөй</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Жашырылган</string>
+    <string name="library_title_position_below">Төмөндө</string>
+    <string name="library_title_position_inside">Ичинде</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Аталыш</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Көрсөтүү режими</string>
+    <string name="layout_list">Тизме</string>
+    <string name="layout_grid">Тор</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Алфавит боюнча</string>
+    <string name="sort_order_file_format">Файл форматы</string>
+    <string name="sort_order_last_modified">Акыркы өзгөртүү</string>
+    <string name="sort_order_file_size">Файл өлчөмү</string>
+    <string name="sort_order_last_read">Акыркы окуу</string>
+    <string name="sort_order_progress">Прогресс</string>
+    <string name="sort_order_author">Автор</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Тордун өлчөмү</string>
+    <string name="grid_size_auto">Авто</string>
+    <string name="grid_size_per_row">катарга</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Башы</string>
+    <string name="alignment_justify">Теңдештирилген</string>
+    <string name="alignment_center">Борбор</string>
+    <string name="alignment_end">Аягы</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Эркин</string>
+    <string name="screen_orientation_portrait">Вертикалдык</string>
+    <string name="screen_orientation_landscape">Горизонталдык</string>
+    <string name="screen_orientation_locked_portrait">Кулпуланган вертикалдык</string>
+    <string name="screen_orientation_locked_landscape">Кулпуланган горизонталдык</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Өчүк</string>
+    <string name="horizontal_gesture_on">Жандырылган</string>
+    <string name="horizontal_gesture_inverse">Жандырылган (Тескерисинче)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">деңгээл</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Өчүк</string>
+    <string name="color_effects_grayscale">Түссүз</string>
+    <string name="color_effects_font">Шрифт түсү</string>
+    <string name="color_effects_background">Фон түсү</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Жука</string>
+    <string name="font_thickness_extra_light">Өтө жука</string>
+    <string name="font_thickness_light">Жеңил</string>
+    <string name="font_thickness_normal">Нормалдуу</string>
+    <string name="font_thickness_medium">Орточо</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Пайыз</string>
+    <string name="progress_count_quantity">Саны</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Меркурий</string>
+    <string name="blue_theme">Нептун</string>
+    <string name="green_theme">Жер</string>
+    <string name="green2_theme">Ио</string>
+    <string name="green_gray_theme">Энцелад</string>
+    <string name="red_theme">Марс</string>
+    <string name="red_gray_theme">Каллисто</string>
+    <string name="purple_theme">Юпитер</string>
+    <string name="purple_gray_theme">Церера</string>
+    <string name="pink_theme">Сатурн</string>
+    <string name="pink2_theme">Ганимед</string>
+    <string name="lavender_theme">Эрида</string>
+    <string name="marsh_theme">Плутон</string>
+    <string name="yellow_theme">Венера</string>
+    <string name="yellow2_theme">Макемаке</string>
+    <string name="aqua_theme">Уран</string>
+    <string name="gray_theme">Япет</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Чыгуу үчүн кайра басыңыз</string>
+    <string name="books_added">Тандалган китептердин бардыгы ийгиликтүү кошулду.</string>
+    <string name="books_moved">Тандалган китептердин бардыгы ийгиликтүү жылдырылды.</string>
+    <string name="books_deleted">Тандалган китептердин бардыгы ийгиликтүү өчүрүлдү.</string>
+    <string name="cover_image_changed">Мукаба сүрөтү ийгиликтүү өзгөртүлдү.</string>
+    <string name="cover_image_deleted">Мукаба сүрөтү ийгиликтүү өчүрүлдү.</string>
+    <string name="book_deleted">Бул китеп ийгиликтүү өчүрүлдү.</string>
+    <string name="book_moved">Бул китеп ийгиликтүү жылдырылды.</string>
+    <string name="copied">Көчүрүлдү</string>
+    <string name="history_deleted">Тарых ийгиликтүү өчүрүлдү.</string>
+    <string name="cover_reset">Мукаба сүрөтү ийгиликтүү баштапкы абалга келтирилди.</string>
+    <string name="title_changed">Аталыш ийгиликтүү өзгөртүлдү.</string>
+    <string name="author_changed">Автор ийгиликтүү өзгөртүлдү.</string>
+    <string name="description_changed">Сүрөттөмө ийгиликтүү өзгөртүлдү.</string>
+    <string name="path_changed">Файлдын жолу ийгиликтүү өзгөртүлдү.</string>
+    <string name="cover_image_set">Китептин мукабасы ийгиликтүү коюлду.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Тарых элементи ийгиликтүү өчүрүлдү.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Баштоо</string>
+    <string name="continue_reading_query">%1$sден улантуу</string>
+    <string name="file_details">Файл маалыматтары</string>
+    <string name="file_path">Жол</string>
+    <string name="file_last_opened">Акыркы ачылган</string>
+    <string name="file_size">Өлчөм</string>
+    <string name="unknown">Белгисиз</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Баптар жок</string>
+    <string name="chapters">Баптар</string>
+    <string name="ai_illustrations">AI иллюстрациялары</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">Колдонмо версиясы</string>
+    <string name="report_bug_option">Ката жөнүндө кабарлоо</string>
+    <string name="licenses_option">Ачык булак лицензиялары</string>
+    <string name="credits_option">Ыраазылыктар</string>
+    <string name="help_translate_option">Которууга жардамдашуу</string>
+    <string name="support_development_option">Иштеп чыгууну колдоо</string>
+    <string name="contributors_option">Салым кошуучулар</string>
+    <!-- Badges -->
+    <string name="reddit_badge" translatable="false">Reddit</string>
+    <string name="github_badge" translatable="false">GitHub</string>
+    <string name="gitlab_badge" translatable="false">GitLab</string>
+    <string name="codeberg_badge" translatable="false">Codeberg</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Дизайн</string>
+    <string name="credits_icon">Иконкалар</string>
+    <string name="credits_updates">Жаңы жаңыртууларды башкаруу</string>
+    <string name="credits_fonts">Шрифттер</string>
+    <string name="credits_translation">Которуу</string>
+    <string name="credits_contribution">Салым</string>
+    <string name="credits_ideas">Ойлор</string>
+
+    <!-- Start -->
+    <!-- Welcome message. %1$s is the application name. -->
+    <string name="start_welcome">%1$s колдонмосуна кош келиңиз!</string>
+    <string name="start_welcome_desc">
+        Сөздөр сыйкырлаштырып, үйрөтүп
+        жана укмуштуу сапарларга алып барган дүйнөгө кош келиңиз!
+        Кээ бир нерселерди жөндөп алалы!
+    </string>
+    <string name="start_language_preferences">Тил параметрлери</string>
+    <string name="start_theme_preferences">Тема параметрлери</string>
+    <string name="start_scan_preferences">Сканерлөө параметрлери</string>
+    <string name="start_done">Бардыгы даяр!</string>
+    <string name="start_done_desc">Жөндөө аяктады.</string>
+
+    <!-- History -->
+    <string name="today">Бүгүн</string>
+    <string name="yesterday">Кечээ</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Ой! Колдонмо кулап кетти.</string>
+    <string name="crash_description">Бул ката билдирүүсүн сизге ыңгайлуу жол менен билдириңиз.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Окууну улантуу</string>
+    <string name="go_back_content_desc">Артка</string>
+    <string name="cover_image_content_desc">Мукаба сүрөтү</string>
+    <string name="open_reader_settings_content_desc">Окугуч параметрлери</string>
+    <string name="file_icon_content_desc">Файл</string>
+    <string name="sort_order_content_desc">Иреттөө тартиби</string>
+    <string name="checkbox_content_desc">Белги кутусу</string>
+    <string name="cover_image_not_found_content_desc">Мукаба сүрөтү табылган жок</string>
+    <string name="error_content_desc">Ката</string>
+    <string name="search_content_desc">Изедөө</string>
+    <string name="clear_selected_items_content_desc">Тандалгандарды тазалоо</string>
+    <string name="add_files_content_desc">Файлдарды кошуу</string>
+    <string name="select_all_files_content_desc">Бардык файлдарды тандоо</string>
+    <string name="select_all_books_content_desc">Бардык китептерди тандоо</string>
+    <string name="exit_search_content_desc">Изидөөдөн чыгуу</string>
+    <string name="delete_whole_history_content_desc">Тарыхтын баарын өчүрүү</string>
+    <string name="move_books_content_desc">Тандалган китептерди жылдыруу</string>
+    <string name="delete_books_content_desc">Тандалган китептерди өчүрүү</string>
+    <string name="revert_content_desc">Кайтаруу</string>
+    <string name="selected_content_desc">Тандалган</string>
+    <string name="app_icon_content_desc">Колдонмо сүрөтчөсү</string>
+    <string name="delete_history_element_content_desc">Тарых элементин өчүрүү</string>
+    <string name="library_content_desc">Сиздин китепканаңыз</string>
+    <string name="history_content_desc">Окуу тарыхы</string>
+    <string name="browse_content_desc">Китеп кошуу</string>
+    <string name="arrow_content_desc">Жебе</string>
+    <string name="reset_start_content_desc">Баштапкы жөндөөнү кайра ачуу</string>
+    <string name="open_in_web_content_desc">Вебте ачуу</string>
+    <string name="delete_color_preset_content_desc">Түс пресетин өчүрүү</string>
+    <string name="create_color_preset_content_desc">Жаңы түс пресетин түзүү</string>
+    <string name="shuffle_color_preset_content_desc">Түстөрдү аралаштыруу</string>
+    <string name="drag_content_desc">Сүйрөө</string>
+    <string name="filter_content_desc">Фильтр</string>
+    <string name="checkpoint_back_content_desc">Арткы чекит</string>
+    <string name="checkpoint_forward_content_desc">Алдыңкы чекит</string>
+    <string name="chapters_content_desc">Баптар</string>
+    <string name="more_content_desc">Дагы</string>
+    <string name="pin_content_desc">Бекитүү</string>
+    <string name="show_less_content_desc">Азыраак көрсөтүү</string>
+    <string name="show_more_content_desc">Көбүрөөк көрсөтүү</string>
+    <string name="edit_content_desc">Түзөтүү</string>
+    <string name="expand_content_desc">Ачуу</string>
+    <string name="collapse_content_desc">Жабуу</string>
+    <string name="remove_content_desc">Алып салуу</string>
+    <string name="note_content_desc">Эскертүү</string>
+
+</resources>

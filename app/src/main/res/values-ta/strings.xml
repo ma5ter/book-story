@@ -4,7 +4,8 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
     <string name="drag_content_desc">பின்னிழுப்பு, பின்னிழுவிசை</string>
     <string name="filter_content_desc">வடிப்பி</string>
     <string name="library_screen">நூலகம்</string>
@@ -71,7 +72,7 @@
     <string name="unknown">தெரியவில்லை</string>
     <string name="app_version_option">பயன்பாட்டு பதிப்பு</string>
     <string name="licenses_option">திறந்த மூல உரிமங்கள்</string>
-    <string name="file_icon_content_desc">கோப்பு</string>
+    <string name="file_icon_content_desc">கோப்பு</string>
     <string name="select_all_files_content_desc">எல்லா கோப்புகளையும் தேர்ந்தெடுக்கவும்</string>
     <string name="exit_search_content_desc">வெளியேறும் தேடல்</string>
     <string name="unknown_author">தெரியவில்லை</string>
@@ -91,6 +92,7 @@
     <string name="undo">செயல்தவிர்</string>
     <string name="copy">நகலெடு</string>
     <string name="translate">மொழிபெயர்த்திடு</string>
+    <string name="report">புகாரளி</string>
     <string name="web_search">வலை தேடல்</string>
     <string name="reset_cover">கவர் படத்தை மீட்டமைக்கவும்</string>
     <string name="reset_cover_desc">புத்தகத்தின் கவர் படத்தை இயல்புநிலைக்கு மீட்டமைக்கவும்</string>
@@ -113,6 +115,7 @@
     <string name="double_press_exit_option">வெளியேற டபுள் பேக் பிரச்</string>
     <string name="double_press_exit_option_desc">பயன்பாட்டிலிருந்து வெளியேற இரண்டு முறை மீண்டும் அழுத்தவும்</string>
     <string name="font_family_option">எழுத்துரு குடும்பம்</string>
+    <string name="font_thickness_option">எழுத்துரு தடிமன்</string>
     <string name="font_style_option">எழுத்துரு நடை</string>
     <string name="vertical_padding_option">செங்குத்து திணிப்பு</string>
     <string name="side_padding_option">பக்க திணிப்பு</string>
@@ -240,4 +243,206 @@
     <string name="selected_content_desc">தேர்ந்தெடுக்கப்பட்டது</string>
     <string name="app_icon_content_desc">பயன்பாட்டு படவுரு</string>
     <string name="history_content_desc">படித்தல் வரலாறு</string>
+
+    <string name="remove_category">வகையை நீக்கவா?</string>
+    <string name="remove_category_description">இது இந்த வகையை நூலகத்திலிருந்து நீக்கும், ஆனால் எந்தப் புத்தகங்களையும் நீக்காது.</string>
+
+    <string name="error_no_file_manager_app">கோப்புறையைத் தேர்ந்தெடுக்க பயன்பாடு இல்லை.</string>
+    <string name="error_could_not_export">படங்களுடன் புத்தகத்தை ஏற்றுமதி செய்ய முடியவில்லை.</string>
+    <string name="error_no_file">கோப்பு இல்லை அல்லது அணுக முடியவில்லை</string>
+    <string name="error_field_empty">இந்தப் புலம் காலியாக இருக்கக்கூடாது.</string>
+
+    <string name="categories_empty">வகைகள் இல்லை.</string>
+
+    <string name="generate_image">படத்தை உருவாக்கு</string>
+    <string name="set_cover_image">புத்தக அட்டையாக அமை</string>
+    <string name="ok">சரி</string>
+    <string name="change_path">பாதையை மாற்று</string>
+    <string name="add_folder">கோப்புறையைச் சேர்</string>
+    <string name="edit">திருத்து</string>
+    <string name="create_category">வகையை உருவாக்கு</string>
+    <string name="set_up_scanning">வருடுதலை அமை</string>
+
+    <string name="export_with_images">ஏற்றுமதி</string>
+    <string name="export_with_images_desc">உருவாக்கப்பட்ட அனைத்து படங்களும் சேர்க்கப்பட்ட FB2 கோப்பை ஏற்றுமதி செய்யவும்</string>
+
+    <string name="default_tab">இயல்புநிலை</string>
+    <string name="display_tab">காட்சி</string>
+    <string name="ai_tab">AI</string>
+
+    <string name="library_settings">நூலகம்</string>
+    <string name="library_settings_desc">வகைகள், காட்சி, தாவல்கள்</string>
+
+    <string name="reading_mode_reader_settings">வாசிப்பு முறை</string>
+    <string name="chapters_reader_settings">அத்தியாயங்கள்</string>
+    <string name="images_reader_settings">படங்கள்</string>
+    <string name="progress_reader_settings">முன்னேற்றம்</string>
+    <string name="scan_browse_settings">வருடுதல்</string>
+    <string name="display_settings">காட்சி</string>
+    <string name="tabs_settings">தாவல்கள்</string>
+    <string name="categories_settings">வகைகள்</string>
+    <string name="ai_reader_settings">AI உதவியாளர்</string>
+
+    <string name="browse_scan_option_note">இந்தக் கோப்புறைகள் உலாவில் கோப்புகளை வருடிப் பெறப் பயன்படுகின்றன. இங்கு ஒரு கோப்புறையை நீக்குவது உண்மையான கோப்புகளையோ நூலகத்தில் உள்ள புத்தகங்களையோ நீக்காது. அணுகலை ரத்து செய்ய, அதற்கான பொத்தானை அழுத்தவும்.</string>
+    <string name="library_categories_option_note">தொடக்கத்தில் புத்தகங்கள் இயல்புநிலை வகையில் சேர்க்கப்படும், ஆனால் இங்கு உருவாக்கப்படும் பல தனிப்பயன் வகைகளைச் சேர்ந்திருக்கலாம். இங்கு ஒரு வகையை நீக்குவது நூலகத்திலிருந்து புத்தகங்களை நீக்காது. வகைகளை மறுவரிசைப்படுத்த வகையின் உருவத்தை அழுத்திப் பிடித்து நகர்த்தவும்.</string>
+    <string name="library_per_category_sort_option_note">வரிசைப்படுத்துதலை நூலகத்தில் மாற்றலாம்.</string>
+
+    <string name="show_navigation_labels_option">வழிசெலுத்தல் பெயர்களைக் காட்டு</string>
+    <string name="show_navigation_labels_option_desc">உருவங்களுக்குக் கீழே வழிசெலுத்தல் பட்டியின் பெயர்களைக் காட்டவும்</string>
+
+    <string name="chapter_title_alignment_option">அத்தியாயத் தலைப்பு சீரமைப்பு</string>
+    <string name="horizontal_limiter_option">கிடைமட்ட வரம்பி</string>
+    <string name="horizontal_limiter_option_desc">கிடைமட்ட அளவுகோலைக் காட்டி கவனம் செலுத்தாத திரைப் பகுதியை மங்கலாக்கவும்</string>
+    <string name="horizontal_limiter_height_option">உயரம்</string>
+    <string name="horizontal_limiter_vertical_offset_option">செங்குத்து இடப்பெயர்வு</string>
+    <string name="horizontal_limiter_ruler_option">கிடைமட்ட அளவுகோல்</string>
+    <string name="horizontal_limiter_ruler_thickness_option">அளவுகோல் தடிமன்</string>
+    <string name="horizontal_limiter_dimming_option">மங்கலாக்கம்</string>
+    <string name="horizontal_gesture_option">கிடைமட்ட சைகை</string>
+    <string name="horizontal_gesture_scroll_option">சுருள் பங்கு</string>
+    <string name="horizontal_gesture_sensitivity_option">உணர்திறன்</string>
+    <string name="horizontal_gesture_alpha_anim_option">தெரிவுநிலை அசைவு</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">கிடைமட்ட சைகையைப் பயன்படுத்தும்போது தெரிவுநிலை அசைவை இயக்கவும்</string>
+    <string name="horizontal_gesture_pull_anim_option">இழுவை அசைவு</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">கிடைமட்ட சைகையைப் பயன்படுத்தும்போது இழுவை அசைவை இயக்கவும்</string>
+    <string name="horizontal_gesture_disable_scrolling_option">சுருளலை முடக்கு</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">வாசகர் சுருளலை முற்றிலும் முடக்கவும்</string>
+    <string name="bottom_bar_padding_option">கீழ் பட்டி திணிப்பு</string>
+    <string name="highlighted_reading_option">சொற்களை முன்னிலைப்படுத்து</string>
+    <string name="highlighted_reading_option_desc">ஒவ்வொரு சொல்லின் தொடக்கத்தை முன்னிலைப்படுத்தவும்</string>
+    <string name="highlighted_reading_thickness_option">முன்னிலைப்படுத்தல் தடிமன்</string>
+    <string name="images_option">படங்கள்</string>
+    <string name="images_option_desc">படங்களைக் காட்டு</string>
+    <string name="images_captions_option">பட விளக்கம்</string>
+    <string name="images_captions_option_desc">படங்களுக்குக் கீழே விளக்கத்தைக் காட்டு</string>
+    <string name="images_corners_roundness_option">மூலைகளின் வட்டமைப்பு</string>
+    <string name="images_alignment_option">சீரமைப்பு</string>
+    <string name="images_width_option">அளவு</string>
+    <string name="images_color_effects_option">நிற விளைவுகள்</string>
+    <string name="progress_bar_option">முன்னேற்றப் பட்டி</string>
+    <string name="progress_bar_option_desc">கீழே முன்னேற்றப் பட்டியைக் காட்டு</string>
+    <string name="progress_bar_padding_option">திணிப்பு</string>
+    <string name="progress_bar_alignment_option">சீரமைப்பு</string>
+    <string name="progress_bar_font_size_option">எழுத்துரு அளவு</string>
+    <string name="progress_count_option">முன்னேற்ற எண்ணிக்கை</string>
+
+    <string name="api_key_option">API விசை</string>
+    <string name="api_key_option_label">OpenRouter API விசை</string>
+    <string name="image_model_option">பட மாதிரி</string>
+    <string name="image_model_option_label">OpenRouter பட மாதிரி ஸ்லக்</string>
+    <string name="image_style_option">நடை தொகுதி</string>
+    <string name="image_style_option_label">படத் தூண்டுதலுக்கான நடை தொகுதி</string>
+    <string name="style_reference_option">நடை மேற்கோள்</string>
+    <string name="style_reference_option_desc">புத்தகத்தின் படங்களின் கூட்டுப்படத்தை நடை மேற்கோளாகச் சேர்க்கவும்</string>
+    <string name="proxy_option">ப்ராக்ஸி</string>
+    <string name="proxy_option_desc">HTTP அல்லது SOCKS5 ப்ராக்ஸி</string>
+    <string name="proxy_protocol_option">ப்ராக்ஸி நெறிமுறை</string>
+    <string name="proxy_host_option">ப்ராக்ஸி புரவலன்</string>
+    <string name="proxy_host_option_label">எ.கா. 127.0.0.1</string>
+    <string name="proxy_port_option">ப்ராக்ஸி துறைமுகம்</string>
+    <string name="proxy_port_option_label">எ.கா. 1080</string>
+    <string name="text_assistant_settings">AI உதவியாளர்</string>
+    <string name="text_assistant_model_option">உரை மாதிரி</string>
+    <string name="text_assistant_model_option_label">OpenRouter புத்திசாலி உரை மாதிரி ஸ்லக்</string>
+    <string name="text_assistant_preferred_latency_option">விருப்ப தாமதம் (p90, விநா)</string>
+    <string name="text_assistant_preferred_latency_option_label">உரை உதவியாளருக்கான விருப்ப அதிகபட்ச வழங்குநர் தாமதம் p90</string>
+    <string name="text_assistant_max_input_price_option">அதிகபட்ச உள்ளீட்டு விலை ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">உரை உதவியாளருக்கான அதிகபட்ச தூண்டுதல் சொல் விலை</string>
+    <string name="summarize_model_option">சுருக்க மாதிரி</string>
+    <string name="summarize_model_option_label">கதாபாத்திர பிரித்தெடுப்புக்குப் பயன்படும் OpenRouter மாதிரி ஸ்லக்</string>
+    <string name="text_assistant_max_tokens_option">அதிகபட்ச உள்ளீட்டு டோக்கன்கள்</string>
+    <string name="text_assistant_max_tokens_option_label">நீளமான புத்தகங்களைப் பிரிக்கப் பயன்படும் மாதிரியின் சூழல் வரம்பு</string>
+    <string name="character_preferred_latency_option">விருப்ப தாமதம் (p90, விநா)</string>
+    <string name="character_preferred_latency_option_label">கதாபாத்திர பிரித்தெடுப்புக்கான விருப்ப அதிகபட்ச வழங்குநர் தாமதம் p90</string>
+    <string name="character_max_input_price_option">அதிகபட்ச உள்ளீட்டு விலை ($/1M)</string>
+    <string name="character_max_input_price_option_label">கதாபாத்திர பிரித்தெடுப்புக்கான அதிகபட்ச தூண்டுதல் சொல் விலை</string>
+    <string name="characters_reader_settings">கதாபாத்திரங்கள்</string>
+    <string name="analyze_characters">புத்தகக் கதாபாத்திரங்களை பகுப்பாய்வு செய்</string>
+    <string name="characters_generating">கதாபாத்திரங்கள் பிரித்தெடுக்கப்படுகின்றன…</string>
+    <string name="characters_empty">இன்னும் கதாபாத்திரங்கள் இல்லை. கதாபாத்திர பட்டியலை உருவாக்க புத்தக உள்ளடக்கத்தை பகுப்பாய்வு செய்யவும்.</string>
+    <string name="characters_prompt">முழு புத்தக உரையையும் படித்து, எந்தப் பட மேற்கோள்களையும் புறக்கணிக்கவும். நாயகனையும் அனைத்து முக்கியமான மற்றும் தொடர்ந்து தோன்றும் கதாபாத்திரங்களையும் அடையாளம் காண்க. ஒவ்வொரு கதாபாத்திரத்திற்கும், முழு உரையிலிருந்து ஒரு சீரான காட்சி விளக்கத்தை உருவாக்கவும்.</string>
+    <string name="characters_processing">செயலாக்கம்</string>
+    <string name="characters_failed">கதாபாத்திர பிரித்தெடுப்பு தோல்வியுற்றது</string>
+    <string name="characters_stopped_by_system">கதாபாத்திர பிரித்தெடுப்பு கணினியால் நிறுத்தப்பட்டது.</string>
+    <string name="image_generating">படம் உருவாக்கப்படுகிறது…</string>
+    <string name="image_step_prepare">சூழம் தயாரிக்கப்படுகிறது…</string>
+    <string name="image_step_collage">நடை கூட்டுப்படம் உருவாக்கப்படுகிறது…</string>
+    <string name="image_step_distill">காட்சி சுருக்கப்படுகிறது…</string>
+    <string name="image_step_generate">படம் வரையப்படுகிறது…</string>
+    <string name="image_generation_failed">படம் உருவாக்கம் தோல்வியுற்றது</string>
+    <string name="image_stopped_by_system">படம் உருவாக்கம் கணினியால் நிறுத்தப்பட்டது.</string>
+    <string name="image_already_generating">ஏற்கனவே ஒரு படம் உருவாக்கப்படுகிறது.</string>
+    <string name="retry">மீண்டும் முயற்சி</string>
+
+    <string name="read_button_option">«படி» பொத்தானைக் காட்டு</string>
+    <string name="show_progress_option">முன்னேற்றத்தைக் காட்டு</string>
+    <string name="title_position_option">தலைப்பு நிலை</string>
+    <string name="show_book_count_option">புத்தக எண்ணிக்கையைக் காட்டு</string>
+    <string name="show_category_tabs_option">வகை தாவல்களைக் காட்டு</string>
+    <string name="always_show_default_tab_option">இயல்புநிலை தாவலை எப்போதும் காட்டு</string>
+    <string name="per_category_sort_option">வகைவாரி வரிசைப்படுத்துதல்</string>
+
+    <string name="library_title_position_off">மறைந்தது</string>
+    <string name="library_title_position_below">கீழே</string>
+    <string name="library_title_position_inside">மேலே</string>
+    <string name="library_categories_create_category_placeholder">தலைப்பு</string>
+
+    <string name="sort_order_last_read">கடைசியாக படிக்கப்பட்டது</string>
+    <string name="sort_order_progress">முன்னேற்றம்</string>
+    <string name="sort_order_author">நூலாசிரியர்</string>
+
+    <string name="horizontal_gesture_off">முடக்கு</string>
+    <string name="horizontal_gesture_on">இயக்கு</string>
+    <string name="horizontal_gesture_inverse">இயக்கு (எதிராக)</string>
+
+    <string name="highlighted_reading_level">நிலை</string>
+
+    <string name="color_effects_off">முடக்கு</string>
+    <string name="color_effects_grayscale">சாம்பல் நிறம்</string>
+    <string name="color_effects_font">எழுத்துரு நிறம்</string>
+    <string name="color_effects_background">பின்னணி நிறம்</string>
+
+    <string name="font_thickness_thin">மெலிந்த</string>
+    <string name="font_thickness_extra_light">மிக மெலிந்த</string>
+    <string name="font_thickness_light">லேசான</string>
+    <string name="font_thickness_normal">சாதாரண</string>
+    <string name="font_thickness_medium">நடுத்தர</string>
+
+    <string name="progress_count_percentage">சதவீதம்</string>
+    <string name="progress_count_quantity">எண்ணிக்கை</string>
+
+    <string name="green2_theme">இயோ</string>
+    <string name="green_gray_theme">என்செலாடஸ்</string>
+    <string name="purple_gray_theme">செரீஸ்</string>
+    <string name="yellow2_theme">மகேமாகே</string>
+    <string name="gray_theme">இயாபெட்டஸ்</string>
+
+    <string name="title_changed">தலைப்பு வெற்றிகரமாக மாற்றப்பட்டது.</string>
+    <string name="author_changed">நூலாசிரியர் வெற்றிகரமாக மாற்றப்பட்டது.</string>
+    <string name="description_changed">விளக்கம் வெற்றிகரமாக மாற்றப்பட்டது.</string>
+    <string name="path_changed">கோப்புப் பாதை வெற்றிகரமாக மாற்றப்பட்டது.</string>
+    <string name="cover_image_set">புத்தக அட்டை வெற்றிகரமாக அமைக்கப்பட்டது.</string>
+
+    <string name="start_reading">தொடங்கு</string>
+    <string name="continue_reading_query">%1$s இலிருந்து தொடரவும்</string>
+    <string name="file_details">கோப்பு விவரங்கள்</string>
+
+    <string name="ai_illustrations">AI படங்கள்</string>
+
+    <string name="support_development_option">உருவாக்கத்திற்கு ஆதரவளி</string>
+
+    <string name="start_scan_preferences">வருடுதல் விருப்பத்தேர்வுகள்</string>
+
+    <string name="crash_title">ஐயோ! பயன்பாடு செயலிழந்தது.</string>
+    <string name="crash_description">இந்தச் செயலிழப்பு செய்தியை உங்களுக்கு மிக வசதியான வழியில் புகாரளிக்கவும்.</string>
+
+    <string name="select_all_books_content_desc">எல்லா புத்தகங்களையும் தேர்ந்தெடுக்கவும்</string>
+    <string name="pin_content_desc">முள்</string>
+    <string name="show_less_content_desc">குறைவாகக் காட்டு</string>
+    <string name="show_more_content_desc">மேலும் காட்டு</string>
+    <string name="edit_content_desc">திருத்து</string>
+    <string name="expand_content_desc">விரிவாக்கு</string>
+    <string name="collapse_content_desc">சுருக்கு</string>
+    <string name="remove_content_desc">அகற்று</string>
+    <string name="note_content_desc">குறிப்பு</string>
 </resources>

@@ -4,7 +4,8 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
     <string name="library_screen">पुस्तकालय</string>
     <string name="history_screen">इतिहास</string>
     <string name="settings_screen">सेटिंग्स</string>
@@ -12,9 +13,9 @@
     <string name="default_string">डिफ़ॉल्ट</string>
     <string name="add_books">किताबें शामिल करें ?</string>
     <string name="delete_book">किताब हटाएं?</string>
-    <string name="error_something_went_wrong">कुछ गड़बड़ हुआ है ।</string>
+    <string name="error_something_went_wrong">कुछ गड़बड़ हुआ है ।</string>
     <string name="error_no_translator">कोई अनुवादक ऐप नहीं मिला ।</string>
-    <string name="error_no_share_app">शेर करने के लिए कोई ऐप नहीं मिला ।</string>
+    <string name="error_no_share_app">शेयर करने के लिए कोई ऐप नहीं मिला ।</string>
     <string name="error_closed_source">बंद स्रोत कोड</string>
     <string name="library_empty">अपनी पसंदीदा पुस्तकें पढ़ें और उन्हें श्रेणियों के बीच क्रमित करें</string>
     <string name="history_empty">अपनी आखिरी पढ़ी हुई किताब से अपनी पढ़ने की यात्रा की एक नई महान कहानी के पन्ने खोलिए</string>
@@ -131,7 +132,7 @@
     <string name="alignment_end">अंत</string>
     <string name="screen_orientation_landscape">आड़ी दिशा</string>
     <string name="screen_orientation_portrait">खड़ी दिशा</string>
-    <string name="screen_orientation_locked_portrait">खड़ा दिशा लॉक</string>
+    <string name="screen_orientation_locked_portrait">खड़ा दिशा लॉक</string>
     <string name="screen_orientation_locked_landscape">आड़ी दिशा लॉक</string>
     <string name="dynamic_theme">बुध</string>
     <string name="blue_theme">नैप्टयुन</string>
@@ -191,4 +192,304 @@
     <string name="unknown">अज्ञात</string>
     <string name="report_bug_option">एक बग रिपोर्ट करो</string>
     <string name="credits_updates">नए अपडेट का प्रबंधन</string>
+
+    <!-- Dialog Labels -->
+    <string name="remove_category">श्रेणी हटाएँ?</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="remove_category_description">इससे यह श्रेणी पुस्तकालय से हट जाएगी, लेकिन कोई पुस्तक नहीं मिटेगी।</string>
+
+    <!-- Errors -->
+    <string name="error_no_file_manager_app">फ़ोल्डर चुनने के लिए कोई ऐप नहीं मिला।</string>
+    <string name="error_could_not_export">छवियों के साथ पुस्तक निर्यात नहीं की जा सकी।</string>
+    <string name="error_no_file">फ़ाइल मौजूद नहीं है या उपलब्ध नहीं है</string>
+    <string name="error_field_empty">यह फ़ील्ड खाली नहीं होनी चाहिए।</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">खोजें…</string>
+    <string name="categories_empty">कोई श्रेणी नहीं।</string>
+
+    <!-- Action Texts -->
+    <string name="report">रिपोर्ट करें</string>
+    <string name="generate_image">छवि बनाएँ</string>
+    <string name="set_cover_image">पुस्तक कवर के रूप में सेट करें</string>
+    <string name="ok">ठीक है</string>
+    <string name="change_path">पथ बदलें</string>
+    <string name="add_folder">फ़ोल्डर जोड़ें</string>
+    <string name="edit">संपादित करें</string>
+    <string name="create_category">श्रेणी बनाएँ</string>
+    <string name="set_up_scanning">स्कैनिंग सेट करें</string>
+
+    <!-- Export -->
+    <string name="export_with_images">निर्यात</string>
+    <string name="export_with_images_desc">सभी बनाई गई छवियों के साथ FB2 फ़ाइल निर्यात करें</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">डिफ़ॉल्ट</string>
+    <string name="display_tab">प्रदर्शन</string>
+    <string name="ai_tab">AI</string>
+
+    <!-- Settings categories -->
+    <string name="library_settings">पुस्तकालय</string>
+    <string name="library_settings_desc">श्रेणियाँ, प्रदर्शन, टैब</string>
+
+    <!-- Settings subcategories -->
+    <string name="reading_mode_reader_settings">पढ़ने का मोड</string>
+    <string name="chapters_reader_settings">अध्याय</string>
+    <string name="images_reader_settings">छवियाँ</string>
+    <string name="progress_reader_settings">प्रगति</string>
+    <string name="scan_browse_settings">स्कैन</string>
+    <string name="display_settings">प्रदर्शन</string>
+    <string name="tabs_settings">टैब</string>
+    <string name="categories_settings">श्रेणियाँ</string>
+    <string name="ai_reader_settings">AI सहायक</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">इन फ़ोल्डरों का उपयोग ब्राउज़ में फ़ाइलें स्कैन और प्राप्त करने के लिए किया जाता है। यहाँ से कोई फ़ोल्डर हटाने से वास्तविक फ़ाइलें या पुस्तकालय की पुस्तकें नहीं मिटेंगी। एक्सेस रद्द करने के लिए संबंधित बटन पर क्लिक करें।</string>
+    <string name="library_categories_option_note">शुरुआत में पुस्तकें डिफ़ॉल्ट श्रेणी में जोड़ी जाती हैं, लेकिन वे यहाँ बनाई गई कई कस्टम श्रेणियों से संबंधित हो सकती हैं। यहाँ से कोई श्रेणी हटाने से पुस्तकालय की पुस्तकें नहीं मिटेंगी। श्रेणियों को पुनर्व्यवस्थित करने के लिए श्रेणी आइकन को दबाकर रखें और खींचें।</string>
+    <string name="library_per_category_sort_option_note">क्रमबद्धता पुस्तकालय में बदली जा सकती है।</string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="show_navigation_labels_option">नेविगेशन लेबल दिखाएँ</string>
+    <string name="show_navigation_labels_option_desc">आइकन के नीचे नेविगेशन बार लेबल दिखाएँ</string>
+
+    <!-- Reader -->
+    <string name="font_thickness_option">फ़ॉन्ट मोटाई</string>
+    <string name="chapter_title_alignment_option">अध्याय शीर्षक संरेखण</string>
+    <string name="horizontal_limiter_option">क्षैतिज सीमक</string>
+    <string name="horizontal_limiter_option_desc">क्षैतिज रूलर दिखाएँ और स्क्रीन के अनफोकस्ड भाग को मंद करें</string>
+    <string name="horizontal_limiter_height_option">ऊँचाई</string>
+    <string name="horizontal_limiter_vertical_offset_option">लंबवत ऑफ़सेट</string>
+    <string name="horizontal_limiter_ruler_option">क्षैतिज रूलर</string>
+    <string name="horizontal_limiter_ruler_thickness_option">रूलर मोटाई</string>
+    <string name="horizontal_limiter_dimming_option">मंद करना</string>
+    <string name="custom_screen_brightness_option">कस्टम चमक</string>
+    <string name="screen_brightness_option">चमक</string>
+    <string name="horizontal_gesture_option">क्षैतिज जेस्चर</string>
+    <string name="horizontal_gesture_scroll_option">स्क्रॉल अंश</string>
+    <string name="horizontal_gesture_sensitivity_option">संवेदनशीलता</string>
+    <string name="horizontal_gesture_alpha_anim_option">दृश्यता एनिमेशन</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">क्षैतिज जेस्चर का उपयोग करते समय दृश्यता एनिमेशन सक्षम करें</string>
+    <string name="horizontal_gesture_pull_anim_option">पुल एनिमेशन</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">क्षैतिज जेस्चर का उपयोग करते समय पुल एनिमेशन सक्षम करें</string>
+    <string name="horizontal_gesture_disable_scrolling_option">स्क्रॉलिंग अक्षम करें</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">रीडर स्क्रॉलिंग पूरी तरह अक्षम करें</string>
+    <string name="bottom_bar_padding_option">निचला बार मार्जिन</string>
+    <string name="highlighted_reading_option">शब्द हाइलाइट करें</string>
+    <string name="highlighted_reading_option_desc">प्रत्येक शब्द की शुरुआत हाइलाइट करें</string>
+    <string name="highlighted_reading_thickness_option">हाइलाइट मोटाई</string>
+    <string name="images_option">छवियाँ</string>
+    <string name="images_option_desc">छवियाँ दिखाएँ</string>
+    <string name="images_captions_option">कैप्शन</string>
+    <string name="images_captions_option_desc">छवियों के नीचे कैप्शन दिखाएँ</string>
+    <string name="images_corners_roundness_option">कोनों की गोलाई</string>
+    <string name="images_alignment_option">संरेखण</string>
+    <string name="images_width_option">आकार</string>
+    <string name="images_color_effects_option">रंग प्रभाव</string>
+    <string name="progress_bar_option">प्रगति बार</string>
+    <string name="progress_bar_option_desc">नीचे प्रगति बार दिखाएँ</string>
+    <string name="progress_bar_padding_option">मार्जिन</string>
+    <string name="progress_bar_alignment_option">संरेखण</string>
+    <string name="progress_bar_font_size_option">फ़ॉन्ट आकार</string>
+    <string name="progress_count_option">प्रगति गणना</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API कुंजी</string>
+    <string name="api_key_option_label">OpenRouter API कुंजी</string>
+    <string name="image_model_option">छवि मॉडल</string>
+    <string name="image_model_option_label">OpenRouter छवि मॉडल स्लग</string>
+    <string name="image_style_option">शैली ब्लॉक</string>
+    <string name="image_style_option_label">छवि प्रॉम्प्ट के लिए शैली ब्लॉक</string>
+    <string name="style_reference_option">शैली संदर्भ</string>
+    <string name="style_reference_option_desc">शैली संदर्भ के रूप में पुस्तक के चित्रों का कोलाज जोड़ें</string>
+    <string name="proxy_option">प्रॉक्सी</string>
+    <string name="proxy_option_desc">HTTP या SOCKS5 प्रॉक्सी</string>
+    <string name="proxy_protocol_option">प्रॉक्सी प्रोटोकॉल</string>
+    <string name="proxy_host_option">प्रॉक्सी होस्ट</string>
+    <string name="proxy_host_option_label">जैसे 127.0.0.1</string>
+    <string name="proxy_port_option">प्रॉक्सी पोर्ट</string>
+    <string name="proxy_port_option_label">जैसे 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI सहायक</string>
+    <string name="text_assistant_model_option">टेक्स्ट मॉडल</string>
+    <string name="text_assistant_model_option_label">OpenRouter स्मार्ट टेक्स्ट मॉडल स्लग</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">अधिमान्य विलंबता (p90, सेकंड)</string>
+    <string name="text_assistant_preferred_latency_option_label">टेक्स्ट सहायक के लिए p90 पर अधिमान्य अधिकतम प्रदाता विलंबता</string>
+    <string name="text_assistant_max_input_price_option">अधिकतम इनपुट कीमत ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">टेक्स्ट सहायक के लिए अधिकतम प्रॉम्प्ट टोकन कीमत</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">सारांश मॉडल</string>
+    <string name="summarize_model_option_label">पात्र निष्कर्षण के लिए उपयोग किया जाने वाला OpenRouter मॉडल स्लग</string>
+    <string name="text_assistant_max_tokens_option">अधिकतम इनपुट टोकन</string>
+    <string name="text_assistant_max_tokens_option_label">लंबी पुस्तकों को खंडित करने के लिए मॉडल संदर्भ सीमा</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">अधिमान्य विलंबता (p90, सेकंड)</string>
+    <string name="character_preferred_latency_option_label">पात्र निष्कर्षण के लिए p90 पर अधिमान्य अधिकतम प्रदाता विलंबता</string>
+    <string name="character_max_input_price_option">अधिकतम इनपुट कीमत ($/1M)</string>
+    <string name="character_max_input_price_option_label">पात्र निष्कर्षण के लिए अधिकतम प्रॉम्प्ट टोकन कीमत</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">पात्र</string>
+    <string name="analyze_characters">पुस्तक के पात्रों का विश्लेषण करें</string>
+    <string name="characters_generating">पात्र निकाले जा रहे हैं…</string>
+    <string name="characters_empty">अभी कोई पात्र नहीं। पात्रों की सूची बनाने के लिए पुस्तक की सामग्री का विश्लेषण करें।</string>
+    <string name="characters_prompt">पूरी पुस्तक का पाठ पढ़ें, किसी भी छवि संदर्भ को अनदेखा करें। मुख्य पात्र और सभी प्रमुख तथा महत्वपूर्ण आवर्ती पात्रों की पहचान करें। प्रत्येक पात्र के लिए, पूरे पाठ से एक सुसंगत दृश्य विवरण तैयार करें।</string>
+    <string name="characters_processing">प्रोसेसिंग</string>
+    <string name="characters_failed">पात्र निष्कर्षण विफल हुआ</string>
+    <string name="characters_stopped_by_system">पात्र निष्कर्षण सिस्टम द्वारा रोक दिया गया।</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">छवि बनाई जा रही है…</string>
+    <string name="image_step_prepare">संदर्भ तैयार हो रहा है…</string>
+    <string name="image_step_collage">शैली कोलाज बनाया जा रहा है…</string>
+    <string name="image_step_distill">दृश्य निकाला जा रहा है…</string>
+    <string name="image_step_generate">चित्रण बनाया जा रहा है…</string>
+    <string name="image_generation_failed">छवि निर्माण विफल हुआ</string>
+    <string name="image_stopped_by_system">छवि निर्माण सिस्टम द्वारा रोक दिया गया।</string>
+    <string name="image_already_generating">एक छवि पहले से बनाई जा रही है।</string>
+    <string name="retry">पुनः प्रयास करें</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">बंद</string>
+    <string name="horizontal_gesture_on">चालू</string>
+    <string name="horizontal_gesture_inverse">चालू (उलटा)</string>
+
+    <!-- Library -->
+    <string name="read_button_option">«पढ़ें» बटन दिखाएँ</string>
+    <string name="show_progress_option">प्रगति दिखाएँ</string>
+    <string name="title_position_option">शीर्षक स्थिति</string>
+    <string name="show_book_count_option">पुस्तक संख्या दिखाएँ</string>
+    <string name="show_category_tabs_option">श्रेणी टैब दिखाएँ</string>
+    <string name="always_show_default_tab_option">डिफ़ॉल्ट टैब हमेशा दिखाएँ</string>
+    <string name="per_category_sort_option">प्रति-श्रेणी क्रमबद्धता</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">छिपा हुआ</string>
+    <string name="library_title_position_below">नीचे</string>
+    <string name="library_title_position_inside">अंदर</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">शीर्षक</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_last_read">आखिरी बार पढ़ा गया</string>
+    <string name="sort_order_progress">प्रगति</string>
+    <string name="sort_order_author">लेखक</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">स्तर</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">बंद</string>
+    <string name="color_effects_grayscale">ग्रेस्केल</string>
+    <string name="color_effects_font">फ़ॉन्ट रंग</string>
+    <string name="color_effects_background">पृष्ठभूमि रंग</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">पतला</string>
+    <string name="font_thickness_extra_light">अतिरिक्त हल्का</string>
+    <string name="font_thickness_light">हल्का</string>
+    <string name="font_thickness_normal">सामान्य</string>
+    <string name="font_thickness_medium">मध्यम</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">प्रतिशत</string>
+    <string name="progress_count_quantity">मात्रा</string>
+
+    <!-- Themes -->
+    <string name="green2_theme">आयो</string>
+    <string name="green_gray_theme">एन्सेलेडस</string>
+    <string name="red_gray_theme">कैलिस्टो</string>
+    <string name="purple_gray_theme">सेरेस</string>
+    <string name="pink2_theme">गैनीमेड</string>
+    <string name="yellow2_theme">मेकमेक</string>
+    <string name="gray_theme">आयापेटस</string>
+
+    <!-- Toast messages -->
+    <string name="title_changed">शीर्षक सफलतापूर्वक बदल दिया गया।</string>
+    <string name="author_changed">लेखक सफलतापूर्वक बदल दिया गया।</string>
+    <string name="description_changed">वर्णन सफलतापूर्वक बदल दिया गया।</string>
+    <string name="path_changed">फ़ाइल पथ सफलतापूर्वक बदल दिया गया।</string>
+    <string name="cover_image_set">पुस्तक कवर सफलतापूर्वक सेट की गई।</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">शुरू करें</string>
+    <string name="continue_reading_query">%1$s से जारी रखें</string>
+    <string name="file_details">फ़ाइल विवरण</string>
+
+    <!-- Reader -->
+    <string name="ai_illustrations">AI चित्रण</string>
+
+    <!-- About -->
+    <string name="support_development_option">विकास का समर्थन करें</string>
+
+    <!-- Start -->
+    <string name="start_welcome">%1$s में आपका स्वागत है!</string>
+    <string name="start_welcome_desc">उस दुनिया में, जहाँ शब्द मोहित करते हैं, सिखाते हैं और अद्भुत रोमांच पर ले जाते हैं! आइए कुछ चीज़ें सेट करें!</string>
+    <string name="start_language_preferences">भाषा प्राथमिकताएँ</string>
+    <string name="start_theme_preferences">थीम प्राथमिकताएँ</string>
+    <string name="start_scan_preferences">स्कैन प्राथमिकताएँ</string>
+    <string name="start_done">सब कुछ पूरा हो गया!</string>
+    <string name="start_done_desc">सेटअप पूरा हुआ।</string>
+
+    <!-- History -->
+    <string name="today">आज</string>
+    <string name="yesterday">कल</string>
+
+    <!-- Crash -->
+    <string name="crash_title">ओह! ऐप क्रैश हो गया।</string>
+    <string name="crash_description">कृपया इस क्रैश संदेश को अपने लिए सबसे सुविधाजनक तरीके से रिपोर्ट करें।</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">पढ़ना जारी रखें</string>
+    <string name="go_back_content_desc">वापस जाएँ</string>
+    <string name="cover_image_content_desc">कवर छवि</string>
+    <string name="open_reader_settings_content_desc">रीडर सेटिंग्स</string>
+    <string name="file_icon_content_desc">फ़ाइल</string>
+    <string name="sort_order_content_desc">क्रमबद्ध क्रम</string>
+    <string name="checkbox_content_desc">चेकबॉक्स</string>
+    <string name="cover_image_not_found_content_desc">कवर छवि नहीं मिली</string>
+    <string name="error_content_desc">त्रुटि</string>
+    <string name="search_content_desc">खोजें</string>
+    <string name="clear_selected_items_content_desc">चयनित आइटम साफ़ करें</string>
+    <string name="add_files_content_desc">फ़ाइलें जोड़ें</string>
+    <string name="select_all_files_content_desc">सभी फ़ाइलें चुनें</string>
+    <string name="select_all_books_content_desc">सभी पुस्तकें चुनें</string>
+    <string name="exit_search_content_desc">खोज से बाहर निकलें</string>
+    <string name="delete_whole_history_content_desc">पूरा इतिहास मिटाएँ</string>
+    <string name="move_books_content_desc">चयनित पुस्तकें स्थानांतरित करें</string>
+    <string name="delete_books_content_desc">चयनित पुस्तकें मिटाएँ</string>
+    <string name="revert_content_desc">पूर्ववत करें</string>
+    <string name="selected_content_desc">चयनित</string>
+    <string name="app_icon_content_desc">ऐप आइकन</string>
+    <string name="delete_history_element_content_desc">इतिहास तत्व मिटाएँ</string>
+    <string name="library_content_desc">आपका पुस्तकालय</string>
+    <string name="history_content_desc">पढ़ने का इतिहास</string>
+    <string name="browse_content_desc">पुस्तकें जोड़ें</string>
+    <string name="arrow_content_desc">तीर</string>
+    <string name="reset_start_content_desc">स्टार्ट गाइड रीसेट करें</string>
+    <string name="open_in_web_content_desc">वेब में खोलें</string>
+    <string name="delete_color_preset_content_desc">रंग प्रीसेट मिटाएँ</string>
+    <string name="create_color_preset_content_desc">नया रंग प्रीसेट बनाएँ</string>
+    <string name="shuffle_color_preset_content_desc">रंग शफ़ल करें</string>
+    <string name="drag_content_desc">खींचें</string>
+    <string name="filter_content_desc">फ़िल्टर</string>
+    <string name="checkpoint_back_content_desc">पीछे का चेकपॉइंट</string>
+    <string name="checkpoint_forward_content_desc">आगे का चेकपॉइंट</string>
+    <string name="chapters_content_desc">अध्याय</string>
+    <string name="more_content_desc">और</string>
+    <string name="pin_content_desc">पिन करें</string>
+    <string name="show_less_content_desc">कम दिखाएँ</string>
+    <string name="show_more_content_desc">और दिखाएँ</string>
+    <string name="edit_content_desc">संपादित करें</string>
+    <string name="expand_content_desc">विस्तार करें</string>
+    <string name="collapse_content_desc">संकुचित करें</string>
+    <string name="remove_content_desc">हटाएँ</string>
+    <string name="note_content_desc">नोट</string>
 </resources>

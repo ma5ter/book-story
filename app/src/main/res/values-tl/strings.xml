@@ -5,16 +5,522 @@
   -->
 
 <resources>
+    <!-- Basic Strings -->
+    <string name="default_string">Default</string>
+
+    <!-- Screens -->
     <string name="library_screen">Aklatan</string>
     <string name="history_screen">Talaan</string>
+    <string name="browse_screen">Mag-browse</string>
+    <string name="settings_screen">Mga Setting</string>
+    <string name="about_screen">Tungkol sa App</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">Magdagdag ng mga Libro?</string>
     <string name="delete_books">Burahin ang mga Libro?</string>
     <string name="delete_book">Burahin ang Libro?</string>
-    <string name="about_screen">Tungkol sa App</string>
     <string name="delete_history">Burahin ang Talaan ng mga binasa?</string>
-    <string name="add_books">Magdagdag ng mga Libro?</string>
     <string name="remove_category">Alisin ang Kategorya?</string>
-    <string name="error_no_description">Walang Deskripsyon.</string>
+
+    <!-- Dialog Descriptions -->
     <string name="add_books_description">Pwede ka mamili kung anong mga libro ang gusto mong idagdag. Pwede mong baguhin ang Pamagat at ang Imahe ng pabalat mamaya. Maaaring umabot ng ilang minuto ang proseso.</string>
+    <string name="delete_books_description">Buburahin nito ang lahat ng napiling libro(%1$s) mula sa database. Hindi nito buburahin ang mga napiling libro mula sa iyong device.</string>
+    <string name="delete_book_description">Buburahin nito ang librong ito mula sa database. Hindi nito buburahin ang librong ito mula sa iyong device.</string>
+    <string name="delete_history_description">Buburahin nito ang buong kasaysayan mula sa database. Pagkatapos burahin ang buong kasaysayan, mareseset ang pagkakasunod-sunod ng mga libro.</string>
+    <string name="remove_category_description">Aalisin nito ang kategoryang ito mula sa Aklatan ngunit hindi buburahin ang anumang mga libro.</string>
+
+    <!-- Errors -->
+    <string name="error_no_description">Walang Deskripsyon.</string>
+    <string name="error_something_went_wrong">May naganap na problema.</string>
+    <string name="error_no_translator">Walang nahanap na app pangsalin.</string>
+    <string name="error_no_dictionary">Walang nahanap na app na diksyunaryo.</string>
     <string name="error_no_browser">Walang nahanap na browser app.</string>
+    <string name="error_no_share_app">Walang nahanap na app na pangbahagi.</string>
+    <string name="error_no_file_manager_app">Walang nahanap na app na pampili ng folder.</string>
+    <string name="error_could_not_get_text">Walang laman, nawawala, o hindi ma-access ang file. I-verify ang file, mga setting ng scan o palitan ang path, pagkatapos ay subukang muli.</string>
+    <string name="error_could_not_reset_cover">Hindi na-reset ang imahe ng pabalat.</string>
+    <string name="error_closed_source">Saradong pinagmulan</string>
+    <string name="error_could_not_export">Hindi ma-export ang libro na may mga imahe.</string>
+    <string name="error_no_file">Hindi umiiral o hindi ma-access ang file</string>
+    <string name="error_field_empty">Hindi dapat walang laman ang field na ito.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">Maghanap…</string>
+    <string name="browse_empty">Palawakin ang koleksyon ng mga libro ng aklatan gamit ang iyong mga download</string>
+    <string name="library_empty">Basahin ang iyong mga paboritong libro at ayusin ang mga ito sa pagitan ng mga kategorya</string>
+    <string name="history_empty">Hayaang buksan ng huling binasa mong libro ang mga pahina ng isang bagong magandang kuwento ng iyong paglalakbay sa pagbabasa</string>
     <string name="categories_empty">Walang kategorya.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s napili</string>
+    <string name="color_preset_query">Preset %1$s</string>
+    <string name="color_preset_selected_query">Napili ang «%1$s»</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Kanselahin</string>
+    <string name="add_book">Magdagdag ng libro</string>
+    <string name="move">Ilipat</string>
+    <string name="delete">Burahin</string>
+    <string name="never">Kailanman</string>
+    <string name="undo">I-undo</string>
+    <string name="copy">Kopyahin</string>
+    <string name="report">Iulat</string>
+    <string name="translate">Isalin</string>
+    <string name="dictionary">Diksyunaryo</string>
+    <string name="generate_image">Gumawa ng imahe</string>
+    <string name="set_cover_image">Itakda bilang pabalat ng libro</string>
+    <string name="next">Susunod</string>
+    <string name="done">Tapos na</string>
+    <string name="web_search">Paghahanap sa web</string>
+    <string name="share">Ibahagi</string>
+    <string name="ok">OK</string>
+    <string name="change_path">Palitan ang path</string>
+    <string name="add_folder">Magdagdag ng folder</string>
+    <string name="edit">I-edit</string>
+    <string name="create_category">Gumawa ng kategorya</string>
+    <string name="set_up_scanning">I-set up ang pag-scan</string>
+
+    <!-- Export -->
+    <string name="export_with_images">I-export</string>
+    <string name="export_with_images_desc">I-export ang FB2 file nang naka-embed ang lahat ng nabuong mga imahe</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Hindi kilala</string>
+    <string name="reset_cover">I-reset ang imahe ng pabalat</string>
+    <string name="reset_cover_desc">I-reset ang imahe ng pabalat ng libro sa default</string>
+    <string name="change_cover">Palitan ang imahe ng pabalat</string>
+    <string name="change_cover_desc">Pumili ng bagong pabalat mula sa iyong mga larawan</string>
+    <string name="delete_cover">Burahin ang imahe ng pabalat</string>
+    <string name="delete_cover_desc">Burahin ang kasalukuyang imahe ng pabalat ng libro</string>
+    <string name="author">May-akda</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Default</string>
+    <string name="general_tab">Pangkalahatan</string>
+    <string name="display_tab">Display</string>
+    <string name="color_tab">Mga Kulay</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Pagsasala</string>
+    <string name="sort_tab">Pagsunod-sunod</string>
+    <string name="reader_tab">Mambabasa</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Pangkalahatan</string>
+    <string name="general_settings_desc">Wika ng app</string>
+    <string name="appearance_settings">Hitsura</string>
+    <string name="appearance_settings_desc">Tema, mga kulay</string>
+    <string name="reader_settings">Mambabasa</string>
+    <string name="reader_settings_desc">Font, teksto</string>
+    <string name="browse_settings">Mag-browse</string>
+    <string name="browse_settings_desc">Scan, display</string>
+    <string name="library_settings">Aklatan</string>
+    <string name="library_settings_desc">Mga kategorya, display, mga tab</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Font</string>
+    <string name="text_reader_settings">Teksto</string>
+    <string name="translator_reader_settings">Tagasalin</string>
+    <string name="padding_reader_settings">Mga margin</string>
+    <string name="misc_reader_settings">Iba pa</string>
+    <string name="reading_speed_reader_settings">Bilis ng pagbabasa</string>
+    <string name="reading_mode_reader_settings">Mode ng pagbabasa</string>
+    <string name="system_reader_settings">Sistema</string>
+    <string name="chapters_reader_settings">Mga Kabanata</string>
+    <string name="images_reader_settings">Mga Imahe</string>
+    <string name="progress_reader_settings">Progreso</string>
+    <string name="theme_appearance_settings">Mga kagustuhan sa tema</string>
+    <string name="colors_appearance_settings">Mga Kulay</string>
+    <string name="scan_browse_settings">Scan</string>
+    <string name="display_settings">Display</string>
+    <string name="tabs_settings">Mga Tab</string>
+    <string name="categories_settings">Mga Kategorya</string>
+    <string name="filter_browse_settings">Pagsasala</string>
+    <string name="sort_settings">Pagsunod-sunod</string>
+    <string name="ai_reader_settings">AI assistant</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">Ang mga folder na ito ay ginagamit upang mag-scan at makuha ang mga file sa Browse. Ang pag-alis ng folder dito ay hindi magbubura ng mga aktwal na file o mga libro mula sa Aklatan. Upang bawiin ang access, i-click ang kaukulang button.</string>
+    <string name="library_categories_option_note">Sa simula, ang mga libro ay idinaragdag sa default na kategorya, ngunit maaaring kabilang sa ilang mga custom na kategoryang ginawa rito. Ang pag-alis ng kategorya dito ay hindi magbubura ng mga libro mula sa Aklatan. Pindutin nang matagal at ilipat ang icon ng kategorya upang ayusin ang mga kategorya.</string>
+    <string name="library_per_category_sort_option_note">Ang pagsunod-sunod ay mababago sa Aklatan.</string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">Wika ng app</string>
+    <string name="dark_theme_option">Madilim na tema</string>
+    <string name="pure_dark_option">Puro madilim</string>
+    <string name="absolute_dark_option">Ganap na madilim</string>
+    <string name="absolute_dark_option_desc">Palitan ang kulay ng background upang maging ganap na itim</string>
+    <string name="theme_contrast_option">Contrast ng tema</string>
+    <string name="app_theme_option">Tema ng app</string>
+    <string name="double_press_exit_option">Dalawang beses i-press ang back upang lumabas</string>
+    <string name="double_press_exit_option_desc">Pindutin nang dalawang beses ang back upang lumabas sa app</string>
+    <string name="show_navigation_labels_option">Ipakita ang mga label sa navigation</string>
+    <string name="show_navigation_labels_option_desc">Ipakita ang mga label ng navigation bar sa ilalim ng mga icon</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">Pamilya ng font</string>
+    <string name="font_thickness_option">Kapal ng font</string>
+    <string name="font_style_option">Estilo ng font</string>
+    <string name="font_size_option">Laki ng font</string>
+    <string name="line_height_option">Taas ng linya</string>
+    <string name="paragraph_height_option">Espasyo sa talata</string>
+    <string name="paragraph_indentation_option">Indentasyon ng talata</string>
+    <string name="color_preset_option">Preset ng kulay</string>
+    <string name="background_color_option">Kulay ng background</string>
+    <string name="font_color_option">Kulay ng font</string>
+    <string name="side_padding_option">Mga gilid na margin</string>
+    <string name="vertical_padding_option">Mga patayong margin</string>
+    <string name="double_click_translation_option">Pagsasalin sa dobleng pag-click</string>
+    <string name="double_click_translation_option_desc">Doble i-click ang talata upang isalin ito</string>
+    <string name="fast_color_preset_change_option">Mabilis na pagpalit ng preset ng kulay</string>
+    <string name="fast_color_preset_change_option_desc">I-swipe ang top bar pakaliwa o pakanan upang palitan ang preset ng kulay</string>
+    <string name="text_alignment_option">Pagkakahanay ng teksto</string>
+    <string name="chapter_title_alignment_option">Pagkakahanay ng pamagat ng kabanata</string>
+    <string name="letter_spacing_option">Espasyo sa pagitan ng mga letra</string>
+    <string name="cutout_padding_option">Margin sa cutout</string>
+    <string name="cutout_padding_option_desc">Mag-apply ng margin sa lugar ng cutout</string>
+    <string name="fullscreen_option">Buong screen</string>
+    <string name="fullscreen_option_desc">Itago ang mga system bar at margin</string>
+    <string name="keep_screen_on_option">Panatilihing naka-on ang screen</string>
+    <string name="hide_bars_on_fast_scroll_option">Itago ang mga bar sa mabilis na scroll</string>
+    <string name="perception_expander_option">Perception expander</string>
+    <string name="perception_expander_option_desc">Pataasin ang iyong bilis sa pagbabasa sa pamamagitan ng pagtuon sa gitna</string>
+    <string name="perception_expander_padding_option">Mga gilid na margin ng linya</string>
+    <string name="perception_expander_thickness_option">Kapal ng linya</string>
+    <string name="horizontal_limiter_option">Pahalang na limiter</string>
+    <string name="horizontal_limiter_option_desc">Ipakita ang pahalang na rereso at i-dim ang hindi nakatuong bahagi ng screen</string>
+    <string name="horizontal_limiter_height_option">Taas</string>
+    <string name="horizontal_limiter_vertical_offset_option">Patayong offset</string>
+    <string name="horizontal_limiter_ruler_option">Pahalang na rereso</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Kapal ng rereso</string>
+    <string name="horizontal_limiter_dimming_option">Pag-dim</string>
+    <string name="screen_orientation_option">Oryentasyon ng screen</string>
+    <string name="custom_screen_brightness_option">Custom na liwanag</string>
+    <string name="screen_brightness_option">Liwanag</string>
+    <string name="horizontal_gesture_option">Pahalang na kilos</string>
+    <string name="horizontal_gesture_scroll_option">Bahagi ng scroll</string>
+    <string name="horizontal_gesture_sensitivity_option">Sensitividad</string>
+    <string name="horizontal_gesture_alpha_anim_option">Animation ng visibility</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">I-enable ang animation ng visibility kapag gumagamit ng pahalang na kilos</string>
+    <string name="horizontal_gesture_pull_anim_option">Animation ng paghila</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">I-enable ang animation ng paghila kapag gumagamit ng pahalang na kilos</string>
+    <string name="horizontal_gesture_disable_scrolling_option">I-disable ang pag-scroll</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Ganap na i-disable ang pag-scroll ng mambabasa</string>
+    <string name="bottom_bar_padding_option">Margin ng ibabang bar</string>
+    <string name="highlighted_reading_option">I-highlight ang mga salita</string>
+    <string name="highlighted_reading_option_desc">I-highlight ang simula ng bawat salita</string>
+    <string name="highlighted_reading_thickness_option">Kapal ng highlight</string>
+    <string name="images_option">Mga Imahe</string>
+    <string name="images_option_desc">Ipakita ang mga imahe</string>
+    <string name="images_captions_option">Mga caption</string>
+    <string name="images_captions_option_desc">Ipakita ang mga caption sa ilalim ng mga imahe</string>
+    <string name="images_corners_roundness_option">Pagbilog ng mga sulok</string>
+    <string name="images_alignment_option">Pagkakahanay</string>
+    <string name="images_width_option">Laki</string>
+    <string name="images_color_effects_option">Mga epekto ng kulay</string>
+    <string name="progress_bar_option">Progress bar</string>
+    <string name="progress_bar_option_desc">Ipakita ang progress bar sa ilalim</string>
+    <string name="progress_bar_padding_option">Mga margin</string>
+    <string name="progress_bar_alignment_option">Pagkakahanay</string>
+    <string name="progress_bar_font_size_option">Laki ng font</string>
+    <string name="progress_count_option">Bilang ng progreso</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API key</string>
+    <string name="api_key_option_label">OpenRouter API key</string>
+    <string name="image_model_option">Modelo ng imahe</string>
+    <string name="image_model_option_label">Slug ng modelo ng imahe sa OpenRouter</string>
+    <string name="image_style_option">Bloke ng istilo</string>
+    <string name="image_style_option_label">Bloke ng istilo para sa prompt ng imahe</string>
+    <string name="style_reference_option">Sanggunian ng istilo</string>
+    <string name="style_reference_option_desc">Maglakip ng collage ng mga ilustrasyon ng libro bilang sanggunian ng istilo</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP o SOCKS5 proxy</string>
+    <string name="proxy_protocol_option">Protocol ng proxy</string>
+    <string name="proxy_host_option">Host ng proxy</string>
+    <string name="proxy_host_option_label">hal. 127.0.0.1</string>
+    <string name="proxy_port_option">Port ng proxy</string>
+    <string name="proxy_port_option_label">hal. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI assistant</string>
+    <string name="text_assistant_model_option">Modelo ng Teksto</string>
+    <string name="text_assistant_model_option_label">Slug ng matalinong modelo ng teksto sa OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Piniling latency (p90, sec)</string>
+    <string name="text_assistant_preferred_latency_option_label">Piniling maximum na latency ng provider sa p90 para sa text assistant</string>
+    <string name="text_assistant_max_input_price_option">Max na presyo ng input ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Maximum na presyo ng prompt token para sa text assistant</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Modelo ng Buod</string>
+    <string name="summarize_model_option_label">Slug ng modelo sa OpenRouter na ginagamit sa pagkuha ng mga karakter</string>
+    <string name="text_assistant_max_tokens_option">Max na input tokens</string>
+    <string name="text_assistant_max_tokens_option_label">Limitasyon ng context ng modelo na ginagamit sa paghahati ng mahahabang libro</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Piniling latency (p90, sec)</string>
+    <string name="character_preferred_latency_option_label">Piniling maximum na latency ng provider sa p90 para sa pagkuha ng mga karakter</string>
+    <string name="character_max_input_price_option">Max na presyo ng input ($/1M)</string>
+    <string name="character_max_input_price_option_label">Maximum na presyo ng prompt token para sa pagkuha ng mga karakter</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Mga Karakter</string>
+    <string name="analyze_characters">Suriin ang mga karakter ng libro</string>
+    <string name="characters_generating">Kumukuha ng mga karakter…</string>
+    <string name="characters_empty">Wala pang mga karakter. Suriin ang nilalaman ng libro upang bumuo ng katalogo ng mga karakter.</string>
+    <string name="characters_prompt">Basahin ang buong teksto ng libro, hindi pinapansin ang anumang mga sanggunian sa imahe. Tukuyin ang protagonista at lahat ng pangunahin at kapansian na mga umuulit na karakter. Para sa bawat karakter, bumuo ng pare-parehong paglalarawan ng itsura mula sa buong teksto.</string>
+    <string name="characters_processing">Pinoproseso</string>
+    <string name="characters_failed">Nabigo ang pagkuha ng mga karakter</string>
+    <string name="characters_stopped_by_system">Itinigil ng sistema ang pagkuha ng mga karakter.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Bumubuo ng imahe…</string>
+    <string name="image_step_prepare">Naghahanda ng context…</string>
+    <string name="image_step_collage">Bumubuo ng collage ng istilo…</string>
+    <string name="image_step_distill">Binubuod ang eksena…</string>
+    <string name="image_step_generate">Nagre-render ng ilustrasyon…</string>
+    <string name="image_generation_failed">Nabigo ang pagbuo ng imahe</string>
+    <string name="image_stopped_by_system">Itinigil ng sistema ang pagbuo ng imahe.</string>
+    <string name="image_already_generating">May imahe nang binebuo.</string>
+    <string name="retry">Subukan muli</string>
+
+    <!-- Library -->
+    <string name="read_button_option">Ipakita ang button na «Basahin»</string>
+    <string name="show_progress_option">Ipakita ang progreso</string>
+    <string name="title_position_option">Lokasyon ng pamagat</string>
+    <string name="show_book_count_option">Ipakita ang bilang ng mga libro</string>
+    <string name="show_category_tabs_option">Ipakita ang mga tab ng kategorya</string>
+    <string name="always_show_default_tab_option">Palaging ipakita ang default na tab</string>
+    <string name="per_category_sort_option">Pagsunod-sunod bawat kategorya</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Pula</string>
+    <string name="green_color">Berde</string>
+    <string name="blue_color">Asul</string>
+    <string name="color_preset_placeholder">Pangalanan ang preset…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Naka-disable</string>
+    <string name="dark_theme_on">Naka-enable</string>
+    <string name="dark_theme_follow_system">Sistema</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Naka-disable</string>
+    <string name="pure_dark_on">Naka-enable</string>
+    <string name="pure_dark_power_saver">Saver</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Standard</string>
+    <string name="theme_contrast_medium">Katamtaman</string>
+    <string name="theme_contrast_high">Mataas</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Italic</string>
+    <string name="font_style_normal">Normal</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Nakatago</string>
+    <string name="library_title_position_below">Sa ilalim</string>
+    <string name="library_title_position_inside">Nasa loob</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Pamagat</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Mode ng display</string>
+    <string name="layout_list">Listahan</string>
+    <string name="layout_grid">Grid</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Ayon sa alpabeto</string>
+    <string name="sort_order_file_format">Format ng file</string>
+    <string name="sort_order_last_modified">Huling binago</string>
+    <string name="sort_order_file_size">Laki ng file</string>
+    <string name="sort_order_last_read">Huling nabasa</string>
+    <string name="sort_order_progress">Progreso</string>
+    <string name="sort_order_author">May-akda</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Laki ng grid</string>
+    <string name="grid_size_auto">Auto</string>
+    <string name="grid_size_per_row">bawat hanay</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Simula</string>
+    <string name="alignment_justify">I-justify</string>
+    <string name="alignment_center">Gitna</string>
+    <string name="alignment_end">Wakas</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Malaya</string>
+    <string name="screen_orientation_portrait">Patayo</string>
+    <string name="screen_orientation_landscape">Pahalang</string>
+    <string name="screen_orientation_locked_portrait">Naka-lock na patayo</string>
+    <string name="screen_orientation_locked_landscape">Naka-lock na pahalang</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Naka-off</string>
+    <string name="horizontal_gesture_on">Naka-on</string>
+    <string name="horizontal_gesture_inverse">Naka-on (Baliktad)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">antas</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Naka-off</string>
+    <string name="color_effects_grayscale">Grayscale</string>
+    <string name="color_effects_font">Kulay ng font</string>
+    <string name="color_effects_background">Kulay ng background</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Manipis</string>
+    <string name="font_thickness_extra_light">Extra light</string>
+    <string name="font_thickness_light">Magaan</string>
+    <string name="font_thickness_normal">Normal</string>
+    <string name="font_thickness_medium">Katamtaman</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Porsyento</string>
+    <string name="progress_count_quantity">Bilang</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Mercury</string>
+    <string name="blue_theme">Neptune</string>
+    <string name="green_theme">Earth</string>
+    <string name="green2_theme">Io</string>
+    <string name="green_gray_theme">Enceladus</string>
+    <string name="red_theme">Mars</string>
+    <string name="red_gray_theme">Callisto</string>
+    <string name="purple_theme">Jupiter</string>
+    <string name="purple_gray_theme">Ceres</string>
+    <string name="pink_theme">Saturn</string>
+    <string name="pink2_theme">Ganymede</string>
+    <string name="lavender_theme">Eris</string>
+    <string name="marsh_theme">Pluto</string>
+    <string name="yellow_theme">Venus</string>
+    <string name="yellow2_theme">Makemake</string>
+    <string name="aqua_theme">Uranus</string>
+    <string name="gray_theme">Iapetus</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Pindutin muli ang back upang lumabas</string>
+    <string name="books_added">Matagumpay na naidagdag ang lahat ng napiling libro.</string>
+    <string name="books_moved">Matagumpay na nailipat ang lahat ng napiling libro.</string>
+    <string name="books_deleted">Matagumpay na nabura ang lahat ng napiling libro.</string>
+    <string name="cover_image_changed">Matagumpay na napalitan ang Imahe ng Pabalat.</string>
+    <string name="cover_image_deleted">Matagumpay na nabura ang Imahe ng Pabalat.</string>
+    <string name="book_deleted">Matagumpay na nabura ang librong ito.</string>
+    <string name="book_moved">Matagumpay na nailipat ang librong ito.</string>
+    <string name="copied">Nakopya</string>
+    <string name="history_deleted">Matagumpay na nabura ang kasaysayan.</string>
+    <string name="cover_reset">Matagumpay na na-reset ang imahe ng pabalat.</string>
+    <string name="title_changed">Matagumpay na napalitan ang pamagat.</string>
+    <string name="author_changed">Matagumpay na napalitan ang may-akda.</string>
+    <string name="description_changed">Matagumpay na napalitan ang deskripsyon.</string>
+    <string name="path_changed">Matagumpay na napalitan ang path ng file.</string>
+    <string name="cover_image_set">Matagumpay na naitakda ang pabalat ng libro.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Matagumpay na nabura ang elemento ng kasaysayan.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Simulan</string>
+    <string name="continue_reading_query">Ituloy mula %1$s</string>
+    <string name="file_details">Detalye ng file</string>
+    <string name="file_path">Path</string>
+    <string name="file_last_opened">Huling binuksan</string>
+    <string name="file_size">Laki</string>
+    <string name="unknown">Hindi kilala</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Walang mga kabanata</string>
+    <string name="chapters">Mga Kabanata</string>
+    <string name="ai_illustrations">Mga ilustrasyon ng AI</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">Bersyon ng app</string>
+    <string name="report_bug_option">Mag-ulat ng bug</string>
+    <string name="licenses_option">Mga lisensya ng open source</string>
+    <string name="credits_option">Mga kredito</string>
+    <string name="help_translate_option">Tulungang isalin</string>
+    <string name="support_development_option">Suportahan ang pagpapaunlad</string>
+    <string name="contributors_option">Mga kontribyutor</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Disenyo</string>
+    <string name="credits_icon">Mga icon</string>
+    <string name="credits_updates">Pamamahala ng mga bagong update</string>
+    <string name="credits_fonts">Mga font</string>
+    <string name="credits_translation">Pagsasalin</string>
+    <string name="credits_contribution">Kontribusyon</string>
+    <string name="credits_ideas">Mga ideya</string>
+
+    <!-- Start -->
+    <!-- Maligayang mensahe. Ang %1$s ay pangalan ng aplikasyon. -->
+    <string name="start_welcome">Maligayang pagdating sa %1$s!</string>
+    <string name="start_welcome_desc">Sa isang mundo kung saan nakaaaliw, nagtuturo at naghahatid ang mga salita sa di kapanipaniwalang mga pakikipagsapalaran! Simulan natin ang pag-set up ng ilang bagay!</string>
+    <string name="start_language_preferences">Mga kagustuhan sa wika</string>
+    <string name="start_theme_preferences">Mga kagustuhan sa tema</string>
+    <string name="start_scan_preferences">Mga kagustuhan sa pag-scan</string>
+    <string name="start_done">Tapos na ang lahat!</string>
+    <string name="start_done_desc">Nakumpleto ang pag-set up.</string>
+
+    <!-- History -->
+    <string name="today">Ngayong araw</string>
+    <string name="yesterday">Kahapon</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Oops! Nag-crash ang app.</string>
+    <string name="crash_description">Mangyaring iulat ang mensahe ng crash na ito sa pinaka-abot-kayang paraan para sa iyo.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Ipagpatuloy ang pagbabasa</string>
+    <string name="go_back_content_desc">Bumalik</string>
+    <string name="cover_image_content_desc">Imahe ng pabalat</string>
+    <string name="open_reader_settings_content_desc">Mga setting ng mambabasa</string>
+    <string name="file_icon_content_desc">File</string>
+    <string name="sort_order_content_desc">Ayos ng pagsunod-sunod</string>
+    <string name="checkbox_content_desc">Checkbox</string>
+    <string name="cover_image_not_found_content_desc">Hindi nahanap ang imahe ng pabalat</string>
+    <string name="error_content_desc">Error</string>
+    <string name="search_content_desc">Maghanap</string>
+    <string name="clear_selected_items_content_desc">Burahin ang mga napiling item</string>
+    <string name="add_files_content_desc">Magdagdag ng mga file</string>
+    <string name="select_all_files_content_desc">Piliin ang lahat ng file</string>
+    <string name="select_all_books_content_desc">Piliin ang lahat ng libro</string>
+    <string name="exit_search_content_desc">Lumabas sa paghahanap</string>
+    <string name="delete_whole_history_content_desc">Burahin ang buong kasaysayan</string>
+    <string name="move_books_content_desc">Ilipat ang mga napiling libro</string>
+    <string name="delete_books_content_desc">Burahin ang mga napiling libro</string>
+    <string name="revert_content_desc">Ibalik</string>
+    <string name="selected_content_desc">Napili</string>
+    <string name="app_icon_content_desc">Icon ng app</string>
+    <string name="delete_history_element_content_desc">Burahin ang elemento ng kasaysayan</string>
+    <string name="library_content_desc">Ang iyong aklatan</string>
+    <string name="history_content_desc">Kasaysayan ng pagbabasa</string>
+    <string name="browse_content_desc">Magdagdag ng mga libro</string>
+    <string name="arrow_content_desc">Pana</string>
+    <string name="reset_start_content_desc">I-reset ang gabay sa pagsisimula</string>
+    <string name="open_in_web_content_desc">Buksan sa web</string>
+    <string name="delete_color_preset_content_desc">Burahin ang preset ng kulay</string>
+    <string name="create_color_preset_content_desc">Gumawa ng bagong preset ng kulay</string>
+    <string name="shuffle_color_preset_content_desc">I-shuffle ang mga kulay</string>
+    <string name="drag_content_desc">Hilahin</string>
+    <string name="filter_content_desc">Filter</string>
+    <string name="checkpoint_back_content_desc">Checkpoint pabalik</string>
+    <string name="checkpoint_forward_content_desc">Checkpoint pasulong</string>
+    <string name="chapters_content_desc">Mga Kabanata</string>
+    <string name="more_content_desc">Higit pa</string>
+    <string name="pin_content_desc">Pin</string>
+    <string name="show_less_content_desc">Ipakita ang mas kaunti</string>
+    <string name="show_more_content_desc">Ipakita ang mas marami</string>
+    <string name="edit_content_desc">I-edit</string>
+    <string name="expand_content_desc">Palawakin</string>
+    <string name="collapse_content_desc">I-collapse</string>
+    <string name="remove_content_desc">Alisin</string>
+    <string name="note_content_desc">Paalala</string>
+
 </resources>

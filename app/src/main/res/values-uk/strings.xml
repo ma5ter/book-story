@@ -45,6 +45,7 @@
     </string>
     <string name="error_could_not_reset_cover">Не вдалося скинути обкладинку.</string>
     <string name="error_closed_source">Закритий код</string>
+    <string name="error_could_not_export">Не вдалося експортувати книгу з зображеннями.</string>
     <string name="error_no_file">Файла не існує або він недоступний</string>
     <string name="error_field_empty">Це поле не повинно бути пустим.</string>
 
@@ -71,6 +72,8 @@
     <string name="report">Повідомити</string>
     <string name="translate">Перекласти</string>
     <string name="dictionary">Словник</string>
+    <string name="generate_image">Створити зображення</string>
+    <string name="set_cover_image">Встановити як обкладинку</string>
     <string name="next">Далі</string>
     <string name="done">Готово</string>
     <string name="web_search">Веб-пошук</string>
@@ -81,6 +84,10 @@
     <string name="edit">Редагувати</string>
     <string name="create_category">Створити категорію</string>
     <string name="set_up_scanning">Налаштувати сканування</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Експорт</string>
+    <string name="export_with_images_desc">Експортувати FB2-файл із вбудованням усіх створених зображень</string>
 
     <!-- Book -->
     <string name="unknown_author">Невідомий</string>
@@ -97,6 +104,7 @@
     <string name="general_tab">Головні</string>
     <string name="display_tab">Вигляд</string>
     <string name="color_tab">Кольори</string>
+    <string name="ai_tab">ШІ</string>
     <string name="filter_tab">Фільтр</string>
     <string name="sort_tab">Сортувати</string>
     <string name="reader_tab">Читач</string>
@@ -133,6 +141,7 @@
     <string name="categories_settings">Категорії</string>
     <string name="filter_browse_settings">Фільтр</string>
     <string name="sort_settings">Сотрувати</string>
+    <string name="ai_reader_settings">ШІ-асистент</string>
 
     <!-- Settings notes -->
     <string name="browse_scan_option_note">
@@ -237,6 +246,67 @@
     <string name="progress_bar_alignment_option">Розташування</string>
     <string name="progress_bar_font_size_option">Розмір шрифта</string>
     <string name="progress_count_option">Підрахунок прогресу</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">Ключ API</string>
+    <string name="api_key_option_label">Ключ API OpenRouter</string>
+    <string name="image_model_option">Модель зображень</string>
+    <string name="image_model_option_label">Ідентифікатор моделі зображень OpenRouter</string>
+    <string name="image_style_option">Блок стилю</string>
+    <string name="image_style_option_label">Блок стилю для запиту зображення</string>
+    <string name="style_reference_option">Еталон стилю</string>
+    <string name="style_reference_option_desc">Додати колаж ілюстрацій книги як еталон стилю</string>
+    <string name="proxy_option">Проксі</string>
+    <string name="proxy_option_desc">HTTP- або SOCKS5-проксі</string>
+    <string name="proxy_protocol_option">Протокол проксі</string>
+    <string name="proxy_host_option">Хост проксі</string>
+    <string name="proxy_host_option_label">напр. 127.0.0.1</string>
+    <string name="proxy_port_option">Порт проксі</string>
+    <string name="proxy_port_option_label">напр. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">ШІ-асистент</string>
+    <string name="text_assistant_model_option">Текстова модель</string>
+    <string name="text_assistant_model_option_label">Ідентифікатор розумної текстової моделі OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Бажана затримка (p90, с)</string>
+    <string name="text_assistant_preferred_latency_option_label">Бажана максимальна затримка провайдера на p90 для текстового асистента</string>
+    <string name="text_assistant_max_input_price_option">Макс. ціна вхідних ($/1 млн)</string>
+    <string name="text_assistant_max_input_price_option_label">Максимальна ціна вхідних токенів для текстового асистента</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Модель резюмування</string>
+    <string name="summarize_model_option_label">Ідентифікатор моделі OpenRouter для витягування персонажів</string>
+    <string name="text_assistant_max_tokens_option">Макс. вхідних токенів</string>
+    <string name="text_assistant_max_tokens_option_label">Ліміт контексту моделі для розбиття довгих книг на частини</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Бажана затримка (p90, с)</string>
+    <string name="character_preferred_latency_option_label">Бажана максимальна затримка провайдера на p90 для витягування персонажів</string>
+    <string name="character_max_input_price_option">Макс. ціна вхідних ($/1 млн)</string>
+    <string name="character_max_input_price_option_label">Максимальна ціна вхідних токенів для витягування персонажів</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Персонажі</string>
+    <string name="analyze_characters">Проаналізувати персонажів книги</string>
+    <string name="characters_generating">Витягування персонажів…</string>
+    <string name="characters_empty">Персонажів ще немає. Проаналізуйте вміст книги, щоб створити каталог персонажів.</string>
+    <string name="characters_prompt">Прочитайте весь текст книги, ігноруючи будь-які посилання на зображення. Визначте протагоніста та всіх головних і значущих персонажів, що повторюються. Для кожного персонажа створіть узгоджений опис зовнішності на основі всього тексту.</string>
+    <string name="characters_processing">Обробка</string>
+    <string name="characters_failed">Не вдалося витягнути персонажів</string>
+    <string name="characters_stopped_by_system">Витягування персонажів було зупинено системою.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Створення зображення…</string>
+    <string name="image_step_prepare">Підготовка контексту…</string>
+    <string name="image_step_collage">Створення колажу стилю…</string>
+    <string name="image_step_distill">Стиснення опису сцени…</string>
+    <string name="image_step_generate">Створення ілюстрації…</string>
+    <string name="image_generation_failed">Не вдалося створити зображення</string>
+    <string name="image_stopped_by_system">Створення зображення було зупинено системою.</string>
+    <string name="image_already_generating">Зображення вже створюється.</string>
+    <string name="retry">Повторити</string>
 
     <!-- Library -->
     <string name="read_button_option">Показувати кнопку «Читати»</string>
@@ -372,6 +442,7 @@
     <string name="author_changed">Автор був успішно змінений.</string>
     <string name="description_changed">Опис був успішно змінений.</string>
     <string name="path_changed">Шлях до файлу був успішно змінений.</string>
+    <string name="cover_image_set">Обкладинку книги було успішно встановлено.</string>
 
     <!-- Snackbar messages -->
     <string name="history_element_deleted">Елемент історії був успішно видалений.</string>
@@ -388,6 +459,7 @@
     <!-- Reader -->
     <string name="no_chapters">Немає розділів</string>
     <string name="chapters">Розділи</string>
+    <string name="ai_illustrations">ШІ-ілюстрації</string>
 
     <!-- About -->
     <!-- Options -->

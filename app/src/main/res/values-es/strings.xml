@@ -4,7 +4,8 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
     <string name="library_screen">Biblioteca</string>
     <string name="history_screen">Historial</string>
     <string name="browse_screen">Navegar</string>
@@ -25,8 +26,10 @@
     <string name="move">Mover</string>
     <string name="change_cover">Cambiar portada</string>
     <string name="change_cover_desc">Elegir nueva portada de sus fotos</string>
+    <string name="cover_image_set">La portada del libro se estableció correctamente.</string>
     <string name="delete_cover_desc">Borrar la portada actual del libro</string>
     <string name="color_tab">Colores</string>
+    <string name="ai_tab">IA</string>
     <string name="general_settings">General</string>
     <string name="appearance_settings">Apariencia</string>
     <string name="appearance_settings_desc">Tema, colores</string>
@@ -68,6 +71,7 @@
     <string name="error_no_translator">No se ha encontrado ninguna aplicación de traducción.</string>
     <string name="error_could_not_get_text">El archivo está vacío, desaparecido o es inaccesible. Verifica el archivo, la configuración o la ruta, y vuelve a intentarlo.</string>
     <string name="error_could_not_reset_cover">No se pudo reiniciar la portada.</string>
+    <string name="error_could_not_export">No se pudo exportar el libro con imágenes.</string>
     <string name="browse_empty">Expanda la colección de libros de la biblioteca con sus descargas</string>
     <string name="library_empty">Lea sus libros favoritos y ordénelos en categorías</string>
     <string name="history_empty">Deje que su último libro leído abra las páginas de una nueva gran historia en su viaje de lectura</string>
@@ -78,6 +82,10 @@
     <string name="undo">Deshacer</string>
     <string name="next">Siguiente</string>
     <string name="dictionary">Diccionario</string>
+    <string name="generate_image">Generar imagen</string>
+    <string name="set_cover_image">Establecer como portada del libro</string>
+    <string name="export_with_images">Exportar</string>
+    <string name="export_with_images_desc">Exportar el archivo FB2 con todas las imágenes generadas incrustadas</string>
     <string name="unknown_author">Desconocido</string>
     <string name="delete_cover">Borrar portada</string>
     <string name="font_reader_settings">Fuente</string>
@@ -219,6 +227,7 @@
     <string name="checkpoint_back_content_desc">Volver al punto de control</string>
     <string name="no_chapters">Sin capítulos</string>
     <string name="chapters">Capítulos</string>
+    <string name="ai_illustrations">Ilustraciones de IA</string>
     <string name="chapters_content_desc">Capítulos</string>
     <string name="reading_speed_reader_settings">Velocidad de lectura</string>
     <string name="perception_expander_option">Ampliador de percepción</string>
@@ -234,6 +243,13 @@
     <string name="contributors_option">Colaboradores</string>
     <string name="perception_expander_padding_option">Sangrías en la línea de mejoran la percepción</string>
     <string name="perception_expander_thickness_option">Grosor de la línea</string>
+    <string name="horizontal_limiter_option">Limitador horizontal</string>
+    <string name="horizontal_limiter_option_desc">Mostrar la regla horizontal y atenuar la parte no enfocada de la pantalla</string>
+    <string name="horizontal_limiter_height_option">Altura</string>
+    <string name="horizontal_limiter_vertical_offset_option">Desplazamiento vertical</string>
+    <string name="horizontal_limiter_ruler_option">Regla horizontal</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Grosor de la regla</string>
+    <string name="horizontal_limiter_dimming_option">Atenuación</string>
     <string name="more_content_desc">Más</string>
     <string name="search_field_empty">Buscar…</string>
     <string name="screen_brightness_option">Brillo</string>
@@ -274,6 +290,7 @@
     <string name="highlighted_reading_thickness_option">Grosor del resalte</string>
     <string name="font_thickness_option">Grosor de la fuente</string>
     <string name="reading_mode_reader_settings">Modo de lectura</string>
+    <string name="ai_reader_settings">Asistente de IA</string>
     <string name="continue_reading_query">Continuar desde %1$s</string>
     <string name="color_effects_background">Color de fondo</string>
     <string name="progress_bar_alignment_option">Alineamiento</string>
@@ -321,8 +338,57 @@
     <string name="horizontal_gesture_alpha_anim_option">Visibilidad de animaciones</string>
     <string name="horizontal_gesture_alpha_anim_option_desc">Activar animación de visibilidad al usar el gesto horizontal</string>
     <string name="horizontal_gesture_pull_anim_option_desc">Activar animación de arrastrar al usar el gesto horizontal</string>
+    <string name="horizontal_gesture_disable_scrolling_option">Desactivar desplazamiento</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Desactivar completamente el desplazamiento del lector</string>
     <string name="images_corners_roundness_option">Esquinas redondeadas</string>
     <string name="progress_count_option">Conteo de progreso</string>
+    <string name="api_key_option">Clave de API</string>
+    <string name="api_key_option_label">Clave de API de OpenRouter</string>
+    <string name="image_model_option">Modelo de imagen</string>
+    <string name="image_model_option_label">Identificador del modelo de imagen de OpenRouter</string>
+    <string name="image_style_option">Bloque de estilo</string>
+    <string name="image_style_option_label">Bloque de estilo para el prompt de imagen</string>
+    <string name="style_reference_option">Referencia de estilo</string>
+    <string name="style_reference_option_desc">Adjuntar un collage de las ilustraciones del libro como referencia de estilo</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">Proxy HTTP o SOCKS5</string>
+    <string name="proxy_protocol_option">Protocolo del proxy</string>
+    <string name="proxy_host_option">Host del proxy</string>
+    <string name="proxy_host_option_label">p. ej. 127.0.0.1</string>
+    <string name="proxy_port_option">Puerto del proxy</string>
+    <string name="proxy_port_option_label">p. ej. 1080</string>
+    <string name="text_assistant_settings">Asistente de IA</string>
+    <string name="text_assistant_model_option">Modelo de texto</string>
+    <string name="text_assistant_model_option_label">Identificador del modelo de texto inteligente de OpenRouter</string>
+    <string name="text_assistant_preferred_latency_option">Latencia preferida (p90, seg)</string>
+    <string name="text_assistant_preferred_latency_option_label">Latencia máxima preferida del proveedor en p90 para el asistente de texto</string>
+    <string name="text_assistant_max_input_price_option">Precio máximo de entrada ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Precio máximo de los tokens de prompt para el asistente de texto</string>
+    <string name="summarize_model_option">Modelo de resumen</string>
+    <string name="summarize_model_option_label">Identificador del modelo de OpenRouter usado para la extracción de personajes</string>
+    <string name="text_assistant_max_tokens_option">Tokens de entrada máximos</string>
+    <string name="text_assistant_max_tokens_option_label">Límite de contexto del modelo usado para dividir libros largos</string>
+    <string name="character_preferred_latency_option">Latencia preferida (p90, seg)</string>
+    <string name="character_preferred_latency_option_label">Latencia máxima preferida del proveedor en p90 para la extracción de personajes</string>
+    <string name="character_max_input_price_option">Precio máximo de entrada ($/1M)</string>
+    <string name="character_max_input_price_option_label">Precio máximo de los tokens de prompt para la extracción de personajes</string>
+    <string name="characters_reader_settings">Personajes</string>
+    <string name="analyze_characters">Analizar los personajes del libro</string>
+    <string name="characters_generating">Extrayendo personajes…</string>
+    <string name="characters_empty">Aún no hay personajes. Analiza el contenido del libro para crear un catálogo de personajes.</string>
+    <string name="characters_prompt">Lee el texto completo del libro, ignorando cualquier referencia a imágenes. Identifica al protagonista y a todos los personajes principales y recurrentes significativos. Para cada personaje, sintetiza una descripción visual coherente a partir de todo el texto.</string>
+    <string name="characters_processing">Procesando</string>
+    <string name="characters_failed">Falló la extracción de personajes</string>
+    <string name="characters_stopped_by_system">La extracción de personajes fue detenida por el sistema.</string>
+    <string name="image_generating">Generando imagen…</string>
+    <string name="image_step_prepare">Preparando el contexto…</string>
+    <string name="image_step_collage">Creando el collage de estilo…</string>
+    <string name="image_step_distill">Destilando la escena…</string>
+    <string name="image_step_generate">Renderizando la ilustración…</string>
+    <string name="image_generation_failed">Falló la generación de imagen</string>
+    <string name="image_stopped_by_system">La generación de imagen fue detenida por el sistema.</string>
+    <string name="image_already_generating">Ya se está generando una imagen.</string>
+    <string name="retry">Reintentar</string>
     <string name="horizontal_gesture_inverse">Encendido (inverso)</string>
     <string name="color_effects_off">Desactivado</string>
     <string name="font_thickness_thin">Finura</string>

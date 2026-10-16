@@ -4,10 +4,572 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+
+<resources>
     <string name="default_string">기본</string>
+
+    <!-- Screens -->
     <string name="library_screen">라이브러리</string>
     <string name="history_screen">기록</string>
     <string name="browse_screen">검색</string>
     <string name="settings_screen">설정</string>
+    <string name="about_screen">앱 정보</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">책을 추가할까요?</string>
+    <string name="delete_books">책을 삭제할까요?</string>
+    <string name="delete_book">이 책을 삭제할까요?</string>
+    <string name="delete_history">독서 기록을 삭제할까요?</string>
+    <string name="remove_category">카테고리를 제거할까요?</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">
+        추가할 책을 선택할 수 있습니다.
+        책의 제목과 표지 이미지는 나중에 편집할 수 있습니다.
+        불러오는 과정은 몇 분 정도 걸릴 수 있습니다.
+    </string>
+    <string name="delete_books_description">
+        선택한 책(%1$s)을 데이터베이스에서 삭제합니다.
+        기기에서는 선택한 책이 삭제되지 않습니다.
+    </string>
+    <string name="delete_book_description">
+        이 책을 데이터베이스에서 삭제합니다.
+        기기에서는 이 책이 삭제되지 않습니다.
+    </string>
+    <string name="delete_history_description">
+        전체 기록을 데이터베이스에서 삭제합니다.
+        전체 기록을 삭제하면 책 순서가 초기화됩니다.
+    </string>
+    <string name="remove_category_description">
+        라이브러리에서 이 카테고리를 제거하지만 책은 삭제되지 않습니다.
+    </string>
+
+    <!-- Errors -->
+    <string name="error_no_description">설명이 없습니다.</string>
+    <string name="error_something_went_wrong">문제가 발생했습니다.</string>
+    <string name="error_no_translator">번역기 앱을 찾을 수 없습니다.</string>
+    <string name="error_no_dictionary">사전 앱을 찾을 수 없습니다.</string>
+    <string name="error_no_browser">브라우저 앱을 찾을 수 없습니다.</string>
+    <string name="error_no_share_app">공유할 앱을 찾을 수 없습니다.</string>
+    <string name="error_no_file_manager_app">폴더를 선택할 앱을 찾을 수 없습니다.</string>
+    <string name="error_could_not_get_text">
+        파일이 비어 있거나 없거나 접근할 수 없습니다.
+        파일을 확인하거나 스캔 설정 또는 경로를 변경한 후 다시 시도하세요.
+    </string>
+    <string name="error_could_not_reset_cover">표지 이미지를 초기화할 수 없습니다.</string>
+    <string name="error_closed_source">비공개 소스</string>
+    <string name="error_could_not_export">이미지가 포함된 책을 내보낼 수 없습니다.</string>
+    <string name="error_no_file">파일이 없거나 접근할 수 없습니다</string>
+    <string name="error_field_empty">이 필드는 비워 둘 수 없습니다.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">
+        검색…
+    </string>
+    <string name="browse_empty">
+        다운로드한 책으로 라이브러리 컬렉션을 넓혀보세요
+    </string>
+    <string name="library_empty">
+        좋아하는 책을 읽고 카테고리별로 정리하세요
+    </string>
+    <string name="history_empty">
+        마지막으로 읽은 책이 여러분의 독서 여정이라는 멋진 새 이야기의 페이지를 열어줍니다
+    </string>
+    <string name="categories_empty">카테고리가 없습니다.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s개 선택됨</string>
+    <string name="color_preset_query">프리셋 %1$s</string>
+    <string name="color_preset_selected_query">«%1$s» 선택됨</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">취소</string>
+    <string name="add_book">책 추가</string>
+    <string name="move">이동</string>
+    <string name="delete">삭제</string>
+    <string name="never">없음</string>
+    <string name="undo">실행 취소</string>
+    <string name="copy">복사</string>
+    <string name="report">보고</string>
+    <string name="translate">번역</string>
+    <string name="dictionary">사전</string>
+    <string name="generate_image">이미지 생성</string>
+    <string name="set_cover_image">책 표지로 설정</string>
+    <string name="next">다음</string>
+    <string name="done">완료</string>
+    <string name="web_search">웹 검색</string>
+    <string name="share">공유</string>
+    <string name="ok">확인</string>
+    <string name="change_path">경로 변경</string>
+    <string name="add_folder">폴더 추가</string>
+    <string name="edit">편집</string>
+    <string name="create_category">카테고리 만들기</string>
+    <string name="set_up_scanning">스캔 설정</string>
+
+    <!-- Export -->
+    <string name="export_with_images">내보내기</string>
+    <string name="export_with_images_desc">생성된 모든 이미지가 삽입된 FB2 파일 내보내기</string>
+
+    <!-- Book -->
+    <string name="unknown_author">알 수 없음</string>
+    <string name="reset_cover">표지 이미지 초기화</string>
+    <string name="reset_cover_desc">책 표지 이미지를 기본값으로 초기화</string>
+    <string name="change_cover">표지 이미지 변경</string>
+    <string name="change_cover_desc">사진에서 새 표지 선택</string>
+    <string name="delete_cover">표지 이미지 삭제</string>
+    <string name="delete_cover_desc">책의 현재 표지 이미지 삭제</string>
+    <string name="author">저자</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">기본</string>
+    <string name="general_tab">일반</string>
+    <string name="display_tab">디스플레이</string>
+    <string name="color_tab">색상</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">필터</string>
+    <string name="sort_tab">정렬</string>
+    <string name="reader_tab">리더</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">일반</string>
+    <string name="general_settings_desc">앱 언어</string>
+    <string name="appearance_settings">모양</string>
+    <string name="appearance_settings_desc">테마, 색상</string>
+    <string name="reader_settings">리더</string>
+    <string name="reader_settings_desc">글꼴, 텍스트</string>
+    <string name="browse_settings">검색</string>
+    <string name="browse_settings_desc">스캔, 디스플레이</string>
+    <string name="library_settings">라이브러리</string>
+    <string name="library_settings_desc">카테고리, 디스플레이, 탭</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">글꼴</string>
+    <string name="text_reader_settings">텍스트</string>
+    <string name="translator_reader_settings">번역기</string>
+    <string name="padding_reader_settings">여백</string>
+    <string name="misc_reader_settings">기타</string>
+    <string name="reading_speed_reader_settings">읽기 속도</string>
+    <string name="reading_mode_reader_settings">읽기 모드</string>
+    <string name="system_reader_settings">시스템</string>
+    <string name="chapters_reader_settings">챕터</string>
+    <string name="images_reader_settings">이미지</string>
+    <string name="progress_reader_settings">진행 상황</string>
+    <string name="theme_appearance_settings">테마 환경설정</string>
+    <string name="colors_appearance_settings">색상</string>
+    <string name="scan_browse_settings">스캔</string>
+    <string name="display_settings">디스플레이</string>
+    <string name="tabs_settings">탭</string>
+    <string name="categories_settings">카테고리</string>
+    <string name="filter_browse_settings">필터</string>
+    <string name="sort_settings">정렬</string>
+    <string name="ai_reader_settings">AI 어시스턴트</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">
+        이 폴더들은 검색에서 파일을 스캔하고 가져오는 데 사용됩니다.
+        여기서 폴더를 제거해도 실제 파일이나 라이브러리의 책은 삭제되지 않습니다.
+        접근 권한을 해제하려면 해당 버튼을 클릭하세요.
+    </string>
+    <string name="library_categories_option_note">
+        처음에 책은 기본 카테고리에 추가되지만,
+        여기서 만든 여러 사용자 지정 카테고리에 속할 수 있습니다.
+        여기서 카테고리를 제거해도 라이브러리에서 책은 삭제되지 않습니다.
+        카테고리 아이콘을 길게 눌러 이동하면 카테고리를 재배열할 수 있습니다.
+    </string>
+    <string name="library_per_category_sort_option_note">
+        정렬은 라이브러리에서 변경할 수 있습니다.
+    </string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">앱 언어</string>
+    <string name="dark_theme_option">다크 테마</string>
+    <string name="pure_dark_option">퓨어 다크</string>
+    <string name="absolute_dark_option">절대 다크</string>
+    <string name="absolute_dark_option_desc">배경색을 완전히 검정으로 변경</string>
+    <string name="theme_contrast_option">테마 대비</string>
+    <string name="app_theme_option">앱 테마</string>
+    <string name="double_press_exit_option">뒤로 두 번 눌러 종료</string>
+    <string name="double_press_exit_option_desc">뒤로 버튼을 두 번 눌러 앱 종료</string>
+    <string name="show_navigation_labels_option">내비게이션 라벨 표시</string>
+    <string name="show_navigation_labels_option_desc">아이콘 아래에 내비게이션 바 라벨 표시</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">글꼴 모음</string>
+    <string name="font_thickness_option">글꼴 굵기</string>
+    <string name="font_style_option">글꼴 스타일</string>
+    <string name="font_size_option">글자 크기</string>
+    <string name="line_height_option">줄 간격</string>
+    <string name="paragraph_height_option">문단 간격</string>
+    <string name="paragraph_indentation_option">문단 들여쓰기</string>
+    <string name="color_preset_option">색상 프리셋</string>
+    <string name="background_color_option">배경색</string>
+    <string name="font_color_option">글자색</string>
+    <string name="side_padding_option">좌우 여백</string>
+    <string name="vertical_padding_option">상하 여백</string>
+    <string name="double_click_translation_option">두 번 클릭 번역</string>
+    <string name="double_click_translation_option_desc">문단을 두 번 클릭하여 번역</string>
+    <string name="fast_color_preset_change_option">빠른 색상 프리셋 변경</string>
+    <string name="fast_color_preset_change_option_desc">상단 바를 좌우로 스와이프하여 색상 프리셋 변경</string>
+    <string name="text_alignment_option">텍스트 정렬</string>
+    <string name="chapter_title_alignment_option">챕터 제목 정렬</string>
+    <string name="letter_spacing_option">자간</string>
+    <string name="cutout_padding_option">컷아웃 여백</string>
+    <string name="cutout_padding_option_desc">컷아웃 영역에 여백 적용</string>
+    <string name="fullscreen_option">전체 화면</string>
+    <string name="fullscreen_option_desc">시스템 바 및 여백 숨기기</string>
+    <string name="keep_screen_on_option">화면 켜짐 유지</string>
+    <string name="hide_bars_on_fast_scroll_option">빠른 스크롤 시 바 숨기기</string>
+    <string name="perception_expander_option">지각 확장기</string>
+    <string name="perception_expander_option_desc">
+        중앙에 집중하여 읽기 속도 높이기
+    </string>
+    <string name="perception_expander_padding_option">선 좌우 여백</string>
+    <string name="perception_expander_thickness_option">선 굵기</string>
+    <string name="horizontal_limiter_option">수평 리미터</string>
+    <string name="horizontal_limiter_option_desc">
+        수평 자 표시 및 집중되지 않은 화면 영역 어둡게 하기
+    </string>
+    <string name="horizontal_limiter_height_option">높이</string>
+    <string name="horizontal_limiter_vertical_offset_option">세로 오프셋</string>
+    <string name="horizontal_limiter_ruler_option">수평 자</string>
+    <string name="horizontal_limiter_ruler_thickness_option">자 굵기</string>
+    <string name="horizontal_limiter_dimming_option">어둡게 하기</string>
+    <string name="screen_orientation_option">화면 방향</string>
+    <string name="custom_screen_brightness_option">사용자 지정 밝기</string>
+    <string name="screen_brightness_option">밝기</string>
+    <string name="horizontal_gesture_option">수평 제스처</string>
+    <string name="horizontal_gesture_scroll_option">스크롤 비율</string>
+    <string name="horizontal_gesture_sensitivity_option">감도</string>
+    <string name="horizontal_gesture_alpha_anim_option">표시 애니메이션</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">
+        수평 제스처 사용 시 표시 애니메이션 사용
+    </string>
+    <string name="horizontal_gesture_pull_anim_option">당기기 애니메이션</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">
+        수평 제스처 사용 시 당기기 애니메이션 사용
+    </string>
+    <string name="horizontal_gesture_disable_scrolling_option">스크롤 비활성화</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">리더 스크롤 완전히 비활성화</string>
+    <string name="bottom_bar_padding_option">하단 바 여백</string>
+    <string name="highlighted_reading_option">단어 강조</string>
+    <string name="highlighted_reading_option_desc">각 단어의 시작 부분 강조</string>
+    <string name="highlighted_reading_thickness_option">강조 굵기</string>
+    <string name="images_option">이미지</string>
+    <string name="images_option_desc">이미지 표시</string>
+    <string name="images_captions_option">캡션</string>
+    <string name="images_captions_option_desc">이미지 아래에 캡션 표시</string>
+    <string name="images_corners_roundness_option">모서리 둥글기</string>
+    <string name="images_alignment_option">정렬</string>
+    <string name="images_width_option">크기</string>
+    <string name="images_color_effects_option">색상 효과</string>
+    <string name="progress_bar_option">진행률 표시줄</string>
+    <string name="progress_bar_option_desc">하단에 진행률 표시줄 표시</string>
+    <string name="progress_bar_padding_option">여백</string>
+    <string name="progress_bar_alignment_option">정렬</string>
+    <string name="progress_bar_font_size_option">글자 크기</string>
+    <string name="progress_count_option">진행 표시 방식</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API 키</string>
+    <string name="api_key_option_label">OpenRouter API 키</string>
+    <string name="image_model_option">이미지 모델</string>
+    <string name="image_model_option_label">OpenRouter 이미지 모델 슬러그</string>
+    <string name="image_style_option">스타일 블록</string>
+    <string name="image_style_option_label">이미지 프롬프트용 스타일 블록</string>
+    <string name="style_reference_option">스타일 참조</string>
+    <string name="style_reference_option_desc">책의 삽화 콜라주를 스타일 참조로 첨부</string>
+    <string name="proxy_option">프록시</string>
+    <string name="proxy_option_desc">HTTP 또는 SOCKS5 프록시</string>
+    <string name="proxy_protocol_option">프록시 프로토콜</string>
+    <string name="proxy_host_option">프록시 호스트</string>
+    <string name="proxy_host_option_label">예: 127.0.0.1</string>
+    <string name="proxy_port_option">프록시 포트</string>
+    <string name="proxy_port_option_label">예: 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI 어시스턴트</string>
+    <string name="text_assistant_model_option">텍스트 모델</string>
+    <string name="text_assistant_model_option_label">OpenRouter 스마트 텍스트 모델 슬러그</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">선호 지연 시간 (p90, 초)</string>
+    <string name="text_assistant_preferred_latency_option_label">텍스트 어시스턴트의 선호 최대 공급자 p90 지연 시간</string>
+    <string name="text_assistant_max_input_price_option">최대 입력 가격 ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">텍스트 어시스턴트의 최대 프롬프트 토큰 가격</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">요약 모델</string>
+    <string name="summarize_model_option_label">등장인물 추출에 사용되는 OpenRouter 모델 슬러그</string>
+    <string name="text_assistant_max_tokens_option">최대 입력 토큰</string>
+    <string name="text_assistant_max_tokens_option_label">긴 책을 분할하는 데 사용되는 모델 컨텍스트 한도</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">선호 지연 시간 (p90, 초)</string>
+    <string name="character_preferred_latency_option_label">등장인물 추출의 선호 최대 공급자 p90 지연 시간</string>
+    <string name="character_max_input_price_option">최대 입력 가격 ($/1M)</string>
+    <string name="character_max_input_price_option_label">등장인물 추출의 최대 프롬프트 토큰 가격</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">등장인물</string>
+    <string name="analyze_characters">책 등장인물 분석</string>
+    <string name="characters_generating">등장인물 추출 중…</string>
+    <string name="characters_empty">아직 등장인물이 없습니다. 책 내용을 분석하여 등장인물 목록을 만들어 보세요.</string>
+    <string name="characters_prompt">책 전체 텍스트를 읽고 이미지 참조는 무시하세요. 주인공과 주요 및 중요한 반복 등장인물을 모두 식별하세요. 각 등장인물에 대해 책 전체 텍스트를 바탕으로 일관된 외모 설명을 종합하세요.</string>
+    <string name="characters_processing">처리 중</string>
+    <string name="characters_failed">등장인물 추출 실패</string>
+    <string name="characters_stopped_by_system">등장인물 추출이 시스템에 의해 중지되었습니다.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">이미지 생성 중…</string>
+    <string name="image_step_prepare">컨텍스트 준비 중…</string>
+    <string name="image_step_collage">스타일 콜라주 만드는 중…</string>
+    <string name="image_step_distill">장면 정제 중…</string>
+    <string name="image_step_generate">삽화 렌더링 중…</string>
+    <string name="image_generation_failed">이미지 생성 실패</string>
+    <string name="image_stopped_by_system">이미지 생성이 시스템에 의해 중지되었습니다.</string>
+    <string name="image_already_generating">이미지가 이미 생성 중입니다.</string>
+    <string name="retry">다시 시도</string>
+
+    <!-- Library -->
+    <string name="read_button_option">«읽기» 버튼 표시</string>
+    <string name="show_progress_option">진행 상황 표시</string>
+    <string name="title_position_option">제목 위치</string>
+    <string name="show_book_count_option">책 수 표시</string>
+    <string name="show_category_tabs_option">카테고리 탭 표시</string>
+    <string name="always_show_default_tab_option">항상 기본 탭 표시</string>
+    <string name="per_category_sort_option">카테고리별 정렬</string>
+
+    <!-- Color presets -->
+    <string name="red_color">빨강</string>
+    <string name="green_color">초록</string>
+    <string name="blue_color">파랑</string>
+    <string name="color_preset_placeholder">프리셋 이름…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">사용 안 함</string>
+    <string name="dark_theme_on">사용</string>
+    <string name="dark_theme_follow_system">시스템</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">사용 안 함</string>
+    <string name="pure_dark_on">사용</string>
+    <string name="pure_dark_power_saver">절전</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">표준</string>
+    <string name="theme_contrast_medium">중간</string>
+    <string name="theme_contrast_high">높음</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">기울임</string>
+    <string name="font_style_normal">보통</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">숨김</string>
+    <string name="library_title_position_below">아래</string>
+    <string name="library_title_position_inside">내부</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">제목</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">디스플레이 모드</string>
+    <string name="layout_list">목록</string>
+    <string name="layout_grid">격자</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">가나다순</string>
+    <string name="sort_order_file_format">파일 형식</string>
+    <string name="sort_order_last_modified">마지막 수정일</string>
+    <string name="sort_order_file_size">파일 크기</string>
+    <string name="sort_order_last_read">마지막으로 읽은 시간</string>
+    <string name="sort_order_progress">진행 상황</string>
+    <string name="sort_order_author">저자</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">격자 크기</string>
+    <string name="grid_size_auto">자동</string>
+    <string name="grid_size_per_row">개/행</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">시작</string>
+    <string name="alignment_justify">양쪽 정렬</string>
+    <string name="alignment_center">가운데</string>
+    <string name="alignment_end">끝</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">자유</string>
+    <string name="screen_orientation_portrait">세로</string>
+    <string name="screen_orientation_landscape">가로</string>
+    <string name="screen_orientation_locked_portrait">고정 세로</string>
+    <string name="screen_orientation_locked_landscape">고정 가로</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">끄기</string>
+    <string name="horizontal_gesture_on">켜기</string>
+    <string name="horizontal_gesture_inverse">켜기 (반전)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">단계</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">끄기</string>
+    <string name="color_effects_grayscale">회색조</string>
+    <string name="color_effects_font">글자색</string>
+    <string name="color_effects_background">배경색</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">얇게</string>
+    <string name="font_thickness_extra_light">매우 얇게</string>
+    <string name="font_thickness_light">가볍게</string>
+    <string name="font_thickness_normal">보통</string>
+    <string name="font_thickness_medium">중간</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">백분율</string>
+    <string name="progress_count_quantity">개수</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">머큐리</string>
+    <string name="blue_theme">넵튠</string>
+    <string name="green_theme">어스</string>
+    <string name="green2_theme">이오</string>
+    <string name="green_gray_theme">엔셀라두스</string>
+    <string name="red_theme">마르스</string>
+    <string name="red_gray_theme">칼리스토</string>
+    <string name="purple_theme">유피테르</string>
+    <string name="purple_gray_theme">세레스</string>
+    <string name="pink_theme">새턴</string>
+    <string name="pink2_theme">가니메데</string>
+    <string name="lavender_theme">에리스</string>
+    <string name="marsh_theme">플루토</string>
+    <string name="yellow_theme">비너스</string>
+    <string name="yellow2_theme">마케마케</string>
+    <string name="aqua_theme">우라노스</string>
+    <string name="gray_theme">이아페투스</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">뒤로 가기를 한 번 더 눌러 종료</string>
+    <string name="books_added">선택한 모든 책이 성공적으로 추가되었습니다.</string>
+    <string name="books_moved">선택한 모든 책이 성공적으로 이동되었습니다.</string>
+    <string name="books_deleted">선택한 모든 책이 성공적으로 삭제되었습니다.</string>
+    <string name="cover_image_changed">표지 이미지가 성공적으로 변경되었습니다.</string>
+    <string name="cover_image_deleted">표지 이미지가 성공적으로 삭제되었습니다.</string>
+    <string name="book_deleted">이 책이 성공적으로 삭제되었습니다.</string>
+    <string name="book_moved">이 책이 성공적으로 이동되었습니다.</string>
+    <string name="copied">복사됨</string>
+    <string name="history_deleted">기록이 성공적으로 삭제되었습니다.</string>
+    <string name="cover_reset">표지 이미지가 성공적으로 초기화되었습니다.</string>
+    <string name="title_changed">제목이 성공적으로 변경되었습니다.</string>
+    <string name="author_changed">저자가 성공적으로 변경되었습니다.</string>
+    <string name="description_changed">설명이 성공적으로 변경되었습니다.</string>
+    <string name="path_changed">파일 경로가 성공적으로 변경되었습니다.</string>
+    <string name="cover_image_set">책 표지가 성공적으로 설정되었습니다.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">기록 항목이 성공적으로 삭제되었습니다.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">시작</string>
+    <string name="continue_reading_query">%1$s부터 계속</string>
+    <string name="file_details">파일 세부정보</string>
+    <string name="file_path">경로</string>
+    <string name="file_last_opened">마지막으로 연 날짜</string>
+    <string name="file_size">크기</string>
+    <string name="unknown">알 수 없음</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">챕터 없음</string>
+    <string name="chapters">챕터</string>
+    <string name="ai_illustrations">AI 삽화</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">앱 버전</string>
+    <string name="report_bug_option">버그 신고</string>
+    <string name="licenses_option">오픈 소스 라이선스</string>
+    <string name="credits_option">크레딧</string>
+    <string name="help_translate_option">번역 참여</string>
+    <string name="support_development_option">개발 지원</string>
+    <string name="contributors_option">기여자</string>
+
+    <!-- Credits -->
+    <string name="credits_design">디자인</string>
+    <string name="credits_icon">아이콘</string>
+    <string name="credits_updates">새 업데이트 관리</string>
+    <string name="credits_fonts">글꼴</string>
+    <string name="credits_translation">번역</string>
+    <string name="credits_contribution">기여</string>
+    <string name="credits_ideas">아이디어</string>
+
+    <!-- Start -->
+    <string name="start_welcome">%1$s에 오신 것을 환영합니다!</string>
+    <string name="start_welcome_desc">
+        단어가 매료시키고, 가르치며,
+        놀라운 모험으로 이끄는 세계로!
+        몇 가지 설정을 해보세요!
+    </string>
+    <string name="start_language_preferences">언어 환경설정</string>
+    <string name="start_theme_preferences">테마 환경설정</string>
+    <string name="start_scan_preferences">스캔 환경설정</string>
+    <string name="start_done">모두 완료되었습니다!</string>
+    <string name="start_done_desc">설정이 완료되었습니다.</string>
+
+    <!-- History -->
+    <string name="today">오늘</string>
+    <string name="yesterday">어제</string>
+
+    <!-- Crash -->
+    <string name="crash_title">앱이 비정상 종료되었습니다.</string>
+    <string name="crash_description">가장 편리한 방법으로 이 오류 메시지를 보고해 주세요.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">이어서 읽기</string>
+    <string name="go_back_content_desc">뒤로 가기</string>
+    <string name="cover_image_content_desc">표지 이미지</string>
+    <string name="open_reader_settings_content_desc">리더 설정</string>
+    <string name="file_icon_content_desc">파일</string>
+    <string name="sort_order_content_desc">정렬 순서</string>
+    <string name="checkbox_content_desc">체크박스</string>
+    <string name="cover_image_not_found_content_desc">표지 이미지 없음</string>
+    <string name="error_content_desc">오류</string>
+    <string name="search_content_desc">검색</string>
+    <string name="clear_selected_items_content_desc">선택 항목 지우기</string>
+    <string name="add_files_content_desc">파일 추가</string>
+    <string name="select_all_files_content_desc">모든 파일 선택</string>
+    <string name="select_all_books_content_desc">모든 책 선택</string>
+    <string name="exit_search_content_desc">검색 종료</string>
+    <string name="delete_whole_history_content_desc">전체 기록 삭제</string>
+    <string name="move_books_content_desc">선택한 책 이동</string>
+    <string name="delete_books_content_desc">선택한 책 삭제</string>
+    <string name="revert_content_desc">되돌리기</string>
+    <string name="selected_content_desc">선택됨</string>
+    <string name="app_icon_content_desc">앱 아이콘</string>
+    <string name="delete_history_element_content_desc">기록 항목 삭제</string>
+    <string name="library_content_desc">내 라이브러리</string>
+    <string name="history_content_desc">독서 기록</string>
+    <string name="browse_content_desc">책 추가</string>
+    <string name="arrow_content_desc">화살표</string>
+    <string name="reset_start_content_desc">시작 가이드 초기화</string>
+    <string name="open_in_web_content_desc">웹에서 열기</string>
+    <string name="delete_color_preset_content_desc">색상 프리셋 삭제</string>
+    <string name="create_color_preset_content_desc">새 색상 프리셋 만들기</string>
+    <string name="shuffle_color_preset_content_desc">색상 섞기</string>
+    <string name="drag_content_desc">드래그</string>
+    <string name="filter_content_desc">필터</string>
+    <string name="checkpoint_back_content_desc">이전 체크포인트</string>
+    <string name="checkpoint_forward_content_desc">다음 체크포인트</string>
+    <string name="chapters_content_desc">챕터</string>
+    <string name="more_content_desc">더보기</string>
+    <string name="pin_content_desc">고정</string>
+    <string name="show_less_content_desc">접기</string>
+    <string name="show_more_content_desc">펼치기</string>
+    <string name="edit_content_desc">편집</string>
+    <string name="expand_content_desc">펼치기</string>
+    <string name="collapse_content_desc">접기</string>
+    <string name="remove_content_desc">제거</string>
+    <string name="note_content_desc">참고</string>
+
 </resources>

@@ -4,7 +4,8 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
     <string name="delete_history">删除阅读历史？</string>
     <string name="delete_book">删除书籍？</string>
     <string name="web_search">网络搜索</string>
@@ -352,5 +353,68 @@
     <string name="show_navigation_labels_option">显示导航标签</string>
     <string name="show_navigation_labels_option_desc">在图标下方显示导航栏</string>
     <string name="horizontal_gesture_disable_scrolling_option">禁用滚动</string>
+    <string name="horizontal_limiter_option">水平限制器</string>
+    <string name="horizontal_limiter_option_desc">显示水平标尺并调暗屏幕未聚焦区域</string>
+    <string name="horizontal_limiter_height_option">高度</string>
+    <string name="horizontal_limiter_vertical_offset_option">垂直偏移</string>
+    <string name="horizontal_limiter_ruler_option">水平标尺</string>
+    <string name="horizontal_limiter_ruler_thickness_option">标尺粗细</string>
+    <string name="horizontal_limiter_dimming_option">调暗程度</string>
     <string name="horizontal_gesture_disable_scrolling_option_desc">完全禁用阅读器滚动</string>
+    <string name="error_could_not_export">无法导出含图片的书籍。</string>
+    <string name="generate_image">生成图像</string>
+    <string name="set_cover_image">设为书籍封面</string>
+    <string name="export_with_images">导出</string>
+    <string name="export_with_images_desc">导出包含所有已生成图片的 FB2 文件</string>
+    <string name="cover_image_set">成功设置了书籍封面。</string>
+    <string name="ai_tab">AI</string>
+    <string name="ai_reader_settings">AI 助手</string>
+    <string name="ai_illustrations">AI 插图</string>
+    <string name="api_key_option">API 密钥</string>
+    <string name="api_key_option_label">OpenRouter API 密钥</string>
+    <string name="image_model_option">图像模型</string>
+    <string name="image_model_option_label">OpenRouter 图像模型标识（slug）</string>
+    <string name="image_style_option">风格块</string>
+    <string name="image_style_option_label">图像提示词的风格块</string>
+    <string name="style_reference_option">风格参考</string>
+    <string name="style_reference_option_desc">附上书中插图的拼贴图作为风格参考</string>
+    <string name="proxy_option">代理</string>
+    <string name="proxy_option_desc">HTTP 或 SOCKS5 代理</string>
+    <string name="proxy_protocol_option">代理协议</string>
+    <string name="proxy_host_option">代理主机</string>
+    <string name="proxy_host_option_label">例如 127.0.0.1</string>
+    <string name="proxy_port_option">代理端口</string>
+    <string name="proxy_port_option_label">例如 1080</string>
+    <string name="text_assistant_settings">AI 助手</string>
+    <string name="text_assistant_model_option">文本模型</string>
+    <string name="text_assistant_model_option_label">OpenRouter 智能文本模型标识（slug）</string>
+    <string name="text_assistant_preferred_latency_option">首选延迟（p90，秒）</string>
+    <string name="text_assistant_preferred_latency_option_label">文本助手首选的服务商最大 p90 延迟</string>
+    <string name="text_assistant_max_input_price_option">最高输入价格（$/1M）</string>
+    <string name="text_assistant_max_input_price_option_label">文本助手允许的最高提示 token 价格</string>
+    <string name="summarize_model_option">摘要模型</string>
+    <string name="summarize_model_option_label">用于角色提取的 OpenRouter 模型标识（slug）</string>
+    <string name="text_assistant_max_tokens_option">最大输入 token 数</string>
+    <string name="text_assistant_max_tokens_option_label">用于切分长篇书籍的模型上下文上限</string>
+    <string name="character_preferred_latency_option">首选延迟（p90，秒）</string>
+    <string name="character_preferred_latency_option_label">角色提取首选的服务商最大 p90 延迟</string>
+    <string name="character_max_input_price_option">最高输入价格（$/1M）</string>
+    <string name="character_max_input_price_option_label">角色提取允许的最高提示 token 价格</string>
+    <string name="characters_reader_settings">角色</string>
+    <string name="analyze_characters">分析书籍角色</string>
+    <string name="characters_generating">正在提取角色…</string>
+    <string name="characters_empty">暂无角色。分析书籍内容以构建角色目录。</string>
+    <string name="characters_prompt">阅读整本书的文本，忽略任何图片引用。找出主角以及所有重要且反复出现的主要角色。为每个角色，根据全文综合出一致的外观描述。</string>
+    <string name="characters_processing">正在处理</string>
+    <string name="characters_failed">角色提取失败</string>
+    <string name="characters_stopped_by_system">角色提取已被系统停止。</string>
+    <string name="image_generating">正在生成图像…</string>
+    <string name="image_step_prepare">正在准备上下文…</string>
+    <string name="image_step_collage">正在构建风格拼贴…</string>
+    <string name="image_step_distill">正在提炼场景…</string>
+    <string name="image_step_generate">正在渲染插图…</string>
+    <string name="image_generation_failed">图像生成失败</string>
+    <string name="image_stopped_by_system">图像生成已被系统停止。</string>
+    <string name="image_already_generating">已有一张图像正在生成。</string>
+    <string name="retry">重试</string>
 </resources>

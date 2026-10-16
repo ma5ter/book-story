@@ -6,27 +6,519 @@
 
 <resources>
     <string name="default_string">Προεπιλογή</string>
+
+    <!-- Screens -->
     <string name="library_screen">Βιβλιοθήκη</string>
     <string name="history_screen">Ιστορικό</string>
     <string name="browse_screen">Εύρεση</string>
-    <string name="settings_screen">Ρυθμήσεις</string>
+    <string name="settings_screen">Ρυθμίσεις</string>
     <string name="about_screen">Για την εφαρμογή</string>
-    <string name="add_books">Πρόσθεσε τα βιβλία;</string>
-    <string name="delete_books">Διέγραψε τα βιβλία;</string>
-    <string name="delete_book">Διέγραψε το βιβλίο;</string>
-    <string name="delete_history">Διέγραψε το ιστορικό;</string>
-    <string name="remove_category">Διέγραψε την κατηγορία;</string>
-    <string name="add_books_description">Μπορείς να διαλέξεις τα βιβλία που θες να πρσθέσεις. Μπορείς να αλλάξεις τον Τίτλο και την εικόνα του Εξωφύλλου μετά. Η διαδικασία μπορεί να πάρει ακόμα και λίγα λεπτά.</string>
-    <string name="delete_books_description">Θα διαγράψει όλα τα επιλεγμένα βιβλία(%1$s) από την βάση δεδομένων. Δεν θα διαγράψει τα επιλεγμένα βιβλία από την συσκευή σας.</string>
-    <string name="delete_book_description">"Θα διαγράψει όλα τα επιλεγμένα βιβλία από την βάση δεδομένων.  Δεν θα διαγράψει τα βιβλία από την συσκευή σας."</string>
-    <string name="delete_history_description">Θα διαγράψει όλο το ιστορικό από την βάση δεδομένων. Αφού διαγράψει το ιστορικό, η σειρά των βιβλίων θα επαναφερθεί.</string>
-    <string name="remove_category_description">Αυτό θα διαγράψει την κατηγορία απο την Βιβλιοθήκη αλλα δεν θα διαγράψει κανένα βιβλίο.</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">Προσθήκη βιβλίων;</string>
+    <string name="delete_books">Διαγραφή βιβλίων;</string>
+    <string name="delete_book">Διαγραφή βιβλίου;</string>
+    <string name="delete_history">Διαγραφή ιστορικού ανάγνωσης;</string>
+    <string name="remove_category">Αφαίρεση κατηγορίας;</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">Μπορείς να διαλέξεις ποια βιβλία θες να προσθέσεις. Μπορείς να αλλάξεις τον Τίτλο και την εικόνα του Εξωφύλλου αργότερα. Η διαδικασία μπορεί να πάρει ακόμα και λίγα λεπτά.</string>
+    <string name="delete_books_description">Θα διαγράψει όλα τα επιλεγμένα βιβλία(%1$s) από τη βάση δεδομένων. Δεν θα διαγράψει τα επιλεγμένα βιβλία από τη συσκευή σου.</string>
+    <string name="delete_book_description">Θα διαγράψει αυτό το βιβλίο από τη βάση δεδομένων. Δεν θα διαγράψει το βιβλίο από τη συσκευή σου.</string>
+    <string name="delete_history_description">Θα διαγράψει όλο το ιστορικό από τη βάση δεδομένων. Μετά τη διαγραφή όλου του ιστορικού, η σειρά των βιβλίων θα επαναφερθεί.</string>
+    <string name="remove_category_description">Αυτό θα αφαιρέσει την κατηγορία από τη Βιβλιοθήκη αλλά δεν θα διαγράψει κανένα βιβλίο.</string>
+
+    <!-- Errors -->
     <string name="error_no_description">Καμία περιγραφή.</string>
     <string name="error_something_went_wrong">Κάτι πήγε λάθος.</string>
     <string name="error_no_translator">Δεν βρέθηκε εφαρμογή μετάφρασης.</string>
     <string name="error_no_dictionary">Δεν βρέθηκε εφαρμογή λεξικού.</string>
     <string name="error_no_browser">Δεν βρέθηκε εφαρμογή περιήγησης.</string>
-    <string name="error_no_share_app">Δεν βρέθηκε εφαρμογή μοιρασμού.</string>
+    <string name="error_no_share_app">Δεν βρέθηκε εφαρμογή κοινής χρήσης.</string>
     <string name="error_no_file_manager_app">Δεν βρέθηκε εφαρμογή επιλογής φακέλου.</string>
-    <string name="error_could_not_get_text">Το αρχείο είναι άδιο, λείπει ή μη προσβάσιμο. Επαληθεύστε το αρχείο, τις ρυθμήσεις εύρεσης ή αλλάξτε το μονοπάτι και δοκιμάστε ξανά.</string>
+    <string name="error_could_not_get_text">Το αρχείο είναι άδειο, λείπει ή δεν είναι προσβάσιμο. Επαλήθευσε το αρχείο, τις ρυθμίσεις σάρωσης ή άλλαξε τη διαδρομή και δοκίμασε ξανά.</string>
+    <string name="error_could_not_reset_cover">Αδυναμία επαναφοράς της εικόνας εξωφύλλου.</string>
+    <string name="error_closed_source">Κλειστή πηγή</string>
+    <string name="error_could_not_export">Αδυναμία εξαγωγής βιβλίου με εικόνες.</string>
+    <string name="error_no_file">Το αρχείο δεν υπάρχει ή δεν είναι προσβάσιμο</string>
+    <string name="error_field_empty">Αυτό το πεδίο δεν πρέπει να είναι κενό.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">Αναζήτηση…</string>
+    <string name="browse_empty">Επέκτεινε τη συλλογή βιβλίων της βιβλιοθήκης με τις λήψεις σου</string>
+    <string name="library_empty">Διάβασε τα αγαπημένα σου βιβλία και ταξινόμησέ τα σε κατηγορίες</string>
+    <string name="history_empty">Άσε το τελευταίο βιβλίο που διάβασες να ανοίξει τις σελίδες μιας νέας υπέροχης ιστορίας της διαδρομής ανάγνωσής σου</string>
+    <string name="categories_empty">Καμία κατηγορία.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s επιλεγμένα</string>
+    <string name="color_preset_query">Προεπιλογή %1$s</string>
+    <string name="color_preset_selected_query">Επιλέχθηκε «%1$s»</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Ακύρωση</string>
+    <string name="add_book">Προσθήκη βιβλίου</string>
+    <string name="move">Μετακίνηση</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="never">Ποτέ</string>
+    <string name="undo">Αναίρεση</string>
+    <string name="copy">Αντιγραφή</string>
+    <string name="report">Αναφορά</string>
+    <string name="translate">Μετάφραση</string>
+    <string name="dictionary">Λεξικό</string>
+    <string name="generate_image">Δημιουργία εικόνας</string>
+    <string name="set_cover_image">Ορισμός ως εξώφυλλο βιβλίου</string>
+    <string name="next">Επόμενο</string>
+    <string name="done">Τέλος</string>
+    <string name="web_search">Αναζήτηση στον ιστό</string>
+    <string name="share">Κοινή χρήση</string>
+    <string name="ok">ΟΚ</string>
+    <string name="change_path">Αλλαγή διαδρομής</string>
+    <string name="add_folder">Προσθήκη φακέλου</string>
+    <string name="edit">Επεξεργασία</string>
+    <string name="create_category">Δημιουργία κατηγορίας</string>
+    <string name="set_up_scanning">Ρύθμιση σάρωσης</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Εξαγωγή</string>
+    <string name="export_with_images_desc">Εξαγωγή του αρχείου FB2 με όλες τις δημιουργημένες εικόνες ενσωματωμένες</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Άγνωστος</string>
+    <string name="reset_cover">Επαναφορά εικόνας εξωφύλλου</string>
+    <string name="reset_cover_desc">Επαναφορά της εικόνας εξωφύλλου του βιβλίου στην προεπιλογή</string>
+    <string name="change_cover">Αλλαγή εικόνας εξωφύλλου</string>
+    <string name="change_cover_desc">Διάλεξε νέο εξώφυλλο από τις φωτογραφίες σου</string>
+    <string name="delete_cover">Διαγραφή εικόνας εξωφύλλου</string>
+    <string name="delete_cover_desc">Διαγραφή της τρέχουσας εικόνας εξωφύλλου του βιβλίου</string>
+    <string name="author">Συγγραφέας</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Προεπιλογή</string>
+    <string name="general_tab">Γενικά</string>
+    <string name="display_tab">Εμφάνιση</string>
+    <string name="color_tab">Χρώματα</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Φίλτρο</string>
+    <string name="sort_tab">Ταξινόμηση</string>
+    <string name="reader_tab">Αναγνώστης</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Γενικά</string>
+    <string name="general_settings_desc">Γλώσσα εφαρμογής</string>
+    <string name="appearance_settings">Εμφάνιση</string>
+    <string name="appearance_settings_desc">Θέμα, χρώματα</string>
+    <string name="reader_settings">Αναγνώστης</string>
+    <string name="reader_settings_desc">Γραμματοσειρά, κείμενο</string>
+    <string name="browse_settings">Εύρεση</string>
+    <string name="browse_settings_desc">Σάρωση, εμφάνιση</string>
+    <string name="library_settings">Βιβλιοθήκη</string>
+    <string name="library_settings_desc">Κατηγορίες, εμφάνιση, καρτέλες</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Γραμματοσειρά</string>
+    <string name="text_reader_settings">Κείμενο</string>
+    <string name="translator_reader_settings">Μετάφραση</string>
+    <string name="padding_reader_settings">Περιθώρια</string>
+    <string name="misc_reader_settings">Διάφορα</string>
+    <string name="reading_speed_reader_settings">Ταχύτητα ανάγνωσης</string>
+    <string name="reading_mode_reader_settings">Λειτουργία ανάγνωσης</string>
+    <string name="system_reader_settings">Σύστημα</string>
+    <string name="chapters_reader_settings">Κεφάλαια</string>
+    <string name="images_reader_settings">Εικόνες</string>
+    <string name="progress_reader_settings">Πρόοδος</string>
+    <string name="theme_appearance_settings">Προτιμήσεις θέματος</string>
+    <string name="colors_appearance_settings">Χρώματα</string>
+    <string name="scan_browse_settings">Σάρωση</string>
+    <string name="display_settings">Εμφάνιση</string>
+    <string name="tabs_settings">Καρτέλες</string>
+    <string name="categories_settings">Κατηγορίες</string>
+    <string name="filter_browse_settings">Φίλτρο</string>
+    <string name="sort_settings">Ταξινόμηση</string>
+    <string name="ai_reader_settings">Βοηθός AI</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">Αυτοί οι φάκελοι χρησιμοποιούνται για σάρωση και ανάκτηση αρχείων στην Εύρεση. Η αφαίρεση ενός φακέλου εδώ δεν θα διαγράψει πραγματικά αρχεία ή βιβλία από τη Βιβλιοθήκη. Για ανάκληση πρόσβασης, πάτα το αντίστοιχο κουμπί.</string>
+    <string name="library_categories_option_note">Αρχικά, τα βιβλία προστίθενται στην προεπιλεγμένη κατηγορία, αλλά μπορούν να ανήκουν σε πολλές προσαρμοσμένες κατηγορίες που δημιουργούνται εδώ. Η αφαίρεση μιας κατηγορίας εδώ δεν θα διαγράψει βιβλία από τη Βιβλιοθήκη. Κράτα πατημένο και μετακίνησε το εικονίδιο της κατηγορίας για να αναδιατάξεις τις κατηγορίες.</string>
+    <string name="library_per_category_sort_option_note">Η ταξινόμηση μπορεί να αλλάξει στη Βιβλιοθήκη.</string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">Γλώσσα εφαρμογής</string>
+    <string name="dark_theme_option">Σκοτεινό θέμα</string>
+    <string name="pure_dark_option">Πλήρες σκοτάδι</string>
+    <string name="absolute_dark_option">Απόλυτο σκοτάδι</string>
+    <string name="absolute_dark_option_desc">Αλλαγή χρώματος φόντου σε πλήρες μαύρο</string>
+    <string name="theme_contrast_option">Αντίθεση θέματος</string>
+    <string name="app_theme_option">Θέμα εφαρμογής</string>
+    <string name="double_press_exit_option">Διπλό πάτημα πίσω για έξοδο</string>
+    <string name="double_press_exit_option_desc">Πάτησε δύο φορές πίσω για έξοδο από την εφαρμογή</string>
+    <string name="show_navigation_labels_option">Εμφάνιση ετικετών πλοήγησης</string>
+    <string name="show_navigation_labels_option_desc">Εμφάνιση ετικετών κάτω από τα εικονίδια της μπάρας πλοήγησης</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">Γραμματοσειρά</string>
+    <string name="font_thickness_option">Πάχος γραμματοσειράς</string>
+    <string name="font_style_option">Στυλ γραμματοσειράς</string>
+    <string name="font_size_option">Μέγεθος γραμματοσειράς</string>
+    <string name="line_height_option">Ύψος γραμμής</string>
+    <string name="paragraph_height_option">Απόσταση παραγράφων</string>
+    <string name="paragraph_indentation_option">Εσοχή παραγράφου</string>
+    <string name="color_preset_option">Προεπιλογή χρωμάτων</string>
+    <string name="background_color_option">Χρώμα φόντου</string>
+    <string name="font_color_option">Χρώμα γραμματοσειράς</string>
+    <string name="side_padding_option">Πλευρικά περιθώρια</string>
+    <string name="vertical_padding_option">Κάθετα περιθώρια</string>
+    <string name="double_click_translation_option">Μετάφραση με διπλό πάτημα</string>
+    <string name="double_click_translation_option_desc">Διπλό πάτημα σε παράγραφο για τη μετάφρασή της</string>
+    <string name="fast_color_preset_change_option">Γρήγορη αλλαγή προεπιλογής χρωμάτων</string>
+    <string name="fast_color_preset_change_option_desc">Σύρε την πάνω μπάρα αριστερά ή δεξιά για αλλαγή προεπιλογής χρωμάτων</string>
+    <string name="text_alignment_option">Στοίχιση κειμένου</string>
+    <string name="chapter_title_alignment_option">Στοίχιση τίτλων κεφαλαίων</string>
+    <string name="letter_spacing_option">Απόσταση γραμμάτων</string>
+    <string name="cutout_padding_option">Περιθώριο cutout</string>
+    <string name="cutout_padding_option_desc">Εφαρμογή περιθωρίου στην περιοχή cutout</string>
+    <string name="fullscreen_option">Πλήρης οθόνη</string>
+    <string name="fullscreen_option_desc">Απόκρυψη μπαρών συστήματος και περιθωρίων</string>
+    <string name="keep_screen_on_option">Διατήρηση οθόνης αναμμένης</string>
+    <string name="hide_bars_on_fast_scroll_option">Απόκρυψη μπαρών κατά τη γρήγορη κύλιση</string>
+    <string name="perception_expander_option">Επεκτατής αντίληψης</string>
+    <string name="perception_expander_option_desc">Αύξησε την ταχύτητα ανάγνωσης εστιάζοντας στο κέντρο</string>
+    <string name="perception_expander_padding_option">Πλευρικό περιθώριο γραμμής</string>
+    <string name="perception_expander_thickness_option">Πάχος γραμμής</string>
+    <string name="horizontal_limiter_option">Οριζόντιος περιοριστής</string>
+    <string name="horizontal_limiter_option_desc">Εμφάνιση οριζόντιου χάρακα και σκίαση του ανεστίαστου τμήματος της οθόνης</string>
+    <string name="horizontal_limiter_height_option">Ύψος</string>
+    <string name="horizontal_limiter_vertical_offset_option">Κάθετη μετατόπιση</string>
+    <string name="horizontal_limiter_ruler_option">Οριζόντιος χάρακας</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Πάχος χάρακα</string>
+    <string name="horizontal_limiter_dimming_option">Σκίαση</string>
+    <string name="screen_orientation_option">Προσανατολισμός οθόνης</string>
+    <string name="custom_screen_brightness_option">Προσαρμοσμένη φωτεινότητα</string>
+    <string name="screen_brightness_option">Φωτεινότητα</string>
+    <string name="horizontal_gesture_option">Οριζόντια χειρονομία</string>
+    <string name="horizontal_gesture_scroll_option">Κλάσμα κύλισης</string>
+    <string name="horizontal_gesture_sensitivity_option">Ευαισθησία</string>
+    <string name="horizontal_gesture_alpha_anim_option">Κινούμενη εμφάνιση</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">Ενεργοποίηση κινούμενης εμφάνισης κατά τη χρήση της οριζόντιας χειρονομίας</string>
+    <string name="horizontal_gesture_pull_anim_option">Κίνηση τραβήγματος</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">Ενεργοποίηση κινούμενου τραβήγματος κατά τη χρήση της οριζόντιας χειρονομίας</string>
+    <string name="horizontal_gesture_disable_scrolling_option">Απενεργοποίηση κύλισης</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Πλήρης απενεργοποίηση της κύλισης του αναγνώστη</string>
+    <string name="bottom_bar_padding_option">Περιθώριο κάτω μπάρας</string>
+    <string name="highlighted_reading_option">Επισήμανση λέξεων</string>
+    <string name="highlighted_reading_option_desc">Επισήμανση της αρχής κάθε λέξης</string>
+    <string name="highlighted_reading_thickness_option">Πάχος επισήμανσης</string>
+    <string name="images_option">Εικόνες</string>
+    <string name="images_option_desc">Εμφάνιση εικόνων</string>
+    <string name="images_captions_option">Λεζάντες</string>
+    <string name="images_captions_option_desc">Εμφάνιση λεζάντων κάτω από τις εικόνες</string>
+    <string name="images_corners_roundness_option">Στρογυλότητα γωνιών</string>
+    <string name="images_alignment_option">Στοίχιση</string>
+    <string name="images_width_option">Μέγεθος</string>
+    <string name="images_color_effects_option">Χρωματικά εφέ</string>
+    <string name="progress_bar_option">Μπάρα προόδου</string>
+    <string name="progress_bar_option_desc">Εμφάνιση μπάρας προόδου στο κάτω μέρος</string>
+    <string name="progress_bar_padding_option">Περιθώρια</string>
+    <string name="progress_bar_alignment_option">Στοίχιση</string>
+    <string name="progress_bar_font_size_option">Μέγεθος γραμματοσειράς</string>
+    <string name="progress_count_option">Μέτρηση προόδου</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">Κλειδί API</string>
+    <string name="api_key_option_label">Κλειδί API του OpenRouter</string>
+    <string name="image_model_option">Μοντέλο εικόνας</string>
+    <string name="image_model_option_label">Slug μοντέλου εικόνων του OpenRouter</string>
+    <string name="image_style_option">Μπλοκ στυλ</string>
+    <string name="image_style_option_label">Μπλοκ στυλ για την περιγραφή της εικόνας</string>
+    <string name="style_reference_option">Αναφορά στυλ</string>
+    <string name="style_reference_option_desc">Επισύναψη κολάζ των εικονογραφήσεων του βιβλίου ως αναφορά στυλ</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">HTTP ή SOCKS5 proxy</string>
+    <string name="proxy_protocol_option">Πρωτόκολλο proxy</string>
+    <string name="proxy_host_option">Host του proxy</string>
+    <string name="proxy_host_option_label">π.χ. 127.0.0.1</string>
+    <string name="proxy_port_option">Θύρα proxy</string>
+    <string name="proxy_port_option_label">π.χ. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">Βοηθός AI</string>
+    <string name="text_assistant_model_option">Μοντέλο κειμένου</string>
+    <string name="text_assistant_model_option_label">Slug έξυπνου μοντέλου κειμένου του OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Επιθυμητή καθυστέρηση (p90, δευτ.)</string>
+    <string name="text_assistant_preferred_latency_option_label">Επιθυμητή μέγιστη καθυστέρηση παρόχου σε p90 για τον βοηθό κειμένου</string>
+    <string name="text_assistant_max_input_price_option">Μέγιστη τιμή εισόδου ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Μέγιστη τιμή token προτροπής για τον βοηθό κειμένου</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Μοντέλο σύνοψης</string>
+    <string name="summarize_model_option_label">Slug μοντέλου OpenRouter για την εξαγωγή χαρακτήρων</string>
+    <string name="text_assistant_max_tokens_option">Μέγιστα token εισόδου</string>
+    <string name="text_assistant_max_tokens_option_label">Όριο συμφραζομένων του μοντέλου για τμηματοποίηση μεγάλων βιβλίων</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Επιθυμητή καθυστέρηση (p90, δευτ.)</string>
+    <string name="character_preferred_latency_option_label">Επιθυμητή μέγιστη καθυστέρηση παρόχου σε p90 για την εξαγωγή χαρακτήρων</string>
+    <string name="character_max_input_price_option">Μέγιστη τιμή εισόδου ($/1M)</string>
+    <string name="character_max_input_price_option_label">Μέγιστη τιμή token προτροπής για την εξαγωγή χαρακτήρων</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Χαρακτήρες</string>
+    <string name="analyze_characters">Ανάλυση χαρακτήρων του βιβλίου</string>
+    <string name="characters_generating">Εξαγωγή χαρακτήρων…</string>
+    <string name="characters_empty">Χωρίς χαρακτήρες ακόμα. Ανάλυσε το περιεχόμενο του βιβλίου για να δημιουργηθεί ο κατάλογος χαρακτήρων.</string>
+    <string name="characters_prompt">Διάβασε όλο το κείμενο του βιβλίου, αγνοώντας τυχόν αναφορές σε εικόνες. Εντόπισε τον πρωταγωνιστή και όλους τους σημαντικούς και επαναλαμβανόμενους χαρακτήρες. Για κάθε χαρακτήρα, σύνθεσε μια συνεπή οπτική περιγραφή από όλο το κείμενο.</string>
+    <string name="characters_processing">Επεξεργασία</string>
+    <string name="characters_failed">Η εξαγωγή χαρακτήρων απέτυχε</string>
+    <string name="characters_stopped_by_system">Η εξαγωγή χαρακτήρων διακόπηκε από το σύστημα.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Δημιουργία εικόνας…</string>
+    <string name="image_step_prepare">Προετοιμασία συμφραζομένων…</string>
+    <string name="image_step_collage">Δημιουργία κολάζ στυλ…</string>
+    <string name="image_step_distill">Συμπύκνωση σκηνής…</string>
+    <string name="image_step_generate">Σχεδίαση εικονογράφησης…</string>
+    <string name="image_generation_failed">Η δημιουργία εικόνας απέτυχε</string>
+    <string name="image_stopped_by_system">Η δημιουργία εικόνας διακόπηκε από το σύστημα.</string>
+    <string name="image_already_generating">Μια εικόνα δημιουργείται ήδη.</string>
+    <string name="retry">Επανάληψη</string>
+
+    <!-- Library -->
+    <string name="read_button_option">Εμφάνιση κουμπιού «Ανάγνωση»</string>
+    <string name="show_progress_option">Εμφάνιση προόδου</string>
+    <string name="title_position_option">Θέση τίτλου</string>
+    <string name="show_book_count_option">Εμφάνιση αριθμού βιβλίων</string>
+    <string name="show_category_tabs_option">Εμφάνιση καρτελών κατηγοριών</string>
+    <string name="always_show_default_tab_option">Εμφάνιση πάντα της προεπιλεγμένης καρτέλας</string>
+    <string name="per_category_sort_option">Ταξινόμηση ανά κατηγορία</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Κόκκινο</string>
+    <string name="green_color">Πράσινο</string>
+    <string name="blue_color">Μπλε</string>
+    <string name="color_preset_placeholder">Ονόμασε την προεπιλογή…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Ανενεργό</string>
+    <string name="dark_theme_on">Ενεργό</string>
+    <string name="dark_theme_follow_system">Σύστημα</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Ανενεργό</string>
+    <string name="pure_dark_on">Ενεργό</string>
+    <string name="pure_dark_power_saver">Εξοικονόμηση</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Κανονική</string>
+    <string name="theme_contrast_medium">Μεσαία</string>
+    <string name="theme_contrast_high">Υψηλή</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Πλάγια</string>
+    <string name="font_style_normal">Κανονικό</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Κρυφό</string>
+    <string name="library_title_position_below">Κάτω</string>
+    <string name="library_title_position_inside">Μέσα</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Τίτλος</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Λειτουργία εμφάνισης</string>
+    <string name="layout_list">Λίστα</string>
+    <string name="layout_grid">Πλέγμα</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Αλφαβητικά</string>
+    <string name="sort_order_file_format">Μορφή αρχείου</string>
+    <string name="sort_order_last_modified">Τελευταία τροποποίηση</string>
+    <string name="sort_order_file_size">Μέγεθος αρχείου</string>
+    <string name="sort_order_last_read">Τελευταία ανάγνωση</string>
+    <string name="sort_order_progress">Πρόοδος</string>
+    <string name="sort_order_author">Συγγραφέας</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Μέγεθος πλέγματος</string>
+    <string name="grid_size_auto">Αυτόματο</string>
+    <string name="grid_size_per_row">ανά σειρά</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Αρχή</string>
+    <string name="alignment_justify">Πλήρης στοίχιση</string>
+    <string name="alignment_center">Κέντρο</string>
+    <string name="alignment_end">Τέλος</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Ελεύθερος</string>
+    <string name="screen_orientation_portrait">Κάθετος</string>
+    <string name="screen_orientation_landscape">Οριζόντιος</string>
+    <string name="screen_orientation_locked_portrait">Κλειδωμένος κάθετος</string>
+    <string name="screen_orientation_locked_landscape">Κλειδωμένος οριζόντιος</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Ανενεργό</string>
+    <string name="horizontal_gesture_on">Ενεργό</string>
+    <string name="horizontal_gesture_inverse">Ενεργό (Αντίστροφο)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">επίπεδο</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Ανενεργό</string>
+    <string name="color_effects_grayscale">Γκρι κλίμακα</string>
+    <string name="color_effects_font">Χρώμα γραμματοσειράς</string>
+    <string name="color_effects_background">Χρώμα φόντου</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Λεπτό</string>
+    <string name="font_thickness_extra_light">Πολύ ελαφρύ</string>
+    <string name="font_thickness_light">Ελαφρύ</string>
+    <string name="font_thickness_normal">Κανονικό</string>
+    <string name="font_thickness_medium">Μεσαίο</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Ποσοστό</string>
+    <string name="progress_count_quantity">Ποσότητα</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Ερμής</string>
+    <string name="blue_theme">Ποσειδώνας</string>
+    <string name="green_theme">Γη</string>
+    <string name="green2_theme">Ιώ</string>
+    <string name="green_gray_theme">Εγκέλαδος</string>
+    <string name="red_theme">Άρης</string>
+    <string name="red_gray_theme">Καλλιστώ</string>
+    <string name="purple_theme">Δίας</string>
+    <string name="purple_gray_theme">Δήμητρα</string>
+    <string name="pink_theme">Κρόνος</string>
+    <string name="pink2_theme">Γανυμήδης</string>
+    <string name="lavender_theme">Έρις</string>
+    <string name="marsh_theme">Πλούτωνας</string>
+    <string name="yellow_theme">Αφροδίτη</string>
+    <string name="yellow2_theme">Μακεμάκε</string>
+    <string name="aqua_theme">Ουρανός</string>
+    <string name="gray_theme">Ιαπετός</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Πάτησε ξανά πίσω για έξοδο</string>
+    <string name="books_added">Όλα τα επιλεγμένα βιβλία προστέθηκαν επιτυχώς.</string>
+    <string name="books_moved">Όλα τα επιλεγμένα βιβλία μετακινήθηκαν επιτυχώς.</string>
+    <string name="books_deleted">Όλα τα επιλεγμένα βιβλία διαγράφηκαν επιτυχώς.</string>
+    <string name="cover_image_changed">Η εικόνα εξωφύλλου άλλαξε επιτυχώς.</string>
+    <string name="cover_image_deleted">Η εικόνα εξωφύλλου διαγράφηκε επιτυχώς.</string>
+    <string name="book_deleted">Αυτό το βιβλίο διαγράφηκε επιτυχώς.</string>
+    <string name="book_moved">Αυτό το βιβλίο μετακινήθηκε επιτυχώς.</string>
+    <string name="copied">Αντιγράφηκε</string>
+    <string name="history_deleted">Το ιστορικό διαγράφηκε επιτυχώς.</string>
+    <string name="cover_reset">Η εικόνα εξωφύλλου επαναφέρθηκε επιτυχώς.</string>
+    <string name="title_changed">Ο τίτλος άλλαξε επιτυχώς.</string>
+    <string name="author_changed">Ο συγγραφέας άλλαξε επιτυχώς.</string>
+    <string name="description_changed">Η περιγραφή άλλαξε επιτυχώς.</string>
+    <string name="path_changed">Η διαδρομή του αρχείου άλλαξε επιτυχώς.</string>
+    <string name="cover_image_set">Το εξώφυλλο του βιβλίου ορίστηκε επιτυχώς.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Το στοιχείο ιστορικού διαγράφηκε επιτυχώς.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Έναρξη</string>
+    <string name="continue_reading_query">Συνέχεια από %1$s</string>
+    <string name="file_details">Λεπτομέρειες αρχείου</string>
+    <string name="file_path">Διαδρομή</string>
+    <string name="file_last_opened">Τελευταίο άνοιγμα</string>
+    <string name="file_size">Μέγεθος</string>
+    <string name="unknown">Άγνωστο</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Χωρίς κεφάλαια</string>
+    <string name="chapters">Κεφάλαια</string>
+    <string name="ai_illustrations">Εικονογραφήσεις AI</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">Έκδοση εφαρμογής</string>
+    <string name="report_bug_option">Αναφορά σφάλματος</string>
+    <string name="licenses_option">Άδειες ανοιχτού κώδικα</string>
+    <string name="credits_option">Συντελεστές</string>
+    <string name="help_translate_option">Βοήθεια στη μετάφραση</string>
+    <string name="support_development_option">Υποστήριξη της ανάπτυξης</string>
+    <string name="contributors_option">Συνεισφέροντες</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Σχεδιασμός</string>
+    <string name="credits_icon">Εικονίδια</string>
+    <string name="credits_updates">Διαχείριση νέων ενημερώσεων</string>
+    <string name="credits_fonts">Γραμματοσειρές</string>
+    <string name="credits_translation">Μετάφραση</string>
+    <string name="credits_contribution">Συνεισφορά</string>
+    <string name="credits_ideas">Ιδέες</string>
+
+    <!-- Start -->
+    <string name="start_welcome">Καλώς όρισες στο %1$s!</string>
+    <string name="start_welcome_desc">Σε έναν κόσμο όπου οι λέξεις γοητεύουν, διδάσκουν και οδηγούν σε απίστευτες περιπέτειες! Ας ρυθμίσουμε μερικά πράγματα!</string>
+    <string name="start_language_preferences">Προτιμήσεις γλώσσας</string>
+    <string name="start_theme_preferences">Προτιμήσεις θέματος</string>
+    <string name="start_scan_preferences">Προτιμήσεις σάρωσης</string>
+    <string name="start_done">Όλα έτοιμα!</string>
+    <string name="start_done_desc">Η ρύθμιση ολοκληρώθηκε.</string>
+
+    <!-- History -->
+    <string name="today">Σήμερα</string>
+    <string name="yesterday">Χθες</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Ουπς! Η εφαρμογή σταμάτησε απροσδόκητα.</string>
+    <string name="crash_description">Αναφορά αυτό το μήνυμα σφάλματος με τον πιο βολικό για σένα τρόπο.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Συνέχεια ανάγνωσης</string>
+    <string name="go_back_content_desc">Πίσω</string>
+    <string name="cover_image_content_desc">Εικόνα εξωφύλλου</string>
+    <string name="open_reader_settings_content_desc">Ρυθμίσεις αναγνώστη</string>
+    <string name="file_icon_content_desc">Αρχείο</string>
+    <string name="sort_order_content_desc">Σειρά ταξινόμησης</string>
+    <string name="checkbox_content_desc">Πλαίσιο ελέγχου</string>
+    <string name="cover_image_not_found_content_desc">Δεν βρέθηκε εικόνα εξωφύλλου</string>
+    <string name="error_content_desc">Σφάλμα</string>
+    <string name="search_content_desc">Αναζήτηση</string>
+    <string name="clear_selected_items_content_desc">Καθαρισμός επιλεγμένων στοιχείων</string>
+    <string name="add_files_content_desc">Προσθήκη αρχείων</string>
+    <string name="select_all_files_content_desc">Επιλογή όλων των αρχείων</string>
+    <string name="select_all_books_content_desc">Επιλογή όλων των βιβλίων</string>
+    <string name="exit_search_content_desc">Έξοδος από την αναζήτηση</string>
+    <string name="delete_whole_history_content_desc">Διαγραφή όλου του ιστορικού</string>
+    <string name="move_books_content_desc">Μετακίνηση επιλεγμένων βιβλίων</string>
+    <string name="delete_books_content_desc">Διαγραφή επιλεγμένων βιβλίων</string>
+    <string name="revert_content_desc">Επαναφορά</string>
+    <string name="selected_content_desc">Επιλεγμένο</string>
+    <string name="app_icon_content_desc">Εικονίδιο εφαρμογής</string>
+    <string name="delete_history_element_content_desc">Διαγραφή στοιχείου ιστορικού</string>
+    <string name="library_content_desc">Η βιβλιοθήκη σου</string>
+    <string name="history_content_desc">Ιστορικό ανάγνωσης</string>
+    <string name="browse_content_desc">Προσθήκη βιβλίων</string>
+    <string name="arrow_content_desc">Βέλος</string>
+    <string name="reset_start_content_desc">Επαναφορά οδηγού έναρξης</string>
+    <string name="open_in_web_content_desc">Άνοιγμα στον ιστό</string>
+    <string name="delete_color_preset_content_desc">Διαγραφή προεπιλογής χρωμάτων</string>
+    <string name="create_color_preset_content_desc">Δημιουργία νέας προεπιλογής χρωμάτων</string>
+    <string name="shuffle_color_preset_content_desc">Τυχαία χρώματα</string>
+    <string name="drag_content_desc">Σύρσιμο</string>
+    <string name="filter_content_desc">Φίλτρο</string>
+    <string name="checkpoint_back_content_desc">Σημείο ελέγχου πίσω</string>
+    <string name="checkpoint_forward_content_desc">Σημείο ελέγχου μπροστά</string>
+    <string name="chapters_content_desc">Κεφάλαια</string>
+    <string name="more_content_desc">Περισσότερα</string>
+    <string name="pin_content_desc">Καρφίτσωμα</string>
+    <string name="show_less_content_desc">Εμφάνιση λιγότερων</string>
+    <string name="show_more_content_desc">Εμφάνιση περισσότερων</string>
+    <string name="edit_content_desc">Επεξεργασία</string>
+    <string name="expand_content_desc">Ανάπτυξη</string>
+    <string name="collapse_content_desc">Σύμπτυξη</string>
+    <string name="remove_content_desc">Αφαίρεση</string>
+    <string name="note_content_desc">Σημείωση</string>
+
 </resources>

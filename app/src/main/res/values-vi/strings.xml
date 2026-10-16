@@ -5,22 +5,31 @@
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
   --><resources>
+    <!-- Basic Strings -->
     <string name="default_string">Mặc định</string>
+
+    <!-- Screens -->
     <string name="library_screen">Thư viện</string>
     <string name="history_screen">Lịch sử</string>
     <string name="browse_screen">Duyệt</string>
     <string name="settings_screen">Cài đặt</string>
     <string name="about_screen">Giới thiệu về ứng dụng</string>
+
+    <!-- Dialog Labels -->
     <string name="add_books">Thêm sách?</string>
     <string name="delete_books">Xoá sách?</string>
     <string name="delete_book">Xoá sách?</string>
     <string name="delete_history">Xoá lịch sử đọc?</string>
     <string name="remove_category">Xoá thể loại?</string>
+
+    <!-- Dialog Descriptions -->
     <string name="add_books_description">Bạn có thể chọn sách muốn thêm. Bạn có thể chỉnh sửa Tên sách và Ảnh bìa sau. Quá trình tải có thể mất vài phút.</string>
     <string name="delete_books_description">Thao tác này sẽ xóa tất cả sách đã chọn (%1$s) khỏi cơ sở dữ liệu. Thao tác này sẽ không xóa những sách đã chọn khỏi thiết bị của bạn.</string>
     <string name="delete_book_description">Thao tác này sẽ xóa cuốn sách này khỏi cơ sở dữ liệu. Nó sẽ không xóa cuốn sách này khỏi thiết bị của bạn.</string>
     <string name="delete_history_description">Nó sẽ xóa toàn bộ lịch sử khỏi cơ sở dữ liệu. Sau khi xóa toàn bộ lịch sử, thứ tự các cuốn sách sẽ được đặt lại.</string>
     <string name="remove_category_description">Thao tác này sẽ xóa danh mục này khỏi Thư viện nhưng sẽ không xóa bất kỳ cuốn sách nào.</string>
+
+    <!-- Errors -->
     <string name="error_no_description">Không có mô tả.</string>
     <string name="error_something_went_wrong">Có gì đó không ổn.</string>
     <string name="error_no_translator">Không tìm thấy ứng dụng dịch nào.</string>
@@ -31,16 +40,23 @@
     <string name="error_could_not_get_text">Tệp trống, bị thiếu hoặc không thể truy cập. Hãy kiểm tra tệp, cài đặt quét hoặc thay đổi đường dẫn, sau đó thử lại.</string>
     <string name="error_could_not_reset_cover">Không thể đặt lại ảnh bìa.</string>
     <string name="error_closed_source">Nguồn đóng</string>
+    <string name="error_could_not_export">Không thể xuất sách kèm ảnh.</string>
     <string name="error_no_file">Tệp không tồn tại hoặc không thể truy cập</string>
     <string name="error_field_empty">Mục này không được để trống.</string>
+
+    <!-- Is Empty messages -->
     <string name="search_field_empty">Tìm kiếm…</string>
-    <string name="browse_empty">Mở rộng bộ sưu tập sách của thư viện bằng cách tải xuống</string>
+    <string name="browse_empty">Mở rộng bộ sưu tập sách của thư viện bằng các tệp bạn tải xuống</string>
     <string name="library_empty">Đọc những cuốn sách yêu thích của bạn và sắp xếp chúng theo danh mục</string>
     <string name="history_empty">Hãy để cuốn sách cuối cùng bạn đọc mở ra những trang mới của câu chuyện tuyệt vời về hành trình đọc sách của bạn</string>
     <string name="categories_empty">Không có danh mục.</string>
+
+    <!-- Query strings -->
     <string name="selected_items_count_query">%1$s đã chọn</string>
     <string name="color_preset_query">Cài đặt trước %1$s</string>
     <string name="color_preset_selected_query">Đã chọn «%1$s»</string>
+
+    <!-- Action Texts -->
     <string name="cancel">Hủy bỏ</string>
     <string name="add_book">Thêm một quyển sách</string>
     <string name="move">Di chuyển</string>
@@ -51,5 +67,459 @@
     <string name="report">Báo cáo</string>
     <string name="translate">Dịch</string>
     <string name="dictionary">Từ điển</string>
+    <string name="generate_image">Tạo ảnh</string>
+    <string name="set_cover_image">Đặt làm ảnh bìa sách</string>
     <string name="next">Tiếp</string>
+    <string name="done">Xong</string>
+    <string name="web_search">Tìm kiếm trên web</string>
+    <string name="share">Chia sẻ</string>
+    <string name="ok">OK</string>
+    <string name="change_path">Đổi đường dẫn</string>
+    <string name="add_folder">Thêm thư mục</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="create_category">Tạo danh mục</string>
+    <string name="set_up_scanning">Thiết lập quét</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Xuất</string>
+    <string name="export_with_images_desc">Xuất tệp FB2 với tất cả ảnh đã tạo được nhúng vào</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Không rõ</string>
+    <string name="reset_cover">Đặt lại ảnh bìa</string>
+    <string name="reset_cover_desc">Đặt lại ảnh bìa của sách về mặc định</string>
+    <string name="change_cover">Thay đổi ảnh bìa</string>
+    <string name="change_cover_desc">Chọn ảnh bìa mới từ ảnh của bạn</string>
+    <string name="delete_cover">Xoá ảnh bìa</string>
+    <string name="delete_cover_desc">Xoá ảnh bìa hiện tại của sách</string>
+    <string name="author">Tác giả</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Mặc định</string>
+    <string name="general_tab">Chung</string>
+    <string name="display_tab">Hiển thị</string>
+    <string name="color_tab">Màu sắc</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Bộ lọc</string>
+    <string name="sort_tab">Sắp xếp</string>
+    <string name="reader_tab">Trình đọc</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Chung</string>
+    <string name="general_settings_desc">Ngôn ngữ ứng dụng</string>
+    <string name="appearance_settings">Giao diện</string>
+    <string name="appearance_settings_desc">Chủ đề, màu sắc</string>
+    <string name="reader_settings">Trình đọc</string>
+    <string name="reader_settings_desc">Phông chữ, văn bản</string>
+    <string name="browse_settings">Duyệt</string>
+    <string name="browse_settings_desc">Quét, hiển thị</string>
+    <string name="library_settings">Thư viện</string>
+    <string name="library_settings_desc">Danh mục, hiển thị, thẻ</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Phông chữ</string>
+    <string name="text_reader_settings">Văn bản</string>
+    <string name="translator_reader_settings">Trình dịch</string>
+    <string name="padding_reader_settings">Lề</string>
+    <string name="misc_reader_settings">Khác</string>
+    <string name="reading_speed_reader_settings">Tốc độ đọc</string>
+    <string name="reading_mode_reader_settings">Chế độ đọc</string>
+    <string name="system_reader_settings">Hệ thống</string>
+    <string name="chapters_reader_settings">Chương</string>
+    <string name="images_reader_settings">Ảnh</string>
+    <string name="progress_reader_settings">Tiến độ</string>
+    <string name="theme_appearance_settings">Tuỳ chọn chủ đề</string>
+    <string name="colors_appearance_settings">Màu sắc</string>
+    <string name="scan_browse_settings">Quét</string>
+    <string name="display_settings">Hiển thị</string>
+    <string name="tabs_settings">Thẻ</string>
+    <string name="categories_settings">Danh mục</string>
+    <string name="filter_browse_settings">Bộ lọc</string>
+    <string name="sort_settings">Sắp xếp</string>
+    <string name="ai_reader_settings">Trợ lý AI</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">Các thư mục này được dùng để quét và tải tệp trong mục Duyệt. Việc gỡ thư mục ở đây sẽ không xoá tệp thực tế hoặc sách khỏi Thư viện. Để thu hồi quyền truy cập, hãy nhấn nút tương ứng.</string>
+    <string name="library_categories_option_note">Ban đầu, sách được thêm vào danh mục mặc định, nhưng có thể thuộc nhiều danh mục tuỳ chỉnh được tạo tại đây. Việc gỡ danh mục ở đây sẽ không xoá sách khỏi Thư viện. Giữ và di chuyển biểu tượng danh mục để sắp xếp lại các danh mục.</string>
+    <string name="library_per_category_sort_option_note">Có thể thay đổi cách sắp xếp trong Thư viện.</string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">Ngôn ngữ ứng dụng</string>
+    <string name="dark_theme_option">Chủ đề tối</string>
+    <string name="pure_dark_option">Tối thuần</string>
+    <string name="absolute_dark_option">Tối tuyệt đối</string>
+    <string name="absolute_dark_option_desc">Đổi màu nền thành màu đen hoàn toàn</string>
+    <string name="theme_contrast_option">Tương phản chủ đề</string>
+    <string name="app_theme_option">Chủ đề ứng dụng</string>
+    <string name="double_press_exit_option">Nhấn trở lại hai lần để thoát</string>
+    <string name="double_press_exit_option_desc">Nhấn nút trở lại hai lần để thoát ứng dụng</string>
+    <string name="show_navigation_labels_option">Hiện nhãn Điều hướng</string>
+    <string name="show_navigation_labels_option_desc">Hiện nhãn dưới biểu tượng trên thanh điều hướng</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">Họ phông chữ</string>
+    <string name="font_thickness_option">Độ dày phông chữ</string>
+    <string name="font_style_option">Kiểu phông chữ</string>
+    <string name="font_size_option">Cỡ chữ</string>
+    <string name="line_height_option">Chiều cao dòng</string>
+    <string name="paragraph_height_option">Khoảng cách đoạn</string>
+    <string name="paragraph_indentation_option">Thụt lề đoạn</string>
+    <string name="color_preset_option">Cài đặt trước màu</string>
+    <string name="background_color_option">Màu nền</string>
+    <string name="font_color_option">Màu chữ</string>
+    <string name="side_padding_option">Lề ngang</string>
+    <string name="vertical_padding_option">Lề dọc</string>
+    <string name="double_click_translation_option">Dịch khi nhấn đúp</string>
+    <string name="double_click_translation_option_desc">Nhấn đúp vào đoạn văn để dịch nó</string>
+    <string name="fast_color_preset_change_option">Chuyển nhanh cài đặt trước màu</string>
+    <string name="fast_color_preset_change_option_desc">Vuốt thanh trên sang trái hoặc phải để đổi cài đặt trước màu</string>
+    <string name="text_alignment_option">Căn chỉnh văn bản</string>
+    <string name="chapter_title_alignment_option">Căn chỉnh tên chương</string>
+    <string name="letter_spacing_option">Giãn cách chữ</string>
+    <string name="cutout_padding_option">Lề vùng cắt</string>
+    <string name="cutout_padding_option_desc">Áp dụng lề cho vùng cắt (tai thỏ)</string>
+    <string name="fullscreen_option">Toàn màn hình</string>
+    <string name="fullscreen_option_desc">Ẩn thanh hệ thống và lề</string>
+    <string name="keep_screen_on_option">Giữ màn hình bật</string>
+    <string name="hide_bars_on_fast_scroll_option">Ẩn thanh khi cuộn nhanh</string>
+    <string name="perception_expander_option">Bộ mở rộng nhận thức</string>
+    <string name="perception_expander_option_desc">Tăng tốc độ đọc bằng cách tập trung vào trung tâm</string>
+    <string name="perception_expander_padding_option">Lề ngang của đường kẻ</string>
+    <string name="perception_expander_thickness_option">Độ dày đường kẻ</string>
+    <string name="horizontal_limiter_option">Giới hạn ngang</string>
+    <string name="horizontal_limiter_option_desc">Hiện thước ngang và làm mờ phần màn hình ngoài vùng tập trung</string>
+    <string name="horizontal_limiter_height_option">Chiều cao</string>
+    <string name="horizontal_limiter_vertical_offset_option">Độ lệch dọc</string>
+    <string name="horizontal_limiter_ruler_option">Thước ngang</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Độ dày thước</string>
+    <string name="horizontal_limiter_dimming_option">Mức làm mờ</string>
+    <string name="screen_orientation_option">Hướng màn hình</string>
+    <string name="custom_screen_brightness_option">Độ sáng tuỳ chỉnh</string>
+    <string name="screen_brightness_option">Độ sáng</string>
+    <string name="horizontal_gesture_option">Cử chỉ ngang</string>
+    <string name="horizontal_gesture_scroll_option">Tỉ lệ cuộn</string>
+    <string name="horizontal_gesture_sensitivity_option">Độ nhạy</string>
+    <string name="horizontal_gesture_alpha_anim_option">Hiệu ứng hiện rõ</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">Bật hiệu ứng hiển thị khi dùng cử chỉ ngang</string>
+    <string name="horizontal_gesture_pull_anim_option">Hiệu ứng kéo trang</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">Bật hiệu ứng kéo trang khi dùng cử chỉ ngang</string>
+    <string name="horizontal_gesture_disable_scrolling_option">Tắt cuộn</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Tắt hoàn toàn việc cuộn trong trình đọc</string>
+    <string name="bottom_bar_padding_option">Lề thanh dưới</string>
+    <string name="highlighted_reading_option">Tô sáng từ</string>
+    <string name="highlighted_reading_option_desc">Tô sáng phần đầu của mỗi từ</string>
+    <string name="highlighted_reading_thickness_option">Độ dày tô sáng</string>
+    <string name="images_option">Ảnh</string>
+    <string name="images_option_desc">Hiển thị ảnh</string>
+    <string name="images_captions_option">Chú thích</string>
+    <string name="images_captions_option_desc">Hiển thị chú thích dưới ảnh</string>
+    <string name="images_corners_roundness_option">Độ bo góc</string>
+    <string name="images_alignment_option">Căn lề</string>
+    <string name="images_width_option">Kích thước</string>
+    <string name="images_color_effects_option">Hiệu ứng màu</string>
+    <string name="progress_bar_option">Thanh tiến độ</string>
+    <string name="progress_bar_option_desc">Hiện thanh tiến độ ở phía dưới</string>
+    <string name="progress_bar_padding_option">Lề</string>
+    <string name="progress_bar_alignment_option">Căn lề</string>
+    <string name="progress_bar_font_size_option">Cỡ chữ</string>
+    <string name="progress_count_option">Cách đếm tiến độ</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">Khoá API</string>
+    <string name="api_key_option_label">Khoá API OpenRouter</string>
+    <string name="image_model_option">Mô hình ảnh</string>
+    <string name="image_model_option_label">Mã mô hình ảnh OpenRouter</string>
+    <string name="image_style_option">Khối phong cách</string>
+    <string name="image_style_option_label">Khối phong cách cho lời nhắc tạo ảnh</string>
+    <string name="style_reference_option">Tham chiếu phong cách</string>
+    <string name="style_reference_option_desc">Đính kèm ảnh ghép các hình minh hoạ của sách làm tham chiếu phong cách</string>
+    <string name="proxy_option">Proxy</string>
+    <string name="proxy_option_desc">Proxy HTTP hoặc SOCKS5</string>
+    <string name="proxy_protocol_option">Giao thức proxy</string>
+    <string name="proxy_host_option">Máy chủ proxy</string>
+    <string name="proxy_host_option_label">vd. 127.0.0.1</string>
+    <string name="proxy_port_option">Cổng proxy</string>
+    <string name="proxy_port_option_label">vd. 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">Trợ lý AI</string>
+    <string name="text_assistant_model_option">Mô hình văn bản</string>
+    <string name="text_assistant_model_option_label">Mã mô hình văn bản thông minh OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Độ trễ ưu tiên (p90, giây)</string>
+    <string name="text_assistant_preferred_latency_option_label">Độ trễ nhà cung cấp tối đa ưu tiên tại p90 cho trợ lý văn bản</string>
+    <string name="text_assistant_max_input_price_option">Giá đầu vào tối đa ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Giá token lời nhắc tối đa cho trợ lý văn bản</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Mô hình tóm tắt</string>
+    <string name="summarize_model_option_label">Mã mô hình OpenRouter dùng để trích xuất nhân vật</string>
+    <string name="text_assistant_max_tokens_option">Số token đầu vào tối đa</string>
+    <string name="text_assistant_max_tokens_option_label">Giới hạn ngữ cảnh của mô hình dùng để chia phần sách dài</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Độ trễ ưu tiên (p90, giây)</string>
+    <string name="character_preferred_latency_option_label">Độ trễ nhà cung cấp tối đa ưu tiên tại p90 cho việc trích xuất nhân vật</string>
+    <string name="character_max_input_price_option">Giá đầu vào tối đa ($/1M)</string>
+    <string name="character_max_input_price_option_label">Giá token lời nhắc tối đa cho việc trích xuất nhân vật</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Nhân vật</string>
+    <string name="analyze_characters">Phân tích nhân vật trong sách</string>
+    <string name="characters_generating">Đang trích xuất nhân vật…</string>
+    <string name="characters_empty">Chưa có nhân vật nào. Hãy phân tích nội dung sách để xây dựng danh mục nhân vật.</string>
+    <string name="characters_prompt">Đọc toàn bộ văn bản cuốn sách, bỏ qua mọi tham chiếu ảnh. Xác định nhân vật chính cùng tất cả nhân vật phụ quan trọng và xuất hiện lặp lại đáng kể. Với mỗi nhân vật, hãy tổng hợp một mô tả hình nhất quán dựa trên toàn bộ văn bản.</string>
+    <string name="characters_processing">Đang xử lý</string>
+    <string name="characters_failed">Trích xuất nhân vật thất bại</string>
+    <string name="characters_stopped_by_system">Việc trích xuất nhân vật đã bị hệ thống dừng.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Đang tạo ảnh…</string>
+    <string name="image_step_prepare">Đang chuẩn bị ngữ cảnh…</string>
+    <string name="image_step_collage">Đang tạo ảnh ghép phong cách…</string>
+    <string name="image_step_distill">Đang tóm lược cảnh…</string>
+    <string name="image_step_generate">Đang vẽ minh hoạ…</string>
+    <string name="image_generation_failed">Tạo ảnh thất bại</string>
+    <string name="image_stopped_by_system">Việc tạo ảnh đã bị hệ thống dừng.</string>
+    <string name="image_already_generating">Đang có ảnh được tạo.</string>
+    <string name="retry">Thử lại</string>
+
+    <!-- Library -->
+    <string name="read_button_option">Hiện nút «Đọc»</string>
+    <string name="show_progress_option">Hiện tiến độ</string>
+    <string name="title_position_option">Vị trí tên sách</string>
+    <string name="show_book_count_option">Hiện số lượng sách</string>
+    <string name="show_category_tabs_option">Hiện thẻ danh mục</string>
+    <string name="always_show_default_tab_option">Luôn hiện thẻ mặc định</string>
+    <string name="per_category_sort_option">Sắp xếp theo từng danh mục</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Đỏ</string>
+    <string name="green_color">Xanh lá</string>
+    <string name="blue_color">Xanh dương</string>
+    <string name="color_preset_placeholder">Đặt tên cài đặt trước…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Tắt</string>
+    <string name="dark_theme_on">Bật</string>
+    <string name="dark_theme_follow_system">Hệ thống</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Tắt</string>
+    <string name="pure_dark_on">Bật</string>
+    <string name="pure_dark_power_saver">Tiết kiệm</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Chuẩn</string>
+    <string name="theme_contrast_medium">Trung bình</string>
+    <string name="theme_contrast_high">Cao</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Nghiêng</string>
+    <string name="font_style_normal">Thường</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Ẩn</string>
+    <string name="library_title_position_below">Bên dưới</string>
+    <string name="library_title_position_inside">Bên trong</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Tiêu đề</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Chế độ hiển thị</string>
+    <string name="layout_list">Danh sách</string>
+    <string name="layout_grid">Lưới</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Theo bảng chữ cái</string>
+    <string name="sort_order_file_format">Định dạng tệp</string>
+    <string name="sort_order_last_modified">Ngày sửa đổi</string>
+    <string name="sort_order_file_size">Kích thước tệp</string>
+    <string name="sort_order_last_read">Đọc gần nhất</string>
+    <string name="sort_order_progress">Tiến độ</string>
+    <string name="sort_order_author">Tác giả</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Cỡ lưới</string>
+    <string name="grid_size_auto">Tự động</string>
+    <string name="grid_size_per_row">mỗi hàng</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Đầu</string>
+    <string name="alignment_justify">Đều hai bên</string>
+    <string name="alignment_center">Giữa</string>
+    <string name="alignment_end">Cuối</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Tự do</string>
+    <string name="screen_orientation_portrait">Dọc</string>
+    <string name="screen_orientation_landscape">Ngang</string>
+    <string name="screen_orientation_locked_portrait">Khoá dọc</string>
+    <string name="screen_orientation_locked_landscape">Khoá ngang</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Tắt</string>
+    <string name="horizontal_gesture_on">Bật</string>
+    <string name="horizontal_gesture_inverse">Bật (Ngược)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">cấp độ</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Tắt</string>
+    <string name="color_effects_grayscale">Xám</string>
+    <string name="color_effects_font">Màu chữ</string>
+    <string name="color_effects_background">Màu nền</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Mảnh</string>
+    <string name="font_thickness_extra_light">Siêu mảnh</string>
+    <string name="font_thickness_light">Nhẹ</string>
+    <string name="font_thickness_normal">Thường</string>
+    <string name="font_thickness_medium">Vừa</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Phần trăm</string>
+    <string name="progress_count_quantity">Số lượng</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Sao Thủy</string>
+    <string name="blue_theme">Sao Hải Vương</string>
+    <string name="green_theme">Trái Đất</string>
+    <string name="green2_theme">Io</string>
+    <string name="green_gray_theme">Enceladus</string>
+    <string name="red_theme">Sao Hỏa</string>
+    <string name="red_gray_theme">Callisto</string>
+    <string name="purple_theme">Sao Mộc</string>
+    <string name="purple_gray_theme">Ceres</string>
+    <string name="pink_theme">Sao Thổ</string>
+    <string name="pink2_theme">Ganymede</string>
+    <string name="lavender_theme">Eris</string>
+    <string name="marsh_theme">Sao Diêm Vương</string>
+    <string name="yellow_theme">Sao Kim</string>
+    <string name="yellow2_theme">Makemake</string>
+    <string name="aqua_theme">Sao Thiên Vương</string>
+    <string name="gray_theme">Iapetus</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Nhấn trở lại lần nữa để thoát</string>
+    <string name="books_added">Tất cả sách đã chọn đã được thêm thành công.</string>
+    <string name="books_moved">Tất cả sách đã chọn đã được di chuyển thành công.</string>
+    <string name="books_deleted">Tất cả sách đã chọn đã được xoá thành công.</string>
+    <string name="cover_image_changed">Ảnh bìa đã được thay đổi thành công.</string>
+    <string name="cover_image_deleted">Ảnh bìa đã được xoá thành công.</string>
+    <string name="book_deleted">Cuốn sách này đã được xoá thành công.</string>
+    <string name="book_moved">Cuốn sách này đã được di chuyển thành công.</string>
+    <string name="copied">Đã sao chép</string>
+    <string name="history_deleted">Lịch sử đã được xoá thành công.</string>
+    <string name="cover_reset">Ảnh bìa đã được đặt lại thành công.</string>
+    <string name="title_changed">Tên sách đã được thay đổi thành công.</string>
+    <string name="author_changed">Tác giả đã được thay đổi thành công.</string>
+    <string name="description_changed">Mô tả đã được thay đổi thành công.</string>
+    <string name="path_changed">Đường dẫn tệp đã được thay đổi thành công.</string>
+    <string name="cover_image_set">Ảnh bìa sách đã được đặt thành công.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Phần tử lịch sử đã được xoá thành công.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Bắt đầu</string>
+    <string name="continue_reading_query">Tiếp tục từ %1$s</string>
+    <string name="file_details">Chi tiết tệp</string>
+    <string name="file_path">Đường dẫn</string>
+    <string name="file_last_opened">Mở lần cuối</string>
+    <string name="file_size">Kích thước</string>
+    <string name="unknown">Không rõ</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Không có chương</string>
+    <string name="chapters">Chương</string>
+    <string name="ai_illustrations">Ảnh minh hoạ AI</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">Phiên bản ứng dụng</string>
+    <string name="report_bug_option">Báo cáo lỗi</string>
+    <string name="licenses_option">Giấy phép mã nguồn mở</string>
+    <string name="credits_option">Ghi công</string>
+    <string name="help_translate_option">Giúp dịch thuật</string>
+    <string name="support_development_option">Ủng hộ phát triển</string>
+    <string name="contributors_option">Người đóng góp</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Thiết kế</string>
+    <string name="credits_icon">Biểu tượng</string>
+    <string name="credits_updates">Quản lý bản cập nhật mới</string>
+    <string name="credits_fonts">Phông chữ</string>
+    <string name="credits_translation">Dịch thuật</string>
+    <string name="credits_contribution">Đóng góp</string>
+    <string name="credits_ideas">Ý tưởng</string>
+
+    <!-- Start -->
+    <string name="start_welcome">Chào mừng bạn đến với %1$s!</string>
+    <string name="start_welcome_desc">Đến với thế giới nơi những từ ngữ làm say mê, dạy dỗ và dẫn bạn vào những cuộc phiêu lưu incredible! Hãy thiết lập một vài thứ!</string>
+    <string name="start_language_preferences">Tuỳ chọn ngôn ngữ</string>
+    <string name="start_theme_preferences">Tuỳ chọn chủ đề</string>
+    <string name="start_scan_preferences">Tuỳ chọn quét</string>
+    <string name="start_done">Mọi thứ đã hoàn tất!</string>
+    <string name="start_done_desc">Đã hoàn tất thiết lập.</string>
+
+    <!-- History -->
+    <string name="today">Hôm nay</string>
+    <string name="yesterday">Hôm qua</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Rất tiếc! Ứng dụng đã gặp sự cố.</string>
+    <string name="crash_description">Vui lòng báo cáo thông báo sự cố này theo cách thuận tiện nhất cho bạn.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Tiếp tục đọc</string>
+    <string name="go_back_content_desc">Quay lại</string>
+    <string name="cover_image_content_desc">Ảnh bìa</string>
+    <string name="open_reader_settings_content_desc">Cài đặt trình đọc</string>
+    <string name="file_icon_content_desc">Tệp</string>
+    <string name="sort_order_content_desc">Thứ tự sắp xếp</string>
+    <string name="checkbox_content_desc">Hộp kiểm</string>
+    <string name="cover_image_not_found_content_desc">Không tìm thấy ảnh bìa</string>
+    <string name="error_content_desc">Lỗi</string>
+    <string name="search_content_desc">Tìm kiếm</string>
+    <string name="clear_selected_items_content_desc">Bỏ chọn các mục</string>
+    <string name="add_files_content_desc">Thêm tệp</string>
+    <string name="select_all_files_content_desc">Chọn tất cả tệp</string>
+    <string name="select_all_books_content_desc">Chọn tất cả sách</string>
+    <string name="exit_search_content_desc">Thoát tìm kiếm</string>
+    <string name="delete_whole_history_content_desc">Xoá toàn bộ lịch sử</string>
+    <string name="move_books_content_desc">Di chuyển sách đã chọn</string>
+    <string name="delete_books_content_desc">Xoá sách đã chọn</string>
+    <string name="revert_content_desc">Hoàn tác</string>
+    <string name="selected_content_desc">Đã chọn</string>
+    <string name="app_icon_content_desc">Biểu tượng ứng dụng</string>
+    <string name="delete_history_element_content_desc">Xoá phần tử lịch sử</string>
+    <string name="library_content_desc">Thư viện của bạn</string>
+    <string name="history_content_desc">Lịch sử đọc</string>
+    <string name="browse_content_desc">Thêm sách</string>
+    <string name="arrow_content_desc">Mũi tên</string>
+    <string name="reset_start_content_desc">Đặt lại hướng dẫn bắt đầu</string>
+    <string name="open_in_web_content_desc">Mở trên web</string>
+    <string name="delete_color_preset_content_desc">Xoá cài đặt trước màu</string>
+    <string name="create_color_preset_content_desc">Tạo cài đặt trước màu mới</string>
+    <string name="shuffle_color_preset_content_desc">Xáo trộn màu sắc</string>
+    <string name="drag_content_desc">Kéo</string>
+    <string name="filter_content_desc">Bộ lọc</string>
+    <string name="checkpoint_back_content_desc">Điểm kiểm lùi</string>
+    <string name="checkpoint_forward_content_desc">Điểm kiểm tiến</string>
+    <string name="chapters_content_desc">Chương</string>
+    <string name="more_content_desc">Thêm</string>
+    <string name="pin_content_desc">Ghim</string>
+    <string name="show_less_content_desc">Thu gọn</string>
+    <string name="show_more_content_desc">Mở rộng</string>
+    <string name="edit_content_desc">Chỉnh sửa</string>
+    <string name="expand_content_desc">Mở rộng</string>
+    <string name="collapse_content_desc">Thu gọn</string>
+    <string name="remove_content_desc">Gỡ bỏ</string>
+    <string name="note_content_desc">Lưu ý</string>
+
 </resources>

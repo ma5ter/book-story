@@ -276,5 +276,164 @@
     <string name="more_content_desc">もっと</string>
     <string name="show_more_content_desc">表示を増やす</string>
     <string name="expand_content_desc">拡大する</string>
+    <string name="go_back_content_desc">戻る</string>
+    <string name="cover_image_content_desc">カバー画像</string>
+    <string name="open_reader_settings_content_desc">リーダー設定</string>
+    <string name="file_icon_content_desc">ファイル</string>
+    <string name="sort_order_content_desc">並び順</string>
+    <string name="checkbox_content_desc">チェックボックス</string>
+    <string name="cover_image_not_found_content_desc">カバー画像が見つかりません</string>
+    <string name="error_content_desc">エラー</string>
+    <string name="search_content_desc">検索</string>
+    <string name="clear_selected_items_content_desc">選択を解除</string>
+    <string name="add_files_content_desc">ファイルを追加</string>
+    <string name="select_all_files_content_desc">すべてのファイルを選択</string>
+    <string name="select_all_books_content_desc">すべての書籍を選択</string>
+    <string name="exit_search_content_desc">検索を終了</string>
+    <string name="delete_whole_history_content_desc">履歴をすべて削除</string>
+    <string name="move_books_content_desc">選択した書籍を移動</string>
+    <string name="delete_books_content_desc">選択した書籍を削除</string>
+    <string name="revert_content_desc">元に戻す</string>
+    <string name="selected_content_desc">選択済み</string>
+    <string name="app_icon_content_desc">アプリのアイコン</string>
+    <string name="delete_history_element_content_desc">履歴の要素を削除</string>
+    <string name="library_content_desc">あなたのライブラリ</string>
+    <string name="history_content_desc">読書履歴</string>
+    <string name="browse_content_desc">書籍を追加</string>
+    <string name="arrow_content_desc">矢印</string>
+    <string name="reset_start_content_desc">スタートガイドをリセット</string>
+    <string name="open_in_web_content_desc">ブラウザで開く</string>
+    <string name="delete_color_preset_content_desc">カラープリセットを削除</string>
+    <string name="create_color_preset_content_desc">新しいカラープリセットを作成</string>
+    <string name="shuffle_color_preset_content_desc">色をシャッフル</string>
+    <string name="drag_content_desc">ドラッグ</string>
+
+    <!-- Dialogs / Errors / Actions (missing) -->
+    <string name="remove_category">カテゴリを削除しますか?</string>
+    <string name="remove_category_description">ライブラリからこのカテゴリを削除しますが、書籍は削除されません。</string>
+    <string name="error_no_file_manager_app">フォルダを選択するアプリが見つかりません。</string>
+    <string name="error_could_not_export">生成画像を埋め込んだ書籍をエクスポートできません。</string>
+    <string name="error_field_empty">このフィールドは空にできません。</string>
+    <string name="categories_empty">カテゴリがありません。</string>
+    <string name="report">報告</string>
+    <string name="generate_image">画像を生成</string>
+    <string name="set_cover_image">書籍のカバーに設定</string>
+    <string name="create_category">カテゴリを作成</string>
+    <string name="export_with_images">エクスポート</string>
+    <string name="export_with_images_desc">生成したすべての画像を埋め込んだFB2ファイルをエクスポート</string>
+
+    <!-- Settings (missing) -->
+    <string name="library_settings">ライブラリ</string>
+    <string name="library_settings_desc">カテゴリ、表示、タブ</string>
+    <string name="tabs_settings">タブ</string>
+    <string name="categories_settings">カテゴリ</string>
+    <string name="sort_settings">並び替え</string>
+    <string name="ai_reader_settings">AIアシスタント</string>
+    <string name="library_categories_option_note">最初に、書籍はデフォルトのカテゴリに追加されますが、ここで作成した複数のカテゴリに所属させることができます。ここでカテゴリを削除しても、ライブラリから書籍は削除されません。カテゴリアイコンを長押しして移動すると、カテゴリを並び替えられます。</string>
+    <string name="library_per_category_sort_option_note">並び替えはライブラリで変更できます。</string>
+    <string name="show_navigation_labels_option">ナビゲーションラベルを表示</string>
+    <string name="show_navigation_labels_option_desc">アイコンの下にナビゲーションバーのラベルを表示</string>
+
+    <!-- Reader (missing) -->
+    <string name="ai_tab">AI</string>
+    <string name="horizontal_limiter_option">水平リミッター</string>
+    <string name="horizontal_limiter_option_desc">水平定規を表示し、フォーカスされていない画面部分を暗くする</string>
+    <string name="horizontal_limiter_height_option">高さ</string>
+    <string name="horizontal_limiter_vertical_offset_option">垂直オフセット</string>
+    <string name="horizontal_limiter_ruler_option">水平定規</string>
+    <string name="horizontal_limiter_ruler_thickness_option">定規の太さ</string>
+    <string name="horizontal_limiter_dimming_option">暗さ</string>
+    <string name="horizontal_gesture_disable_scrolling_option">スクロールを無効化</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">リーダーのスクロールを完全に無効化する</string>
+    <string name="images_captions_option">キャプション</string>
+    <string name="images_captions_option_desc">画像の下にキャプションを表示する</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">APIキー</string>
+    <string name="api_key_option_label">OpenRouter APIキー</string>
+    <string name="image_model_option">画像モデル</string>
+    <string name="image_model_option_label">OpenRouter画像モデルのスラッグ</string>
+    <string name="image_style_option">スタイルブロック</string>
+    <string name="image_style_option_label">画像プロンプト用スタイルブロック</string>
+    <string name="style_reference_option">スタイル参照</string>
+    <string name="style_reference_option_desc">書籍のイラストのコラージュをスタイル参照として添付する</string>
+    <string name="proxy_option">プロキシ</string>
+    <string name="proxy_option_desc">HTTPまたはSOCKS5プロキシ</string>
+    <string name="proxy_protocol_option">プロキシプロトコル</string>
+    <string name="proxy_host_option">プロキシホスト</string>
+    <string name="proxy_host_option_label">例: 127.0.0.1</string>
+    <string name="proxy_port_option">プロキシポート</string>
+    <string name="proxy_port_option_label">例: 1080</string>
+
+    <!-- AI assistant / summarize / routing -->
+    <string name="text_assistant_settings">AIアシスタント</string>
+    <string name="text_assistant_model_option">テキストモデル</string>
+    <string name="text_assistant_model_option_label">OpenRouterスマートテキストモデルのスラッグ</string>
+    <string name="text_assistant_preferred_latency_option">優先レイテンシ(p90、秒)</string>
+    <string name="text_assistant_preferred_latency_option_label">テキストアシスタントのp90における優先最大プロバイダーレイテンシ</string>
+    <string name="text_assistant_max_input_price_option">最大入力価格($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">テキストアシスタントのプロンプトトークンの最大価格</string>
+    <string name="summarize_model_option">要約モデル</string>
+    <string name="summarize_model_option_label">キャラクター抽出に使用するOpenRouterモデルのスラッグ</string>
+    <string name="text_assistant_max_tokens_option">最大入力トークン</string>
+    <string name="text_assistant_max_tokens_option_label">長い書籍をチャンク分割するために使用されるモデルのコンテキスト上限</string>
+    <string name="character_preferred_latency_option">優先レイテンシ(p90、秒)</string>
+    <string name="character_preferred_latency_option_label">キャラクター抽出のp90における優先最大プロバイダーレイテンシ</string>
+    <string name="character_max_input_price_option">最大入力価格($/1M)</string>
+    <string name="character_max_input_price_option_label">キャラクター抽出のプロンプトトークンの最大価格</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">キャラクター</string>
+    <string name="analyze_characters">書籍のキャラクターを分析</string>
+    <string name="characters_generating">キャラクターを抽出中…</string>
+    <string name="characters_empty">キャラクターはまだいません。書籍の内容を分析してキャラクターカタログを作成しましょう。</string>
+    <string name="characters_prompt">本書の全文を読み、画像参照はすべて無視してください。主人公と、主要かつ重要な繰り返し登場するすべてのキャラクターを特定してください。各キャラクターについて、全文から一貫した視覚的描写をまとめてください。</string>
+    <string name="characters_processing">処理中</string>
+    <string name="characters_failed">キャラクターの抽出に失敗しました</string>
+    <string name="characters_stopped_by_system">キャラクターの抽出がシステムによって停止されました。</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">画像を生成中…</string>
+    <string name="image_step_prepare">コンテキストを準備中…</string>
+    <string name="image_step_collage">スタイルコラージュを作成中…</string>
+    <string name="image_step_distill">シーンを抽出中…</string>
+    <string name="image_step_generate">イラストをレンダリング中…</string>
+    <string name="image_generation_failed">画像の生成に失敗しました</string>
+    <string name="image_stopped_by_system">画像の生成がシステムによって停止されました。</string>
+    <string name="image_already_generating">すでに画像が生成中です。</string>
+    <string name="retry">再試行</string>
+
+    <!-- Library (missing) -->
+    <string name="read_button_option">「読む」ボタンを表示</string>
+    <string name="show_progress_option">進捗を表示</string>
+    <string name="title_position_option">タイトルの位置</string>
+    <string name="show_book_count_option">書籍数を表示</string>
+    <string name="show_category_tabs_option">カテゴリタブを表示</string>
+    <string name="always_show_default_tab_option">常にデフォルトタブを表示</string>
+    <string name="per_category_sort_option">カテゴリごとの並び替え</string>
+    <string name="library_title_position_off">非表示</string>
+    <string name="library_title_position_below">下</string>
+    <string name="library_title_position_inside">内側</string>
+    <string name="library_categories_create_category_placeholder">タイトル</string>
+
+    <!-- Sort Order / Grid Size (missing) -->
+    <string name="sort_order_name">五十音順</string>
+    <string name="sort_order_file_format">ファイル形式</string>
+    <string name="sort_order_last_modified">最終更新日</string>
+    <string name="sort_order_file_size">ファイルサイズ</string>
+    <string name="sort_order_last_read">最後に読んだ日</string>
+    <string name="sort_order_progress">進捗</string>
+    <string name="sort_order_author">著者</string>
+    <string name="grid_size_option">グリッドサイズ</string>
+    <string name="grid_size_auto">自動</string>
+    <string name="grid_size_per_row">1行あたり</string>
+
+    <!-- Themes / Toasts / Crash (missing) -->
+    <string name="gray_theme">イアペトゥス</string>
+    <string name="cover_image_set">書籍のカバーが正常に設定されました。</string>
+    <string name="crash_title">おっと! アプリがクラッシュしました。</string>
+    <string name="crash_description">このクラッシュメッセージを、ご都合のよい方法で報告してください。</string>
+    <string name="default_tab">デフォルト</string>
+    <string name="ai_illustrations">AIイラスト</string>
     <string name="note_content_desc">備考</string>
 </resources>

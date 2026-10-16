@@ -1,0 +1,575 @@
+<!--
+  ~ Book's Story — free and open-source Material You eBook reader.
+  ~ Copyright (C) 2024-2026 Acclorite
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<resources>
+    <!-- Basic Strings -->
+    <string name="default_string">پیش‌فرض</string>
+
+    <!-- Screens -->
+    <string name="library_screen">کتابخانه</string>
+    <string name="history_screen">تاریخچه</string>
+    <string name="browse_screen">مرور</string>
+    <string name="settings_screen">تنظیمات</string>
+    <string name="about_screen">دربارهٔ برنامه</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">کتاب‌ها اضافه شوند؟</string>
+    <string name="delete_books">کتاب‌ها حذف شوند؟</string>
+    <string name="delete_book">کتاب حذف شود؟</string>
+    <string name="delete_history">تاریخچهٔ مطالعه حذف شود؟</string>
+    <string name="remove_category">دسته حذف شود؟</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">
+        می‌توانید انتخاب کنید کدام کتاب‌ها اضافه شوند.
+        بعداً می‌توانید عنوان و تصویر جلد کتاب را ویرایش کنید.
+        فرآیند بارگذاری ممکن است تا چند دقیقه طول بکشد.
+    </string>
+    <string name="delete_books_description">
+        همهٔ کتاب‌های انتخاب‌شده (%1$s) از پایگاه داده حذف خواهند شد.
+        کتاب‌های انتخاب‌شده از دستگاه شما حذف نمی‌شوند.
+    </string>
+    <string name="delete_book_description">
+        این کتاب از پایگاه داده حذف خواهد شد.
+        این کتاب از دستگاه شما حذف نمی‌شود.
+    </string>
+    <string name="delete_history_description">
+        کل تاریخچه از پایگاه داده حذف خواهد شد.
+        پس از حذف کل تاریخچه، ترتیب کتاب‌ها بازنشانی می‌شود.
+    </string>
+    <string name="remove_category_description">
+        این دسته از کتابخانه حذف می‌شود، اما هیچ کتابی حذف نخواهد شد.
+    </string>
+
+    <!-- Errors -->
+    <string name="error_no_description">بدون توضیحات.</string>
+    <string name="error_something_went_wrong">خطایی رخ داد.</string>
+    <string name="error_no_translator">برنامهٔ مترجمی یافت نشد.</string>
+    <string name="error_no_dictionary">برنامهٔ فرهنگ لغتی یافت نشد.</string>
+    <string name="error_no_browser">برنامهٔ مرورگری یافت نشد.</string>
+    <string name="error_no_share_app">برنامه‌ای برای اشتراک‌گذاری یافت نشد.</string>
+    <string name="error_no_file_manager_app">برنامه‌ای برای انتخاب پوشه یافت نشد.</string>
+    <string name="error_could_not_get_text">
+        فایل خالی است، وجود ندارد یا در دسترس نیست.
+        فایل را بررسی کنید، تنظیمات مرور را بررسی یا مسیر را تغییر دهید و دوباره تلاش کنید.
+    </string>
+    <string name="error_could_not_reset_cover">بازنشانی تصویر جلد ممکن نشد.</string>
+    <string name="error_closed_source">متن‌بسته</string>
+    <string name="error_could_not_export">خروجی گرفتن کتاب با تصاویر ممکن نشد.</string>
+    <string name="error_no_file">فایل وجود ندارد یا در دسترس نیست</string>
+    <string name="error_field_empty">این فیلد نباید خالی باشد.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">
+        جست‌وجو…
+    </string>
+    <string name="browse_empty">
+        مجموعه کتاب‌های کتابخانه‌تان را با دانلودهای خود گسترش دهید
+    </string>
+    <string name="library_empty">
+        کتاب‌های محبوب خود را بخوانید و آن‌ها را بین دسته‌ها مرتب کنید
+    </string>
+    <string name="history_empty">
+        اجازه دهید آخرین کتابی که خوانده‌اید، صفحات داستان تازه و شگفت‌انگیز سفر مطالعه‌تان را ورق بزند
+    </string>
+    <string name="categories_empty">دسته‌ای وجود ندارد.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s مورد انتخاب‌شده</string>
+    <string name="color_preset_query">پیش‌تنظیم %1$s</string>
+    <string name="color_preset_selected_query">«%1$s» انتخاب شد</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">لغو</string>
+    <string name="add_book">افزودن کتاب</string>
+    <string name="move">جابه‌جایی</string>
+    <string name="delete">حذف</string>
+    <string name="never">هرگز</string>
+    <string name="undo">واگرد</string>
+    <string name="copy">کپی</string>
+    <string name="report">گزارش</string>
+    <string name="translate">ترجمه</string>
+    <string name="dictionary">فرهنگ لغت</string>
+    <string name="generate_image">تولید تصویر</string>
+    <string name="set_cover_image">تنظیم به عنوان جلد کتاب</string>
+    <string name="next">بعدی</string>
+    <string name="done">تمام شد</string>
+    <string name="web_search">جست‌وجوی وب</string>
+    <string name="share">اشتراک‌گذاری</string>
+    <string name="ok">تأیید</string>
+    <string name="change_path">تغییر مسیر</string>
+    <string name="add_folder">افزودن پوشه</string>
+    <string name="edit">ویرایش</string>
+    <string name="create_category">ساخت دسته</string>
+    <string name="set_up_scanning">تنظیم اسکن</string>
+
+    <!-- Export -->
+    <string name="export_with_images">خروجی</string>
+    <string name="export_with_images_desc">خروجی گرفتن از فایل FB2 با جاسازی تمام تصاویر تولیدشده</string>
+
+    <!-- Book -->
+    <string name="unknown_author">ناشناس</string>
+    <string name="reset_cover">بازنشانی تصویر جلد</string>
+    <string name="reset_cover_desc">بازنشانی تصویر جلد کتاب به حالت پیش‌فرض</string>
+    <string name="change_cover">تغییر تصویر جلد</string>
+    <string name="change_cover_desc">انتخاب جلد جدید از تصاویر شما</string>
+    <string name="delete_cover">حذف تصویر جلد</string>
+    <string name="delete_cover_desc">حذف تصویر جلد کنونی کتاب</string>
+    <string name="author">نویسنده</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">پیش‌فرض</string>
+    <string name="general_tab">عمومی</string>
+    <string name="display_tab">نمایش</string>
+    <string name="color_tab">رنگ‌ها</string>
+    <string name="ai_tab">هوش مصنوعی</string>
+    <string name="filter_tab">فیلتر</string>
+    <string name="sort_tab">مرتب‌سازی</string>
+    <string name="reader_tab">کتاب‌خوان</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">عمومی</string>
+    <string name="general_settings_desc">زبان برنامه</string>
+    <string name="appearance_settings">ظاهر</string>
+    <string name="appearance_settings_desc">تم، رنگ‌ها</string>
+    <string name="reader_settings">کتاب‌خوان</string>
+    <string name="reader_settings_desc">قلم، متن</string>
+    <string name="browse_settings">مرور</string>
+    <string name="browse_settings_desc">اسکن، نمایش</string>
+    <string name="library_settings">کتابخانه</string>
+    <string name="library_settings_desc">دسته‌ها، نمایش، برچسب‌ها</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">قلم</string>
+    <string name="text_reader_settings">متن</string>
+    <string name="translator_reader_settings">مترجم</string>
+    <string name="padding_reader_settings">حاشیه‌ها</string>
+    <string name="misc_reader_settings">متفرقه</string>
+    <string name="reading_speed_reader_settings">سرعت مطالعه</string>
+    <string name="reading_mode_reader_settings">حالت مطالعه</string>
+    <string name="system_reader_settings">سیستم</string>
+    <string name="chapters_reader_settings">فصل‌ها</string>
+    <string name="images_reader_settings">تصاویر</string>
+    <string name="progress_reader_settings">پیشرفت</string>
+    <string name="theme_appearance_settings">تنظیمات تم</string>
+    <string name="colors_appearance_settings">رنگ‌ها</string>
+    <string name="scan_browse_settings">اسکن</string>
+    <string name="display_settings">نمایش</string>
+    <string name="tabs_settings">برچسب‌ها</string>
+    <string name="categories_settings">دسته‌ها</string>
+    <string name="filter_browse_settings">فیلتر</string>
+    <string name="sort_settings">مرتب‌سازی</string>
+    <string name="ai_reader_settings">دستیار هوش مصنوعی</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">
+        این پوشه‌ها برای اسکن و بازیابی فایل‌ها در بخش مرور استفاده می‌شوند.
+        حذف یک پوشه در اینجا فایل‌های واقعی یا کتاب‌ها را از کتابخانه حذف نمی‌کند.
+        برای لغو دسترسی، دکمهٔ مربوطه را لمس کنید.
+    </string>
+    <string name="library_categories_option_note">
+        در ابتدا، کتاب‌ها به دستهٔ پیش‌فرض اضافه می‌شوند،
+        اما می‌توانند به چند دستهٔ سفارشی که در اینجا ساخته می‌شوند تعلق داشته باشند.
+        حذف یک دسته در اینجا کتاب‌ها را از کتابخانه حذف نمی‌کند.
+        برای جابه‌جایی دسته‌ها، آیکون دسته را نگه دارید و جابه‌جا کنید.
+    </string>
+    <string name="library_per_category_sort_option_note">
+        مرتب‌سازی را می‌توان در کتابخانه تغییر داد.
+    </string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">زبان برنامه</string>
+    <string name="dark_theme_option">تم تاریک</string>
+    <string name="pure_dark_option">تاریکی خالص</string>
+    <string name="absolute_dark_option">تاریکی مطلق</string>
+    <string name="absolute_dark_option_desc">تغییر رنگ پس‌زمینه به سیاهِ کامل</string>
+    <string name="theme_contrast_option">کنتراست تم</string>
+    <string name="app_theme_option">تم برنامه</string>
+    <string name="double_press_exit_option">خروج با دو بار فشردن دکمهٔ برگشت</string>
+    <string name="double_press_exit_option_desc">برای خروج از برنامه، دکمهٔ برگشت را دو بار بزنید</string>
+    <string name="show_navigation_labels_option">نمایش برچسب‌های ناوبری</string>
+    <string name="show_navigation_labels_option_desc">نمایش برچسب‌های نوار ناوبری زیر آیکون‌ها</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">خانوادهٔ قلم</string>
+    <string name="font_thickness_option">ضخامت قلم</string>
+    <string name="font_style_option">سبک قلم</string>
+    <string name="font_size_option">اندازهٔ متن</string>
+    <string name="line_height_option">ارتفاع خط</string>
+    <string name="paragraph_height_option">فاصلهٔ پاراگراف‌ها</string>
+    <string name="paragraph_indentation_option">تورفتگی پاراگراف</string>
+    <string name="color_preset_option">پیش‌تنظیم رنگ</string>
+    <string name="background_color_option">رنگ پس‌زمینه</string>
+    <string name="font_color_option">رنگ قلم</string>
+    <string name="side_padding_option">حاشیه‌های کناری</string>
+    <string name="vertical_padding_option">حاشیه‌های عمودی</string>
+    <string name="double_click_translation_option">ترجمه با دوبار ضربه</string>
+    <string name="double_click_translation_option_desc">برای ترجمهٔ پاراگراف، دوبار روی آن بزنید</string>
+    <string name="fast_color_preset_change_option">تغییر سریع پیش‌تنظیم رنگ</string>
+    <string name="fast_color_preset_change_option_desc">برای تغییر پیش‌تنظیم رنگ، نوار بالا را به چپ یا راست بکشید</string>
+    <string name="text_alignment_option">تراز متن</string>
+    <string name="chapter_title_alignment_option">تراز عنوان فصل</string>
+    <string name="letter_spacing_option">فاصلهٔ حروف</string>
+    <string name="cutout_padding_option">حاشیهٔ بریدگی</string>
+    <string name="cutout_padding_option_desc">اعمال حاشیه در محدودهٔ بریدگی نمایشگر</string>
+    <string name="fullscreen_option">تمام‌صفحه</string>
+    <string name="fullscreen_option_desc">پنهان کردن نوارهای سیستم و حاشیه‌ها</string>
+    <string name="keep_screen_on_option">روشن نگه داشتن صفحه</string>
+    <string name="hide_bars_on_fast_scroll_option">پنهان کردن نوارها هنگام پیمایش سریع</string>
+    <string name="perception_expander_option">گسترش‌دهندهٔ ادراک</string>
+    <string name="perception_expander_option_desc">
+        افزایش سرعت مطالعه با تمرکز روی مرکز
+    </string>
+    <string name="perception_expander_padding_option">حاشیهٔ کناری خط</string>
+    <string name="perception_expander_thickness_option">ضخامت خط</string>
+    <string name="horizontal_limiter_option">محدودکنندهٔ افقی</string>
+    <string name="horizontal_limiter_option_desc">
+        نمایش خط‌کش افقی و تیره کردن بخش نامتمرکز صفحه
+    </string>
+    <string name="horizontal_limiter_height_option">ارتفاع</string>
+    <string name="horizontal_limiter_vertical_offset_option">جابه‌جایی عمودی</string>
+    <string name="horizontal_limiter_ruler_option">خط‌کش افقی</string>
+    <string name="horizontal_limiter_ruler_thickness_option">ضخامت خط‌کش</string>
+    <string name="horizontal_limiter_dimming_option">تیرگی</string>
+    <string name="screen_orientation_option">جهت‌گیری صفحه</string>
+    <string name="custom_screen_brightness_option">روشنایی سفارشی</string>
+    <string name="screen_brightness_option">روشنایی</string>
+    <string name="horizontal_gesture_option">حرکت افقی</string>
+    <string name="horizontal_gesture_scroll_option">کسر پیمایش</string>
+    <string name="horizontal_gesture_sensitivity_option">حساسیت</string>
+    <string name="horizontal_gesture_alpha_anim_option">انیمیشن نمایانی</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">
+        فعال‌سازی انیمیشن نمایانی هنگام استفاده از حرکت افقی
+    </string>
+    <string name="horizontal_gesture_pull_anim_option">انیمیشن کشیدن</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">
+        فعال‌سازی انیمیشن کشیدن صفحه هنگام استفاده از حرکت افقی
+    </string>
+    <string name="horizontal_gesture_disable_scrolling_option">غیرفعال‌سازی پیمایش</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">غیرفعال‌سازی کامل پیمایش کتاب‌خوان</string>
+    <string name="bottom_bar_padding_option">حاشیهٔ نوار پایین</string>
+    <string name="highlighted_reading_option">هایلایت کلمات</string>
+    <string name="highlighted_reading_option_desc">هایلایت کردن ابتدای هر کلمه</string>
+    <string name="highlighted_reading_thickness_option">ضخامت هایلایت</string>
+    <string name="images_option">تصاویر</string>
+    <string name="images_option_desc">نمایش تصاویر</string>
+    <string name="images_captions_option">زیرنویس‌ها</string>
+    <string name="images_captions_option_desc">نمایش زیرنویس زیر تصاویر</string>
+    <string name="images_corners_roundness_option">گردی گوشه‌ها</string>
+    <string name="images_alignment_option">تراز</string>
+    <string name="images_width_option">اندازه</string>
+    <string name="images_color_effects_option">جلوه‌های رنگی</string>
+    <string name="progress_bar_option">نوار پیشرفت</string>
+    <string name="progress_bar_option_desc">نمایش نوار پیشرفت در پایین</string>
+    <string name="progress_bar_padding_option">حاشیه‌ها</string>
+    <string name="progress_bar_alignment_option">تراز</string>
+    <string name="progress_bar_font_size_option">اندازهٔ متن</string>
+    <string name="progress_count_option">شمارش پیشرفت</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">کلید API</string>
+    <string name="api_key_option_label">کلید API OpenRouter</string>
+    <string name="image_model_option">مدل تصویر</string>
+    <string name="image_model_option_label">شناسهٔ مدل تصویر OpenRouter</string>
+    <string name="image_style_option">بلوک سبک</string>
+    <string name="image_style_option_label">بلوک سبک برای راهنمای تصویر</string>
+    <string name="style_reference_option">مرجع سبک</string>
+    <string name="style_reference_option_desc">پیوست کلاژ تصویرهای کتاب به عنوان مرجع سبک</string>
+    <string name="proxy_option">پروکسی</string>
+    <string name="proxy_option_desc">پروکسی HTTP یا SOCKS5</string>
+    <string name="proxy_protocol_option">پروتکل پروکسی</string>
+    <string name="proxy_host_option">میزبان پروکسی</string>
+    <string name="proxy_host_option_label">مثلاً 127.0.0.1</string>
+    <string name="proxy_port_option">درگاه پروکسی</string>
+    <string name="proxy_port_option_label">مثلاً 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">دستیار هوش مصنوعی</string>
+    <string name="text_assistant_model_option">مدل متنی</string>
+    <string name="text_assistant_model_option_label">شناسهٔ مدل متنی هوشمند OpenRouter</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">تأخیر ترجیحی (p90، ثانیه)</string>
+    <string name="text_assistant_preferred_latency_option_label">حداکثر تأخیر ترجیحی ارائه‌دهنده در p90 برای دستیار متنی</string>
+    <string name="text_assistant_max_input_price_option">حداکثر قیمت ورودی ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">حداکثر قیمت توکن‌های ورودی برای دستیار متنی</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">مدل خلاصه‌سازی</string>
+    <string name="summarize_model_option_label">شناسهٔ مدل OpenRouter برای استخراج شخصیت‌ها</string>
+    <string name="text_assistant_max_tokens_option">حداکثر توکن‌های ورودی</string>
+    <string name="text_assistant_max_tokens_option_label">محدودیت زمینهٔ مدل برای تقسیم کتاب‌های طولانی به بخش‌ها</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">تأخیر ترجیحی (p90، ثانیه)</string>
+    <string name="character_preferred_latency_option_label">حداکثر تأخیر ترجیحی ارائه‌دهنده در p90 برای استخراج شخصیت‌ها</string>
+    <string name="character_max_input_price_option">حداکثر قیمت ورودی ($/1M)</string>
+    <string name="character_max_input_price_option_label">حداکثر قیمت توکن‌های ورودی برای استخراج شخصیت‌ها</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">شخصیت‌ها</string>
+    <string name="analyze_characters">تحلیل شخصیت‌های کتاب</string>
+    <string name="characters_generating">در حال استخراج شخصیت‌ها…</string>
+    <string name="characters_empty">هنوز شخصیتی وجود ندارد. محتوای کتاب را تحلیل کنید تا فهرست شخصیت‌ها ساخته شود.</string>
+    <string name="characters_prompt">تمام متن کتاب را بخوانید و از هر ارجاعی به تصویر صرف‌نظر کنید. قهرمان داستان و همهٔ شخصیت‌های اصلی و مهمِ تکرارشونده را شناسایی کنید. برای هر شخصیت، یک توصیف بصری یکپارچه از کل متن بسازید.</string>
+    <string name="characters_processing">در حال پردازش</string>
+    <string name="characters_failed">استخراج شخصیت‌ها ناموفق بود</string>
+    <string name="characters_stopped_by_system">استخراج شخصیت‌ها توسط سیستم متوقف شد.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">در حال تولید تصویر…</string>
+    <string name="image_step_prepare">در حال آماده‌سازی زمینه…</string>
+    <string name="image_step_collage">در حال ساخت کلاژ سبک…</string>
+    <string name="image_step_distill">در حال استخراج صحنه…</string>
+    <string name="image_step_generate">در حال رندر تصویر…</string>
+    <string name="image_generation_failed">تولید تصویر ناموفق بود</string>
+    <string name="image_stopped_by_system">تولید تصویر توسط سیستم متوقف شد.</string>
+    <string name="image_already_generating">در حال حاضر تصویری در حال تولید است.</string>
+    <string name="retry">تلاش دوباره</string>
+
+    <!-- Library -->
+    <string name="read_button_option">نمایش دکمهٔ «خواندن»</string>
+    <string name="show_progress_option">نمایش پیشرفت</string>
+    <string name="title_position_option">جایگاه عنوان</string>
+    <string name="show_book_count_option">نمایش تعداد کتاب‌ها</string>
+    <string name="show_category_tabs_option">نمایش برچسب‌های دسته</string>
+    <string name="always_show_default_tab_option">نمایش همیشگی برچسب پیش‌فرض</string>
+    <string name="per_category_sort_option">مرتب‌سازی به تفکیک دسته</string>
+
+    <!-- Color presets -->
+    <string name="red_color">قرمز</string>
+    <string name="green_color">سبز</string>
+    <string name="blue_color">آبی</string>
+    <string name="color_preset_placeholder">نام پیش‌تنظیم…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">غیرفعال</string>
+    <string name="dark_theme_on">فعال</string>
+    <string name="dark_theme_follow_system">سیستم</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">غیرفعال</string>
+    <string name="pure_dark_on">فعال</string>
+    <string name="pure_dark_power_saver">صرفه‌جویی</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">استاندارد</string>
+    <string name="theme_contrast_medium">متوسط</string>
+    <string name="theme_contrast_high">زیاد</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">ایتالیک</string>
+    <string name="font_style_normal">معمولی</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">پنهان</string>
+    <string name="library_title_position_below">زیر جلد</string>
+    <string name="library_title_position_inside">روی جلد</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">عنوان</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">حالت نمایش</string>
+    <string name="layout_list">فهرست</string>
+    <string name="layout_grid">شبکه‌ای</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">الفبایی</string>
+    <string name="sort_order_file_format">قالب فایل</string>
+    <string name="sort_order_last_modified">آخرین تغییر</string>
+    <string name="sort_order_file_size">اندازهٔ فایل</string>
+    <string name="sort_order_last_read">آخرین مطالعه</string>
+    <string name="sort_order_progress">پیشرفت</string>
+    <string name="sort_order_author">نویسنده</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">اندازهٔ شبکه</string>
+    <string name="grid_size_auto">خودکار</string>
+    <string name="grid_size_per_row">در هر ردیف</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">ابتدا</string>
+    <string name="alignment_justify">تراز دوطرفه</string>
+    <string name="alignment_center">وسط</string>
+    <string name="alignment_end">انتها</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">آزاد</string>
+    <string name="screen_orientation_portrait">عمودی</string>
+    <string name="screen_orientation_landscape">افقی</string>
+    <string name="screen_orientation_locked_portrait">عمودی قفل‌شده</string>
+    <string name="screen_orientation_locked_landscape">افقی قفل‌شده</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">خاموش</string>
+    <string name="horizontal_gesture_on">روشن</string>
+    <string name="horizontal_gesture_inverse">روشن (معکوس)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">سطح</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">خاموش</string>
+    <string name="color_effects_grayscale">سیاه‌وسفید</string>
+    <string name="color_effects_font">رنگ قلم</string>
+    <string name="color_effects_background">رنگ پس‌زمینه</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">باریک</string>
+    <string name="font_thickness_extra_light">بسیار نازک</string>
+    <string name="font_thickness_light">نازک</string>
+    <string name="font_thickness_normal">معمولی</string>
+    <string name="font_thickness_medium">متوسط</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">درصد</string>
+    <string name="progress_count_quantity">تعداد</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">عطارد</string>
+    <string name="blue_theme">نپتون</string>
+    <string name="green_theme">زمین</string>
+    <string name="green2_theme">یو</string>
+    <string name="green_gray_theme">انسلادوس</string>
+    <string name="red_theme">مریخ</string>
+    <string name="red_gray_theme">کالیستو</string>
+    <string name="purple_theme">مشتری</string>
+    <string name="purple_gray_theme">سرس</string>
+    <string name="pink_theme">زحل</string>
+    <string name="pink2_theme">گانیمد</string>
+    <string name="lavender_theme">اریس</string>
+    <string name="marsh_theme">پلوتو</string>
+    <string name="yellow_theme">زهره</string>
+    <string name="yellow2_theme">ماکه‌ماکه</string>
+    <string name="aqua_theme">اورانوس</string>
+    <string name="gray_theme">یاپتوس</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">برای خروج دوباره دکمهٔ برگشت را بزنید</string>
+    <string name="books_added">همهٔ کتاب‌های انتخاب‌شده با موفقیت اضافه شدند.</string>
+    <string name="books_moved">همهٔ کتاب‌های انتخاب‌شده با موفقیت جابه‌جا شدند.</string>
+    <string name="books_deleted">همهٔ کتاب‌های انتخاب‌شده با موفقیت حذف شدند.</string>
+    <string name="cover_image_changed">تصویر جلد با موفقیت تغییر کرد.</string>
+    <string name="cover_image_deleted">تصویر جلد با موفقیت حذف شد.</string>
+    <string name="book_deleted">این کتاب با موفقیت حذف شد.</string>
+    <string name="book_moved">این کتاب با موفقیت جابه‌جا شد.</string>
+    <string name="copied">کپی شد</string>
+    <string name="history_deleted">تاریخچه با موفقیت حذف شد.</string>
+    <string name="cover_reset">تصویر جلد با موفقیت بازنشانی شد.</string>
+    <string name="title_changed">عنوان با موفقیت تغییر کرد.</string>
+    <string name="author_changed">نویسنده با موفقیت تغییر کرد.</string>
+    <string name="description_changed">توضیحات با موفقیت تغییر کرد.</string>
+    <string name="path_changed">مسیر فایل با موفقیت تغییر کرد.</string>
+    <string name="cover_image_set">جلد کتاب با موفقیت تنظیم شد.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">عنصر تاریخچه با موفقیت حذف شد.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">شروع</string>
+    <string name="continue_reading_query">ادامه از %1$s</string>
+    <string name="file_details">مشخصات فایل</string>
+    <string name="file_path">مسیر</string>
+    <string name="file_last_opened">آخرین باز شدن</string>
+    <string name="file_size">اندازه</string>
+    <string name="unknown">نامشخص</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">بدون فصل</string>
+    <string name="chapters">فصل‌ها</string>
+    <string name="ai_illustrations">تصویرسازی هوش مصنوعی</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">نسخهٔ برنامه</string>
+    <string name="report_bug_option">گزارش خطا</string>
+    <string name="licenses_option">مجوزهای متن‌باز</string>
+    <string name="credits_option">قدردانی</string>
+    <string name="help_translate_option">کمک در ترجمه</string>
+    <string name="support_development_option">حمایت از توسعه</string>
+    <string name="contributors_option">مشارکت‌کنندگان</string>
+
+    <!-- Credits -->
+    <string name="credits_design">طراحی</string>
+    <string name="credits_icon">آیکون‌ها</string>
+    <string name="credits_updates">مدیریت به‌روزرسانی‌های جدید</string>
+    <string name="credits_fonts">قلم‌ها</string>
+    <string name="credits_translation">ترجمه</string>
+    <string name="credits_contribution">مشارکت</string>
+    <string name="credits_ideas">ایده‌ها</string>
+
+    <!-- Start -->
+    <!-- Welcome message. %1$s is the application name. -->
+    <string name="start_welcome">به %1$s خوش آمدید!</string>
+    <string name="start_welcome_desc">
+        به دنیایی که در آن واژه‌ها شیفته می‌کنند،
+        می‌آموزند و شما را به ماجراجویی‌های شگفت‌انگیز می‌برند!
+        بیایید چند چیز را تنظیم کنیم!
+    </string>
+    <string name="start_language_preferences">تنظیمات زبان</string>
+    <string name="start_theme_preferences">تنظیمات تم</string>
+    <string name="start_scan_preferences">تنظیمات اسکن</string>
+    <string name="start_done">همه چیز انجام شد!</string>
+    <string name="start_done_desc">راه‌اندازی کامل شد.</string>
+
+    <!-- History -->
+    <string name="today">امروز</string>
+    <string name="yesterday">دیروز</string>
+
+    <!-- Crash -->
+    <string name="crash_title">اوه! برنامه دچار خطا شد.</string>
+    <string name="crash_description">لطفاً این پیام خطا را به مناسب‌ترین روش برای خود گزارش دهید.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">ادامهٔ مطالعه</string>
+    <string name="go_back_content_desc">بازگشت</string>
+    <string name="cover_image_content_desc">تصویر جلد</string>
+    <string name="open_reader_settings_content_desc">تنظیمات کتاب‌خوان</string>
+    <string name="file_icon_content_desc">فایل</string>
+    <string name="sort_order_content_desc">ترتیب مرتب‌سازی</string>
+    <string name="checkbox_content_desc">جعبه انتخاب</string>
+    <string name="cover_image_not_found_content_desc">تصویر جلد یافت نشد</string>
+    <string name="error_content_desc">خطا</string>
+    <string name="search_content_desc">جست‌وجو</string>
+    <string name="clear_selected_items_content_desc">پاک کردن موارد انتخاب‌شده</string>
+    <string name="add_files_content_desc">افزودن فایل‌ها</string>
+    <string name="select_all_files_content_desc">انتخاب همهٔ فایل‌ها</string>
+    <string name="select_all_books_content_desc">انتخاب همهٔ کتاب‌ها</string>
+    <string name="exit_search_content_desc">خروج از جست‌وجو</string>
+    <string name="delete_whole_history_content_desc">حذف کل تاریخچه</string>
+    <string name="move_books_content_desc">جابه‌جایی کتاب‌های انتخاب‌شده</string>
+    <string name="delete_books_content_desc">حذف کتاب‌های انتخاب‌شده</string>
+    <string name="revert_content_desc">بازگردانی</string>
+    <string name="selected_content_desc">انتخاب‌شده</string>
+    <string name="app_icon_content_desc">آیکون برنامه</string>
+    <string name="delete_history_element_content_desc">حذف عنصر تاریخچه</string>
+    <string name="library_content_desc">کتابخانهٔ شما</string>
+    <string name="history_content_desc">تاریخچهٔ مطالعه</string>
+    <string name="browse_content_desc">افزودن کتاب‌ها</string>
+    <string name="arrow_content_desc">پیکان</string>
+    <string name="reset_start_content_desc">بازنشانی راهنمای شروع</string>
+    <string name="open_in_web_content_desc">باز کردن در وب</string>
+    <string name="delete_color_preset_content_desc">حذف پیش‌تنظیم رنگ</string>
+    <string name="create_color_preset_content_desc">ساخت پیش‌تنظیم رنگ جدید</string>
+    <string name="shuffle_color_preset_content_desc">تصادفی کردن رنگ‌ها</string>
+    <string name="drag_content_desc">کشیدن</string>
+    <string name="filter_content_desc">فیلتر</string>
+    <string name="checkpoint_back_content_desc">نقطهٔ بازگشت به عقب</string>
+    <string name="checkpoint_forward_content_desc">نقطهٔ بازگشت به جلو</string>
+    <string name="chapters_content_desc">فصل‌ها</string>
+    <string name="more_content_desc">بیشتر</string>
+    <string name="pin_content_desc">سنجاق</string>
+    <string name="show_less_content_desc">نمایش کمتر</string>
+    <string name="show_more_content_desc">نمایش بیشتر</string>
+    <string name="edit_content_desc">ویرایش</string>
+    <string name="expand_content_desc">باز کردن</string>
+    <string name="collapse_content_desc">بستن</string>
+    <string name="remove_content_desc">حذف</string>
+    <string name="note_content_desc">یادداشت</string>
+
+</resources>

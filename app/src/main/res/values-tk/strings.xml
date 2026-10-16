@@ -4,18 +4,517 @@
   ~ Book's Story — free and open-source Material You eBook reader.
   ~ Copyright (C) 2024-2026 Acclorite
   ~ SPDX-License-Identifier: GPL-3.0-only
-  --><resources>
+  -->
+<resources>
+    <string name="default_string">Deslapky</string>
+
     <string name="library_screen">Sahnalar</string>
     <string name="history_screen">Taryh</string>
     <string name="browse_screen">Yzarla</string>
     <string name="settings_screen">Sazlamalar</string>
     <string name="about_screen">Programa Hakynda</string>
+
     <string name="add_books">Kitap Goşmaly-my?</string>
     <string name="delete_books">Kitaplar Öçürülsin-mi?</string>
     <string name="delete_book">Kitap Öçürülsin-mi?</string>
     <string name="delete_history">Okan taryhyňyz Öçürülsin-mi?</string>
     <string name="remove_category">Kategorýa aýrylsyn-mi?</string>
+
     <string name="add_books_description">Haýsy kitap okamak islaniňizy saýlap bilersiňiz. Soňundan kitabyň adyny we daşyndaky suraty üýtedip bilersiňiz. Bu bir-näçe minut alar.</string>
     <string name="delete_books_description">Bu (%1$s)saýlanan ähli kitaplar maglumat ýerinden öçürer. Siziň enjamyňyzdan öçürulmez.</string>
     <string name="delete_book_description">Bu saýlanan ähli kitaplar maglumat ýerinden öçürer. Siziň enjamyňyzdan öçürulmez.</string>
+    <string name="delete_history_description">Ol maglumat ýerinden ähli taryhy öçürer. Ähli taryh öçürilenden soň, kitaplaryň tertibi gaýtadan kesgitlenýär.</string>
+    <string name="remove_category_description">Bu kategorýa Kitaphanadan aýrylar, ýöne hiç hili kitap öçürmez.</string>
+
+    <!-- Errors -->
+    <string name="error_no_description">Düşündiriş ýok.</string>
+    <string name="error_something_went_wrong">Bir zat näs boldy.</string>
+    <string name="error_no_translator">Terjimeçi programmasysy tapylmady.</string>
+    <string name="error_no_dictionary">Sözlük programmasysy tapylmady.</string>
+    <string name="error_no_browser">Browser programmasysy tapylmady.</string>
+    <string name="error_no_share_app">Paýlaşmak üçin programma tapylmady.</string>
+    <string name="error_no_file_manager_app">Papka saýlamak üçin programma tapylmady.</string>
+    <string name="error_could_not_get_text">Faýl boş, ýok ýa-da elýeterli däl. Faýly barlaň, gözleg sazlamalaryny barlaň ýa-da ýoluny üýtgedip, gaýtadan synanyşyň.</string>
+    <string name="error_could_not_reset_cover">Daşyndaky suraty dikelip bolmady.</string>
+    <string name="error_closed_source">Ýapyk desgalama</string>
+    <string name="error_could_not_export">Suratly kitapy eksportlap bolmady.</string>
+    <string name="error_no_file">Faýl ýok ýa-da elýeterli däl</string>
+    <string name="error_field_empty">Bu meýdan boş bolmaly däl.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">Gözle…</string>
+    <string name="browse_empty">Öýüň ýüklemeleriňiz bilen Kitaphananyň kitap toplumyny giňeltiň</string>
+    <string name="library_empty">Ýakymly kitaplaryňyzy okaň we olary kategorýalara bölüň</string>
+    <string name="history_empty">Iň soňy okan kitapyňyz, okamak sähraýatyňyzyň täze ajaýyp gürrüňiniň sahypalaryny açsyn</string>
+    <string name="categories_empty">Kategorýalar ýok.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s saýlanan</string>
+    <string name="color_preset_query">Görelge %1$s</string>
+    <string name="color_preset_selected_query">«%1$s» saýlandy</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Goýber</string>
+    <string name="add_book">Kitap goş</string>
+    <string name="move">Göçür</string>
+    <string name="delete">Öçür</string>
+    <string name="never">Hiç haçan</string>
+    <string name="undo">Yza al</string>
+    <string name="copy">Kopýala</string>
+    <string name="report">Habar ber</string>
+    <string name="translate">Terjime et</string>
+    <string name="dictionary">Sözlük</string>
+    <string name="generate_image">Surat döret</string>
+    <string name="set_cover_image">Daşyndaky surat hökmünde goý</string>
+    <string name="next">Indiki</string>
+    <string name="done">Tamam</string>
+    <string name="web_search">Internetde gözle</string>
+    <string name="share">Paýlaş</string>
+    <string name="ok">OK</string>
+    <string name="change_path">Ýoly üýtget</string>
+    <string name="add_folder">Papka goş</string>
+    <string name="edit">Üýtget</string>
+    <string name="create_category">Kategorýa döret</string>
+    <string name="set_up_scanning">Gözlemegi sazlaň</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Eksport</string>
+    <string name="export_with_images_desc">Ähli döredilen suratlar goşulan FB2 faýlyny eksportlaň</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Näbelli</string>
+    <string name="reset_cover">Daşyndaky suraty dikel</string>
+    <string name="reset_cover_desc">Kitabyň daşyndaky suratyny deslapky ýagdaýyna getir</string>
+    <string name="change_cover">Daşyndaky suraty üýtget</string>
+    <string name="change_cover_desc">Suratlaryňyzyň içindeñ täzesini saýlaň</string>
+    <string name="delete_cover">Daşyndaky suraty öçür</string>
+    <string name="delete_cover_desc">Kitabyň häzirki daşyndaky suratyny öçür</string>
+    <string name="author">Awtor</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Deslapky</string>
+    <string name="general_tab">Umumy</string>
+    <string name="display_tab">Görnüş</string>
+    <string name="color_tab">Reňkler</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Süzgi</string>
+    <string name="sort_tab">Tertip</string>
+    <string name="reader_tab">Okyjy</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Umumy</string>
+    <string name="general_settings_desc">Programanyň dili</string>
+    <string name="appearance_settings">Görnüş</string>
+    <string name="appearance_settings_desc">Tema, reňkler</string>
+    <string name="reader_settings">Okyjy</string>
+    <string name="reader_settings_desc">Şrift, tekst</string>
+    <string name="browse_settings">Yzarla</string>
+    <string name="browse_settings_desc">Gözleg, görnüş</string>
+    <string name="library_settings">Kitaphana</string>
+    <string name="library_settings_desc">Kategorýalar, görnüş, tablar</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Şrift</string>
+    <string name="text_reader_settings">Tekst</string>
+    <string name="translator_reader_settings">Terjimeçi</string>
+    <string name="padding_reader_settings">Gyralar</string>
+    <string name="misc_reader_settings">Beýleki</string>
+    <string name="reading_speed_reader_settings">Okaýyş tizligi</string>
+    <string name="reading_mode_reader_settings">Okaýyş usuly</string>
+    <string name="system_reader_settings">Ulgam</string>
+    <string name="chapters_reader_settings">Baplar</string>
+    <string name="images_reader_settings">Suratlar</string>
+    <string name="progress_reader_settings">Ösüş</string>
+    <string name="theme_appearance_settings">Tema sazlamalary</string>
+    <string name="colors_appearance_settings">Reňkler</string>
+    <string name="scan_browse_settings">Gözleg</string>
+    <string name="display_settings">Görnüş</string>
+    <string name="tabs_settings">Tablar</string>
+    <string name="categories_settings">Kategorýalar</string>
+    <string name="filter_browse_settings">Süzgi</string>
+    <string name="sort_settings">Tertip</string>
+    <string name="ai_reader_settings">AI kömekçisi</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">Bu papkalar Yzarla böleminde faýllary gözlemek we almak üçin ulanylýar. Papkany bu ýerden aýyrmak enjamdaky faýllary ýa-da Kitaphanadaky kitaplary öçürmez. Rugsatyny ýatyrmak üçin degişli düwmä basyň.</string>
+    <string name="library_categories_option_note">Ilki bilen kitaplar deslapky kategorýa goşulýar, ýöne bu ýerde döredilen birnäçe kategorýa degişli bolup biler. Kategorýany bu ýerden aýyrmak Kitaphanadaky kitaplary öçürmez. Kategorýalary tertiplemek üçin kategorýa nyşanyny basyp saklap göçüriň.</string>
+    <string name="library_per_category_sort_option_note">Tertibi Kitaphanada üýtgedip bilersiňiz.</string>
+
+    <!-- Settings options: General -->
+    <string name="language_option">Programanyň dili</string>
+    <string name="dark_theme_option">Gara tema</string>
+    <string name="pure_dark_option">Doly gara</string>
+    <string name="absolute_dark_option">Absolýut gara</string>
+    <string name="absolute_dark_option_desc">Arka reňkini doly gara reňke öwür</string>
+    <string name="theme_contrast_option">Tema kontrastlygy</string>
+    <string name="app_theme_option">Programanyň temasy</string>
+    <string name="double_press_exit_option">Yza iki basyp çykmak</string>
+    <string name="double_press_exit_option_desc">Programmadan çykmak üçin Yza iki gezek basyň</string>
+    <string name="show_navigation_labels_option">Nawigasiýa ýazgylaryny görkez</string>
+    <string name="show_navigation_labels_option_desc">Nyşanlaryň aşaky ýazgylaryny görkez</string>
+
+    <!-- Settings options: Reader -->
+    <string name="font_family_option">Şrift görnüşi</string>
+    <string name="font_thickness_option">Şrift goýlygy</string>
+    <string name="font_style_option">Şrift stili</string>
+    <string name="font_size_option">Şrift ölçegi</string>
+    <string name="line_height_option">Setir beýikligi</string>
+    <string name="paragraph_height_option">Abzas aralygy</string>
+    <string name="paragraph_indentation_option">Abzas girizişi</string>
+    <string name="color_preset_option">Reňk görelgesi</string>
+    <string name="background_color_option">Arka reňki</string>
+    <string name="font_color_option">Şrift reňki</string>
+    <string name="side_padding_option">Gapdal gyralar</string>
+    <string name="vertical_padding_option">Dik gyralar</string>
+    <string name="double_click_translation_option">Iki bassynda terjime</string>
+    <string name="double_click_translation_option_desc">Terjime etmek üçin abzaşa iki basyň</string>
+    <string name="fast_color_preset_change_option">Tez reňk görelgesi üýtgemegi</string>
+    <string name="fast_color_preset_change_option_desc">Reňk görelgesini çalyşmak üçin üst taýara çep ýa-da saga süýşiň</string>
+    <string name="text_alignment_option">Tekstiň deňleşdirişi</string>
+    <string name="chapter_title_alignment_option">Bap atynyň deňleşdirişi</string>
+    <string name="letter_spacing_option">Harplaryň aralygy</string>
+    <string name="cutout_padding_option">Kesik ýeriniň gyralary</string>
+    <string name="cutout_padding_option_desc">Kesik ýeriniň daşyna gyralar goýuň</string>
+    <string name="fullscreen_option">Doly ekran</string>
+    <string name="fullscreen_option_desc">Ulgam taýralaryny we gyralaryny gizle</string>
+    <string name="keep_screen_on_option">Ekran söndürilmesin</string>
+    <string name="hide_bars_on_fast_scroll_option">Tiz süýşegünde taýarlary gizle</string>
+    <string name="perception_expander_option">Duýuş giňişdiriji</string>
+    <string name="perception_expander_option_desc">Merkeze üns jemläp okamak tizlegini ýokarlandyryň</string>
+    <string name="perception_expander_padding_option">Setiriň gapdal gyralary</string>
+    <string name="perception_expander_thickness_option">Setiriň goýlygy</string>
+    <string name="horizontal_limiter_option">Gorizontal çäkleriji</string>
+    <string name="horizontal_limiter_option_desc">Gorizontal çyzygy görkeziň we üns berilmeyän ekran bölegini garaaltyň</string>
+    <string name="horizontal_limiter_height_option">Beýiklik</string>
+    <string name="horizontal_limiter_vertical_offset_option">Dik çykyşy</string>
+    <string name="horizontal_limiter_ruler_option">Gorizontal ölçegçyzygy</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Ölçegçyzygyň goýlygy</string>
+    <string name="horizontal_limiter_dimming_option">Garaaltyş</string>
+    <string name="screen_orientation_option">Ekran ýagdaýy</string>
+    <string name="custom_screen_brightness_option">Aýratyn ýagtylyk</string>
+    <string name="screen_brightness_option">Ýagtylyk</string>
+    <string name="horizontal_gesture_option">Gorizontal hereket</string>
+    <string name="horizontal_gesture_scroll_option">Süýşme böleki</string>
+    <string name="horizontal_gesture_sensitivity_option">Duygulyk</string>
+    <string name="horizontal_gesture_alpha_anim_option">Görünüm animasiýasy</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">Gorizontal hereket ulanylanda görünüm animasiýasyny işlediň</string>
+    <string name="horizontal_gesture_pull_anim_option">Çekiş animasiýasy</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">Gorizontal hereket ulanylanda çekiş animasiýasyny işlediň</string>
+    <string name="horizontal_gesture_disable_scrolling_option">Süýşmegi öçür</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">Okyjy süýşegini doly öçüriň</string>
+    <string name="bottom_bar_padding_option">Aşaky taýanyň gyralary</string>
+    <string name="highlighted_reading_option">Sözleri yşaretle</string>
+    <string name="highlighted_reading_option_desc">Her sözüň başyny yşaretle</string>
+    <string name="highlighted_reading_thickness_option">Yşaret goýlygy</string>
+    <string name="images_option">Suratlar</string>
+    <string name="images_option_desc">Suratlary görkez</string>
+    <string name="images_captions_option">Düşündirişler</string>
+    <string name="images_captions_option_desc">Suratlaryň aşagynda düşündirişleri görkez</string>
+    <string name="images_corners_roundness_option">Burçlaryň ýumalygy</string>
+    <string name="images_alignment_option">Deňleşdiriş</string>
+    <string name="images_width_option">Ölçegi</string>
+    <string name="images_color_effects_option">Reňk täsirleri</string>
+    <string name="progress_bar_option">Ösüş taýy</string>
+    <string name="progress_bar_option_desc">Aşaky bölekde ösüş taýyny görkez</string>
+    <string name="progress_bar_padding_option">Gyralar</string>
+    <string name="progress_bar_alignment_option">Deňleşdiriş</string>
+    <string name="progress_bar_font_size_option">Şrift ölçegi</string>
+    <string name="progress_count_option">Ösüş hasaby</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API açary</string>
+    <string name="api_key_option_label">OpenRouter API açary</string>
+    <string name="image_model_option">Surat modeli</string>
+    <string name="image_model_option_label">OpenRouter surat modeli slugy</string>
+    <string name="image_style_option">Stil bölegi</string>
+    <string name="image_style_option_label">Surat promptynyň stil bölegi</string>
+    <string name="style_reference_option">Stil görkezijisi</string>
+    <string name="style_reference_option_desc">Kitabyň suratlarynyň kolajyny stil görkezijisi hökmünde goşuň</string>
+    <string name="proxy_option">Proksi</string>
+    <string name="proxy_option_desc">HTTP ýa-da SOCKS5 proksi</string>
+    <string name="proxy_protocol_option">Proksi protokoly</string>
+    <string name="proxy_host_option">Proksi hosty</string>
+    <string name="proxy_host_option_label">mysal: 127.0.0.1</string>
+    <string name="proxy_port_option">Proksi porty</string>
+    <string name="proxy_port_option_label">mysal: 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI kömekçisi</string>
+    <string name="text_assistant_model_option">Tekst modeli</string>
+    <string name="text_assistant_model_option_label">OpenRouter akylly tekst modeli slugy</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Isleglenen geçikme (p90, sek)</string>
+    <string name="text_assistant_preferred_latency_option_label">Tekst kömekçisi üçin p90-de isleglenen iň ýokary üpjüji geçikmesi</string>
+    <string name="text_assistant_max_input_price_option">Maks. girizme bahasy ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Tekst kömekçisi üçin iň ýokary prompt tokenuň bahasy</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Jemleýji model</string>
+    <string name="summarize_model_option_label">Gahryman çykarmak üçin ulanylýan OpenRouter modeli slugy</string>
+    <string name="text_assistant_max_tokens_option">Maks. girizme token</string>
+    <string name="text_assistant_max_tokens_option_label">Uzun kitaplary bölemek üçin model kontekst çägi</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Isleglenen geçikme (p90, sek)</string>
+    <string name="character_preferred_latency_option_label">Gahryman çykarmak üçin p90-de isleglenen iň ýokary üpjüji geçikmesi</string>
+    <string name="character_max_input_price_option">Maks. girizme bahasy ($/1M)</string>
+    <string name="character_max_input_price_option_label">Gahryman çykarmak üçin iň ýokary prompt tokenuň bahasy</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Gahrymanlar</string>
+    <string name="analyze_characters">Kitap gahrymanlaryny analizle</string>
+    <string name="characters_generating">Gahrymanlar çykarylýar…</string>
+    <string name="characters_empty">Entek gahrymanlar ýok. Kitap mazmunyny analizläp gahrymanlar katalogyny dörediň.</string>
+    <string name="characters_prompt">Kitabyň ähli tekstini oka, islendik surata salgylanmalaryna seretme. Baş gahrymany we ähli möhüm, yzygiderli duş gelýän gahrymanlary anykla. Her gahryman üçin ähli tekstden birmeňzeş syn beýanyny düz.</string>
+    <string name="characters_processing">Işlenýär</string>
+    <string name="characters_failed">Gahryman çykarmak başartmady</string>
+    <string name="characters_stopped_by_system">Gahryman çykarmak ulgam tarapyndan durgaldy.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Surat döredilýär…</string>
+    <string name="image_step_prepare">Konteksti taýýarlamak…</string>
+    <string name="image_step_collage">Stil kolajyny düzmek…</string>
+    <string name="image_step_distill">Senariýany süzmek…</string>
+    <string name="image_step_generate">Illýustrasiýany ýasamak…</string>
+    <string name="image_generation_failed">Surat döretmek başartmady</string>
+    <string name="image_stopped_by_system">Surat döretmek ulgam tarapyndan durgaldy.</string>
+    <string name="image_already_generating">Bir surat eýýam döredilýär.</string>
+    <string name="retry">Gaýtadan synanyş</string>
+
+    <!-- Library -->
+    <string name="read_button_option">«Oka» düwmesini görkez</string>
+    <string name="show_progress_option">Ösüşi görkez</string>
+    <string name="title_position_option">At ýerleşdirişi</string>
+    <string name="show_book_count_option">Kitap hasabyny görkez</string>
+    <string name="show_category_tabs_option">Kategorýa tablaryny görkez</string>
+    <string name="always_show_default_tab_option">Deslapky taby hemişe görkez</string>
+    <string name="per_category_sort_option">Kategorýa boýunça tertip</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Gyzyl</string>
+    <string name="green_color">Ýaşyl</string>
+    <string name="blue_color">Gök</string>
+    <string name="color_preset_placeholder">Görelge ady…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">Öçük</string>
+    <string name="dark_theme_on">Işledilýär</string>
+    <string name="dark_theme_follow_system">Ulgam</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">Öçük</string>
+    <string name="pure_dark_on">Işledilýär</string>
+    <string name="pure_dark_power_saver">Tygşytlaýjy</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Standart</string>
+    <string name="theme_contrast_medium">Orta</string>
+    <string name="theme_contrast_high">Ýokary</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Kursiw</string>
+    <string name="font_style_normal">Normal</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Gizlen</string>
+    <string name="library_title_position_below">Aşagynda</string>
+    <string name="library_title_position_inside">Üstünde</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Ady</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Görnüş usuly</string>
+    <string name="layout_list">Sanaw</string>
+    <string name="layout_grid">Tor</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Elipbeýe boýunça</string>
+    <string name="sort_order_file_format">Faýl formaty</string>
+    <string name="sort_order_last_modified">Iň soňky üýtgeşme</string>
+    <string name="sort_order_file_size">Faýl ölçegi</string>
+    <string name="sort_order_last_read">Iň soňky okalan</string>
+    <string name="sort_order_progress">Ösüş</string>
+    <string name="sort_order_author">Awtor</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">Tor ölçegi</string>
+    <string name="grid_size_auto">Awtomatik</string>
+    <string name="grid_size_per_row">hatarda</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Başy</string>
+    <string name="alignment_justify">Doldyryş</string>
+    <string name="alignment_center">Merkez</string>
+    <string name="alignment_end">Ahyry</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Erki</string>
+    <string name="screen_orientation_portrait">Dik</string>
+    <string name="screen_orientation_landscape">Gorizontal</string>
+    <string name="screen_orientation_locked_portrait">Bellanan dik</string>
+    <string name="screen_orientation_locked_landscape">Bellanan gorizontal</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">Öçük</string>
+    <string name="horizontal_gesture_on">Işledilýär</string>
+    <string name="horizontal_gesture_inverse">Işledilýär (Ters)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">dereje</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">Öçük</string>
+    <string name="color_effects_grayscale">Reňksiz</string>
+    <string name="color_effects_font">Şrift reňki</string>
+    <string name="color_effects_background">Arka reňki</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Inçe</string>
+    <string name="font_thickness_extra_light">Aýratyn ýeňil</string>
+    <string name="font_thickness_light">Ýeňil</string>
+    <string name="font_thickness_normal">Normal</string>
+    <string name="font_thickness_medium">Orta</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Prosent</string>
+    <string name="progress_count_quantity">Mukdar</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Merkuriý</string>
+    <string name="blue_theme">Neptun</string>
+    <string name="green_theme">Ýer</string>
+    <string name="green2_theme">Io</string>
+    <string name="green_gray_theme">Enselad</string>
+    <string name="red_theme">Mars</string>
+    <string name="red_gray_theme">Kallisto</string>
+    <string name="purple_theme">Ýupiter</string>
+    <string name="purple_gray_theme">Tserera</string>
+    <string name="pink_theme">Saturn</string>
+    <string name="pink2_theme">Ganimed</string>
+    <string name="lavender_theme">Erida</string>
+    <string name="marsh_theme">Pluton</string>
+    <string name="yellow_theme">Wenus</string>
+    <string name="yellow2_theme">Makemake</string>
+    <string name="aqua_theme">Uran</string>
+    <string name="gray_theme">Ýapet</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Çykmak üçin ýene bir basyň</string>
+    <string name="books_added">Saýlenen ähli kitaplar üstünlikli goşuldy.</string>
+    <string name="books_moved">Saýlanan ähli kitaplar üstünlikli göçürildi.</string>
+    <string name="books_deleted">Saýlanan ähli kitaplar üstünlikli öçürildi.</string>
+    <string name="cover_image_changed">Daşyndaky surat üstünlikli çalyşyldy.</string>
+    <string name="cover_image_deleted">Daşyndaky surat üstünlikli öçürildi.</string>
+    <string name="book_deleted">Bu kitap üstünlikli öçürildi.</string>
+    <string name="book_moved">Bu kitap üstünlikli göçürildi.</string>
+    <string name="copied">Kopýalandy</string>
+    <string name="history_deleted">Taryh üstünlikli öçürildi.</string>
+    <string name="cover_reset">Daşyndaky surat üstünlikli dikelildi.</string>
+    <string name="title_changed">At üstünlikli üýtgedildi.</string>
+    <string name="author_changed">Awtor üstünlikli üýtgedildi.</string>
+    <string name="description_changed">Düşündiriş üstünlikli üýtgedildi.</string>
+    <string name="path_changed">Faýl ýoly üstünlikli üýtgedildi.</string>
+    <string name="cover_image_set">Kitabyň daşyndaky suraty üstünlikli goýuldy.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Taryh elementi üstünlikli öçürildi.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Başla</string>
+    <string name="continue_reading_query">Dowam et: %1$s</string>
+    <string name="file_details">Faýl maglumalary</string>
+    <string name="file_path">Ýol</string>
+    <string name="file_last_opened">Iň soň açylan</string>
+    <string name="file_size">Ölçeg</string>
+    <string name="unknown">Näbelli</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Baplar ýok</string>
+    <string name="chapters">Baplar</string>
+    <string name="ai_illustrations">AI suratlary</string>
+
+    <!-- About -->
+    <string name="app_version_option">Programanyň wersiýasy</string>
+    <string name="report_bug_option">Näsazlygy habar ber</string>
+    <string name="licenses_option">Açyk desgalama rugsatlary</string>
+    <string name="credits_option">Ygtybarlar</string>
+    <string name="help_translate_option">Terjime etmäge kömek</string>
+    <string name="support_development_option">Döretmäge goldaw ber</string>
+    <string name="contributors_option">Goşundyçylar</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Dizaýn</string>
+    <string name="credits_icon">Nyşanlar</string>
+    <string name="credits_updates">Täze wersiýalary dolandyryş</string>
+    <string name="credits_fonts">Şriftler</string>
+    <string name="credits_translation">Terjime</string>
+    <string name="credits_contribution">Goşundy</string>
+    <string name="credits_ideas">Pikirler</string>
+
+    <!-- Start -->
+    <string name="start_welcome">%1$s hoş geldiňiz!</string>
+    <string name="start_welcome_desc">Sözleriň özüne çekýän, okadýan we ajaýyp sähraýatlara alyp barýan dünýäsinä! Birnäçe zatny sazlaşdyralyň!</string>
+    <string name="start_language_preferences">Dil sazlamalary</string>
+    <string name="start_theme_preferences">Tema sazlamalary</string>
+    <string name="start_scan_preferences">Gözleg sazlamalary</string>
+    <string name="start_done">Ähli zat taýýar!</string>
+    <string name="start_done_desc">Sazlama tamamlandy.</string>
+
+    <!-- History -->
+    <string name="today">Şu gün</string>
+    <string name="yesterday">Düýn</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Ai! Programma döwüldi.</string>
+    <string name="crash_description">Bu näsazlyk habaryny özüňize iň amatly usul bilen habar beriň.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">Okamagy dowam et</string>
+    <string name="go_back_content_desc">Yza git</string>
+    <string name="cover_image_content_desc">Daşyndaky surat</string>
+    <string name="open_reader_settings_content_desc">Okyjy sazlamalary</string>
+    <string name="file_icon_content_desc">Faýl</string>
+    <string name="sort_order_content_desc">Tertip</string>
+    <string name="checkbox_content_desc">Saýlaw gutusy</string>
+    <string name="cover_image_not_found_content_desc">Daşyndaky surat tapylmady</string>
+    <string name="error_content_desc">Ýalňyşlyk</string>
+    <string name="search_content_desc">Gözle</string>
+    <string name="clear_selected_items_content_desc">Saýlananlary arassala</string>
+    <string name="add_files_content_desc">Faýllar goş</string>
+    <string name="select_all_files_content_desc">Ähli faýllary saýla</string>
+    <string name="select_all_books_content_desc">Ähli kitaplary saýla</string>
+    <string name="exit_search_content_desc">Gözlemden çyk</string>
+    <string name="delete_whole_history_content_desc">Ähli taryhy öçür</string>
+    <string name="move_books_content_desc">Saýlanan kitaplary göçür</string>
+    <string name="delete_books_content_desc">Saýlanan kitaplary öçür</string>
+    <string name="revert_content_desc">Yza al</string>
+    <string name="selected_content_desc">Saýlandy</string>
+    <string name="app_icon_content_desc">Programma nyşany</string>
+    <string name="delete_history_element_content_desc">Taryh elementini öçür</string>
+    <string name="library_content_desc">Siziň kitaphanyňyz</string>
+    <string name="history_content_desc">Okamak taryhy</string>
+    <string name="browse_content_desc">Kitaplar goş</string>
+    <string name="arrow_content_desc">Ok</string>
+    <string name="reset_start_content_desc">Başlangyç gollanmany dikelt</string>
+    <string name="open_in_web_content_desc">Internetde aç</string>
+    <string name="delete_color_preset_content_desc">Reňk görelgesini öçür</string>
+    <string name="create_color_preset_content_desc">Täze reňk görelgesini döret</string>
+    <string name="shuffle_color_preset_content_desc">Reňkleri çalyşdyr</string>
+    <string name="drag_content_desc">Tart</string>
+    <string name="filter_content_desc">Süzgi</string>
+    <string name="checkpoint_back_content_desc">Bellik nokady yza</string>
+    <string name="checkpoint_forward_content_desc">Bellik nokady öňe</string>
+    <string name="chapters_content_desc">Baplar</string>
+    <string name="more_content_desc">Has köp</string>
+    <string name="pin_content_desc">Pinni</string>
+    <string name="show_less_content_desc">Gysgalt</string>
+    <string name="show_more_content_desc">Giňelt</string>
+    <string name="edit_content_desc">Üýtget</string>
+    <string name="expand_content_desc">Aç</string>
+    <string name="collapse_content_desc">Ýap</string>
+    <string name="remove_content_desc">Aýyr</string>
+    <string name="note_content_desc">Bellik</string>
+
 </resources>

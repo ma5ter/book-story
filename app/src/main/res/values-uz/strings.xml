@@ -1,0 +1,575 @@
+<!--
+  ~ Book's Story — free and open-source Material You eBook reader.
+  ~ Copyright (C) 2024-2026 Acclorite
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<resources>
+    <!-- Basic Strings -->
+    <string name="default_string">Standart</string>
+
+    <!-- Screens -->
+    <string name="library_screen">Kutubxona</string>
+    <string name="history_screen">Tarix</string>
+    <string name="browse_screen">Ko‘rish</string>
+    <string name="settings_screen">Sozlamalar</string>
+    <string name="about_screen">Ilova haqida</string>
+
+    <!-- Dialog Labels -->
+    <string name="add_books">Kitoblarni qo‘shish?</string>
+    <string name="delete_books">Kitoblarni o‘chirish?</string>
+    <string name="delete_book">Kitobni o‘chirish?</string>
+    <string name="delete_history">O‘qish tarixini o‘chirish?</string>
+    <string name="remove_category">Kategoriyani olib tashlash?</string>
+
+    <!-- Dialog Descriptions -->
+    <string name="add_books_description">
+        Qaysi kitoblarni qo‘shishni tanlashingiz mumkin.
+        Kitob sarlavhasi va muqova rasmini keyinroq tahrirlashingiz mumkin.
+        Yuklash jarayoni bir necha daqiqagacha cho‘zilishi mumkin.
+    </string>
+    <string name="delete_books_description">
+        Tanlangan barcha kitoblar (%1$s) bazadan o‘chiriladi.
+        Tanlangan kitoblar qurilmangizdan o‘chirilmaydi.
+    </string>
+    <string name="delete_book_description">
+        Bu kitob bazadan o‘chiriladi.
+        Bu kitob qurilmangizdan o‘chirilmaydi.
+    </string>
+    <string name="delete_history_description">
+        Butun tarix bazadan o‘chiriladi.
+        Butun tarix o‘chirilgandan so‘ng, kitoblar tartibi qayta o‘rnatiladi.
+    </string>
+    <string name="remove_category_description">
+        Bu kategoriyani Kutubxonadan olib tashlaydi, lekin hech qanday kitobni o‘chirmaydi.
+    </string>
+
+    <!-- Errors -->
+    <string name="error_no_description">Tavsif yo‘q.</string>
+    <string name="error_something_went_wrong">Biror narsa xato bo‘ldi.</string>
+    <string name="error_no_translator">Tarjimon ilova topilmadi.</string>
+    <string name="error_no_dictionary">Lug‘at ilovasi topilmadi.</string>
+    <string name="error_no_browser">Brauzer ilovasi topilmadi.</string>
+    <string name="error_no_share_app">Ulashish uchun ilova topilmadi.</string>
+    <string name="error_no_file_manager_app">Papka tanlash uchun ilova topilmadi.</string>
+    <string name="error_could_not_get_text">
+        Fayl bo‘sh, mavjud emas yoki foydalanib bo‘lmaydi.
+        Faylni tekshiring, skanerlash sozlamalarini ko‘rib chiqing yoki yo‘lni o‘zgartirib, qaytadan urinib ko‘ring.
+    </string>
+    <string name="error_could_not_reset_cover">Muqova rasmini tiklab bo‘lmadi.</string>
+    <string name="error_closed_source">Yopiq manba</string>
+    <string name="error_could_not_export">Rasmlar bilan kitobni eksport qilib bo‘lmadi.</string>
+    <string name="error_no_file">Fayl mavjud emas yoki foydalanib bo‘lmaydi</string>
+    <string name="error_field_empty">Bu maydon bo‘sh bo‘lmasligi kerak.</string>
+
+    <!-- Is Empty messages -->
+    <string name="search_field_empty">
+        Qidirish…
+    </string>
+    <string name="browse_empty">
+        Yuklab olinganlaringiz bilan kutubxona kitoblar kolleksiyasini kengaytiring
+    </string>
+    <string name="library_empty">
+        Sevimli kitoblaringizni o‘qing va ularni kategoriyalar orasida saralang
+    </string>
+    <string name="history_empty">
+        Oxirgi o‘qigan kitobingiz o‘qish sayohatingizning yangi ajoyib hikoyasi sahifalarini ochsin
+    </string>
+    <string name="categories_empty">Kategoriyalar yo‘q.</string>
+
+    <!-- Query strings -->
+    <string name="selected_items_count_query">%1$s tanlandi</string>
+    <string name="color_preset_query">To‘plam %1$s</string>
+    <string name="color_preset_selected_query">«%1$s» tanlandi</string>
+
+    <!-- Action Texts -->
+    <string name="cancel">Bekor qilish</string>
+    <string name="add_book">Kitob qo‘shish</string>
+    <string name="move">Ko‘chirish</string>
+    <string name="delete">O‘chirish</string>
+    <string name="never">Hech qachon</string>
+    <string name="undo">Qaytarish</string>
+    <string name="copy">Nusxalash</string>
+    <string name="report">Xabar qilish</string>
+    <string name="translate">Tarjima qilish</string>
+    <string name="dictionary">Lug‘at</string>
+    <string name="generate_image">Rasm yaratish</string>
+    <string name="set_cover_image">Kitob muqovasi sifatida o‘rnatish</string>
+    <string name="next">Keyingi</string>
+    <string name="done">Tayyor</string>
+    <string name="web_search">Veb-qidiruv</string>
+    <string name="share">Ulashish</string>
+    <string name="ok">OK</string>
+    <string name="change_path">Yo‘lni o‘zgartirish</string>
+    <string name="add_folder">Papka qo‘shish</string>
+    <string name="edit">Tahrirlash</string>
+    <string name="create_category">Kategoriya yaratish</string>
+    <string name="set_up_scanning">Skanerlashni sozlash</string>
+
+    <!-- Export -->
+    <string name="export_with_images">Eksport</string>
+    <string name="export_with_images_desc">Barcha yaratilgan rasmlar joylashtirilgan FB2 faylni eksport qilish</string>
+
+    <!-- Book -->
+    <string name="unknown_author">Noma‘lum</string>
+    <string name="reset_cover">Muqova rasmini tiklash</string>
+    <string name="reset_cover_desc">Kitob muqova rasmini standart holatga tiklash</string>
+    <string name="change_cover">Muqova rasmini o‘zgartirish</string>
+    <string name="change_cover_desc">Yangi muqovani fotosuratlaringizdan tanlang</string>
+    <string name="delete_cover">Muqova rasmini o‘chirish</string>
+    <string name="delete_cover_desc">Kitobning joriy muqova rasmini o‘chirish</string>
+    <string name="author">Muallif</string>
+
+    <!-- Tabs -->
+    <string name="default_tab">Standart</string>
+    <string name="general_tab">Umumiy</string>
+    <string name="display_tab">Ko‘rinish</string>
+    <string name="color_tab">Ranglar</string>
+    <string name="ai_tab">AI</string>
+    <string name="filter_tab">Filtr</string>
+    <string name="sort_tab">Tartiblash</string>
+    <string name="reader_tab">O‘quvchi</string>
+
+    <!-- Settings categories -->
+    <string name="general_settings">Umumiy</string>
+    <string name="general_settings_desc">Ilova tili</string>
+    <string name="appearance_settings">Ko‘rinish</string>
+    <string name="appearance_settings_desc">Mavzu, ranglar</string>
+    <string name="reader_settings">O‘quvchi</string>
+    <string name="reader_settings_desc">Shrift, matn</string>
+    <string name="browse_settings">Ko‘rish</string>
+    <string name="browse_settings_desc">Skan, ko‘rinish</string>
+    <string name="library_settings">Kutubxona</string>
+    <string name="library_settings_desc">Kategoriyalar, ko‘rinish, tablar</string>
+
+    <!-- Settings subcategories -->
+    <string name="font_reader_settings">Shrift</string>
+    <string name="text_reader_settings">Matn</string>
+    <string name="translator_reader_settings">Tarjimon</string>
+    <string name="padding_reader_settings">Hoshiyalar</string>
+    <string name="misc_reader_settings">Har xil</string>
+    <string name="reading_speed_reader_settings">O‘qish tezligi</string>
+    <string name="reading_mode_reader_settings">O‘qish rejimi</string>
+    <string name="system_reader_settings">Tizim</string>
+    <string name="chapters_reader_settings">Boblar</string>
+    <string name="images_reader_settings">Rasmlar</string>
+    <string name="progress_reader_settings">Progress</string>
+    <string name="theme_appearance_settings">Mavzu sozlamalari</string>
+    <string name="colors_appearance_settings">Ranglar</string>
+    <string name="scan_browse_settings">Skanerlash</string>
+    <string name="display_settings">Ko‘rinish</string>
+    <string name="tabs_settings">Tablar</string>
+    <string name="categories_settings">Kategoriyalar</string>
+    <string name="filter_browse_settings">Filtr</string>
+    <string name="sort_settings">Tartiblash</string>
+    <string name="ai_reader_settings">AI yordamchi</string>
+
+    <!-- Settings notes -->
+    <string name="browse_scan_option_note">
+        Bu papkalar Ko‘rishda fayllarni skanerlash va olish uchun ishlatiladi.
+        Papkani bu yerdan olib tashlash haqiqiy fayllarni yoki Kutubxonadagi kitoblarni o‘chirmaydi.
+        Ruxsatni bekor qilish uchun mos tugmani bosing.
+    </string>
+    <string name="library_categories_option_note">
+        Dastlab kitoblar standart kategoriyaga qo‘shiladi,
+        lekin bu yerda yaratilgan bir nechta maxsus kategoriyalarga ham tegishli bo‘lishi mumkin.
+        Bu yerdan kategoriyani olib tashlash kitoblarni Kutubxonadan o‘chirmaydi.
+        Kategoriyalarni qayta joylashtirish uchun kategoriya belgisini bosib turib suring.
+    </string>
+    <string name="library_per_category_sort_option_note">
+        Tartiblash Kutubxonada o‘zgartirilishi mumkin.
+    </string>
+
+    <!-- Settings options -->
+    <!-- General -->
+    <string name="language_option">Ilova tili</string>
+    <string name="dark_theme_option">Qorong‘i mavzu</string>
+    <string name="pure_dark_option">Sof qorong‘ilik</string>
+    <string name="absolute_dark_option">Mutlaq qorong‘ilik</string>
+    <string name="absolute_dark_option_desc">Fon rangini to‘liq qora qilish</string>
+    <string name="theme_contrast_option">Mavzu kontrasti</string>
+    <string name="app_theme_option">Ilova mavzusi</string>
+    <string name="double_press_exit_option">Chiqish uchun ikki marta «Orqaga»</string>
+    <string name="double_press_exit_option_desc">Ilovadan chiqish uchun ikki marta bosing</string>
+    <string name="show_navigation_labels_option">Navigatsiya yorliqlarini ko‘rsatish</string>
+    <string name="show_navigation_labels_option_desc">Belgilar ostida navigatsiya paneli yorliqlarini ko‘rsatish</string>
+
+    <!-- Reader -->
+    <string name="font_family_option">Shrift turi</string>
+    <string name="font_thickness_option">Shrift qalinligi</string>
+    <string name="font_style_option">Shrift uslubi</string>
+    <string name="font_size_option">Shrift o‘lchami</string>
+    <string name="line_height_option">Qator balandligi</string>
+    <string name="paragraph_height_option">Paragraf oralig‘i</string>
+    <string name="paragraph_indentation_option">Paragraf chekinishi</string>
+    <string name="color_preset_option">Rang to‘plami</string>
+    <string name="background_color_option">Fon rangi</string>
+    <string name="font_color_option">Shrift rangi</string>
+    <string name="side_padding_option">Yon hoshiyalar</string>
+    <string name="vertical_padding_option">Vertikal hoshiyalar</string>
+    <string name="double_click_translation_option">Ikki marta bosish bilan tarjima</string>
+    <string name="double_click_translation_option_desc">Uni tarjima qilish uchun paragrafga ikki marta bosing</string>
+    <string name="fast_color_preset_change_option">Rang to‘plamini tez o‘zgartirish</string>
+    <string name="fast_color_preset_change_option_desc">Rang to‘plamini o‘zgartirish uchun yuqori panelni chapga yoki o‘ngga suring</string>
+    <string name="text_alignment_option">Matnni tekislash</string>
+    <string name="chapter_title_alignment_option">Bob sarlavhasini tekislash</string>
+    <string name="letter_spacing_option">Harf oralig‘i</string>
+    <string name="cutout_padding_option">Cutout hoshiyasi</string>
+    <string name="cutout_padding_option_desc">Cutout hududiga hoshiya qo‘llash</string>
+    <string name="fullscreen_option">To‘liq ekran</string>
+    <string name="fullscreen_option_desc">Tizim panellarini va hoshiyalarni yashirish</string>
+    <string name="keep_screen_on_option">Ekranni yoqiq qoldirish</string>
+    <string name="hide_bars_on_fast_scroll_option">Tez aylantirishda panellarni yashirish</string>
+    <string name="perception_expander_option">Idrok kengaytirgich</string>
+    <string name="perception_expander_option_desc">
+        Markazga e‘tibor qaratish orqali o‘qish tezligini oshiring
+    </string>
+    <string name="perception_expander_padding_option">Chiziq yon hoshiyasi</string>
+    <string name="perception_expander_thickness_option">Chiziq qalinligi</string>
+    <string name="horizontal_limiter_option">Gorizontal cheklovchi</string>
+    <string name="horizontal_limiter_option_desc">
+        Gorizontal chizg‘ichni ko‘rsatish va sichqonsiz ekran qismini qoraytirish
+    </string>
+    <string name="horizontal_limiter_height_option">Balandlik</string>
+    <string name="horizontal_limiter_vertical_offset_option">Vertikal siljish</string>
+    <string name="horizontal_limiter_ruler_option">Gorizontal chizg‘ich</string>
+    <string name="horizontal_limiter_ruler_thickness_option">Chizg‘ich qalinligi</string>
+    <string name="horizontal_limiter_dimming_option">Qoraytirish</string>
+    <string name="screen_orientation_option">Ekran yo‘nalishi</string>
+    <string name="custom_screen_brightness_option">Maxsus yorqinlik</string>
+    <string name="screen_brightness_option">Yorqinlik</string>
+    <string name="horizontal_gesture_option">Gorizontal ishora</string>
+    <string name="horizontal_gesture_scroll_option">Aylantirish ulushi</string>
+    <string name="horizontal_gesture_sensitivity_option">Sezgirlik</string>
+    <string name="horizontal_gesture_alpha_anim_option">Ko‘rinish animatsiyasi</string>
+    <string name="horizontal_gesture_alpha_anim_option_desc">
+        Gorizontal ishora ishlatilganda ko‘rinish animatsiyasini yoqish
+    </string>
+    <string name="horizontal_gesture_pull_anim_option">Tortish animatsiyasi</string>
+    <string name="horizontal_gesture_pull_anim_option_desc">
+        Gorizontal ishora ishlatilganda tortish animatsiyasini yoqish
+    </string>
+    <string name="horizontal_gesture_disable_scrolling_option">Aylantirishni o‘chirish</string>
+    <string name="horizontal_gesture_disable_scrolling_option_desc">O‘quvchi aylantirishini to‘liq o‘chirish</string>
+    <string name="bottom_bar_padding_option">Pastki panel hoshiyasi</string>
+    <string name="highlighted_reading_option">So‘zlarni ajratish</string>
+    <string name="highlighted_reading_option_desc">Har bir so‘z boshini ajratib ko‘rsatish</string>
+    <string name="highlighted_reading_thickness_option">Ajratish qalinligi</string>
+    <string name="images_option">Rasmlar</string>
+    <string name="images_option_desc">Rasmlarni ko‘rsatish</string>
+    <string name="images_captions_option">Izohlar</string>
+    <string name="images_captions_option_desc">Rasmlar ostida izohlarni ko‘rsatish</string>
+    <string name="images_corners_roundness_option">Burchaklarning yumaloqligi</string>
+    <string name="images_alignment_option">Tekislash</string>
+    <string name="images_width_option">O‘lcham</string>
+    <string name="images_color_effects_option">Rang effektlari</string>
+    <string name="progress_bar_option">Progress chizig‘i</string>
+    <string name="progress_bar_option_desc">Pastda progress chizig‘ini ko‘rsatish</string>
+    <string name="progress_bar_padding_option">Hoshiyalar</string>
+    <string name="progress_bar_alignment_option">Tekislash</string>
+    <string name="progress_bar_font_size_option">Shrift o‘lchami</string>
+    <string name="progress_count_option">Progress hisobi</string>
+
+    <!-- AI illustrations -->
+    <string name="api_key_option">API kalit</string>
+    <string name="api_key_option_label">OpenRouter API kaliti</string>
+    <string name="image_model_option">Rasm modeli</string>
+    <string name="image_model_option_label">OpenRouter rasm modeli slugi</string>
+    <string name="image_style_option">Uslub bloki</string>
+    <string name="image_style_option_label">Rasm promti uchun uslub bloki</string>
+    <string name="style_reference_option">Uslub namunasi</string>
+    <string name="style_reference_option_desc">Kitob illyustratsiyalari kollajini uslub namunasi sifatida biriktirish</string>
+    <string name="proxy_option">Proksi</string>
+    <string name="proxy_option_desc">HTTP yoki SOCKS5 proksi</string>
+    <string name="proxy_protocol_option">Proksi protokoli</string>
+    <string name="proxy_host_option">Proksi xosti</string>
+    <string name="proxy_host_option_label">masalan 127.0.0.1</string>
+    <string name="proxy_port_option">Proksi porti</string>
+    <string name="proxy_port_option_label">masalan 1080</string>
+
+    <!-- AI assistant -->
+    <string name="text_assistant_settings">AI yordamchi</string>
+    <string name="text_assistant_model_option">Matn modeli</string>
+    <string name="text_assistant_model_option_label">OpenRouter aqlli matn modeli slugi</string>
+
+    <!-- AI text assistant routing -->
+    <string name="text_assistant_preferred_latency_option">Afzal ko‘rilgan kechikish (p90, sek)</string>
+    <string name="text_assistant_preferred_latency_option_label">Matn yordamchisi uchun p90 da afzal ko‘rilgan maksimal provayder kechikishi</string>
+    <string name="text_assistant_max_input_price_option">Maks. kiritish narxi ($/1M)</string>
+    <string name="text_assistant_max_input_price_option_label">Matn yordamchisi uchun maksimal promt tokeni narxi</string>
+
+    <!-- AI summarize -->
+    <string name="summarize_model_option">Xulosa modeli</string>
+    <string name="summarize_model_option_label">Qahramonlarni ajratib olish uchun ishlatiladigan OpenRouter modeli slugi</string>
+    <string name="text_assistant_max_tokens_option">Maks. kiritish tokenlari</string>
+    <string name="text_assistant_max_tokens_option_label">Uzun kitoblarni bo‘laklash uchun ishlatiladigan model kontekst chegarasi</string>
+
+    <!-- AI characters routing -->
+    <string name="character_preferred_latency_option">Afzal kechikish (p90, sek)</string>
+    <string name="character_preferred_latency_option_label">Qahramonlarni ajratib olish uchun p90 da afzal ko‘rilgan maksimal provayder kechikishi</string>
+    <string name="character_max_input_price_option">Maks. kiritish narxi ($/1M)</string>
+    <string name="character_max_input_price_option_label">Qahramonlarni ajratib olish uchun maksimal promt tokeni narxi</string>
+
+    <!-- AI characters -->
+    <string name="characters_reader_settings">Qahramonlar</string>
+    <string name="analyze_characters">Kitob qahramonlarini tahlil qilish</string>
+    <string name="characters_generating">Qahramonlar ajratib olinmoqda…</string>
+    <string name="characters_empty">Hozircha qahramonlar yo‘q. Qahramonlar katalogini yaratish uchun kitob mazmunini tahlil qiling.</string>
+    <string name="characters_prompt">Butun kitob matnini o‘qing, har qanday rasm havolalariga e‘tibor bermang. Bosh qahramonni va barcha asosiy hamda muhim takroriy qahramonlarni aniqlang. Har bir qahramon uchun butun matndan uyg‘un vizual tavsifni shakllantiring.</string>
+    <string name="characters_processing">Ishlanmoqda</string>
+    <string name="characters_failed">Qahramonlarni ajratib olish muvaffaqiyatsiz bo‘ldi</string>
+    <string name="characters_stopped_by_system">Qahramonlarni ajratib olish tizim tomonidan to‘xtatildi.</string>
+
+    <!-- AI image generation service -->
+    <string name="image_generating">Rasm yaratilmoqda…</string>
+    <string name="image_step_prepare">Kontekst tayyorlanmoqda…</string>
+    <string name="image_step_collage">Uslub kollaji yaratilmoqda…</string>
+    <string name="image_step_distill">Sahna ajratilmoqda…</string>
+    <string name="image_step_generate">Illyustratsiya yaratilmoqda…</string>
+    <string name="image_generation_failed">Rasm yaratish muvaffaqiyatsiz bo‘ldi</string>
+    <string name="image_stopped_by_system">Rasm yaratish tizim tomonidan to‘xtatildi.</string>
+    <string name="image_already_generating">Rasm allaqachon yaratilmoqda.</string>
+    <string name="retry">Qayta urinish</string>
+
+    <!-- Library -->
+    <string name="read_button_option">«O‘qish» tugmasini ko‘rsatish</string>
+    <string name="show_progress_option">Progressni ko‘rsatish</string>
+    <string name="title_position_option">Sarlavha joylashuvi</string>
+    <string name="show_book_count_option">Kitoblar sonini ko‘rsatish</string>
+    <string name="show_category_tabs_option">Kategoriya tablarini ko‘rsatish</string>
+    <string name="always_show_default_tab_option">Standart tabni har doim ko‘rsatish</string>
+    <string name="per_category_sort_option">Kategoriyaga qarab tartiblash</string>
+
+    <!-- Color presets -->
+    <string name="red_color">Qizil</string>
+    <string name="green_color">Yashil</string>
+    <string name="blue_color">Ko‘k</string>
+    <string name="color_preset_placeholder">To‘plamga nom bering…</string>
+
+    <!-- Dark Theme properties -->
+    <string name="dark_theme_off">O‘chirilgan</string>
+    <string name="dark_theme_on">Yoqilgan</string>
+    <string name="dark_theme_follow_system">Tizim</string>
+
+    <!-- Pure Dark properties -->
+    <string name="pure_dark_off">O‘chirilgan</string>
+    <string name="pure_dark_on">Yoqilgan</string>
+    <string name="pure_dark_power_saver">Tejamkor</string>
+
+    <!-- Theme Contrast properties -->
+    <string name="theme_contrast_standard">Standart</string>
+    <string name="theme_contrast_medium">O‘rta</string>
+    <string name="theme_contrast_high">Yuqori</string>
+
+    <!-- Font Style properties -->
+    <string name="font_style_italic">Kursiv</string>
+    <string name="font_style_normal">Oddiy</string>
+
+    <!-- Library Title Position properties -->
+    <string name="library_title_position_off">Yashirilgan</string>
+    <string name="library_title_position_below">Pastda</string>
+    <string name="library_title_position_inside">Ichida</string>
+
+    <!-- Library Categories properties -->
+    <string name="library_categories_create_category_placeholder">Sarlavha</string>
+
+    <!-- Layout properties -->
+    <string name="layout_option">Ko‘rinish rejimi</string>
+    <string name="layout_list">Ro‘yxat</string>
+    <string name="layout_grid">To‘r</string>
+
+    <!-- Sort Order properties -->
+    <string name="sort_order_name">Alifbo bo‘yicha</string>
+    <string name="sort_order_file_format">Fayl formati</string>
+    <string name="sort_order_last_modified">Oxirgi o‘zgartirilgan</string>
+    <string name="sort_order_file_size">Fayl hajmi</string>
+    <string name="sort_order_last_read">Oxirgi o‘qilgan</string>
+    <string name="sort_order_progress">Progress</string>
+    <string name="sort_order_author">Muallif</string>
+
+    <!-- Grid Size properties -->
+    <string name="grid_size_option">To‘r o‘lchami</string>
+    <string name="grid_size_auto">Avto</string>
+    <string name="grid_size_per_row">qatorda</string>
+
+    <!-- Alignment properties -->
+    <string name="alignment_start">Boshlanish</string>
+    <string name="alignment_justify">To‘liq tekislash</string>
+    <string name="alignment_center">Markaz</string>
+    <string name="alignment_end">Tugash</string>
+
+    <!-- Screen Orientation properties -->
+    <string name="screen_orientation_free">Erkin</string>
+    <string name="screen_orientation_portrait">Portret</string>
+    <string name="screen_orientation_landscape">Landshaft</string>
+    <string name="screen_orientation_locked_portrait">Qulflangan portret</string>
+    <string name="screen_orientation_locked_landscape">Qulflangan landshaft</string>
+
+    <!-- Horizontal Gesture properties -->
+    <string name="horizontal_gesture_off">O‘chirilgan</string>
+    <string name="horizontal_gesture_on">Yoqilgan</string>
+    <string name="horizontal_gesture_inverse">Yoqilgan (Teskari)</string>
+
+    <!-- Highlighted Reading properties -->
+    <string name="highlighted_reading_level">daraja</string>
+
+    <!-- Color Effect properties -->
+    <string name="color_effects_off">O‘chirilgan</string>
+    <string name="color_effects_grayscale">Kulrang</string>
+    <string name="color_effects_font">Shrift rangi</string>
+    <string name="color_effects_background">Fon rangi</string>
+
+    <!-- Font Thickness properties -->
+    <string name="font_thickness_thin">Ingichka</string>
+    <string name="font_thickness_extra_light">Juda yengil</string>
+    <string name="font_thickness_light">Yengil</string>
+    <string name="font_thickness_normal">Oddiy</string>
+    <string name="font_thickness_medium">O‘rtacha</string>
+
+    <!-- Progress Count properties -->
+    <string name="progress_count_percentage">Foizda</string>
+    <string name="progress_count_quantity">Miqdorda</string>
+
+    <!-- Themes -->
+    <string name="dynamic_theme">Merkuriy</string>
+    <string name="blue_theme">Neptun</string>
+    <string name="green_theme">Yer</string>
+    <string name="green2_theme">Io</string>
+    <string name="green_gray_theme">Entselad</string>
+    <string name="red_theme">Mars</string>
+    <string name="red_gray_theme">Kallisto</string>
+    <string name="purple_theme">Yupiter</string>
+    <string name="purple_gray_theme">Tserera</string>
+    <string name="pink_theme">Saturn</string>
+    <string name="pink2_theme">Ganimed</string>
+    <string name="lavender_theme">Erida</string>
+    <string name="marsh_theme">Pluton</string>
+    <string name="yellow_theme">Venera</string>
+    <string name="yellow2_theme">Makemake</string>
+    <string name="aqua_theme">Uran</string>
+    <string name="gray_theme">Yapet</string>
+
+    <!-- Toast messages -->
+    <string name="press_again_toast">Chiqish uchun yana bir marta bosing</string>
+    <string name="books_added">Tanlangan barcha kitoblar muvaffaqiyatli qo‘shildi.</string>
+    <string name="books_moved">Tanlangan barcha kitoblar muvaffaqiyatli ko‘chirildi.</string>
+    <string name="books_deleted">Tanlangan barcha kitoblar muvaffaqiyatli o‘chirildi.</string>
+    <string name="cover_image_changed">Muqova rasmi muvaffaqiyatli o‘zgartirildi.</string>
+    <string name="cover_image_deleted">Muqova rasmi muvaffaqiyatli o‘chirildi.</string>
+    <string name="book_deleted">Bu kitob muvaffaqiyatli o‘chirildi.</string>
+    <string name="book_moved">Bu kitob muvaffaqiyatli ko‘chirildi.</string>
+    <string name="copied">Nusxalandi</string>
+    <string name="history_deleted">Tarix muvaffaqiyatli o‘chirildi.</string>
+    <string name="cover_reset">Muqova rasmi muvaffaqiyatli tiklandi.</string>
+    <string name="title_changed">Sarlavha muvaffaqiyatli o‘zgartirildi.</string>
+    <string name="author_changed">Muallif muvaffaqiyatli o‘zgartirildi.</string>
+    <string name="description_changed">Tavsif muvaffaqiyatli o‘zgartirildi.</string>
+    <string name="path_changed">Fayl yo‘li muvaffaqiyatli o‘zgartirildi.</string>
+    <string name="cover_image_set">Kitob muqovasi muvaffaqiyatli o‘rnatildi.</string>
+
+    <!-- Snackbar messages -->
+    <string name="history_element_deleted">Tarix elementi muvaffaqiyatli o‘chirildi.</string>
+
+    <!-- BookInfo -->
+    <string name="start_reading">Boshlash</string>
+    <string name="continue_reading_query">%1$s dan davom etish</string>
+    <string name="file_details">Fayl ma‘lumotlari</string>
+    <string name="file_path">Yo‘l</string>
+    <string name="file_last_opened">Oxirgi ochilgan</string>
+    <string name="file_size">Hajm</string>
+    <string name="unknown">Noma‘lum</string>
+
+    <!-- Reader -->
+    <string name="no_chapters">Boblar yo‘q</string>
+    <string name="chapters">Boblar</string>
+    <string name="ai_illustrations">AI illyustratsiyalari</string>
+
+    <!-- About -->
+    <!-- Options -->
+    <string name="app_version_option">Ilova versiyasi</string>
+    <string name="report_bug_option">Xato haqida xabar berish</string>
+    <string name="licenses_option">Ochiq manba litsenziyalari</string>
+    <string name="credits_option">E‘tiroflar</string>
+    <string name="help_translate_option">Tarjimaga yordam bering</string>
+    <string name="support_development_option">Rivojlanishni qo‘llab-quvvatlash</string>
+    <string name="contributors_option">Hissa qo‘shuvchilar</string>
+
+    <!-- Credits -->
+    <string name="credits_design">Dizayn</string>
+    <string name="credits_icon">Belgilar</string>
+    <string name="credits_updates">Yangi yangilanishlarni boshqarish</string>
+    <string name="credits_fonts">Shriftlar</string>
+    <string name="credits_translation">Tarjima</string>
+    <string name="credits_contribution">Hissa</string>
+    <string name="credits_ideas">G‘oyalar</string>
+
+    <!-- Start -->
+    <!-- Welcome message. %1$s is the application name. -->
+    <string name="start_welcome">%1$s ilovasiga xush kelibsiz!</string>
+    <string name="start_welcome_desc">
+        So‘zlar jozibador bo‘lib, o‘rgatadigan va
+        ajoyib sarguzashtlarga yetaklaydigan dunyo!
+        Keling, ba‘zi narsalarni sozlaymiz!
+    </string>
+    <string name="start_language_preferences">Til sozlamalari</string>
+    <string name="start_theme_preferences">Mavzu sozlamalari</string>
+    <string name="start_scan_preferences">Skanerlash sozlamalari</string>
+    <string name="start_done">Hammasi tayyor!</string>
+    <string name="start_done_desc">Sozlash yakunlandi.</string>
+
+    <!-- History -->
+    <string name="today">Bugun</string>
+    <string name="yesterday">Kecha</string>
+
+    <!-- Crash -->
+    <string name="crash_title">Ops! Ilova ishdan chiqdi.</string>
+    <string name="crash_description">Iltimos, bu xato xabarini sizga qulay bo‘lgan usulda xabar qiling.</string>
+
+    <!-- Content description -->
+    <string name="continue_reading_content_desc">O‘qishni davom ettirish</string>
+    <string name="go_back_content_desc">Orqaga</string>
+    <string name="cover_image_content_desc">Muqova rasmi</string>
+    <string name="open_reader_settings_content_desc">O‘quvchi sozlamalari</string>
+    <string name="file_icon_content_desc">Fayl</string>
+    <string name="sort_order_content_desc">Tartiblash tartibi</string>
+    <string name="checkbox_content_desc">Belgilash katakchasi</string>
+    <string name="cover_image_not_found_content_desc">Muqova rasmi topilmadi</string>
+    <string name="error_content_desc">Xato</string>
+    <string name="search_content_desc">Qidirish</string>
+    <string name="clear_selected_items_content_desc">Tanlangan elementlarni tozalash</string>
+    <string name="add_files_content_desc">Fayllarni qo‘shish</string>
+    <string name="select_all_files_content_desc">Barcha fayllarni tanlash</string>
+    <string name="select_all_books_content_desc">Barcha kitoblarni tanlash</string>
+    <string name="exit_search_content_desc">Qidiruvdan chiqish</string>
+    <string name="delete_whole_history_content_desc">Butun tarixni o‘chirish</string>
+    <string name="move_books_content_desc">Tanlangan kitoblarni ko‘chirish</string>
+    <string name="delete_books_content_desc">Tanlangan kitoblarni o‘chirish</string>
+    <string name="revert_content_desc">Qaytarish</string>
+    <string name="selected_content_desc">Tanlangan</string>
+    <string name="app_icon_content_desc">Ilova belgisi</string>
+    <string name="delete_history_element_content_desc">Tarix elementini o‘chirish</string>
+    <string name="library_content_desc">Sizning kutubxonangiz</string>
+    <string name="history_content_desc">O‘qish tarixi</string>
+    <string name="browse_content_desc">Kitob qo‘shish</string>
+    <string name="arrow_content_desc">O‘q</string>
+    <string name="reset_start_content_desc">Boshlash qo‘llanmasini tiklash</string>
+    <string name="open_in_web_content_desc">Vebda ochish</string>
+    <string name="delete_color_preset_content_desc">Rang to‘plamini o‘chirish</string>
+    <string name="create_color_preset_content_desc">Yangi rang to‘plami yaratish</string>
+    <string name="shuffle_color_preset_content_desc">Ranglarni aralashtirish</string>
+    <string name="drag_content_desc">Sudrash</string>
+    <string name="filter_content_desc">Filtr</string>
+    <string name="checkpoint_back_content_desc">Kontrol nuqta orqaga</string>
+    <string name="checkpoint_forward_content_desc">Kontrol nuqta oldinga</string>
+    <string name="chapters_content_desc">Boblar</string>
+    <string name="more_content_desc">Yana</string>
+    <string name="pin_content_desc">Mahkamlash</string>
+    <string name="show_less_content_desc">Kamroq ko‘rsatish</string>
+    <string name="show_more_content_desc">Ko‘proq ko‘rsatish</string>
+    <string name="edit_content_desc">Tahrirlash</string>
+    <string name="expand_content_desc">Yoyish</string>
+    <string name="collapse_content_desc">Burish</string>
+    <string name="remove_content_desc">Olib tashlash</string>
+    <string name="note_content_desc">Eslatma</string>
+
+</resources>
