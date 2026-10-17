@@ -12,6 +12,8 @@ import android.graphics.Paint
 import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.sqrt
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.withClip
 
 /**
  * Renders a collage of the given images into a single bitmap.
@@ -49,7 +51,7 @@ object CollageRenderer {
         val cellWidth = width / cols
         val cellHeight = height / rows
 
-        val collage = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val collage = createBitmap(width, height)
         val canvas = Canvas(collage)
         // Filtered drawing, so scaled-down images are smooth.
         val paint = Paint().apply { isFilterBitmap = true }
@@ -87,23 +89,21 @@ object CollageRenderer {
         cellWidth: Int,
         cellHeight: Int
     ) {
-        canvas.save()
-        canvas.clipRect(left, top, left + cellWidth, top + cellHeight)
+        canvas.withClip(left, top, left + cellWidth, top + cellHeight) {
+            // Uniform scale so the bitmap covers the whole cell.
+            val scale = max(
+                cellWidth / bitmap.width.toFloat(),
+                cellHeight / bitmap.height.toFloat()
+            )
+            // Center the scaled bitmap inside the cell; the overflow is
+            // clipped away, which is the center-crop part.
+            translate(
+                left + (cellWidth - bitmap.width * scale) / 2f,
+                top + (cellHeight - bitmap.height * scale) / 2f
+            )
+            scale(scale, scale)
+            drawBitmap(bitmap, 0f, 0f, paint)
 
-        // Uniform scale so the bitmap covers the whole cell.
-        val scale = max(
-            cellWidth / bitmap.width.toFloat(),
-            cellHeight / bitmap.height.toFloat()
-        )
-        // Center the scaled bitmap inside the cell; the overflow is
-        // clipped away, which is the center-crop part.
-        canvas.translate(
-            left + (cellWidth - bitmap.width * scale) / 2f,
-            top + (cellHeight - bitmap.height * scale) / 2f
-        )
-        canvas.scale(scale, scale)
-        canvas.drawBitmap(bitmap, 0f, 0f, paint)
-
-        canvas.restore()
+        }
     }
 }

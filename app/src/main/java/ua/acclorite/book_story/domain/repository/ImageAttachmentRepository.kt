@@ -70,4 +70,15 @@ interface ImageAttachmentRepository {
      * Removes the attachment row together with its saved image file.
      */
     suspend fun deleteImageAttachment(attachmentId: Int): Result<Unit>
+
+    /**
+     * Resolves the characters of the book's catalog involved in the
+     * [sceneDescription], matching the CHARACTER values of the prompt's
+     * identity blocks against the persisted catalog (the
+     * illustration-character binding logic).
+     */
+    suspend fun getInvolvedCharacterIds(
+        bookId: Int,
+        sceneDescription: String
+    ): Result<List<Int>>
 }

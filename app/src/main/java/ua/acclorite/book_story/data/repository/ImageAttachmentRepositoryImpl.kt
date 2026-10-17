@@ -15,6 +15,7 @@ import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.core.CoverImage
 import ua.acclorite.book_story.data.local.dto.BookAttachmentCharacterEntity
 import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
+import ua.acclorite.book_story.data.local.dto.BookCharacterEntity
 import ua.acclorite.book_story.data.local.room.BookDatabase
 import ua.acclorite.book_story.R
 import su.mya.openrouter.OpenRouterClient
@@ -153,7 +154,7 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                 "<STYLE_BLOCK\n$styleBlock\n>\n\n$sceneDescription"
             }
             if (inputReferences.isNotEmpty()) {
-                prompt += "\n\nUse attached image for style reference only"
+                prompt += "\n\nUse attached image for style and characters appearance reference only"
             }
 
             val bitmap = openRouterClient.generateImage(
@@ -225,21 +226,28 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getInvolvedCharacterIds(
+        bookId: Int,
+        sceneDescription: String
+    ): Result<List<Int>> = runCatching {
+        withContext(Dispatchers.IO) {
+            matchCharacters(bookId, sceneDescription).map { it.id }
+        }
+    }
+
     private suspend fun getAttachment(attachmentId: Int): ImageAttachment? {
         return database.bookAttachmentDao.findAttachmentById(attachmentId)?.toImageAttachment()
     }
 
     /**
-     * Extracts the CHARACTER values of the identity blocks from the
-     * [sceneDescription] produced by the text model and matches them
-     * against the persisted characters catalog of the book, so the
-     * illustration is linked to the characters it includes.
+     * Matches the CHARACTER values of the identity blocks from the
+     * [sceneDescription] produced by the text model against the persisted
+     * characters catalog of the book.
      */
-    private suspend fun matchSceneCharacters(
-        attachmentId: Int,
+    private suspend fun matchCharacters(
         bookId: Int,
         sceneDescription: String
-    ): List<BookAttachmentCharacterEntity> {
+    ): List<BookCharacterEntity> {
         val names = IDENTITY_CHARACTER_REGEX.findAll(sceneDescription)
             .map { it.groupValues[1].trim(' ', '\t', '*', '`', '"', '\'') }
             .filter { it.isNotBlank() }
@@ -250,12 +258,24 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
             .filter { character ->
                 names.any { it.equals(character.name, ignoreCase = true) }
             }
-            .map {
-                BookAttachmentCharacterEntity(
-                    attachmentId = attachmentId,
-                    characterId = it.id
-                )
-            }
+    }
+
+    /**
+     * Binds the characters matched in the [sceneDescription] to the
+     * attachment, so the illustration is linked to the characters it
+     * includes.
+     */
+    private suspend fun matchSceneCharacters(
+        attachmentId: Int,
+        bookId: Int,
+        sceneDescription: String
+    ): List<BookAttachmentCharacterEntity> {
+        return matchCharacters(bookId, sceneDescription).map {
+            BookAttachmentCharacterEntity(
+                attachmentId = attachmentId,
+                characterId = it.id
+            )
+        }
     }
 
     /**
@@ -290,7 +310,7 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
 
         /** Header marking the characters catalog as an addendum to the system prompt. */
         private const val CHARACTERS_ADDENDUM_HEADER =
-            "Characters of this book, for visual consistency across illustrations, **do not include unrelated to the selected fragment into image generation**:"
+            "--- **Characters catalog** ---"
 
         /**
          * Matches the CHARACTER field of the identity blocks in the scene

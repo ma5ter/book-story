@@ -37,7 +37,7 @@ import javax.inject.Inject
 /**
  * Foreground service running the AI image generation step by step.
  * Shows a persistent progress notification with the current step
- * ("Preparing context…", "Building style collage…", "Distilling scene…",
+ * ("Preparing context…", "Distilling scene…", "Building style collage…",
  * "Rendering illustration…").
  * On a failed step the notification shows the error together with a Retry
  * action, which restarts the service from the failed step; intermediate
@@ -195,20 +195,26 @@ class ImageGenerationService : Service() {
                             .prepare(currentAttachmentId, currentSelectedText)
                             .getOrThrow()
 
-                    ImageGenerationStep.COLLAGE ->
-                        // Optional style reference, skipped entirely when disabled
-                        // in settings; null when the book has no illustrations yet,
-                        // the pipeline continues without it.
-                        if (settingsManager.imageGenerationStyleReferenceEnabled.lastValue) {
-                            styleReferencePath = generateStyleCollageUseCase(currentBookId).getOrNull()
-                        }
-
                     ImageGenerationStep.DISTILL ->
                         sceneDescription = generateImageForAttachmentUseCase
                             .distill(requireNotNull(preparedInput)) {
                                 onDownloadProgress(step)
                             }
                             .getOrThrow()
+
+                    ImageGenerationStep.COLLAGE ->
+                        // Optional style reference, skipped entirely when disabled
+                        // in settings; built after the scene is distilled, so the
+                        // involved characters are resolved from its identity blocks;
+                        // null when the book has no illustrations yet, the pipeline
+                        // continues without it.
+                        if (settingsManager.imageGenerationStyleReferenceEnabled.lastValue) {
+                            styleReferencePath = generateStyleCollageUseCase(
+                                bookId = currentBookId,
+                                attachmentId = currentAttachmentId,
+                                sceneDescription = requireNotNull(sceneDescription)
+                            ).getOrNull()
+                        }
 
                     ImageGenerationStep.GENERATE -> {
                         val (attachment, bitmap) = generateImageForAttachmentUseCase

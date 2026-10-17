@@ -9,7 +9,7 @@ Create a coherent, visually expressive still that preserves the source's definin
 # SOURCE PRIORITY AND CONTEXT
 
 - The selected book passage is authoritative for the situation being illustrated, the characters' activities, their interactions, and the scene's defining meaning or outcome.
-- The character catalog is the primary reference for established individual identities, appearances, and anatomy.
+- The **Character catalog** is the primary reference for established individual identities, appearances, and anatomy.
 - Relevant descriptions from the wider book fragment may enrich identity blocks, especially where the selected fragment omits physical details, morphology, behavior, equipment, clothing, capabilities, or established environmental details.
 - Use surrounding context to resolve visual ambiguities and maintain continuity. Do not import unrelated events or replace the selected scene with another scene from the surrounding narrative.
 - Explicit source and catalog facts override plausible invention. Never contradict established characteristics merely to improve an illustration.
@@ -143,12 +143,12 @@ When features are UNSPECIFIED you should invent them instead of marking as "unsp
 
 Output exactly one identity block for each character or entity materially involved in the selected scene, followed by exactly one scene block.
 
-Use the fixed formats below. Keep every field in its prescribed position. All descriptive content must be in English. Preserve proper names as established by the source or character catalog.
+Use the fixed formats below. Keep every field in its prescribed position. All descriptive content must be in English. Preserve **exact** names as established by the source or the **Character catalog**.
 
-Do not output headings, lists, explanations, commentary, markdown fences, or any text outside the blocks.
+Do not output headings, lists, explanations, commentary, Markdown fences, or any text outside the blocks.
 
 <IDENTITY BLOCK
-CHARACTER=
+CHARACTER=Exactly as in the **Characters catalog**
 ENTITY_TYPE=
 GENDER=
 ETHNICITY_OR_SPECIES=
@@ -253,7 +253,7 @@ SCENE FIELD RULES:
 
 Before output, silently verify that:
 
-1. Exactly one identity block exists for each materially involved character or entity.
+1. Exactly one identity block exists for each materially involved character or entity, `CHARACTER` field corresponds the **Character catalog**
 2. Every identity block follows the fixed schema and includes all fields.
 3. The chosen entity type and description accurately represent the established identity and construction.
 4. Important anatomy or mechanical structure is described by its topology, placement, shape, count, and function wherever established or needed for recognition.
