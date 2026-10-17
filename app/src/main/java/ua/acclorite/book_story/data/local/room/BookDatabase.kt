@@ -17,6 +17,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
 import ua.acclorite.book_story.data.local.dto.BookCharacterEntity
+import ua.acclorite.book_story.data.local.dto.BookAttachmentCharacterEntity
 import ua.acclorite.book_story.data.local.dto.BookEntity
 import ua.acclorite.book_story.data.local.dto.CategoryEntity
 import ua.acclorite.book_story.data.local.dto.ColorPresetEntity
@@ -30,9 +31,10 @@ import java.io.File
         ColorPresetEntity::class,
         CategoryEntity::class,
         BookAttachmentEntity::class,
-        BookCharacterEntity::class
+        BookCharacterEntity::class,
+        BookAttachmentCharacterEntity::class
     ],
-    version = 18,
+    version = 19,
     autoMigrations = [
         AutoMigration(1, 2),
         AutoMigration(2, 3),
@@ -59,6 +61,7 @@ abstract class BookDatabase : RoomDatabase() {
     abstract val categoryDao: CategoryDao
     abstract val bookAttachmentDao: BookAttachmentDao
     abstract val bookCharacterDao: BookCharacterDao
+    abstract val bookAttachmentCharacterDao: BookAttachmentCharacterDao
 }
 
 @Suppress("ClassName")
@@ -292,6 +295,30 @@ object DatabaseHelper {
                 """
                     CREATE INDEX IF NOT EXISTS `index_BookCharacterEntity_bookId` 
                     ON `BookCharacterEntity` (bookId)
+                """
+            )
+        }
+    }
+
+    val MANUAL_MIGRATION_18_19 = object : Migration(18, 19) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                """
+                    CREATE TABLE IF NOT EXISTS `BookAttachmentCharacterEntity` (
+                        attachmentId INTEGER NOT NULL,
+                        characterId INTEGER NOT NULL,
+                        PRIMARY KEY(attachmentId, characterId),
+                        FOREIGN KEY(attachmentId) REFERENCES BookAttachmentEntity(id) 
+                            ON UPDATE NO ACTION ON DELETE CASCADE, 
+                        FOREIGN KEY(characterId) REFERENCES BookCharacterEntity(id) 
+                            ON UPDATE NO ACTION ON DELETE CASCADE 
+                    )
+                """
+            )
+            db.execSQL(
+                """
+                    CREATE INDEX IF NOT EXISTS `index_BookAttachmentCharacterEntity_characterId` 
+                    ON `BookAttachmentCharacterEntity` (characterId)
                 """
             )
         }

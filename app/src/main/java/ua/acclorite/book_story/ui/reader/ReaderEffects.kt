@@ -7,6 +7,9 @@
 package ua.acclorite.book_story.ui.reader
 
 import android.app.SearchManager
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -200,6 +203,28 @@ fun ReaderEffects(
                     )
 
                     activity.getString(R.string.error_no_share_app)
+                        .showToast(context = activity, longToast = false)
+                }
+
+                is ReaderEffect.OnCopyImage -> {
+                    val uri = FileProvider.getUriForFile(
+                        activity,
+                        "${activity.packageName}.file_provider",
+                        effect.file
+                    )
+                    val clipData = ClipData.newUri(
+                        activity.contentResolver,
+                        activity.getString(R.string.app_name),
+                        uri
+                    )
+                    // Explicit grant, so receiving apps can read the provider URI.
+                    clipData.getItemAt(0).intent
+                        ?.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+                    val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE)
+                        as ClipboardManager
+                    clipboard.setPrimaryClip(clipData)
+                    activity.getString(R.string.image_copied)
                         .showToast(context = activity, longToast = false)
                 }
 

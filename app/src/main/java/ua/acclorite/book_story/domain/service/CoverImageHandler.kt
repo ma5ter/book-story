@@ -20,6 +20,17 @@ interface CoverImageHandler {
      * previous reference of the book.
      */
     suspend fun saveStyleCollage(bookId: Int, coverImage: CoverImage): Result<File>
+    /**
+     * Saves the already adjusted square [coverImage] as the cached portrait
+     * of the character with [characterId], overwriting the previous portrait.
+     */
+    suspend fun saveCharacterImage(characterId: Int, coverImage: CoverImage): Result<File>
+
+    /**
+     * Returns the cached portrait file of the character,
+     * or null when no picture was loaded yet.
+     */
+    fun getCharacterImageFile(characterId: Int): File?
     suspend fun deleteCover(coverImage: Uri): Result<Unit>
     suspend fun compressCover(coverImage: CoverImage): Result<CoverImage>
 }

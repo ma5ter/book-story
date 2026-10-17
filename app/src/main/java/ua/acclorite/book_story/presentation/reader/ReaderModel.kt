@@ -6,7 +6,9 @@
 
 package ua.acclorite.book_story.presentation.reader
 
+import android.content.ClipboardManager
 import android.content.Context
+import android.net.Uri
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.graphics.asImageBitmap
@@ -32,6 +34,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.R
+import ua.acclorite.book_story.core.CoverImage
 import ua.acclorite.book_story.core.helpers.coerceAndPreventNaN
 import ua.acclorite.book_story.core.ui.UIText
 import ua.acclorite.book_story.data.service.CharacterExtractionManager
@@ -50,6 +53,8 @@ import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentImag
 import ua.acclorite.book_story.domain.use_case.attachment.GetImageAttachmentsUseCase
 import ua.acclorite.book_story.domain.use_case.character.GetCharactersUseCase
 import ua.acclorite.book_story.domain.use_case.character.UpdateCharacterUseCase
+import ua.acclorite.book_story.domain.use_case.character.GetCharacterImageUseCase
+import ua.acclorite.book_story.domain.use_case.character.SaveCharacterImageUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetBookUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetChapterProgressUseCase
 import ua.acclorite.book_story.domain.use_case.book.GetTextUseCase
@@ -77,6 +82,8 @@ class ReaderModel @Inject constructor(
     private val getImageAttachmentImageUseCase: GetImageAttachmentImageUseCase,
     private val getCharactersUseCase: GetCharactersUseCase,
     private val updateCharacterUseCase: UpdateCharacterUseCase,
+    private val saveCharacterImageUseCase: SaveCharacterImageUseCase,
+    private val getCharacterImageUseCase: GetCharacterImageUseCase,
     private val characterExtractionManager: CharacterExtractionManager,
     private val imageGenerationManager: ImageGenerationManager,
     private val settingsManager: SettingsManager,
@@ -134,7 +141,10 @@ class ReaderModel @Inject constructor(
                                 ),
                                 text = text,
                                 imageAttachments = imageAttachments,
-                                characters = characters
+                                characters = characters,
+                                characterImages = characters.mapNotNull { character ->
+                                    getCharacterImageUseCase(character.id)?.let { character.id to it }
+                                }.toMap()
                             )
                         }
                         ensureActive()
@@ -516,15 +526,78 @@ class ReaderModel @Inject constructor(
                     }
                 }
 
-                is ReaderEvent.OnShareImage -> {
-                    val file = _state.value.imageAttachments
-                        .find { it.id == event.attachmentId }
-                        ?.filePath?.takeIf { it.isNotBlank() }
-                        ?.let(::File)
-                        ?.takeIf { it.exists() }
+                is ReaderEvent.OnLoadCharacterImage -> {
+                    withContext(Dispatchers.Default) {
+                        val character = _state.value.characters.find { it.id == event.characterId }
+                        if (character == null) return@withContext
 
-                    if (file != null) {
+                        _state.update {
+                            it.copy(
+                                portraitCrop = CharacterPortraitCrop(
+                                    character = character,
+                                    image = event.image
+                                )
+                            )
+                        }
+                    }
+                }
+
+                is ReaderEvent.OnPasteCharacterImage -> {
+                    withContext(Dispatchers.Default) {
+                        val clipboard = context.getSystemService(
+                            Context.CLIPBOARD_SERVICE
+                        ) as ClipboardManager
+                        val image = clipboard.primaryClip
+                            ?.takeIf { it.itemCount > 0 }
+                            ?.getItemAt(0)
+                            ?.uri
+
+                        if (image == null) {
+                            _effects.emit(
+                                ReaderEffect.OnShowToast(
+                                    message = context.getString(R.string.no_image_clipboard)
+                                )
+                            )
+                        } else {
+                            val character = _state.value.characters.find { it.id == event.characterId }
+                            if (character != null) {
+                                _state.update {
+                                    it.copy(
+                                        portraitCrop = CharacterPortraitCrop(
+                                            character = character,
+                                            image = image
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
+                is ReaderEvent.OnAcceptCharacterPortrait -> {
+                    withContext(Dispatchers.Default) {
+                        _state.update {
+                            it.copy(portraitCrop = null)
+                        }
+                        saveCharacterImage(event.characterId, event.image)
+                    }
+                }
+
+                is ReaderEvent.OnCancelCharacterPortrait -> {
+                    _state.update {
+                        it.copy(portraitCrop = null)
+                    }
+                }
+
+                is ReaderEvent.OnShareImage -> {
+                    findAttachmentFile(event.attachmentId)?.let { file ->
                         _effects.emit(ReaderEffect.OnShareImage(file))
+                    }
+                }
+
+                is ReaderEvent.OnCopyImage -> {
+                    findAttachmentFile(event.attachmentId)?.let { file ->
+                        _effects.emit(ReaderEffect.OnCopyImage(file))
                     }
                 }
 
@@ -697,7 +770,12 @@ class ReaderModel @Inject constructor(
                 when (result) {
                     is CharacterExtractionResult.Success -> {
                         _state.update {
-                            it.copy(characters = result.characters)
+                            it.copy(
+                                characters = result.characters,
+                                characterImages = result.characters.mapNotNull { character ->
+                                    getCharacterImageUseCase(character.id)?.let { character.id to it }
+                                }.toMap()
+                            )
                         }
                         _effects.emit(
                             ReaderEffect.OnShowToast(
@@ -787,6 +865,34 @@ class ReaderModel @Inject constructor(
     }
 
     /**
+     * Saves the adjusted [coverImage] as the portrait of the character
+     * with [characterId] and refreshes the cached portrait.
+     */
+    private suspend fun saveCharacterImage(characterId: Int, coverImage: CoverImage) {
+        saveCharacterImageUseCase(characterId, coverImage).fold(
+            onSuccess = { file ->
+                _state.update { state ->
+                    state.copy(
+                        characterImages = state.characterImages + (characterId to file)
+                    )
+                }
+                _effects.emit(
+                    ReaderEffect.OnShowToast(
+                        message = context.getString(R.string.character_image_saved)
+                    )
+                )
+            },
+            onFailure = {
+                _effects.emit(
+                    ReaderEffect.OnShowToast(
+                        message = it.message ?: "Couldn't load the character picture."
+                    )
+                )
+            }
+        )
+    }
+
+    /**
      * Converts an index of the displayed reader text (with injected images)
      * into an index of the underlying parsed text (without injected images).
      */
@@ -803,6 +909,18 @@ class ReaderModel @Inject constructor(
             baseIndex--
         }
         return baseIndex.coerceAtLeast(0)
+    }
+
+    /**
+     * Returns the saved image file of a completed attachment, or null
+     * when the attachment does not exist or its file is missing.
+     */
+    private fun findAttachmentFile(attachmentId: Int): File? {
+        return _state.value.imageAttachments
+            .find { it.id == attachmentId }
+            ?.filePath?.takeIf { it.isNotBlank() }
+            ?.let(::File)
+            ?.takeIf { it.exists() }
     }
 
     /**

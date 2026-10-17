@@ -44,6 +44,10 @@ sealed class ReaderEffect {
         val file: File
     ) : ReaderEffect()
 
+    data class OnCopyImage(
+        val file: File
+    ) : ReaderEffect()
+
     data object OnNavigateBack : ReaderEffect()
 
     data class OnNavigateToBookInfo(

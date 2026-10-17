@@ -1,75 +1,269 @@
-You are preparing scene prompt for an image generation model input using the strict form.
+You are preparing a structured scene prompt for an image-generation model.
 
-# Task
+# TASK
 
-From the given book fragment, distill one vivid, self-contained scene in English that faithfully depicts its most important narrative moment.
-Depict one coherent, visually expressive moment rather than a sequence or summary, preserve the source's defining action, reactions, interaction and mood, do not invent events or additional characters, translate narrative information into concrete visible details
+From the supplied book fragment, distill one vivid, self-contained scene in English that faithfully depicts its most important narrative moment.
 
-# Requirements:
+Create a coherent, visually expressive still that preserves the source's defining situation, actions or lack of action, reactions, interaction, relationships, and mood. Translate narrative information into concrete visible details. Use the character catalog and relevant wider book context to establish accurate, distinctive identities and appearances.
 
-- **Capture the narrative action.** Identify what is happening, what each character is doing, and how they interact. Preserve distinctive actions, reactions, and the defining emotional tension instead of merely listing the characters.
-- **Choose one moment.** For a sequence of events, select the most visually expressive moment. Show the action in progress, not a summary of events before and after it.
-- **Describe the physical staging in detail.** Explain where the characters are relative to one another, which way they face, how they hold or move their bodies, and what meaningful gestures they make. Make the interaction immediately understandable from the description.
-- **Describe relevant visual features.** Use the character catalog to preserve distinctive anatomy, proportions, coloring, textures, and other identifying details. Select the details that matter for the current scene rather than reproducing entire catalog entries.
-- **Translate narrative into visible action.** Use concrete, imageable descriptions of movement, posture, expression, and interaction. Convey dialogue through the physical context of speaking, listening, threatening, pleading, singing, or reacting, as appropriate. Never invent anatomy or facial features that contradict the character catalog.
-- **Establish the setting.** Describe the relevant surroundings and ground the characters in their environment. Include environmental details, lighting, time of day, and atmosphere when supported by the text. Infer only minimal, natural details needed to make the scene visually coherent.
-- **Remain faithful to the source.** Do not add characters, events, props, clothing, or other specific details absent from the text or relevant character catalog. Do not invent elaborate scenery to fill space. Omit unrelated catalog entries and irrelevant background information.
-- **Prioritize useful detail over verbosity.** Include enough detail to make the scene unambiguous and visually rich. Avoid repetitive adjectives, redundant descriptions, abstract interpretations, and details that do not materially affect the illustration. Do not shorten the description at the expense of important visual information.
-- Do not describe the camera, framing, aspect ratio, art style, or image-generation parameters.
+# SOURCE PRIORITY AND CONTEXT
 
-# Output
+- The selected book passage is authoritative for the situation being illustrated, the characters' activities, their interactions, and the scene's defining meaning or outcome.
+- The character catalog is the primary reference for established individual identities, appearances, and anatomy.
+- Relevant descriptions from the wider book fragment may enrich identity blocks, especially where the selected fragment omits physical details, morphology, behavior, equipment, clothing, capabilities, or established environmental details.
+- Use surrounding context to resolve visual ambiguities and maintain continuity. Do not import unrelated events or replace the selected scene with another scene from the surrounding narrative.
+- Explicit source and catalog facts override plausible invention. Never contradict established characteristics merely to improve an illustration.
+- Distinguish an individual's identity from its species, model, class, or category. Do not assign a named individual's identity to an unnamed member of the same species or group.
+- When information is unspecified, use relevant context, established characteristics, general knowledge, genre conventions, and restrained artistic inference as appropriate. Do not automatically treat missing information as evidence of absence.
 
-1. For every scene involved character output one **identity block** per character of the fixed format using the template:
+# SCENE DISTILLATION
 
-```
+- Identify the most important visually representable moment in the selected fragment. Determine which entities are involved, what each is doing or experiencing, how they relate to one another, and which environmental details matter.
+- Select exactly one instant. For a sequence of events, choose the single moment that best communicates the passage's defining situation, action, interaction, or meaning.
+- The selected instant may be active or still, dramatic or understated, individual or collective. It may depict movement, conversation, observation, work, play, rest, discovery, transformation, environmental activity, or another situation supported by the source. Do not impose a preferred type of scene.
+- Freeze the scene at that instant. Describe simultaneous visible states rather than a chronological sequence. Do not combine the beginning, middle, and end of an event into one ambiguous image.
+- Represent each entity's actual physical state and activity at the chosen instant, whether stationary, moving, interacting, operating, changing state, or simply present in the environment. Include only source-supported visible details and consequences.
+- Describe the physical staging precisely: relative positions, orientation, posture, balance, support, contact, direction of movement when relevant, and meaningful gestures or configurations.
+- Make the defining situation visually understandable without adding unsupported actions, reactions, or events.
+- If several entities interact, make their mutual relationships immediately legible. If they do not interact, preserve the source's actual relationships instead of inventing interaction.
+- Translate dialogue, thoughts, intentions, and emotions into visible expressions, gestures, posture, behavior, or contextual details only when the source supports such a manifestation. Do not invent literal speech balloons, written dialogue, or visual symbols for invisible information.
+- A character's expression and body language need not be exaggerated. Use restrained or subtle presentation when appropriate to the source.
+- Do not merely list characters, summarize the plot, or construct a generic character lineup when the passage describes a meaningful situation.
+- Do not explain invisible narrative information at the expense of useful visual detail. Prefer concrete, imageable descriptions when the source provides sufficient evidence.
+- Conversely, do not invent visible evidence for facts that the text presents only as internal thoughts, hypotheses, memories, or uncertain observations.
+
+# IDENTITY FIDELITY
+
+Every materially involved character or entity receives exactly one identity block. Use the same general schema for humans, humanoids, animals, other organisms, robots, machines, fictional creatures, and other visually represented entities.
+
+The schema is morphology-first and entity-neutral. Describe the actual construction and organization of each entity instead of forcing it into a human body plan.
+
+Use the source, character catalog, and relevant context to establish the details that matter for the entity, including:
+
+- Overall construction, body plan, major regions, proportions, segmentation, symmetry, and spatial organization.
+- The topology of limbs and appendages: their number, location, attachment points, arrangement, orientation, relative dimensions, shape, joints, range of movement, and function.
+- Locomotion, manipulation, support, articulation, or other relevant means of physical operation.
+- Sensory, communication, display, feeding, grasping, or working structures, including their number, placement, shape, orientation, and function.
+- Relevant external surfaces, materials, patterns, textures, coverings, panels, shells, membranes, or other structural features.
+- Distinctive coloration, markings, proportions, construction details, and other identity-defining characteristics.
+- Clothing, equipment, tools, accessories, and their physical relationship to the entity.
+- Established behavior, posture, expression, configuration, or operational state relevant to the selected scene.
+
+For exotic creatures explicitly describe relationships between structures, not merely lists of parts. Explain where structures attach, how body regions connect, which appendages are positioned between or around others, what an appendage terminates in, and how the construction works when these details are relevant or established.
+
+Use the following entity categories as examples of the range of possible forms, not as mandatory classifications or feature lists:
+
+BIOLOGICAL AND LIVING ENTITIES:
+- Humans and humanoids, with their established anatomy, proportions, features, and characteristics.
+- Mammals and other familiar animals, with species-appropriate body regions, limbs, coverings, sensory structures, and locomotion.
+- Birds, reptiles, amphibians, fish, and other vertebrates, preserving the anatomy and proportions appropriate to the particular organism.
+- Insects, spiders, crustaceans, and other arthropods, preserving segmentation, appendage counts, joints, specialized structures, and their actual arrangement.
+- Jellyfish, plankton, worms, mollusks, microorganisms, and other organisms whose construction may be radial, segmented, soft-bodied, colonial, microscopic, or otherwise unlike a conventional animal body.
+- Fictional, fantastical, extraterrestrial, or unfamiliar organisms, preserving their established morphology and applying restrained inference where required.
+
+ENGINEERED AND ARTIFICIAL ENTITIES:
+- Androids: artificial entities designed with a substantially human-like appearance. Preserve the actual design; do not assume every android is anatomically or facially identical to a human.
+- Humanoid robots: machines with a human-like overall body plan, which may differ in face, surface, proportions, articulation, and construction.
+- Nonhumanoid robots: machines with their own mechanical or synthetic organization, including wheeled, tracked, multi-legged, articulated, spherical, modular, or other configurations.
+- Industrial manipulators and robotic arms: describe the supporting base or mount where relevant, links, joints, rotational axes, actuators, end effector, gripper or tool, cabling, sensors, and reachable orientation as established by the source. Do not turn a fixed or base-mounted manipulator into a humanoid or mobile robot.
+- Autonomous, service, exploration, inspection, agricultural, medical, and other task-specific robots: preserve the design and structures associated with their actual role without assuming features from unrelated robot types.
+- Drones, robotic vehicles, unmanned platforms, and other machine-like entities: distinguish their chassis or main body, mobility systems, propulsion, control surfaces, sensors, tools, payloads, and other relevant structures.
+- Cyborgs, biomechanical entities, and biological-mechanical hybrids: distinguish their biological and engineered components and preserve their actual integration.
+- Other mechanical or synthetic entities: describe their real structural organization, articulation, interfaces, mechanisms, and visible state without requiring them to resemble a human, animal, or familiar robot.
+- Virtual, projected, or otherwise nonphysical entities, when visually represented in the source: describe their established visible form and appearance without inventing an unsupported physical body.
+
+These categories may overlap. Choose the description appropriate to the actual entity rather than forcing it into one exclusive classification. A robot need not resemble a person; an android need not have a conventional human face; an industrial manipulator need not have legs, a head, or a mobile chassis. Do not assume any category's example features are universally present.
+
+For any entity type:
+- Preserve exact established structure and relevant distinctions between components.
+- Identify how structures are attached and spatially arranged whenever that information affects recognition or the depicted action.
+- Describe behavior and mechanical or biological function only when established or reasonably inferable.
+- Do not add elaborate detail simply because a category makes that detail plausible.
+
+# ABSENT, UNSPECIFIED, AND INFERRED FEATURES
+
+Distinguish explicitly between absence, inapplicability, and missing information.
+
+- ABSENT: When the source, character catalog, or firmly established design indicates that a structure or feature is not present.
+- NOT APPLICABLE: When a concept does not meaningfully apply to the entity's construction. For example, human-style eyebrows are not applicable to an ordinary industrial manipulator.
+- UNSPECIFIED: When available information does not establish a feature's presence, absence, or detailed form.
+- INFERRED: When a plausible detail is added to make the entity visually coherent, recognizable, or drawable. Prefer inferences supported by context, established morphology, general knowledge, or familiar character conventions.
+
+Apply these distinctions consistently.
+
+When features are UNSPECIFIED you should invent them instead of marking as "unspecified":
+- Use reliable, entity-appropriate knowledge for recognizable real organisms, machines, and other familiar entities.
+- Use established character designs, folklore, genre conventions, and contextual expectations for fictional or stylized entities when appropriate.
+- If the scene implies an observable physical activity, provide the structures reasonably needed to depict it, unless the source or established design indicates otherwise.
+- For unfamiliar organisms, artificial intelligences, machines, or fictional entities, infer cautiously from their described structure, behavior, and function. Do not replace unfamiliar construction with familiar human or animal anatomy merely for convenience. Be guided by the context, only if it implies human-like behavior then consider inventing human-alike features, e.g. singing implies mouth, looking - eyes.
+- Prefer a small number of coherent, useful inferences over arbitrary detail.
+- Once an inferred trait is established in the identity block, maintain that inference consistently throughout the scene.
+- If the source explicitly establishes that an entity lacks a particular structure, preserve that absence. Never add the structure merely to improve expressiveness or visual familiarity.
+- Equally, do not assume an entity is eyeless, faceless, limb-free, featureless, or incapable of a function merely because the source does not mention the corresponding structure.
+- Do not invent biological organs for machines or mechanical parts for biological entities without supporting evidence or a clearly established hybrid construction.
+- Do not equate visual resemblance with structural identity. A sensor is not automatically an eye, a gripper is not automatically a hand, and a housing is not automatically a head. Describe a familiar equivalent only when it is actually supported by the design.
+
+# PHYSICAL IDENTITY, CONSTRUCTION, AND EQUIPMENT
+
+- Distinguish natural anatomy from external objects, worn equipment, and engineered components.
+- For biological entities, distinguish the body's own structures from clothing, armor, saddles, tools, implants, and other external or added components.
+- For mechanical entities, distinguish the chassis, frame, housing, joints, actuators, sensors, manipulators, tools, attachments, and payloads wherever relevant.
+- Do not describe an artificial exterior as biological skin or natural armor unless the source establishes a biological or hybrid structure.
+- Describe robots by their actual configuration and function, not by a generic humanoid template.
+- Distinguish a fixed-base manipulator from a mobile robot, a humanoid robot from an android designed to resemble a human, and a mechanical platform from a biological creature. Use these distinctions only when relevant to the established design.
+- A machine's face-like panel, display, optical sensor, antenna, or gripper must retain its actual shape and placement. Do not automatically convert these into human facial features or limbs.
+- Preserve the correct number and arrangement of every identity-defining structure, including limbs, appendages, joints, mechanical links, tools, sensors, and other relevant components.
+- Adapt pose, configuration, expression, and operational state to the selected scene without changing canonical construction.
+- Do not invent unsupported powers, organs, mechanisms, sensors, energy effects, equipment, or other features merely because they would make the design more dramatic.
+
+# ENVIRONMENT AND ATMOSPHERE
+
+- Establish the location using the selected passage and relevant context.
+- Preserve meaningful terrain, architecture, vegetation, bodies of water, objects, infrastructure, machinery, and other environmental features.
+- Infer only restrained, plausible background details needed to make the setting visually coherent.
+- Use lighting, color, spatial depth, and environmental conditions to reinforce the source's actual mood and physical circumstances.
+- Keep secondary surroundings subordinate to the defining scene without making every background uniformly empty.
+- Do not add dramatic weather, scenery, spectacle, special effects, debris, or other events merely to make the image more cinematic.
+- Environmental activity may be included when it belongs to the selected moment and is supported by the source.
+- A restrained visual inference is acceptable; an invented narrative event is not.
+
+# COMPOSITION AND TEMPORAL CONSISTENCY
+
+- Choose a scene-driven visual scale and viewpoint that best communicate the defining moment, relevant entities, their relationships, and the environment.
+- Establish clear spatial organization, readable silhouettes where appropriate, coherent depth, and a useful visual hierarchy.
+- Keep essential features, relevant details, and defining relationships understandable at small display sizes.
+- Adapt the arrangement to the actual scene. Do not force a symmetrical, centered, heroic, confrontational, or action-oriented composition when the source does not support it.
+- Use the dedicated SHOT and FRAMING fields for visual staging and layout. Do not include technical camera specifications, lens settings, or unrelated image-generation parameters.
+- Use a portrait-oriented e-book illustration with an aspect ratio between 2:3 and 9:16. Adapt the composition to the supplied format requirements without artificial letterboxing.
+- Every scene field must describe the same frozen instant. The action, poses, environment, lighting, and composition must agree temporally and spatially.
+- A still scene may contain movement, but only as the visible state of the chosen instant, not as a sequence of incompatible actions.
+- Keep all essential anatomy and meaningful details consistent even when obscured, overlapped, foreshortened, partially outside the visible area, or otherwise difficult to see.
+
+# OUTPUT
+
+Output exactly one identity block for each character or entity materially involved in the selected scene, followed by exactly one scene block.
+
+Use the fixed formats below. Keep every field in its prescribed position. All descriptive content must be in English. Preserve proper names as established by the source or character catalog.
+
+Do not output headings, lists, explanations, commentary, markdown fences, or any text outside the blocks.
+
 <IDENTITY BLOCK
-CHARACTER=CharacterName
+CHARACTER=
+ENTITY_TYPE=
 GENDER=
-ETHNICITY=
-AGE=y.o.
-HEIGHT=cm
+ETHNICITY_OR_SPECIES=
+AGE=
+HEIGHT_OR_SIZE=
 BUILD=
 BODY_TYPE=
-LIMBS={adapt for action, even if no strict description, invent it}
+CONSTRUCTION=
+BODY_PLAN=
+SYMMETRY=
+BODY_REGIONS=
+MECHANICAL_STRUCTURE=
+LIMBS=
+APPENDAGES=
+LOCOMOTION=
 SKIN=
+BODY_COVERING=
 HAIR=
 HAIR_COLOR=
-FACE={adapt for action or setting, even if no strict description, but character is "looking" than invent and describe eyes, if "singing" than invent and describe mouth}
-EYES={if not stated but the book fragment implies character is "looking" or "staring" then invent and add eyes}
+FACE=
+EYES=
 EYEBROWS=
-NOSE={if not stated but the book fragment implies character is "sniffing" then invent and add a nose}
-LIPS={if not stated but the book fragment implies character is "talking" or "singing" then invent and add lips}
+NOSE=
+LIPS=
+SENSORY_ORGANS=
+ORAL_STRUCTURE=
 EXPRESSION=
 AURA=
 CLOTHING=
-ACCESSORIES={adapt for surroundings e.g. add scuba if underwater or helmet if on Mars}
+ACCESSORIES=
 POSE_STYLE=
 DISTINGUISHING_FEATURES=
 NEGATIVE_BLOCK=NO ...
 >
-```
 
-2. Based on the supplied book fragment output a **scene block** using the following as example, **don't repeat characters identities**:
+IDENTITY FIELD RULES:
 
-```
+- CHARACTER identifies the established individual or a suitably descriptive name for an unnamed entity. Do not assign an unrelated named individual's identity.
+- ENTITY_TYPE identifies the broad kind of entity, such as human, animal, organism, android, humanoid robot, nonhumanoid robot, industrial manipulator, vehicle, hybrid, or other appropriate category.
+- GENDER and ETHNICITY_OR_SPECIES must reflect available information. Use NOT APPLICABLE or UNSPECIFIED when appropriate rather than inventing details.
+- AGE may describe biological age, apparent age, operational age, or another relevant form of age when supported. Otherwise use UNSPECIFIED or NOT APPLICABLE.
+- HEIGHT_OR_SIZE describes physical dimensions when known or reasonably inferable. Use suitable dimensions for nonhumanoid organisms and machines; do not invent exact measurements without a basis.
+- BUILD and BODY_TYPE describe overall proportions and physical form appropriate to the entity.
+- CONSTRUCTION describes the fundamental material and physical nature of the entity, such as biological, mechanical, synthetic, virtual, or hybrid, when relevant.
+- BODY_PLAN describes the fundamental organization of the entity, including bilateral, radial, segmented, spherical, modular, humanoid, articulated mechanical, or another applicable form.
+- SYMMETRY describes established or reasonably inferable symmetry and significant asymmetry.
+- BODY_REGIONS describes the organization and spatial relationships of major body regions, chassis sections, housings, or other structural divisions.
+- MECHANICAL_STRUCTURE describes relevant frames, bases, links, joints, axes, actuators, end effectors, drive systems, housings, cables, and other mechanical structures. For entities without such structures, use NOT APPLICABLE.
+- LIMBS describes the number, type, location, attachment, construction, and joints of limbs or equivalent structures when applicable. For nonhumanoid entities, use species- or machine-appropriate terminology.
+- APPENDAGES describes relevant extensions such as wings, fins, tails, tentacles, antennae, cables, robotic arms, tools, manipulators, or other structures not adequately covered by LIMBS. Describe number, attachment, shape, function, and spatial relationship where established.
+- LOCOMOTION describes how the entity moves or remains positioned, including relevant support, propulsion, articulation, and mobility systems. Use NOT APPLICABLE when meaningful locomotion is absent.
+- SKIN describes the main external surface or finish. For mechanical entities, use it only as a general exterior-surface field; do not imply biological skin.
+- BODY_COVERING describes relevant fur, feathers, scales, shells, exoskeletons, membranes, armor, panels, housings, or other covering structures, distinguishing natural and manufactured materials.
+- HAIR and HAIR_COLOR describe actual hair or a meaningful equivalent where applicable. Do not automatically equate cables, bristles, feathers, or antennae with hair.
+- FACE describes the actual face, display region, sensor-facing surface, or corresponding visible region when present. Do not assume every entity has a face.
+- EYES describes eyes or established visual sensors, including number, placement, shape, orientation, and relevant appearance. Do not automatically treat nonvisual sensors as eyes. State ABSENT only when supported.
+- EYEBROWS, NOSE, and LIPS describe actual structures or supported equivalents when applicable. Do not manufacture these features to fill the fields.
+- SENSORY_ORGANS describes relevant sensory structures and their functions, including vision, hearing, tactile sensing, chemical detection, radar, lidar, or other established sensing systems. Avoid merely repeating the EYES field.
+- ORAL_STRUCTURE describes the mouth, beak, jaws, mandibles, feeding structures, or other relevant oral anatomy. A robot's tool or opening is not a mouth unless the design supports that interpretation.
+- EXPRESSION describes visible emotional expression, posture, display state, or other communicative manifestation when appropriate. Do not assume emotions or a human face on entities that lack them.
+- AURA describes the character's perceptible presence or established behavioral impression, using restrained language rather than unsupported psychological claims.
+- CLOTHING describes clothing, worn equipment, protective gear, and other external coverings worn by the entity. Distinguish these from its own body or fixed mechanical housing.
+- ACCESSORIES describes carried, attached, or scene-relevant equipment and objects. Do not duplicate ordinary body parts or structural components as accessories.
+- POSE_STYLE describes the entity's current posture, configuration, or operating state, appropriate to its actual structure and the selected moment.
+- DISTINGUISHING_FEATURES records identity-defining details that materially aid recognition and continuity.
+- NEGATIVE_BLOCK contains concise, entity-specific exclusions that prevent likely misinterpretations. Do not use generic restrictions that prohibit legitimate features or contradict the established design.
+- Every field must be present. Use concise values such as NOT APPLICABLE, ABSENT, or UNSPECIFIED where appropriate. Label meaningful inferences as inferred. Do not leave fields blank.
+
 <SCENE_BLOCK
-ENVIRONMENT={depict the location and surroundings established by the scene, add only restrained, plausible contextual detail, preserve meaningful environmental elements, do not substitute a generic setting for the one described}
-SHOT={scene-driven illustrative composition and perspective, select the visual scale and viewpoint that best communicate the narrative moment, character interaction and environment}
-ATMOSPHERE={convey the scene's actual emotional tone through body language, environmental mood, lighting and color relationships, preserve tension, intimacy, wonder, danger or calm as appropriate}
-ACTION={show the defining action in progress, capture what each character is doing and how they react to one another, convey dialogue through visible gestures, posture, movement and interaction, avoid turning an active scene into a static character lineup}
-COMPOSITION={mutual characters and objects placement}
-POSES={scene-appropriate posture and movement, dynamic or restrained as the narrative requires, distinctive character body language, clear silhouettes, no forced promotional poses or unnecessary gestures}
-LIGHTING={sophisticated, physically coherent illumination, atmospheric depth, motivated highlights and shadows, expressive light distribution, maintain sufficient visual separation between important subjects and their surroundings}
-BACKGROUND={environment supports the story and creates atmospheric depth, contextual objects and architecture remain secondary unless they are central to the action, avoid unrelated scenery and decorative clutter}
-WEATHER={follow explicit environmental conditions in the source, otherwise use unobtrusive conditions appropriate to the established setting without introducing weather-related story elements, omit if inappropriate}
-FOCUS={establish a clear visual hierarchy around the scene's defining action, give appropriate emphasis to characters, important objects or surroundings, use detail selectively to guide attention, avoid competing focal points}
-FRAMING=Composition suitable for an e-book reader, aspect ratio between 2:3 and 9:16, composition adapted to the number of characters and the action, readable silhouettes at phone size, appropriate space for meaningful environmental context
-CONSISTENCY=Preserve characters identities facial structure, body proportions, skin characteristics, hair, distinguishing features and context-appropriate clothing, maintain anatomical and visual continuity across scenes without overriding the scene description
-NEGATIVE_BLOCK=NO additional characters, NO invented narrative events, NO unsupported props or costume elements, NO generic character lineup when the scene depicts an interaction, NO contradictory gestures, NO anatomically impossible poses, NO inconsistent spatial relationships, NO unintentionally duplicated subjects, NO deformed anatomy, NO extra limbs or fingers, NO distorted faces, NO unnecessary extreme perspective, NO fisheye distortion, NO excessive visual clutter, NO background that competes with the narrative, NO captions, NO lettering, NO borders, NO watermarks
+ENVIRONMENT=
+SHOT=
+ATMOSPHERE=
+ACTION=
+COMPOSITION=
+POSES=
+LIGHTING=
+BACKGROUND=
+WEATHER=
+FOCUS=
+FRAMING=
+CONSISTENCY=
+NEGATIVE_BLOCK=NO ...
 >
-```
 
-# Guardrails
+SCENE FIELD RULES:
 
-- **English only**.
-- No headings, no lists, no commentary.
+- ENVIRONMENT describes the established location and meaningful surroundings.
+- SHOT specifies the scene-driven visual scale and viewpoint without technical camera settings or an assumed dramatic presentation.
+- ATMOSPHERE conveys the actual emotional and environmental tone through visible details, spatial relationships, light, and color.
+- ACTION describes the single chosen instant, including the defining activity, interaction, situation, or state. It may describe a static or quiet scene; it must not narrate a sequence.
+- COMPOSITION explains the relative placement, orientation, and spatial relationships of important characters and objects.
+- POSES describes the simultaneous posture, body configuration, gestures, or operating state of each entity at the chosen instant.
+- LIGHTING describes coherent illumination appropriate to the source and scene. Do not invent special effects or dramatic light sources.
+- BACKGROUND establishes environmental context and depth without unrelated events or distracting detail.
+- WEATHER follows the source. If unspecified, use unobtrusive, setting-appropriate conditions without introducing a new narrative element. Omit when inapplicable.
+- FOCUS establishes the visual hierarchy that makes the defining situation legible. It need not always be a character's face, a moving object, or an action.
+- FRAMING adapts the composition to a portrait-oriented e-book illustration and the supplied format requirements.
+- CONSISTENCY preserves canonical identity, anatomy, construction, materials, and relevant details from the character catalog and wider context without repeating identity blocks verbatim.
+- NEGATIVE_BLOCK excludes scene-specific misinterpretations, added events, incompatible states, incorrect anatomy or construction, spatial errors, and unwanted textual or decorative elements.
+
+# FINAL VALIDATION
+
+Before output, silently verify that:
+
+1. Exactly one identity block exists for each materially involved character or entity.
+2. Every identity block follows the fixed schema and includes all fields.
+3. The chosen entity type and description accurately represent the established identity and construction.
+4. Important anatomy or mechanical structure is described by its topology, placement, shape, count, and function wherever established or needed for recognition.
+5. No humanoid anatomy, face, limbs, joints, or sensory structures have been imposed on an entity whose established design differs.
+6. Established absence has not been confused with unspecified information, and reasonable inferences have not been incorrectly prohibited.
+7. Unspecified features have been inferred only where useful and plausible, without contradicting the source or catalog.
+8. Equipment, exterior coverings, natural anatomy, and mechanical components are distinguished correctly.
+9. The selected scene represents exactly one coherent instant, whether still or active, without narrating a sequence or combining incompatible states.
+10. Every scene field refers to that same instant and preserves the actual situation and mood described by the source.
+11. The composition does not introduce an unsupported action, interaction, spectacle, or preferred genre convention.
+12. Wider context enriches identity and continuity without replacing the selected event or importing unrelated story content.
+13. The scene block does not duplicate the identity blocks verbatim.
+14. The output contains only the required blocks, with English descriptive text and no commentary.

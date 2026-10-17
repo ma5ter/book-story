@@ -9,9 +9,11 @@ package ua.acclorite.book_story.data.repository
 import android.app.Application
 import android.graphics.BitmapFactory
 import android.util.Base64
+import androidx.room.withTransaction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ua.acclorite.book_story.core.CoverImage
+import ua.acclorite.book_story.data.local.dto.BookAttachmentCharacterEntity
 import ua.acclorite.book_story.data.local.dto.BookAttachmentEntity
 import ua.acclorite.book_story.data.local.room.BookDatabase
 import ua.acclorite.book_story.R
@@ -166,7 +168,17 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
                 status = ImageAttachmentStatus.COMPLETED.name
             )
             try {
-                database.bookAttachmentDao.updateAttachment(completedAttachment)
+                database.withTransaction {
+                    database.bookAttachmentDao.updateAttachment(completedAttachment)
+                    val relations = matchSceneCharacters(
+                        attachmentId = current.id,
+                        bookId = current.bookId,
+                        sceneDescription = sceneDescription
+                    )
+                    if (relations.isNotEmpty()) {
+                        database.bookAttachmentCharacterDao.insertAttachmentsCharacters(relations)
+                    }
+                }
             } catch (e: Exception) {
                 file.delete()
                 throw e
@@ -218,6 +230,35 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
     }
 
     /**
+     * Extracts the CHARACTER values of the identity blocks from the
+     * [sceneDescription] produced by the text model and matches them
+     * against the persisted characters catalog of the book, so the
+     * illustration is linked to the characters it includes.
+     */
+    private suspend fun matchSceneCharacters(
+        attachmentId: Int,
+        bookId: Int,
+        sceneDescription: String
+    ): List<BookAttachmentCharacterEntity> {
+        val names = IDENTITY_CHARACTER_REGEX.findAll(sceneDescription)
+            .map { it.groupValues[1].trim(' ', '\t', '*', '`', '"', '\'') }
+            .filter { it.isNotBlank() }
+            .toList()
+        if (names.isEmpty()) return emptyList()
+
+        return database.bookCharacterDao.getCharactersForBook(bookId)
+            .filter { character ->
+                names.any { it.equals(character.name, ignoreCase = true) }
+            }
+            .map {
+                BookAttachmentCharacterEntity(
+                    attachmentId = attachmentId,
+                    characterId = it.id
+                )
+            }
+    }
+
+    /**
      * Reads the style reference collage from [path] and encodes it as a
      * base64 data URL for the image generation request. Returns null when
      * the reference is missing or unreadable — the generation then
@@ -250,5 +291,13 @@ class ImageAttachmentRepositoryImpl @Inject constructor(
         /** Header marking the characters catalog as an addendum to the system prompt. */
         private const val CHARACTERS_ADDENDUM_HEADER =
             "Characters of this book, for visual consistency across illustrations, **do not include unrelated to the selected fragment into image generation**:"
+
+        /**
+         * Matches the CHARACTER field of the identity blocks in the scene
+         * description. Anchored to line starts, so prompt rule prose
+         * mentioning CHARACTER without '=' is not matched.
+         */
+        private val IDENTITY_CHARACTER_REGEX =
+            Regex("(?m)^\\s*CHARACTER\\s*=\\s*(.+)$")
     }
 }

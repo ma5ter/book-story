@@ -6,7 +6,9 @@
 
 package ua.acclorite.book_story.presentation.reader
 
+import android.net.Uri
 import androidx.compose.runtime.Immutable
+import ua.acclorite.book_story.core.CoverImage
 import ua.acclorite.book_story.domain.model.character.BookCharacter
 import ua.acclorite.book_story.domain.model.reader.ReaderText.Chapter
 import ua.acclorite.book_story.presentation.reader.model.Checkpoint
@@ -90,7 +92,42 @@ sealed class ReaderEvent {
         val character: BookCharacter
     ) : ReaderEvent()
 
+    /**
+     * Imports the [image] picked by the user and caches it as the
+     * portrait of the character with [characterId].
+     */
+    data class OnLoadCharacterImage(
+        val characterId: Int,
+        val image: Uri
+    ) : ReaderEvent()
+
+    /**
+     * Pastes an image from the clipboard and caches it as the
+     * portrait of the character with [characterId].
+     */
+    data class OnPasteCharacterImage(
+        val characterId: Int
+    ) : ReaderEvent()
+
+    /**
+     * Accepts the adjusted portrait of the character with [characterId].
+     * [image] is the square portrait rendered from the crop viewport.
+     */
+    data class OnAcceptCharacterPortrait(
+        val characterId: Int,
+        val image: CoverImage
+    ) : ReaderEvent()
+
+    /**
+     * Discards the pending portrait addition/change of a character.
+     */
+    data object OnCancelCharacterPortrait : ReaderEvent()
+
     data class OnShareImage(
+        val attachmentId: Int
+    ) : ReaderEvent()
+
+    data class OnCopyImage(
         val attachmentId: Int
     ) : ReaderEvent()
 

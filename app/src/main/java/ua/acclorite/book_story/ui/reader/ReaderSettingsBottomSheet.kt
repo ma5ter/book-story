@@ -6,6 +6,9 @@
 
 package ua.acclorite.book_story.ui.reader
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -36,13 +39,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.launch
 import ua.acclorite.book_story.R
 import ua.acclorite.book_story.domain.model.attachment.ImageAttachment
@@ -60,6 +63,8 @@ import ua.acclorite.book_story.ui.settings.appearance.colors.ColorsSubcategory
 import ua.acclorite.book_story.ui.settings.components.SettingsSubcategoryTitle
 import ua.acclorite.book_story.ui.settings.reader.ai.AiSubcategory
 import ua.acclorite.book_story.ui.settings.reader.ai.CharactersSubcategory
+import ua.acclorite.book_story.ui.settings.reader.ai.components.CharacterInfoDialog
+import ua.acclorite.book_story.ui.settings.reader.ai.components.CharacterPortraitCropDialog
 import ua.acclorite.book_story.ui.settings.reader.chapters.ChaptersSubcategory
 import ua.acclorite.book_story.ui.settings.reader.font.FontSubcategory
 import ua.acclorite.book_story.ui.settings.reader.images.ImagesSubcategory
@@ -89,7 +94,22 @@ fun ReaderSettingsBottomSheet(
     val scope = rememberCoroutineScope()
     val pagerState = rememberPagerState(initialPage) { 4 }
     val readerModel = hiltViewModel<ReaderModel>()
+    val readerState = readerModel.state.collectAsStateWithLifecycle()
     val editTarget = remember { mutableStateOf<BookCharacter?>(null) }
+    val pictureTarget = remember { mutableStateOf<BookCharacter?>(null) }
+    val infoTarget = remember { mutableStateOf<BookCharacter?>(null) }
+    val pickCharacterPicture = rememberLauncherForActivityResult(
+        ActivityResultContracts.PickVisualMedia()
+    ) { uri ->
+        pictureTarget.value?.let { character ->
+            pictureTarget.value = null
+            uri?.let {
+                readerModel.onEvent(
+                    ReaderEvent.OnLoadCharacterImage(characterId = character.id, image = it)
+                )
+            }
+        }
+    }
     val illustrations = remember(text, imageAttachments) {
         findIllustrationItems(text, imageAttachments)
     }
@@ -201,9 +221,24 @@ fun ReaderSettingsBottomSheet(
                         )
                         CharactersSubcategory(
                             characters = characters,
+                            characterImages = readerState.value.characterImages,
                             isGenerating = isGeneratingCharacters,
                             generate = generateCharacters,
-                            onEdit = { editTarget.value = it }
+                            onEdit = { editTarget.value = it },
+                            onOpen = { infoTarget.value = it },
+                            onLoadPicture = { character ->
+                                pictureTarget.value = character
+                                pickCharacterPicture.launch(
+                                    PickVisualMediaRequest(
+                                        ActivityResultContracts.PickVisualMedia.ImageOnly
+                                    )
+                                )
+                            },
+                            onPaste = { character ->
+                                readerModel.onEvent(
+                                    ReaderEvent.OnPasteCharacterImage(characterId = character.id)
+                                )
+                            }
                         )
                         AiSubcategory(
                             titleColor = { MaterialTheme.colorScheme.onSurface },
@@ -228,6 +263,30 @@ fun ReaderSettingsBottomSheet(
                     )
                 )
             }
+        )
+    }
+
+    infoTarget.value?.let { character ->
+        CharacterInfoDialog(
+            character = character,
+            picture = readerState.value.characterImages[character.id],
+            onDismiss = { infoTarget.value = null }
+        )
+    }
+
+    readerState.value.portraitCrop?.let { crop ->
+        CharacterPortraitCropDialog(
+            character = crop.character,
+            image = crop.image,
+            onAccept = { image ->
+                readerModel.onEvent(
+                    ReaderEvent.OnAcceptCharacterPortrait(
+                        characterId = crop.character.id,
+                        image = image
+                    )
+                )
+            },
+            onDismiss = { readerModel.onEvent(ReaderEvent.OnCancelCharacterPortrait) }
         )
     }
 }

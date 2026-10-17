@@ -48,6 +48,7 @@ fun LazyItemScope.ReaderLayoutText(
     toolbarHidden: Boolean,
     openTranslator: (ReaderEvent.OnOpenTranslator) -> Unit,
     shareImage: (ReaderEvent.OnShareImage) -> Unit,
+    copyImage: (ReaderEvent.OnCopyImage) -> Unit,
     setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
     deleteImage: (ReaderEvent.OnDeleteImage) -> Unit,
     menuVisibility: (ReaderEvent.OnMenuVisibility) -> Unit
@@ -62,6 +63,7 @@ fun LazyItemScope.ReaderLayoutText(
                 imagesWidth = imagesWidth,
                 imagesColorEffects = imagesColorEffects,
                 shareImage = shareImage,
+                copyImage = copyImage,
                 setCoverImage = setCoverImage,
                 deleteImage = deleteImage
             )

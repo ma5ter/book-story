@@ -97,6 +97,7 @@ fun ReaderLayout(
     openDictionary: (ReaderEvent.OnOpenDictionary) -> Unit,
     generateImage: (ReaderEvent.OnGenerateImage) -> Unit,
     shareImage: (ReaderEvent.OnShareImage) -> Unit,
+    copyImage: (ReaderEvent.OnCopyImage) -> Unit,
     setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
     deleteImage: (ReaderEvent.OnDeleteImage) -> Unit
 ) {
@@ -231,6 +232,7 @@ fun ReaderLayout(
                                     toolbarHidden = toolbarHidden,
                                     openTranslator = openTranslator,
                                     shareImage = shareImage,
+                                    copyImage = copyImage,
                                     setCoverImage = setCoverImage,
                                     deleteImage = deleteImage,
                                     menuVisibility = menuVisibility

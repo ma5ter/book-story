@@ -111,6 +111,7 @@ fun ReaderScaffold(
     openDictionary: (ReaderEvent.OnOpenDictionary) -> Unit,
     generateImage: (ReaderEvent.OnGenerateImage) -> Unit,
     shareImage: (ReaderEvent.OnShareImage) -> Unit,
+    copyImage: (ReaderEvent.OnCopyImage) -> Unit,
     setCoverImage: (ReaderEvent.OnSetCoverImage) -> Unit,
     deleteImage: (ReaderEvent.OnDeleteImage) -> Unit,
     showSettingsBottomSheet: (ReaderEvent.OnShowSettingsBottomSheet) -> Unit,
@@ -215,6 +216,7 @@ fun ReaderScaffold(
             openDictionary = openDictionary,
             generateImage = generateImage,
             shareImage = shareImage,
+            copyImage = copyImage,
             setCoverImage = setCoverImage,
             deleteImage = deleteImage
         )

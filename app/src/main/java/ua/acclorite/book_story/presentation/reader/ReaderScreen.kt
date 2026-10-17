@@ -470,6 +470,7 @@ data class ReaderScreen(val bookId: Int) : Screen, Parcelable {
             generateImage = screenModel::onEvent,
             generateCharacters = screenModel::onEvent,
             shareImage = screenModel::onEvent,
+            copyImage = screenModel::onEvent,
             setCoverImage = screenModel::onEvent,
             deleteImage = screenModel::onEvent,
             scrollToImage = screenModel::onEvent,

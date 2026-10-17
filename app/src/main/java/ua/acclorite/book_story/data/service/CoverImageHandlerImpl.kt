@@ -1,6 +1,7 @@
 /*
  * Book's Story — free and open-source Material You eBook reader.
  * Copyright (C) 2024-2026 Acclorite
+ * Copyright (C) 2026 ma5ter
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
@@ -30,6 +31,7 @@ class CoverImageHandlerImpl @Inject constructor(
     private val coversDir = File(filesDir, "covers")
     private val imageAttachmentsDir = File(filesDir, "image_attachments")
     private val styleCollagesDir = File(application.cacheDir, "style_collages")
+    private val characterImagesDir = File(application.cacheDir, "character_images")
 
     override suspend fun saveCover(coverImage: CoverImage): Result<File> = runCatching {
         if (!coversDir.exists()) {
@@ -103,6 +105,37 @@ class CoverImageHandlerImpl @Inject constructor(
         }
 
         collage
+    }
+
+    /**
+     * Saves the already adjusted square [coverImage] as the cached portrait
+     * of the character with [characterId], overwriting the previous portrait.
+     */
+    override suspend fun saveCharacterImage(characterId: Int, coverImage: CoverImage): Result<File> = runCatching {
+        if (!characterImagesDir.exists()) {
+            characterImagesDir.mkdirs()
+        }
+
+        val portrait = File(characterImagesDir, "character_$characterId.webp")
+
+        withContext(Dispatchers.IO) {
+            BufferedOutputStream(FileOutputStream(portrait)).use { output ->
+                coverImage.compress(Bitmap.CompressFormat.WEBP, 90, output).let { success ->
+                    if (success) return@let
+                    throw Exception("Couldn't save character image.")
+                }
+            }
+        }
+
+        portrait
+    }
+
+    /**
+     * Returns the cached portrait file of the character,
+     * or null when no picture was loaded yet.
+     */
+    override fun getCharacterImageFile(characterId: Int): File? {
+        return File(characterImagesDir, "character_$characterId.webp").takeIf { it.exists() }
     }
 
     override suspend fun deleteCover(coverImage: Uri): Result<Unit> = runCatching {

@@ -100,6 +100,8 @@
     <string name="done">Done</string>
     <string name="web_search">Web search</string>
     <string name="share">Share</string>
+    <string name="copy_image">Copy image</string>
+    <string name="image_copied">Image copied to clipboard.</string>
     <string name="ok">OK</string>
     <string name="change_path">Change path</string>
     <string name="add_folder">Add folder</string>
@@ -320,6 +322,14 @@
     <string name="characters_processing">Processing</string>
     <string name="characters_failed">Character extraction failed</string>
     <string name="characters_stopped_by_system">Character extraction was stopped by the system.</string>
+    <string name="edit_description">Edit description</string>
+    <string name="load_picture">Load picture</string>
+    <string name="paste">Paste picture</string>
+    <string name="no_image_clipboard">No image in clipboard.</string>
+    <string name="character_image_saved">Character picture saved.</string>
+    <string name="portrait_crop_title">Adjust picture</string>
+    <string name="portrait_crop_desc">Zoom and pan the picture inside the circle.</string>
+    <string name="error_could_not_decode">Couldn\'t decode the selected image.</string>
 
     <!-- AI image generation service -->
     <string name="image_generating">Generating image…</string>
