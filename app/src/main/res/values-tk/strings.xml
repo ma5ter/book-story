@@ -516,5 +516,13 @@
     <string name="collapse_content_desc">Ýap</string>
     <string name="remove_content_desc">Aýyr</string>
     <string name="note_content_desc">Bellik</string>
+    <string name="edit_description">Düşündirişi üýtget</string>
+    <string name="load_picture">Surat ýüklemek</string>
+    <string name="paste">Surat goýmak</string>
+    <string name="no_image_clipboard">Buferde surat ýok.</string>
+    <string name="character_image_saved">Gahrymanyň suraty saklandy.</string>
+    <string name="portrait_crop_title">Suraty sazlaň</string>
+    <string name="portrait_crop_desc">Aýlawyň içinde suraty ulaltyp we süýşüriň.</string>
+    <string name="error_could_not_decode">Saýlanan suraty deşifrlemek başartmady.</string>
 
 </resources>

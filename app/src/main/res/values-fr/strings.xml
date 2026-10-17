@@ -416,4 +416,12 @@
     <string name="image_stopped_by_system">La génération d\'image a été arrêtée par le système.</string>
     <string name="image_already_generating">Une image est déjà en cours de génération.</string>
     <string name="retry">Réessayer</string>
+    <string name="edit_description">Modifier la description</string>
+    <string name="load_picture">Charger une image</string>
+    <string name="paste">Coller l\'image</string>
+    <string name="no_image_clipboard">Aucune image dans le presse-papiers.</string>
+    <string name="character_image_saved">Image du personnage enregistrée.</string>
+    <string name="portrait_crop_title">Ajuster l\'image</string>
+    <string name="portrait_crop_desc">Zoomez et déplacez l\'image dans le cercle.</string>
+    <string name="error_could_not_decode">Impossible de décoder l\'image sélectionnée.</string>
 </resources>

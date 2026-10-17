@@ -436,4 +436,12 @@
     <string name="default_tab">デフォルト</string>
     <string name="ai_illustrations">AIイラスト</string>
     <string name="note_content_desc">備考</string>
+    <string name="edit_description">説明を編集</string>
+    <string name="load_picture">画像を読み込む</string>
+    <string name="paste">画像を貼り付け</string>
+    <string name="no_image_clipboard">クリップボードに画像がありません。</string>
+    <string name="character_image_saved">キャラクターの画像を保存しました。</string>
+    <string name="portrait_crop_title">画像を調整</string>
+    <string name="portrait_crop_desc">円の中で画像を拡大・移動してください。</string>
+    <string name="error_could_not_decode">選択した画像をデコードできませんでした。</string>
 </resources>

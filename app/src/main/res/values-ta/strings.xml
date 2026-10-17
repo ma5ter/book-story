@@ -445,4 +445,12 @@
     <string name="collapse_content_desc">சுருக்கு</string>
     <string name="remove_content_desc">அகற்று</string>
     <string name="note_content_desc">குறிப்பு</string>
+    <string name="edit_description">விளக்கத்தைத் திருத்து</string>
+    <string name="load_picture">படத்தை ஏற்று</string>
+    <string name="paste">படத்தை ஒட்டு</string>
+    <string name="no_image_clipboard">கிளிப்போர்டில் படம் இல்லை.</string>
+    <string name="character_image_saved">கதாபாத்திரப் படம் சேமிக்கப்பட்டது.</string>
+    <string name="portrait_crop_title">படத்தை சரிசெய்</string>
+    <string name="portrait_crop_desc">வட்டத்திற்குள் படத்தை பெரிதாக்கி நகர்த்துங்கள்.</string>
+    <string name="error_could_not_decode">தேர்ந்தெடுத்த படத்தை டீகோட் செய்ய முடியவில்லை.</string>
 </resources>

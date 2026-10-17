@@ -509,4 +509,12 @@
     <string name="collapse_content_desc">ചുരുക്കുക</string>
     <string name="remove_content_desc">നീക്കം ചെയ്യുക</string>
     <string name="note_content_desc">കുറിപ്പ്</string>
+    <string name="edit_description">വിവരണം എഡിറ്റ് ചെയ്യുക</string>
+    <string name="load_picture">ചിത്രം ലോഡ് ചെയ്യുക</string>
+    <string name="paste">ചിത്രം പേസ്റ്റ് ചെയ്യുക</string>
+    <string name="no_image_clipboard">ക്ലിപ്പ്ബോർഡിൽ ചിത്രമില്ല.</string>
+    <string name="character_image_saved">കഥാപാത്രത്തിന്റെ ചിത്രം സേവ് ചെയ്തു.</string>
+    <string name="portrait_crop_title">ചിത്രം ക്രമീകരിക്കുക</string>
+    <string name="portrait_crop_desc">വൃത്തത്തിനുള്ളിൽ ചിത്രം സൂം ചെയ്ത് നീക്കുക.</string>
+    <string name="error_could_not_decode">തിരഞ്ഞെടുത്ത ചിത്രം ഡീകോഡ് ചെയ്യാനായില്ല.</string>
 </resources>

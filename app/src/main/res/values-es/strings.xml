@@ -417,4 +417,12 @@
     <string name="library_per_category_sort_option_note">El método de clasificación se puede cambiar en la libreria.</string>
     <string name="show_navigation_labels_option">Mostrar etiquetas de navegación</string>
     <string name="show_navigation_labels_option_desc">Mostrar etiquetación de navegación bajo los iconos</string>
+    <string name="edit_description">Editar descripción</string>
+    <string name="load_picture">Cargar imagen</string>
+    <string name="paste">Pegar imagen</string>
+    <string name="no_image_clipboard">No hay ninguna imagen en el portapapeles.</string>
+    <string name="character_image_saved">Imagen del personaje guardada.</string>
+    <string name="portrait_crop_title">Ajustar imagen</string>
+    <string name="portrait_crop_desc">Haz zoom y desplaza la imagen dentro del círculo.</string>
+    <string name="error_could_not_decode">No se pudo decodificar la imagen seleccionada.</string>
 </resources>

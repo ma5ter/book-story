@@ -416,4 +416,12 @@
     <string name="horizontal_limiter_ruler_option">Horizontales Lineal</string>
     <string name="horizontal_limiter_ruler_thickness_option">Linealstärke</string>
     <string name="horizontal_limiter_dimming_option">Abdunkeln</string>
+    <string name="edit_description">Beschreibung bearbeiten</string>
+    <string name="load_picture">Bild laden</string>
+    <string name="paste">Bild einfügen</string>
+    <string name="no_image_clipboard">Kein Bild in der Zwischenablage.</string>
+    <string name="character_image_saved">Figurenbild gespeichert.</string>
+    <string name="portrait_crop_title">Bild anpassen</string>
+    <string name="portrait_crop_desc">Bild innerhalb des Kreises zoomen und verschieben.</string>
+    <string name="error_could_not_decode">Das ausgewählte Bild konnte nicht dekodiert werden.</string>
 </resources>

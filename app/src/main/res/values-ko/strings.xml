@@ -572,5 +572,13 @@
     <string name="collapse_content_desc">접기</string>
     <string name="remove_content_desc">제거</string>
     <string name="note_content_desc">참고</string>
+    <string name="edit_description">설명 편집</string>
+    <string name="load_picture">사진 불러오기</string>
+    <string name="paste">사진 붙여넣기</string>
+    <string name="no_image_clipboard">클립보드에 이미지가 없습니다.</string>
+    <string name="character_image_saved">등장인물 사진이 저장되었습니다.</string>
+    <string name="portrait_crop_title">사진 조정</string>
+    <string name="portrait_crop_desc">원 안에서 사진을 확대/이동하세요.</string>
+    <string name="error_could_not_decode">선택한 이미지를 디코딩할 수 없습니다.</string>
 
 </resources>

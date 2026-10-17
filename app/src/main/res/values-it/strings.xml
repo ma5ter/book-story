@@ -433,4 +433,12 @@
     <string name="image_already_generating">Un\'immagine è già in fase di generazione.</string>
     <string name="retry">Riprova</string>
     <string name="cover_image_set">La copertina del libro è stata impostata con successo.</string>
+    <string name="edit_description">Modifica descrizione</string>
+    <string name="load_picture">Carica immagine</string>
+    <string name="paste">Incolla immagine</string>
+    <string name="no_image_clipboard">Nessuna immagine negli appunti.</string>
+    <string name="character_image_saved">Immagine del personaggio salvata.</string>
+    <string name="portrait_crop_title">Regola l\'immagine</string>
+    <string name="portrait_crop_desc">Ingrandisci e sposta l\'immagine all\'interno del cerchio.</string>
+    <string name="error_could_not_decode">Impossibile decodificare l\'immagine selezionata.</string>
 </resources>

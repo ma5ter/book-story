@@ -571,5 +571,13 @@
     <string name="collapse_content_desc">收合</string>
     <string name="remove_content_desc">移除</string>
     <string name="note_content_desc">提示</string>
+    <string name="edit_description">編輯描述</string>
+    <string name="load_picture">載入圖片</string>
+    <string name="paste">貼上圖片</string>
+    <string name="no_image_clipboard">剪貼簿中沒有圖片。</string>
+    <string name="character_image_saved">已儲存角色圖片。</string>
+    <string name="portrait_crop_title">調整圖片</string>
+    <string name="portrait_crop_desc">在圓形範圍內縮放和平移圖片。</string>
+    <string name="error_could_not_decode">無法解碼所選圖片。</string>
 
 </resources>

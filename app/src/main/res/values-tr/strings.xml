@@ -517,4 +517,12 @@
 
     <!-- Reader -->
     <string name="ai_illustrations">YZ çizimleri</string>
+    <string name="edit_description">Açıklamayı düzenle</string>
+    <string name="load_picture">Görsel yükle</string>
+    <string name="paste">Görsel yapıştır</string>
+    <string name="no_image_clipboard">Panoda görsel yok.</string>
+    <string name="character_image_saved">Karakter görseli kaydedildi.</string>
+    <string name="portrait_crop_title">Görseli ayarla</string>
+    <string name="portrait_crop_desc">Görseli dairenin içinde yakınlaştırın ve kaydırın.</string>
+    <string name="error_could_not_decode">Seçilen görsel çözümlenemedi.</string>
 </resources>

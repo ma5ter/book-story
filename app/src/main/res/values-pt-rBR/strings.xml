@@ -443,4 +443,12 @@
 
     <!-- Toast messages -->
     <string name="cover_image_set">A capa do livro foi definida com sucesso.</string>
+    <string name="edit_description">Editar descrição</string>
+    <string name="load_picture">Carregar imagem</string>
+    <string name="paste">Colar imagem</string>
+    <string name="no_image_clipboard">Não há imagem na área de transferência.</string>
+    <string name="character_image_saved">Imagem do personagem salva.</string>
+    <string name="portrait_crop_title">Ajustar imagem</string>
+    <string name="portrait_crop_desc">Aumente o zoom e mova a imagem dentro do círculo.</string>
+    <string name="error_could_not_decode">Não foi possível decodificar a imagem selecionada.</string>
 </resources>

@@ -521,5 +521,13 @@
     <string name="collapse_content_desc">Thu gọn</string>
     <string name="remove_content_desc">Gỡ bỏ</string>
     <string name="note_content_desc">Lưu ý</string>
+    <string name="edit_description">Chỉnh sửa mô tả</string>
+    <string name="load_picture">Tải ảnh</string>
+    <string name="paste">Dán ảnh</string>
+    <string name="no_image_clipboard">Không có ảnh trong bộ nhớ tạm.</string>
+    <string name="character_image_saved">Đã lưu ảnh nhân vật.</string>
+    <string name="portrait_crop_title">Điều chỉnh ảnh</string>
+    <string name="portrait_crop_desc">Thu phóng và di chuyển ảnh trong vòng tròn.</string>
+    <string name="error_could_not_decode">Không thể giải mã ảnh đã chọn.</string>
 
 </resources>

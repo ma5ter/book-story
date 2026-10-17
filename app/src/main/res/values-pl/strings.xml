@@ -417,4 +417,12 @@
     <string name="pin_content_desc">Przypnij</string>
     <string name="remove_content_desc">Usuń</string>
     <string name="note_content_desc">Notatka</string>
+    <string name="edit_description">Edytuj opis</string>
+    <string name="load_picture">Wczytaj obraz</string>
+    <string name="paste">Wklej obraz</string>
+    <string name="no_image_clipboard">Nie ma obrazu w schowku.</string>
+    <string name="character_image_saved">Zapisano obraz postaci.</string>
+    <string name="portrait_crop_title">Dopasuj obraz</string>
+    <string name="portrait_crop_desc">Powiększaj i przesuwaj obraz wewnątrz okręgu.</string>
+    <string name="error_could_not_decode">Nie można zdekodować wybranego obrazu.</string>
 </resources>

@@ -544,4 +544,12 @@
     <string name="collapse_content_desc">Згорнути</string>
     <string name="remove_content_desc">Прибрати</string>
     <string name="note_content_desc">Примітка</string>
+    <string name="edit_description">Змінити опис</string>
+    <string name="load_picture">Завантажити зображення</string>
+    <string name="paste">Вставити зображення</string>
+    <string name="no_image_clipboard">У буфері обміну немає зображення.</string>
+    <string name="character_image_saved">Зображення персонажа збережено.</string>
+    <string name="portrait_crop_title">Налаштувати зображення</string>
+    <string name="portrait_crop_desc">Масштабуйте та переміщуйте зображення всередині кола.</string>
+    <string name="error_could_not_decode">Не вдалося декодувати обране зображення.</string>
 </resources>

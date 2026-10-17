@@ -417,4 +417,12 @@
     <string name="image_stopped_by_system">图像生成已被系统停止。</string>
     <string name="image_already_generating">已有一张图像正在生成。</string>
     <string name="retry">重试</string>
+    <string name="edit_description">编辑描述</string>
+    <string name="load_picture">加载图片</string>
+    <string name="paste">粘贴图片</string>
+    <string name="no_image_clipboard">剪贴板中没有图片。</string>
+    <string name="character_image_saved">角色图片已保存。</string>
+    <string name="portrait_crop_title">调整图片</string>
+    <string name="portrait_crop_desc">在圆圈内缩放和平移图片。</string>
+    <string name="error_could_not_decode">无法解码所选图片。</string>
 </resources>

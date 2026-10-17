@@ -417,4 +417,12 @@
     <string name="collapse_content_desc">Restrângeți</string>
     <string name="remove_content_desc">Eliminați</string>
     <string name="note_content_desc">Notă</string>
+    <string name="edit_description">Editează descrierea</string>
+    <string name="load_picture">Încarcă imaginea</string>
+    <string name="paste">Lipește imaginea</string>
+    <string name="no_image_clipboard">Nu există nicio imagine în clipboard.</string>
+    <string name="character_image_saved">Imaginea personajului a fost salvată.</string>
+    <string name="portrait_crop_title">Ajustează imaginea</string>
+    <string name="portrait_crop_desc">Apropiați și mutați imaginea în interiorul cercului.</string>
+    <string name="error_could_not_decode">Nu s-a putut decoda imaginea selectată.</string>
 </resources>

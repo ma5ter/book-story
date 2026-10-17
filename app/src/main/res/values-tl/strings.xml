@@ -523,5 +523,13 @@
     <string name="collapse_content_desc">I-collapse</string>
     <string name="remove_content_desc">Alisin</string>
     <string name="note_content_desc">Paalala</string>
+    <string name="edit_description">I-edit ang paglalarawan</string>
+    <string name="load_picture">I-load ang larawan</string>
+    <string name="paste">I-paste ang larawan</string>
+    <string name="no_image_clipboard">Walang larawan sa clipboard.</string>
+    <string name="character_image_saved">Na-save ang larawan ng karakter.</string>
+    <string name="portrait_crop_title">I-adjust ang larawan</string>
+    <string name="portrait_crop_desc">I-zoom at pan ang larawan sa loob ng bilog.</string>
+    <string name="error_could_not_decode">Hindi ma-decode ang napiling larawan.</string>
 
 </resources>

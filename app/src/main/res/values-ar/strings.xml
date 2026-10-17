@@ -416,4 +416,12 @@
     <string name="retry">إعادة المحاولة</string>
     <string name="cover_image_set">تم تعيين غلاف الكتاب بنجاح.</string>
     <string name="ai_illustrations">رسومات الذكاء الاصطناعي</string>
+    <string name="edit_description">تعديل الوصف</string>
+    <string name="load_picture">تحميل صورة</string>
+    <string name="paste">لصق الصورة</string>
+    <string name="no_image_clipboard">لا توجد صورة في الحافظة.</string>
+    <string name="character_image_saved">تم حفظ صورة الشخصية.</string>
+    <string name="portrait_crop_title">ضبط الصورة</string>
+    <string name="portrait_crop_desc">قم بالتكبير والتحريك داخل الدائرة.</string>
+    <string name="error_could_not_decode">تعذر فك ترميز الصورة المحددة.</string>
 </resources>

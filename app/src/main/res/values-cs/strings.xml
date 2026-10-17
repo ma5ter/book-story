@@ -444,4 +444,12 @@
 
     <!-- Toast messages -->
     <string name="cover_image_set">Obálka knihy byla úspěšně nastavena.</string>
+    <string name="edit_description">Upravit popis</string>
+    <string name="load_picture">Načíst obrázek</string>
+    <string name="paste">Vložit obrázek</string>
+    <string name="no_image_clipboard">Ve schránce není žádný obrázek.</string>
+    <string name="character_image_saved">Obrázek postavy byl uložen.</string>
+    <string name="portrait_crop_title">Upravit obrázek</string>
+    <string name="portrait_crop_desc">Přibližujte a posouvejte obrázek uvnitř kruhu.</string>
+    <string name="error_could_not_decode">Vybraný obrázek se nepodařilo dekódovat.</string>
 </resources>

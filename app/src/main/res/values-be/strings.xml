@@ -432,4 +432,12 @@
     <string name="collapse_content_desc">Згарнуць</string>
     <string name="remove_content_desc">Выдаліць</string>
     <string name="note_content_desc">Заўвага</string>
+    <string name="edit_description">Рэдагаваць апісанне</string>
+    <string name="load_picture">Загрузіць выяву</string>
+    <string name="paste">Уставіць выяву</string>
+    <string name="no_image_clipboard">У буферы абмену няма выявы.</string>
+    <string name="character_image_saved">Выява персанажа захавана.</string>
+    <string name="portrait_crop_title">Наладзіць выяву</string>
+    <string name="portrait_crop_desc">Змяняйце маштаб і перамяшчайце выяву ўнутры круга.</string>
+    <string name="error_could_not_decode">Не атрымалася дэкадаваць выбраную выяву.</string>
 </resources>

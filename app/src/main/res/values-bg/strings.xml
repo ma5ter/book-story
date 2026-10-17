@@ -571,5 +571,13 @@
     <string name="collapse_content_desc">Свиване</string>
     <string name="remove_content_desc">Премахване</string>
     <string name="note_content_desc">Бележка</string>
+    <string name="edit_description">Редактиране на описанието</string>
+    <string name="load_picture">Зареждане на изображение</string>
+    <string name="paste">Поставяне на изображение</string>
+    <string name="no_image_clipboard">Няма изображение в клипборда.</string>
+    <string name="character_image_saved">Изображението на героя беше запазено.</string>
+    <string name="portrait_crop_title">Настройка на изображението</string>
+    <string name="portrait_crop_desc">Увеличете и преместете изображението вътре в кръга.</string>
+    <string name="error_could_not_decode">Избраното изображение не може да бъде декодирано.</string>
 
 </resources>

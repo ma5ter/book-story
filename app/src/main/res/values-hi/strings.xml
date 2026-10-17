@@ -492,4 +492,12 @@
     <string name="collapse_content_desc">संकुचित करें</string>
     <string name="remove_content_desc">हटाएँ</string>
     <string name="note_content_desc">नोट</string>
+    <string name="edit_description">विवरण संपादित करें</string>
+    <string name="load_picture">तस्वीर लोड करें</string>
+    <string name="paste">तस्वीर पेस्ट करें</string>
+    <string name="no_image_clipboard">क्लिपबोर्ड में कोई तस्वीर नहीं है।</string>
+    <string name="character_image_saved">पात्र की तस्वीर सहेजी गई।</string>
+    <string name="portrait_crop_title">तस्वीर समायोजित करें</string>
+    <string name="portrait_crop_desc">वृत्त के अंदर तस्वीर को ज़ूम और पैन करें।</string>
+    <string name="error_could_not_decode">चयनित तस्वीर को डिकोड नहीं किया जा सका।</string>
 </resources>
