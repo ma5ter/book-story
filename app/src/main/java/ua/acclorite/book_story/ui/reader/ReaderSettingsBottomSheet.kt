@@ -252,7 +252,7 @@ private fun LazyListScope.aiIllustrationsSection(
     }
     items(
         illustrations,
-        key = { it.attachmentId }
+        key = { "illustration_${it.attachmentId}" }
     ) { illustration ->
         Row(
             modifier = Modifier
